@@ -6,8 +6,8 @@ Based on HTML Framework
 2. Удаляем:
  - `wp-content/plugins/hello.php`
  - `wp-content/themes/` все-стандартные-темы
-3. Clone https://github.com/ideus-team/wordpress.git
-4. В корень своего проекта копируем поверх содержимое каталога `wp-framework`
+3. Clone https://github.com/ideus-team/wp-framework.git
+4. Содержимое репозитория копируем в корень своего проекта копируем поверх существующих файлов
 5. Переименовываем тему:
  - правим соответствующие строки в `wp-content/themes/theme/style.css`
  - заменяем `wp-content/themes/theme/screenshot.png` на скриншот проекта (880х660px)
