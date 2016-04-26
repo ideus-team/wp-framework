@@ -11,8 +11,8 @@
 
   <meta name="viewport" content="width=1024" />
   
-  <link rel="shortcut icon" href="<?php echo site_url('/favicon.ico'); ?>" />
-  <link rel="apple-touch-icon" href="<?php echo site_url('/apple-touch-icon.png'); ?>" />
+  <link rel="shortcut icon" href="<?php echo home_url('/favicon.ico'); ?>" />
+  <link rel="apple-touch-icon" href="<?php echo home_url('/apple-touch-icon.png'); ?>" />
 
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/sitemap.css" />
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Roboto:400,100,100italic,300,300italic,400italic,500italic,500,700,700italic,900,900italic" />

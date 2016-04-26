@@ -33,8 +33,8 @@ switch (nc_device()) {
     }
   </style>
 
-  <link rel="shortcut icon" href="<?php echo site_url('/favicon.ico'); ?>" />
-  <link rel="apple-touch-icon" href="<?php echo site_url('/apple-touch-icon.png'); ?>" />
+  <link rel="shortcut icon" href="<?php echo home_url('/favicon.ico'); ?>" />
+  <link rel="apple-touch-icon" href="<?php echo home_url('/apple-touch-icon.png'); ?>" />
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   <script>window.Modernizr || document.write('<script src="<?php echo get_template_directory_uri(); ?>/assets/js/vendor/modernizr-2.8.3.min.js"><\/script>')</script>
@@ -55,7 +55,7 @@ switch (nc_device()) {
             $siteLogo__iconURL = get_template_directory_uri().'/assets/img/blocks/siteLogo/siteLogo-logo.png';
             //$siteLogo__iconURL = (nc_device()=='mobile') ? get_template_directory_uri().'/assets/img/blocks/siteLogo/siteLogo-logo-mobile.png' : get_template_directory_uri().'/img/blocks/siteLogo/siteLogo-logo.png';
             $siteLogo__tag  = (is_front_page() && !is_paged()) ? 'h1' : 'div';
-            $siteLogo__link = (is_front_page() && !is_paged()) ? '' : ' href="'.site_url('/').'"';
+            $siteLogo__link = (is_front_page() && !is_paged()) ? '' : ' href="'.home_url('/').'"';
           ?>
           <<?php echo $siteLogo__tag; ?> class="b-siteLogo" itemscope itemtype="http://schema.org/Organization">
             <a class="b-siteLogo__link"<?php echo $siteLogo__link; ?> itemprop="url">
