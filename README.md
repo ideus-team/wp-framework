@@ -1,5 +1,5 @@
-# wp-framework
-Based on html-framework
+# WP-framework
+Based on HTML Framework
 
 ## Установка
 1. Скачиваем с офсайта архив голого Wordpress и заливаем его в новый пустой проект
