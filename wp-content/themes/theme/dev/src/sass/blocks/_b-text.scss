@@ -39,14 +39,12 @@
     margin-left: auto;
   }
   .alignright {
-    display: block;
-    margin-right: 0;
-    margin-left: auto;
+    float: right;
+    margin: 0 0 1em 1em;
   }
   .alignleft {
-    display: block;
-    margin-right: auto;
-    margin-left: 0;
+    float: left;
+    margin: 0 1em 1em 0;
   }
 
   .size-auto,
