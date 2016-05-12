@@ -53,7 +53,6 @@ function nc_scripts() {
   wp_register_script('jquery', get_template_directory_uri().'/assets/js/vendor/jquery-2.2.3.min.js', false, '2.2.3');
 
   wp_enqueue_script('jquery');
-  wp_enqueue_script('js-ie8');
   wp_enqueue_script('js-main', get_template_directory_uri().'/assets/js/scripts.js', array('jquery'), filemtime(get_template_directory().'/assets/js/scripts.js'), true);
   // wp_enqueue_script('js-extra', get_template_directory_uri().'/assets/js/scripts-extra.js', array('jquery'), filemtime(get_template_directory().'/assets/js/scripts-extra.js'), true);
 
