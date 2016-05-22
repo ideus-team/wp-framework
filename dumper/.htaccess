@@ -1,6 +1,6 @@
 Order deny,allow
 deny from all
-Allow from 127.0.0.1 82.117.248.44 178.165.115.58 193.105.7.55
+Allow from 127.0.0.1 82.117.248.44 193.105.7.55 77.122.83.73
 
 <Files cfg.php>
 order allow,deny
