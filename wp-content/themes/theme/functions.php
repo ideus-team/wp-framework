@@ -7,14 +7,14 @@ if (!isset($content_width)) {
 add_action('after_setup_theme', 'nc_setup');
 function nc_setup() {
   remove_action('wp_head', 'wp_generator');
-  //remove_action('wp_head', 'feed_links_extra', 3);
+  // remove_action('wp_head', 'feed_links_extra', 3);
   remove_action('wp_head', 'rsd_link');
   remove_action('wp_head', 'wlwmanifest_link');
-  //remove_action('wp_head', 'index_rel_link');
-  //remove_action('wp_head', 'parent_post_rel_link', 10, 0);
-  //remove_action('wp_head', 'start_post_rel_link', 10, 0);
-  //remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
-  //remove_action('wp_head', 'rel_canonical');
+  // remove_action('wp_head', 'index_rel_link');
+  // remove_action('wp_head', 'parent_post_rel_link', 10, 0);
+  // remove_action('wp_head', 'start_post_rel_link', 10, 0);
+  // remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+  // remove_action('wp_head', 'rel_canonical');
 
   // This feature enables plugins and themes to manage the document title tag. This should be used in place of wp_title() function.
   add_theme_support('title-tag');
@@ -26,7 +26,7 @@ function nc_setup() {
   add_theme_support('post-thumbnails', array('post', 'page'));
 
   // This feature enables Post Formats support for a Theme.
-  //add_theme_support('post-formats', array('aside', 'gallery'));
+  // add_theme_support('post-formats', array('aside', 'gallery'));
 
   // Styles for editor
   add_editor_style('assets/css/editor-style.min.css');
