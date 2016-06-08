@@ -3,19 +3,21 @@
 class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
   public function start_lvl( &$output, $depth = 0, $args = array() ) {
     $indent = str_repeat("\t", $depth);
-    $output .= "\n$indent<ul class=\"".$args->menu_class."__submenu\">\n";
+    $output .= "\n$indent<ul class=\"".$args->menu_class."__submenu -depth_".($depth + 1)."\">\n";
   }
 
   function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
     $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-    $class_names = $id = '';
-
     $classes = empty( $item->classes ) ? array() : (array) $item->classes;
     $classes[] = '-id_' . $item->ID;
 
+    $args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
+
     $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
     $class_names = $class_names ? ' class="' . $args->menu_class .'__item ' . esc_attr( $class_names ) . '"' : '';
+
+    $id = '';
 
     $output .= $indent . '<li' . $id . $class_names .'>';
 
@@ -36,9 +38,12 @@ class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
       }
     }
 
+    $title = apply_filters( 'the_title', $item->title, $item->ID );
+    $title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
+
     $item_output = $args->before;
     $item_output .= '<a'. $attributes .'>';
-    $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+    $item_output .= $args->link_before . $title . $args->link_after;
     $item_output .= (!empty($item->description)) ? '<span class="'.$args->menu_class.'__descr">'.$item->description.'</span>' : '';
     $item_output .= '</a>';
     $item_output .= $args->after;
