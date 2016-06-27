@@ -53,9 +53,9 @@ function nc_metabox_demo() {
     'type'        => 'group',
     'description' => '',
     'options'     => array(
-      'group_title'   => 'Entry {#}',
-      'add_button'    => 'Add Another Entry',
-      'remove_button' => 'Remove Entry',
+			'group_title'   => __( 'Entry {#}', 'cmb2' ),
+			'add_button'    => __( 'Add Another Entry', 'cmb2' ),
+			'remove_button' => __( 'Remove Entry', 'cmb2' ),
       'sortable'      => true,
     ),
   ));
