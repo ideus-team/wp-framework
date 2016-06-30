@@ -63,6 +63,7 @@ function nc_remove_width_and_height($html) {
   return preg_replace('/(height|width)="\d*"\s/', '', $html);
 }
 
+// Source: https://frankiejarrett.com/2013/05/get-an-attachment-id-by-url-in-wordpress/
 function nc_get_attachment_id_by_url($url) {
   // Split the $url into two parts with the wp-content directory as the separator
   $parsed_url  = explode( parse_url( WP_CONTENT_URL, PHP_URL_PATH ), $url );
