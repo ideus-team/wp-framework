@@ -35,6 +35,7 @@ merge:
   description: 'All Merge tasks'
   tasks:
     - 'concat'
+    - 'babel'
     - 'uglify'
 
 
@@ -53,6 +54,7 @@ js:
     - 'jshint'
     - 'jscs'
     - 'concat'
+    - 'babel'
     - 'uglify'
 
 img:
