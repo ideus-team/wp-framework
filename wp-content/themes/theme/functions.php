@@ -50,7 +50,7 @@ function nc_styles() {
 add_action('wp_enqueue_scripts', 'nc_scripts');
 function nc_scripts() {
   wp_deregister_script('jquery');
-  wp_register_script('jquery', get_template_directory_uri().'/assets/js/vendor/jquery-3.0.0.min.js', false, '3.0.0');
+  wp_register_script('jquery', get_template_directory_uri().'/assets/js/vendor/jquery-3.1.0.min.js', false, '3.1.0');
 
   wp_enqueue_script('jquery');
   wp_enqueue_script('js-main', get_template_directory_uri().'/assets/js/scripts.js', array('jquery'), filemtime(get_template_directory().'/assets/js/scripts.js'), true);
