@@ -23,7 +23,8 @@ function nc_setup() {
   add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
 
   // This feature enables Post Thumbnails support for a Theme.
-  add_theme_support('post-thumbnails', array('post', 'page'));
+  // add_theme_support('post-thumbnails', array('post', 'page'));
+  add_theme_support('post-thumbnails');
 
   // This feature enables Post Formats support for a Theme.
   // add_theme_support('post-formats', array('aside', 'gallery'));
