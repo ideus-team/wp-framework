@@ -18,6 +18,8 @@
   }
 
   &__link {
+    display: block;
+
     &.-type_prev {}
     &.-type_next {}
     &.-type_dots {}
@@ -50,7 +52,7 @@
     }
 
     a {
-    
+
     }
   }
 }
