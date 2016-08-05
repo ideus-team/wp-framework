@@ -12,8 +12,8 @@ function nc_pagenavi($args = array()) {
     'type'      => 'array',
     'class'     => 'b-pagination',
     'modifier'  => '',
-    'found'     => true, // Show "Found N"
-    'total'     => true, // Show "Page N of N"
+    'found'     => false, // Show "Found N"
+    'total'     => false, // Show "Page N of N"
     'echo'      => true,
   ));
 
