@@ -40,7 +40,7 @@ switch (nc_device()) {
   <script>window.Modernizr || document.write('<script src="<?php echo get_template_directory_uri(); ?>/assets/js/vendor/modernizr-2.8.3.min.js"><\/script>')</script>
 
   <?php wp_head(); ?>
-  <?php get_template_part('tpl/scripts', 'header'); ?>
+  <?php get_template_part('template-parts/scripts', 'header'); ?>
 </head>
 <body <?php body_class('l-body'); ?>>
   <!--[if lt IE 8]>
