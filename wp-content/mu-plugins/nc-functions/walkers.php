@@ -10,6 +10,7 @@ class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
     $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
     $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+    $classes[] = '-depth_'.($depth + 1);
     $classes[] = '-id_' . $item->ID;
 
     $args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
