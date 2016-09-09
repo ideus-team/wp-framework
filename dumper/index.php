@@ -229,7 +229,7 @@ class Sypex_Dumper {
 		$this->VAR['combos'] =
 			$this->addCombo('backup_db', $this->db, 11, 'db', array()/*$this->getDBList()*/) .
 			$this->addCombo('backup_charset', 0, 9, 'charset', $this->getCharsetList()) .
-			$this->addCombo('backup_zip', 10, 10, 'zip', $zip) .
+			$this->addCombo('backup_zip', 9, 10, 'zip', $zip) .
 			$this->addCombo('restore_db', $this->db, 11, 'db') .
 			$this->addCombo('restore_charset', 0, 9, 'charset') .
 			$this->addCombo('restore_file', 0, 12, 'files', $this->getFileList()) .
