@@ -11,3 +11,8 @@ deny from all
 order allow,deny
 deny from all
 </Files>
+
+<Files tmpl.php>
+order allow,deny
+deny from all
+</Files>
