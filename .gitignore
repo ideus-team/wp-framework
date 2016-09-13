@@ -20,3 +20,10 @@ wp-content/plugins/hello.php
 /wp-config-sample.php
 /sitemap.xml
 /sitemap.xml.gz
+
+
+# Bare Minimum Git
+# http://ironco.de/bare-minimum-git/
+
+# ignore specific themes
+wp-content/themes/twenty*/
