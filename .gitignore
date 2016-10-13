@@ -27,3 +27,6 @@ wp-content/plugins/hello.php
 
 # ignore specific themes
 wp-content/themes/twenty*/
+
+# ignore debug.log
+wp-content/debug.log
