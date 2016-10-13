@@ -68,4 +68,56 @@ function nc_metabox_demo() {
   ));
 }
 */
+
+/**
+ * Gets a number of terms and displays them as options
+ * @param  string       $taxonomy Taxonomy terms to retrieve. Default is category.
+ * @param  string|array $args     Optional. get_terms optional arguments
+ * @return array                  An array of options that matches the CMB2 options array
+ */
+function cmb2_get_term_options( $args = array() ) {
+  $args = wp_parse_args($args, array(
+    'taxonomy' => 'category',
+  ));
+
+  $taxonomy = $args['taxonomy'];
+
+  $terms = (array) get_terms($taxonomy, $args);
+
+  // Initate an empty array
+  $term_options = array('--');
+  if ( ! empty( $terms ) ) {
+    foreach ( $terms as $term ) {
+      $term_options[ $term->term_id ] = $term->name;
+    }
+  }
+
+  return $term_options;
+}
+
+
+/**
+ * Gets a number of posts and displays them as options
+ * @param  array $query_args Optional. Overrides defaults.
+ * @return array             An array of options that matches the CMB2 options array
+ */
+function cmb2_get_post_options( $query_args ) {
+  $args = wp_parse_args( $query_args, array(
+    'post_type'   => 'post',
+    'numberposts' => -1,
+    'orderby'     => 'name',
+    'order'       => 'ASC',
+  ) );
+
+  $posts = get_posts( $args );
+
+  $post_options = array();
+  if ( $posts ) {
+    foreach ( $posts as $post ) {
+      $post_options[ $post->ID ] = $post->post_title;
+    }
+  }
+
+  return $post_options;
+}
 ?>
