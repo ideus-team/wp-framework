@@ -6,6 +6,11 @@ if (!isset($content_width)) {
 
 add_action('after_setup_theme', 'nc_setup');
 function nc_setup() {
+  /*
+   * Make theme available for translation.
+   */
+  load_theme_textdomain( 'nc_theme' );
+
   remove_action('wp_head', 'wp_generator');
   // remove_action('wp_head', 'feed_links_extra', 3);
   remove_action('wp_head', 'rsd_link');
