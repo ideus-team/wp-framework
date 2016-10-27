@@ -27,7 +27,7 @@ function nc_post_blog() {
     'show_in_menu'        => true,
     'show_in_admin_bar'   => true,
     'menu_position'       => null,
-    'menu_icon'           => null,
+    'menu_icon'           => 'dashicons-admin-post', // You can use dashicons here: https://developer.wordpress.org/resource/dashicons/
     'hierarchical'        => false,
     'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'page-attributes' ),
     'taxonomies'          => array( ),
