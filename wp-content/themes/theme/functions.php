@@ -9,7 +9,7 @@ function nc_setup() {
   /*
    * Make theme available for translation.
    */
-  load_theme_textdomain( 'nc_theme' );
+  load_theme_textdomain( 'nc_theme', get_template_directory() . '/languages' );
 
   remove_action('wp_head', 'wp_generator');
   // remove_action('wp_head', 'feed_links_extra', 3);
