@@ -42,11 +42,21 @@
   }
   .alignright {
     float: right;
-    margin: 0 0 1em 1em;
+    margin-bottom: 1em;
+    margin-left: 1em;
   }
   .alignleft {
     float: left;
-    margin: 0 1em 1em 0;
+    margin-right: 1em;
+    margin-bottom: 1em;
+  }
+
+  .wp-caption {
+    margin: 1em 0;
+  }
+
+  .wp-caption-text {
+    margin-top: 1em;
   }
 
   .size-auto,
