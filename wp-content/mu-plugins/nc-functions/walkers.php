@@ -29,6 +29,8 @@ class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
     $atts['href']   = ! empty( $item->url )        ? $item->url                   : '';
     $atts['class']  = ! empty( $args->menu_class ) ? $args->menu_class . '__link' : '';
 
+    $atts['class'] .= ' -depth_'.($depth + 1);
+
     $atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
 
     $attributes = '';
