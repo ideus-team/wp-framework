@@ -10,7 +10,7 @@ Based on HTML Framework
 4. Содержимое репозитория копируем в корень своего проекта копируем поверх существующих файлов
 5. Переименовываем тему:
  - правим соответствующие строки в `wp-content/themes/theme/style.css`
- - заменяем `wp-content/themes/theme/screenshot.png` на скриншот проекта (880х660px)
+ - заменяем `wp-content/themes/theme/screenshot.png` на скриншот проекта (1200х900px)
  - переименовываем папку `wp-content/themes/theme` по имени проекта
 6. Во время установки указываем email `wordpress@ideus.biz` (или клиента, но не личный!)
 7. Активируем нашу тему
