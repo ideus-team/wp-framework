@@ -31,4 +31,7 @@ require WPMU_PLUGIN_DIR.'/nc-functions/taxonomy.php';
 
 // Metabox
 require WPMU_PLUGIN_DIR.'/nc-functions/meta-box.php';
+
+// Breadcrumbs
+require WPMU_PLUGIN_DIR.'/nc-functions/breadcrumbs.php';
 ?>

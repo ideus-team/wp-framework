@@ -19,6 +19,8 @@ get_header();
 
   <main class="l-contentText" role="main">
 
+    <?php get_template_part( 'template-parts/block', 'breadcrumbs' ); ?>
+
     <section class="b-contentText">
       <h2 class="b-contentText__title"><?php the_title(); ?></h2>
       <div class="b-contentText__content b-text"><?php the_content(); ?></div>
