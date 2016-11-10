@@ -103,7 +103,7 @@ function nc_tel($phone = '') {
 add_filter( 'kama_breadcrumbs_default_args', 'nc_breadcrumbs_default_args' );
 function nc_breadcrumbs_default_args($args) {
   // Опции
-  $args = array(
+  $args_new = array(
     'on_front_page'   => true,
     'show_post_title' => true,
     'show_term_title' => true,
@@ -114,13 +114,15 @@ function nc_breadcrumbs_default_args($args) {
     'priority_terms'  => array(),
     'nofollow' => false,
   );
+
+  $args = wp_parse_args($args_new, $args);
   return $args;
 }
 
 add_filter( 'kama_breadcrumbs_default_loc', 'nc_breadcrumbs_default_loc' );
 function nc_breadcrumbs_default_loc($l10n) {
   // Локализация
-  $l10n = array(
+  $l10n_new = array(
     'home'       => 'Front page',
     'paged'      => 'Page %d',
     '_404'       => 'Error 404',
@@ -133,6 +135,8 @@ function nc_breadcrumbs_default_loc($l10n) {
     'tag'        => 'Posts by tag: <b>%s</b>',
     'tax_tag'    => '%1$s from "%2$s" by tag: <b>%3$s</b>',
   );
+
+  $l10n = wp_parse_args($l10n_new, $l10n);
   return $l10n;
 }
 ?>
