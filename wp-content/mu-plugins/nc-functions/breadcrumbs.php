@@ -134,16 +134,20 @@ class Kama_Breadcrumbs {
     // страница записей, когда для главной установлена отдельная страница.
     elseif( is_home() ) {
       $out = $paged_num ? ( sprintf( $linkpatt, get_permalink($q_obj), esc_html($q_obj->post_title) ) . $pg_end ) : esc_html($q_obj->post_title);
+      $out = sprintf( $arg->title_patt, $out );
     }
     elseif( is_404() ){
       $out = $loc->_404;
+      $out = sprintf( $arg->title_patt, $out );
     }
     elseif( is_search() ){
       $out = sprintf( $loc->search, esc_html( $GLOBALS['s'] ) );
+      $out = sprintf( $arg->title_patt, $out );
     }
     elseif( is_author() ){
       $tit = sprintf( $loc->author, esc_html($q_obj->display_name) );
       $out = ( $paged_num ? sprintf( $linkpatt, get_author_posts_url( $q_obj->ID, $q_obj->user_nicename ) . $pg_end, $tit ) : $tit );
+      $out = sprintf( $arg->title_patt, $out );
     }
     elseif( is_year() || is_month() || is_day() ){
       $y_url  = get_year_link( $year = get_the_time('Y') );
@@ -151,6 +155,7 @@ class Kama_Breadcrumbs {
       if( is_year() ){
         $tit = sprintf( $loc->year, $year );
         $out = ( $paged_num ? sprintf($linkpatt, $y_url, $tit) . $pg_end : $tit );
+        $out = sprintf( $arg->title_patt, $out );
       }
       // month day
       else {
@@ -160,10 +165,12 @@ class Kama_Breadcrumbs {
         if( is_month() ){
           $tit = sprintf( $loc->month, get_the_time('F') );
           $out = $y_link . $sep . ( $paged_num ? sprintf( $linkpatt, $m_url, $tit ) . $pg_end : $tit );
+          $out = sprintf( $arg->title_patt, $out );
         }
         elseif( is_day() ){
           $m_link = sprintf( $linkpatt, $m_url, get_the_time('F'));
           $out = $y_link . $sep . $m_link . $sep . get_the_time('l');
+          $out = sprintf( $arg->title_patt, $out );
         }
       }
     }
