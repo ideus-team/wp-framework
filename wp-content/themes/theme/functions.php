@@ -95,4 +95,44 @@ function nc_tel($phone = '') {
 
   return preg_replace($patterns, '', $phone);
 }
+
+
+/*
+ * Breadcrumbs settings
+ */
+add_filter( 'kama_breadcrumbs_default_args', 'nc_breadcrumbs_default_args' );
+function nc_breadcrumbs_default_args($args) {
+  // Опции
+  $args = array(
+    'on_front_page'   => true,
+    'show_post_title' => true,
+    'show_term_title' => true,
+    'title_patt'      => '<li class="b-breadcrumbs__item -state_current">%s</li>',
+    'last_sep'        => true,
+    'markup'          => 'schema.org',
+    'priority_tax'    => array('category'),
+    'priority_terms'  => array(),
+    'nofollow' => false,
+  );
+  return $args;
+}
+
+add_filter( 'kama_breadcrumbs_default_loc', 'nc_breadcrumbs_default_loc' );
+function nc_breadcrumbs_default_loc($l10n) {
+  // Локализация
+  $l10n = array(
+    'home'       => 'Front page',
+    'paged'      => 'Page %d',
+    '_404'       => 'Error 404',
+    'search'     => 'Search results by query - <b>%s</b>',
+    'author'     => 'Author archve: <b>%s</b>',
+    'year'       => 'Archive by <b>%d</b> год',
+    'month'      => 'Archive by: <b>%s</b>',
+    'day'        => '',
+    'attachment' => 'Media: %s',
+    'tag'        => 'Posts by tag: <b>%s</b>',
+    'tax_tag'    => '%1$s from "%2$s" by tag: <b>%3$s</b>',
+  );
+  return $l10n;
+}
 ?>

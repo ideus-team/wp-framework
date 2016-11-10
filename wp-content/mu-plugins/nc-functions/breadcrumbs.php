@@ -2,6 +2,7 @@
 
 /**
  * Хлебные крошки для WordPress (breadcrumbs)
+ * http://wp-kama.ru/id_541/samyie-hlebnyie-kroshki-breabcrumbs-dlya-wordpress.html
  *
  * @param  string [$sep  = '']      Разделитель. По умолчанию ' » '
  * @param  array  [$l10n = array()] Для локализации. См. переменную $default_l10n.
@@ -10,7 +11,7 @@
  *
  * version 3.3.1
  */
-function kama_breadcrumbs( $sep = '', $l10n = array(), $args = array() ){
+function nc_breadcrumbs( $sep = '', $l10n = array(), $args = array() ){
   $kb = new Kama_Breadcrumbs;
   echo $kb->get_crumbs( $sep, $l10n, $args );
 }
@@ -80,19 +81,19 @@ class Kama_Breadcrumbs {
 
       // Разметка по умолчанию
       if( ! $mark ) $mark = array(
-        'wrappatt'  => '<ul class="b-breadcrumbs">%s</ul>',
+        'wrappatt'  => '<div class="l-breadcrumbs"><ul class="b-breadcrumbs">%s</ul></div>',
         'linkpatt'  => '<li class="b-breadcrumbs__item"><a class="b-breadcrumbs__link" href="%s">%s</a>',
         'sep_after' => '</li>',
       );
       // rdf
       elseif( $mark === 'rdf.data-vocabulary.org' ) $mark = array(
-        'wrappatt'   => '<ul class="b-breadcrumbs" prefix="v: http://rdf.data-vocabulary.org/#">%s</ul>',
+        'wrappatt'   => '<div class="l-breadcrumbs"><ul class="b-breadcrumbs" prefix="v: http://rdf.data-vocabulary.org/#">%s</ul></div>',
         'linkpatt'   => '<li class="b-breadcrumbs__item" typeof="v:Breadcrumb"><a class="b-breadcrumbs__link" href="%s" rel="v:url" property="v:title">%s</a>',
         'sep_after'  => '</li>', // закрываем li после разделителя!
       );
       // schema.org
       elseif( $mark === 'schema.org' ) $mark = array(
-        'wrappatt'   => '<ul class="b-breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">%s</ul>',
+        'wrappatt'   => '<div class="l-breadcrumbs"><ul class="b-breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">%s</ul></div>',
         'linkpatt'   => '<li class="b-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="b-breadcrumbs__link" href="%s" itemprop="item"><span class="b-breadcrumbs__name" itemprop="name">%s</span></a>',
         'sep_after'  => '</li>',
       );

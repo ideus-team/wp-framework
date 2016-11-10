@@ -19,7 +19,7 @@ get_header();
 
   <main class="l-contentText" role="main">
 
-    <?php get_template_part( 'template-parts/block', 'breadcrumbs' ); ?>
+    <?php nc_breadcrumbs(); ?>
 
     <section class="b-contentText">
       <h2 class="b-contentText__title"><?php the_title(); ?></h2>
