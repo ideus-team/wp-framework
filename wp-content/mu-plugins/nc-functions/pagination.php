@@ -39,7 +39,7 @@ function nc_pagenavi($args = array()) {
     'next',
     'dots',
     'current',
-    '/page/1/'
+    '/page/1/',
   );
   $replace = array(
     $args['class'].'__link',
@@ -47,7 +47,7 @@ function nc_pagenavi($args = array()) {
     '-type_next',
     '-type_dots',
     '-state_current',
-    ''
+    '',
   );
 
   if ($max > 1) {
