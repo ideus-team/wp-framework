@@ -314,7 +314,7 @@ class Kama_Breadcrumbs {
 
         // первая страница архива типа записи
         if( is_post_type_archive() && ! $paged_num )
-          $home_after = $pt_title;
+          $home_after = sprintf( $arg->title_patt, $pt_title );
         // singular, paged post_type_archive, tax
         else{
           $home_after = sprintf( $linkpatt, get_post_type_archive_link($ptype->name), $pt_title );
