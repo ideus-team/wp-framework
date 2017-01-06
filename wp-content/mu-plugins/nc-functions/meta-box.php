@@ -77,7 +77,8 @@ function nc_metabox_demo() {
  */
 function cmb2_get_term_options( $args = array() ) {
   $args = wp_parse_args($args, array(
-    'taxonomy' => 'category',
+    'taxonomy'   => 'category',
+    'hide_empty' => false,
   ));
 
   $taxonomy = $args['taxonomy'];
