@@ -2,7 +2,7 @@
 Based on HTML Framework
 
 ## Установка
-1. Скачиваем с офсайта архив голого Wordpress и заливаем его в новый пустой проект
+1. Скачиваем с [офсайта](https://wordpress.org/download/) архив голого Wordpress и заливаем его в новый пустой проект
 2. Удаляем:
  - `wp-content/plugins/hello.php`
  - `wp-content/themes/` все-стандартные-темы
