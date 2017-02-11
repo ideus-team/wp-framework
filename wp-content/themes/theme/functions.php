@@ -24,6 +24,9 @@ function nc_setup() {
   // This feature enables plugins and themes to manage the document title tag. This should be used in place of wp_title() function.
   add_theme_support('title-tag');
 
+  // Enable RSS link
+  // add_theme_support('automatic-feed-links');
+
   // This feature allows the use of HTML5 markup for the search forms, comment forms, comment lists, gallery, and caption.
   add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
 
