@@ -37,9 +37,6 @@ switch (nc_device()) {
   <link rel="apple-touch-icon" href="<?php echo home_url('/apple-touch-icon.png'); ?>" />
   <!--<meta name="theme-color" content="#ed1c24" />-->
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-  <script>window.Modernizr || document.write('<script src="<?php echo get_template_directory_uri(); ?>/assets/js/vendor/modernizr-2.8.3.min.js"><\/script>')</script>
-
   <?php wp_head(); ?>
   <?php get_template_part('template-parts/scripts', 'header'); ?>
 </head>

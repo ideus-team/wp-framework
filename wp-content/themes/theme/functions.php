@@ -58,6 +58,8 @@ function nc_styles() {
 // Scripts
 add_action('wp_enqueue_scripts', 'nc_scripts');
 function nc_scripts() {
+  wp_register_script('modernizr', get_template_directory_uri().'/assets/js/vendor/modernizr-2.8.3.min.js', false, '2.8.3');
+
   wp_deregister_script('jquery');
   wp_register_script('jquery', get_template_directory_uri().'/assets/js/vendor/jquery-3.1.1.min.js', false, '3.1.1');
 
