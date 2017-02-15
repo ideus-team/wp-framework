@@ -38,4 +38,15 @@ function nc_post_blog() {
   register_post_type( 'blog', $args );
 }
 */
+
+// Modify loops
+// add_action('pre_get_posts', 'nc_loop_modify');
+function nc_loop_modify($query) {
+  if ($query->is_main_query()) {
+    if ($query->is_post_type_archive('post_type')) {
+      $query->set('orderby', 'menu_order');
+      $query->set('order', 'ASC');
+    }
+  }
+}
 ?>
