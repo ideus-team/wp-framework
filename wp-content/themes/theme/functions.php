@@ -64,7 +64,7 @@ function nc_scripts() {
   wp_deregister_script('jquery');
   wp_register_script('jquery', get_template_directory_uri().'/assets/js/vendor/jquery-3.1.1.min.js', false, '3.1.1');
 
-  wp_enqueue_script('js-main', get_template_directory_uri().'/assets/js/scripts.js', array('jquery'), filemtime(get_template_directory().'/assets/js/scripts.js'), true);
+  wp_enqueue_script('js-main', get_template_directory_uri().'/assets/js/scripts.js', array('modernizr', 'jquery'), filemtime(get_template_directory().'/assets/js/scripts.js'), true);
   // wp_enqueue_script('js-extra', get_template_directory_uri().'/assets/js/scripts-extra.js', array('jquery'), filemtime(get_template_directory().'/assets/js/scripts-extra.js'), true);
 
   // Variables for JS (ncVar.ajaxurl & ncVar.themeurl)
