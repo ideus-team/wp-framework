@@ -21,7 +21,7 @@ switch (nc_device()) {
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <!-- <meta property="og:image" content="<?php echo $BASE_URL; ?>/img/userfiles/og-image.png" /> -->
+  <!-- <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/img/userfiles/og-image.png" /> -->
 
   <meta name="viewport" content="width=<?php echo $viewportMeta; ?>" />
   <style>
