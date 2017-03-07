@@ -14,14 +14,14 @@
   <link rel="shortcut icon" href="<?php echo home_url('/favicon.ico'); ?>" />
   <link rel="apple-touch-icon" href="<?php echo home_url('/apple-touch-icon.png'); ?>" />
 
-  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/sitemap.css" />
+  <link rel="stylesheet" href="<?php echo get_theme_file_uri( 'assets/css/sitemap.css' ); ?>" />
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic|Roboto+Slab:100,300,400,700" />
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-  <script>window.Modernizr || document.write('<script src="<?php echo get_template_directory_uri(); ?>/assets/js/vendor/modernizr-2.8.3.min.js"><\/script>')</script>
+  <script>window.Modernizr || document.write('<script src="<?php echo get_theme_file_uri( 'assets/js/vendor/modernizr-2.8.3.min.js' ); ?>"><\/script>')</script>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-3.1.0.min.js"><\/script>')</script>
+  <script>window.jQuery || document.write('<script src="<?php echo get_theme_file_uri( 'assets/js/vendor/jquery-3.1.0.min.js' ); ?>"><\/script>')</script>
 
   <script>
     $(function() {
@@ -41,7 +41,7 @@
       <div class="b-siteHeader">
         <div class="l-siteLogo">
           <a class="b-siteLogo__link" itemprop="url">
-            <img class="b-siteLogo__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/sitemap/siteLogo-<?php echo $type; ?>.png" alt="<?php echo $company; ?>" title="<?php echo $company; ?>" itemprop="logo" />
+            <img class="b-siteLogo__icon" src="<?php echo get_theme_file_uri( 'assets/img/sitemap/siteLogo-' . $type . '.png' ); ?>" alt="<?php echo $company; ?>" title="<?php echo $company; ?>" itemprop="logo" />
           </a>
         </div>
       </div>
@@ -52,7 +52,7 @@
 
         <div class="l-clientLogo">
           <a class="b-clientLogo__link" itemprop="url" href="#">
-            <img class="b-clientLogo__icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/sitemap/client-logo.png" alt="" title="" itemprop="logo" />
+            <img class="b-clientLogo__icon" src="<?php echo get_theme_file_uri( 'assets/img/sitemap/client-logo.png' ); ?>" alt="" title="" itemprop="logo" />
           </a>
         </div>
 
