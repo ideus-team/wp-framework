@@ -29,6 +29,9 @@ require WPMU_PLUGIN_DIR.'/nc-functions/post-type.php';
 // Custom Taxonomies
 require WPMU_PLUGIN_DIR.'/nc-functions/taxonomy.php';
 
+// Postmeta
+require WPMU_PLUGIN_DIR.'/nc-functions/postmeta.php';
+
 // Metabox
 require WPMU_PLUGIN_DIR.'/nc-functions/meta-box.php';
 

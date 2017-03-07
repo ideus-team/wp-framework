@@ -8,10 +8,6 @@ if (file_exists(WPMU_PLUGIN_DIR.'/nc-lib/CMB2/init.php')) {
   require_once WPMU_PLUGIN_DIR.'/nc-lib/CMB2/init.php';
 }
 
-function nc_get_prefix() {
-  $prefix = '_nc_';
-  return $prefix;
-}
 
 /**
  * More examples in nc-lib/CMB2/example-functions.php
