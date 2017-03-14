@@ -1,5 +1,7 @@
 <?php
-// Walker for wp_nav_menu
+/*
+ * Walker for wp_nav_menu
+ */
 class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
   public function start_lvl( &$output, $depth = 0, $args = array() ) {
     $indent = str_repeat("\t", $depth);
@@ -55,7 +57,10 @@ class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
   }
 }
 
-// Walker for wp_list_pages
+
+/*
+ * Walker for wp_list_pages
+ */
 class nc_Walker_Page extends Walker_Page {
   function start_lvl( &$output, $depth = 0, $args = array() ) {
     $indent = str_repeat("\t", $depth);
