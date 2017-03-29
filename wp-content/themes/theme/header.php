@@ -64,19 +64,21 @@ switch (nc_device()) {
 
         <?php get_search_form(); ?>
 
-        <nav class="l-siteNavigation" role="navigation">
-          <?php
-          wp_nav_menu( array(
-            'theme_location'  => 'header',
-            'container'       => false,
-            'menu_class'      => 'b-mainNavigation',
-            'fallback_cb'     => false,
-            'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
-            'depth'           => 1,
-            'walker'          => new nc_Walker_Nav_Menu
-          ) );
-          ?>
-        </nav>
+        <?php if(has_nav_menu('header')): ?>
+          <nav class="l-siteNavigation" role="navigation">
+            <?php
+            wp_nav_menu( array(
+              'theme_location'  => 'header',
+              'container'       => false,
+              'menu_class'      => 'b-mainNavigation',
+              'fallback_cb'     => false,
+              'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
+              'depth'           => 1,
+              'walker'          => new nc_Walker_Nav_Menu
+            ) );
+            ?>
+          </nav>
+        <?php endif; ?>
       </div>
     </header>
 
