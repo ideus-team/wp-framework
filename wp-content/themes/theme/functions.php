@@ -144,4 +144,3 @@ function nc_breadcrumbs_default_loc( $l10n ) {
   $l10n = wp_parse_args( $l10n_new, $l10n );
   return $l10n;
 }
-?>
