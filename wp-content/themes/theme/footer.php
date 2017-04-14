@@ -12,7 +12,7 @@
               'fallback_cb'     => false,
               'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
               'depth'           => 1,
-              'walker'          => new nc_Walker_Nav_Menu
+              'walker'          => new nc_Walker_Nav_Menu,
             ) );
             ?>
           </div>
