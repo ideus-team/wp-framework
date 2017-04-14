@@ -30,4 +30,3 @@ function nc_taxonomy_blog() {
   register_taxonomy( 'blog-cat', 'blog', $args );
 }
 */
-?>

@@ -49,4 +49,3 @@ function nc_loop_modify($query) {
     }
   }
 }
-?>

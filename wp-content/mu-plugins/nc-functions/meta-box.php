@@ -117,4 +117,3 @@ function cmb2_get_post_options( $query_args ) {
 
   return $post_options;
 }
-?>

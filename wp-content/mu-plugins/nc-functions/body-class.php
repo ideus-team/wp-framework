@@ -14,4 +14,3 @@ function nc_body_class($classes) {
 
   return $classes;
 }
-?>

@@ -118,4 +118,3 @@ function nc_pageNav($args = array()) {
     return $pages;
   }
 }
-?>

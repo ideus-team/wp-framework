@@ -17,4 +17,3 @@ function nc_ie() {
   $ie = $detect->isIE();
   return $ie;
 }
-?>

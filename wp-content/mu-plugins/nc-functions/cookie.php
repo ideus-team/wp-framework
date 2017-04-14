@@ -6,4 +6,3 @@ function nc_cookie_init() {
 function nc_return_year() {
   return YEAR_IN_SECONDS;
 }
-?>

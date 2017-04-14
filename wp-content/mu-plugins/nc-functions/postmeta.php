@@ -42,4 +42,3 @@ function nc_get_post_meta( $post_id = 0, $keys = array() ) {
 
   return $meta;
 }
-?>
