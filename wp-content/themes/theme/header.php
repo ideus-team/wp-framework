@@ -1,5 +1,5 @@
 <?php
-switch (nc_device()) {
+switch ( nc_device() ) {
   case 'mobile':
     $viewport     = '1024px';
     $viewportMeta = '1024';
@@ -50,10 +50,10 @@ switch (nc_device()) {
       <div class="b-siteHeader">
         <div class="l-siteLogo">
           <?php
-            $siteLogo__iconURL = get_theme_file_uri( 'assets/img/blocks/siteLogo/siteLogo-logo.png' );
-            //$siteLogo__iconURL = ( nc_device()=='mobile' ) ? get_theme_file_uri( 'assets/img/blocks/siteLogo/siteLogo-logo-mobile.png' ) : get_theme_file_uri( 'assets/img/blocks/siteLogo/siteLogo-logo.png' );
-            $siteLogo__tag  = ( is_front_page() && !is_paged() ) ? 'h1' : 'div';
-            $siteLogo__link = ( is_front_page() && !is_paged() ) ? '' : ' href="'.home_url( '/' ).'"';
+          $siteLogo__iconURL = get_theme_file_uri( 'assets/img/blocks/siteLogo/siteLogo-logo.png' );
+          //$siteLogo__iconURL = ( nc_device()=='mobile' ) ? get_theme_file_uri( 'assets/img/blocks/siteLogo/siteLogo-logo-mobile.png' ) : get_theme_file_uri( 'assets/img/blocks/siteLogo/siteLogo-logo.png' );
+          $siteLogo__tag  = ( is_front_page() && ! is_paged() ) ? 'h1' : 'div';
+          $siteLogo__link = ( is_front_page() && ! is_paged() ) ? '' : ' href="' . home_url( '/' ) . '"';
           ?>
           <<?php echo $siteLogo__tag; ?> class="b-siteLogo" itemscope itemtype="http://schema.org/Organization">
             <a class="b-siteLogo__link"<?php echo $siteLogo__link; ?> itemprop="url">
@@ -64,17 +64,17 @@ switch (nc_device()) {
 
         <?php get_search_form(); ?>
 
-        <?php if(has_nav_menu('header')): ?>
+        <?php if ( has_nav_menu( 'header' ) ): ?>
           <nav class="l-siteNavigation" role="navigation">
             <?php
             wp_nav_menu( array(
-              'theme_location'  => 'header',
-              'container'       => false,
-              'menu_class'      => 'b-mainNavigation',
-              'fallback_cb'     => false,
-              'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
-              'depth'           => 1,
-              'walker'          => new nc_Walker_Nav_Menu,
+              'theme_location' => 'header',
+              'container'      => false,
+              'menu_class'     => 'b-mainNavigation',
+              'fallback_cb'    => false,
+              'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
+              'depth'          => 1,
+              'walker'         => new nc_Walker_Nav_Menu,
             ) );
             ?>
           </nav>
