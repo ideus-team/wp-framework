@@ -16,6 +16,9 @@ wp-content/uploads/
 wp-content/wp-cache-config.php
 wp-content/plugins/hello.php
 
+wp-content/w3tc-config/
+wp-content/wflogs/
+
 /license.txt
 /readme.html
 /wp-config-sample.php
