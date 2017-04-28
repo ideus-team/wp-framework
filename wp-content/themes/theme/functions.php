@@ -146,3 +146,5 @@ function nc_breadcrumbs_default_loc( $l10n ) {
 
   return $l10n;
 }
+
+include_once ( get_template_directory() . '/includes/ajax.php' );
