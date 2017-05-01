@@ -127,14 +127,14 @@ function nc_breadcrumbs_default_args( $args ) {
 
 add_filter( 'kama_breadcrumbs_default_loc', 'nc_breadcrumbs_default_loc' );
 function nc_breadcrumbs_default_loc( $l10n ) {
-  // Локализация
+  // Localization
   $l10n_new = array(
     'home'       => 'Front page',
     'paged'      => 'Page %d',
     '_404'       => 'Error 404',
     'search'     => 'Search results by query - <b>%s</b>',
     'author'     => 'Author archve: <b>%s</b>',
-    'year'       => 'Archive by <b>%d</b> год',
+    'year'       => 'Archive by <b>%d</b> year',
     'month'      => 'Archive by: <b>%s</b>',
     'day'        => '',
     'attachment' => 'Media: %s',
