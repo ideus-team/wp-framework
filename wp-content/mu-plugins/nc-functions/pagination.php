@@ -1,9 +1,11 @@
 <?php
-// Pagination
-function nc_pagenavi($args = array()) {
+/*
+ * Pagination
+ */
+function nc_pagenavi( $args = array() ) {
   global $wp_query, $wp_rewrite;
 
-  $args = wp_parse_args($args, array(
+  $args = wp_parse_args( $args, array(
     'query'     => $wp_query,
     'mid_size'  => 1,
     'end_size'  => 3,
@@ -15,15 +17,15 @@ function nc_pagenavi($args = array()) {
     'found'     => false, // Show "Found N"
     'total'     => false, // Show "Page N of N"
     'echo'      => true,
-  ));
+  ) );
 
   $query = $args['query'];
 
   $pages = '';
   $max = $query->max_num_pages;
-  if (!$current = get_query_var('paged')) $current = 1;
+  if ( ! $current = get_query_var('paged') ) $current = 1;
   $paginate = array(
-    'base'      => str_replace(999999999, '%#%', get_pagenum_link(999999999)),
+    'base'      => str_replace( 999999999, '%#%', get_pagenum_link( 999999999 ) ),
     'total'     => $max,
     'current'   => $current,
     'mid_size'  => $args['mid_size'],
@@ -51,68 +53,68 @@ function nc_pagenavi($args = array()) {
   );
 
   if ($max > 1) {
-    $pages .= '<div class="'.$args['class'].($args['modifier'] ? ' '.$args['modifier'] : '').'">'."\r";
+    $pages .= '<div class="' . $args['class'] . ($args['modifier'] ? ' ' . $args['modifier'] : '') . '">' . "\r";
 
     if ($args['found']) {
-      $pages .= '<span class="'.$args['class'].'__total">Found '.$query->found_posts.'</span>'."\r";
+      $pages .= '<span class="' . $args['class'] . '__total">Found ' . $query->found_posts . '</span>' . "\r";
     }
     if ($args['total']) {
-      $pages .= '<span class="'.$args['class'].'__pages">Page '.$current.' of '.$max.'</span>'."\r";
+      $pages .= '<span class="' . $args['class'] . '__pages">Page ' . $current . ' of ' . $max . '</span>' . "\r";
     }
 
-    $pages .= '<ul class="'.$args['class'].'__list">'."\r";
-    $paginationList = str_replace($search, $replace, paginate_links($paginate));
-    foreach ($paginationList as $value) {
-      $pages .= '<li class="'.$args['class'].'__item">'.$value.'</li>'."\r";
+    $pages .= '<ul class="' . $args['class'] . '__list">' . "\r";
+    $paginationList = str_replace( $search, $replace, paginate_links( $paginate ) );
+    foreach ( $paginationList as $value ) {
+      $pages .= '<li class="' . $args['class'] . '__item">' . $value . '</li>' . "\r";
     }
-    $pages .= '</ul>'."\r";
+    $pages .= '</ul>' . "\r";
 
     $pages .= '</div>';
   }
 
-  if ($args['echo']) {
+  if ( $args['echo'] ) {
     echo $pages;
   } else {
     return $pages;
   }
 }
 
-// Page Navigation
-function nc_pageNav($args = array()) {
+/*
+ * Page Navigation
+ */
+function nc_pageNav( $args = array() ) {
   global $wp_query, $wp_rewrite;
 
-  $args = wp_parse_args(
-    $args, array(
-      'query' => $wp_query,
-      'class' => 'b-pageNav',
-      'next'  => 'Older Entries',
-      'prev'  => 'Newer Entrie',
-      'echo'  => true,
-    )
-  );
+  $args = wp_parse_args( $args, array(
+    'query' => $wp_query,
+    'class' => 'b-pageNav',
+    'next'  => 'Older Entries',
+    'prev'  => 'Newer Entrie',
+    'echo'  => true,
+  ) );
 
   $query = $args['query'];
 
   $pages = '';
   $max = $query->max_num_pages;
 
-  if ($max > 1) {
-    $pages .= '<div class="'.$args['class'].'">'."\r";
+  if ( $max > 1 ) {
+    $pages .= '<div class="' . $args['class'] . '">' . "\r";
 
-    $pages .= '<ul class="'.$args['class'].'__list">'."\r";
+    $pages .= '<ul class="' . $args['class'] . '__list">' . "\r";
 
-    $nextLink = get_next_posts_link($args['next'], $max);
-    $prevLink = get_previous_posts_link($args['prev']);
+    $nextLink = get_next_posts_link( $args['next'], $max );
+    $prevLink = get_previous_posts_link( $args['prev'] );
 
-    if ($nextLink) $pages .= '<li class="'.$args['class'].'__item -type_old">'.$nextLink.'</li>'."\r";
-    if ($prevLink) $pages .= '<li class="'.$args['class'].'__item -type_new">'.$prevLink.'</li>'."\r";
+    if ( $nextLink ) $pages .= '<li class="' . $args['class'] . '__item -type_old">' . $nextLink . '</li>' . "\r";
+    if ( $prevLink ) $pages .= '<li class="' . $args['class'] . '__item -type_new">' . $prevLink . '</li>' . "\r";
 
-    $pages .= '</ul>'."\r";
+    $pages .= '</ul>' . "\r";
 
     $pages .= '</div>';
   }
 
-  if ($args['echo']) {
+  if ( $args['echo'] ) {
     echo $pages;
   } else {
     return $pages;

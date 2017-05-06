@@ -1,6 +1,6 @@
 <?php
 /*
-// New taxonomy for Blog
+// Example Taxonomy
 add_action( 'init', 'nc_taxonomy_blog', 0 );
 function nc_taxonomy_blog() {
   $labels = array(

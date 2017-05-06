@@ -1,6 +1,6 @@
 <?php
 /*
-// New post type for Blog
+// Example Post Type
 add_action( 'init', 'nc_post_blog' );
 function nc_post_blog() {
   $labels = array(
@@ -39,8 +39,10 @@ function nc_post_blog() {
 }
 */
 
-// Modify loops
-// add_action('pre_get_posts', 'nc_loop_modify');
+/*
+ * Modify loops
+ */
+// add_action( 'pre_get_posts', 'nc_loop_modify' );
 function nc_loop_modify( $query ) {
   if ( $query->is_main_query() ) {
     if ( $query->is_post_type_archive( 'post_type' ) ) {
