@@ -9,31 +9,31 @@ Author URI: http://ideus.biz
 */
 
 // Cookie Change
-require WPMU_PLUGIN_DIR.'/nc-functions/cookie.php';
+require WPMU_PLUGIN_DIR . '/nc-functions/cookie.php';
 
 // Modify body-class
-require WPMU_PLUGIN_DIR.'/nc-functions/body-class.php';
+require WPMU_PLUGIN_DIR . '/nc-functions/body-class.php';
 
 // Mobile Detect
-require WPMU_PLUGIN_DIR.'/nc-functions/mobile_detect.php';
+require WPMU_PLUGIN_DIR . '/nc-functions/mobile_detect.php';
 
 // Alternative Walkers
-require WPMU_PLUGIN_DIR.'/nc-functions/walkers.php';
+require WPMU_PLUGIN_DIR . '/nc-functions/walkers.php';
 
 // Pagination
-require WPMU_PLUGIN_DIR.'/nc-functions/pagination.php';
+require WPMU_PLUGIN_DIR . '/nc-functions/pagination.php';
 
 // Custom Post Types
-require WPMU_PLUGIN_DIR.'/nc-functions/post-type.php';
+require WPMU_PLUGIN_DIR . '/nc-functions/post-type.php';
 
 // Custom Taxonomies
-require WPMU_PLUGIN_DIR.'/nc-functions/taxonomy.php';
+require WPMU_PLUGIN_DIR . '/nc-functions/taxonomy.php';
 
 // Postmeta
-require WPMU_PLUGIN_DIR.'/nc-functions/postmeta.php';
+require WPMU_PLUGIN_DIR . '/nc-functions/postmeta.php';
 
 // Metabox
-require WPMU_PLUGIN_DIR.'/nc-functions/meta-box.php';
+require WPMU_PLUGIN_DIR . '/nc-functions/meta-box.php';
 
 // Breadcrumbs
-require WPMU_PLUGIN_DIR.'/nc-functions/breadcrumbs.php';
+require WPMU_PLUGIN_DIR . '/nc-functions/breadcrumbs.php';
