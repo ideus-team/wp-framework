@@ -2,7 +2,7 @@
 /*
  * Constants
  */
-// define('NAME', 'value');
+// define( 'NAME', 'value' );
 
 /*
  * Content Width (http://codex.wordpress.org/Content_Width)
@@ -180,4 +180,4 @@ function nc_breadcrumbs_default_loc( $l10n ) {
 /*
  * Includes
  */
-include_once ( get_template_directory() . '/includes/ajax.php' );
+require_once( get_theme_file_path( 'includes/ajax.php' ) );
