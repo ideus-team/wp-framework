@@ -177,6 +177,7 @@ function nc_breadcrumbs_default_loc( $l10n ) {
   return $l10n;
 }
 
+
 /*
  * Includes
  */
