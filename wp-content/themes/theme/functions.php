@@ -1,5 +1,12 @@
 <?php
-// Content Width (http://codex.wordpress.org/Content_Width)
+/*
+ * Constants
+ */
+// define('NAME', 'value');
+
+/*
+ * Content Width (http://codex.wordpress.org/Content_Width)
+ */
 if ( ! isset( $content_width ) ) {
   $content_width = 500;
 }
@@ -21,33 +28,49 @@ function nc_setup() {
   // remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
   // remove_action( 'wp_head', 'rel_canonical' );
 
-  // This feature enables plugins and themes to manage the document title tag. This should be used in place of wp_title() function.
+  /*
+   * This feature enables plugins and themes to manage the document title tag. This should be used in place of wp_title() function.
+   */
   add_theme_support( 'title-tag' );
 
-  // Enable RSS link
+  /*
+   * Enable RSS link
+   */
   // add_theme_support( 'automatic-feed-links' );
 
-  // This feature allows the use of HTML5 markup for the search forms, comment forms, comment lists, gallery, and caption.
+  /*
+   * This feature allows the use of HTML5 markup for the search forms, comment forms, comment lists, gallery, and caption.
+   */
   add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
-  // This feature enables Post Thumbnails support for a Theme.
+  /*
+   * This feature enables Post Thumbnails support for a Theme.
+   */
   // add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
   add_theme_support( 'post-thumbnails' );
 
-  // This feature enables Post Formats support for a Theme.
+  /*
+   * This feature enables Post Formats support for a Theme.
+   */
   // add_theme_support( 'post-formats', array( 'aside', 'gallery' ) );
 
-  // Styles for editor
+  /*
+   * Styles for editor
+   */
   add_editor_style( 'assets/css/editor-style.min.css' );
 
-  // Navigation
+  /*
+   * Navigation
+   */
   register_nav_menus( array(
     'header' => 'Navigation Top Menu',
     'footer' => 'Navigation Bottom Menu'
   ) );
 }
 
-// Styles
+/*
+ * Styles
+ */
 add_action( 'wp_enqueue_scripts', 'nc_styles' );
 function nc_styles() {
   $protocol = is_ssl() ? 'https' : 'http';
@@ -56,7 +79,9 @@ function nc_styles() {
   wp_enqueue_style( 'css-main', get_theme_file_uri( 'assets/css/main.min.css' ), false, filemtime( get_theme_file_path( 'assets/css/main.min.css' ) ) );
 }
 
-// Scripts
+/*
+ * Scripts
+ */
 add_action( 'wp_enqueue_scripts', 'nc_scripts' );
 function nc_scripts() {
   wp_register_script( 'modernizr', get_theme_file_uri( 'assets/js/vendor/modernizr-2.8.3.min.js' ), false, '2.8.3' );
@@ -67,7 +92,9 @@ function nc_scripts() {
   wp_enqueue_script( 'js-main', get_theme_file_uri( 'assets/js/scripts.js' ), array( 'modernizr', 'jquery' ), filemtime( get_theme_file_path( 'assets/js/scripts.js' ) ), true );
   // wp_enqueue_script( 'js-extra', get_theme_file_uri( 'assets/js/scripts-extra.js' ), array( 'js-main' ), filemtime( get_theme_file_path( 'assets/js/scripts-extra.js' ) ), true );
 
-  // Variables for JS (ncVar.ajaxurl & ncVar.themeurl)
+  /*
+   * Variables for JS (ncVar.ajaxurl & ncVar.themeurl)
+   */
   wp_localize_script( 'js-main', 'ncVar', array(
     'ajaxurl'  => admin_url( 'admin-ajax.php' ),
     'themeurl' => get_template_directory_uri(),
@@ -75,7 +102,9 @@ function nc_scripts() {
 }
 
 
-// Modify except
+/*
+ * Modify except
+ */
 function nc_excerpt( $num_words = 25, $more = '… →' ) {
   $excerpt = wp_trim_words( get_the_excerpt(), $num_words, $more );
   echo apply_filters( 'the_excerpt', $excerpt );
@@ -107,7 +136,6 @@ function nc_tel( $phone = '' ) {
  */
 add_filter( 'kama_breadcrumbs_default_args', 'nc_breadcrumbs_default_args' );
 function nc_breadcrumbs_default_args( $args ) {
-  // Опции
   $args_new = array(
     'on_front_page'   => true,
     'show_post_title' => true,
@@ -125,9 +153,11 @@ function nc_breadcrumbs_default_args( $args ) {
   return $args;
 }
 
+/*
+ * Breadcrumbs localization
+ */
 add_filter( 'kama_breadcrumbs_default_loc', 'nc_breadcrumbs_default_loc' );
 function nc_breadcrumbs_default_loc( $l10n ) {
-  // Localization
   $l10n_new = array(
     'home'       => 'Front page',
     'paged'      => 'Page %d',
@@ -147,4 +177,7 @@ function nc_breadcrumbs_default_loc( $l10n ) {
   return $l10n;
 }
 
+/*
+ * Includes
+ */
 include_once ( get_template_directory() . '/includes/ajax.php' );
