@@ -19,8 +19,9 @@ base64:
 preprocess:
   description: 'All Preprocess tasks'
   tasks:
+    - 'sprite'
     - 'base64'
-    - 'compass'
+    - 'sass'
     - 'jshint'
     - 'jscs'
 
@@ -44,7 +45,7 @@ merge:
 css:
   description: 'CSS Tasks'
   tasks:
-    - 'compass'
+    - 'sass'
     - 'csslint'
     - 'postcss'
 
@@ -60,5 +61,6 @@ js:
 img:
   description: 'Image tasks'
   tasks:
+    - 'sprite'
     - 'base64'
     - 'imagemin'
