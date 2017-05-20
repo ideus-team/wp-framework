@@ -46,7 +46,7 @@ switch ( nc_device() ) {
   <![endif]-->
 
   <div class="l-wrapper">
-    <header class="l-siteHeader" role="banner">
+    <header class="l-siteHeader">
       <div class="b-siteHeader">
         <div class="l-siteLogo">
           <?php
@@ -65,7 +65,7 @@ switch ( nc_device() ) {
         <?php get_search_form(); ?>
 
         <?php if ( has_nav_menu( 'header' ) ): ?>
-          <nav class="l-siteNavigation" role="navigation">
+          <nav class="l-siteNavigation">
             <?php
             wp_nav_menu( array(
               'theme_location' => 'header',

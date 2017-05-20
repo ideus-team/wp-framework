@@ -1,6 +1,6 @@
     </div><!--content-->
 
-    <footer class="l-siteFooter" role="contentinfo">
+    <footer class="l-siteFooter">
       <div class="b-siteFooter">
         <?php if ( has_nav_menu( 'footer' ) ): ?>
           <div class="l-siteNavigationBottom" role="navigation">

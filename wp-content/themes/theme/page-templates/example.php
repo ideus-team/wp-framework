@@ -18,7 +18,7 @@ get_header();
   */
   ?>
 
-  <main class="l-contentText" role="main">
+  <main class="l-contentText">
 
     <?php nc_breadcrumbs(); ?>
 

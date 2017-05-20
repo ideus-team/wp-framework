@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main class="l-contentText" role="main">
+<main class="l-contentText">
 
   <?php while ( have_posts() ) : the_post(); ?>
     <section class="b-contentText">
