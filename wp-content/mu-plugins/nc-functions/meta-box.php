@@ -80,7 +80,7 @@ function cmb2_get_term_options( $args = array() ) {
   $terms = (array) get_terms( $taxonomy, $args );
 
   // Initate an empty array
-  $term_options = array( '--' );
+  $term_options = array();
 
   if ( ! empty( $terms ) ) {
     foreach ( $terms as $term ) {
