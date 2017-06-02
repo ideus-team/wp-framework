@@ -49,7 +49,7 @@ class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
     $item_output = $args->before;
     $item_output .= '<a'. $attributes .'>';
     $item_output .= $args->link_before . $title . $args->link_after;
-    $item_output .= (!empty($item->description)) ? '<span class="'.$args->menu_class.'__descr">'.$item->description.'</span>' : '';
+    $item_output .= ( ! empty( $item->description ) ) ? '<span class="'.$args->menu_class.'__descr">'.$item->description.'</span>' : '';
     $item_output .= '</a>';
     $item_output .= $args->after;
 
