@@ -177,6 +177,11 @@ function nc_breadcrumbs_default_loc( $l10n ) {
   return $l10n;
 }
 
+/*
+ * Hide the Advanced Custom Fields menu
+ */
+// add_filter( 'acf/settings/show_admin', '__return_false' );
+
 
 /*
  * Includes
