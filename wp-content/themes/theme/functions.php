@@ -163,7 +163,7 @@ function nc_breadcrumbs_default_loc( $l10n ) {
     'paged'      => 'Page %d',
     '_404'       => 'Error 404',
     'search'     => 'Search results by query - <b>%s</b>',
-    'author'     => 'Author archve: <b>%s</b>',
+    'author'     => 'Author archive: <b>%s</b>',
     'year'       => 'Archive by <b>%d</b> year',
     'month'      => 'Archive by: <b>%s</b>',
     'day'        => '',
