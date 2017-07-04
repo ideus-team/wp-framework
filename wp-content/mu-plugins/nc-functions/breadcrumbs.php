@@ -121,7 +121,7 @@ class Kama_Breadcrumbs {
     // paged
     $arg->pg_end = '';
     if( ($paged_num = get_query_var('paged')) || ($paged_num = get_query_var('page')) )
-      $arg->pg_end = $sep . sprintf( $loc->paged, (int) $paged_num );
+      $arg->pg_end = ' ' . sprintf( $loc->paged, (int) $paged_num ) . $sep;
 
     $pg_end = $arg->pg_end; // упростим
 
