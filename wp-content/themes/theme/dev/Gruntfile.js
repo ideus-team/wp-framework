@@ -66,13 +66,8 @@ module.exports = function(grunt) {
         // Destination:
           // CSS
           destCSSDir    : '../assets/css', // generated css-files names taked from scss files in %sourceCSSDir
-          destCSSExt    : '.css',
+          destCSSExt    : '.full.css',
           destMinCSSExt : '.min.css',
-          destCSS       : '<%= destCSSDir %>' + '/main' + '<%= destCSSExt %>',
-          destMinCSS    : '<%= destCSSDir %>' + '/main' + '<%= destMinCSSExt %>',
-
-          destEditorCSS    : '<%= destCSSDir %>' + '/editor-style' + '<%= destCSSExt %>',
-          destEditorMinCSS : '<%= destCSSDir %>' + '/editor-style' + '<%= destMinCSSExt %>',
 
           // JS
           destJSDir  : '../assets/js',
