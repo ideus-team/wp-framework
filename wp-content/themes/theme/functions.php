@@ -101,6 +101,14 @@ function nc_scripts() {
   ) );
 }
 
+/*
+ * Admin styles
+ */
+add_action('admin_head', 'nc_admin_styles');
+function nc_admin_styles() {
+  wp_enqueue_style( 'css-admin', get_theme_file_uri( 'assets/css/admin.min.css' ), false, filemtime( get_theme_file_path( 'assets/css/admin.min.css' ) ) );
+}
+
 
 /*
  * Modify except
