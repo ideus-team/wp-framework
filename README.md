@@ -39,8 +39,8 @@ Based on [HTML Framework](https://github.com/ideus-team/html-framework)
       <a class="b-breadcrumbs__link" href="#">Item</a>
     </li>
 
-    <li class="b-breadcrumbs__item">
-      <a class="b-breadcrumbs__link" href="#"Item</a>
+    <li class="b-breadcrumbs__item -state_current">
+      Item
     </li>
   </ul>
 </div>
