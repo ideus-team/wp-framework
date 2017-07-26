@@ -22,7 +22,7 @@ Based on [HTML Framework](https://github.com/ideus-team/html-framework)
 ## Сниппеты
 При вёрстке хлебных крошек и пагинации следует использовать следующий код:
 
-### Breadcrumps
+### Breadcrumbs
 ```html
 <div class="l-breadcrumbs">
   <ul class="b-breadcrumbs">
