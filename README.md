@@ -18,3 +18,53 @@ Based on [HTML Framework](https://github.com/ideus-team/html-framework)
 9. Permalink Settings → Common Settings → Post name (если WP попросит внести изменения в `.htaccess` — нужно это сделать)
 10. Settings → General - выставляем таймозону, форматы даты-времени и т.д.
 11. На время разработки следует закрыть сайт паролем при помощи плагина [Password Protected](https://wordpress.org/plugins/password-protected/)
+
+## Сниппеты
+При вёрстке хлебных крошек и пагинации следует использовать следующий код:
+
+### Breadcrumps
+```html
+<div class="l-breadcrumbs">
+  <ul class="b-breadcrumbs">
+    <li class="b-breadcrumbs__item">
+      <a class="b-breadcrumbs__link" href="#">Item</a>
+    </li>
+
+    <li class="b-breadcrumbs__item">
+      <a class="b-breadcrumbs__link" href="#">Item</a>
+    </li>
+
+    <li class="b-breadcrumbs__item">
+      <a class="b-breadcrumbs__link" href="#"Item</a>
+    </li>
+  </ul>
+</div>
+```
+### Pagination
+```html
+<div class="b-pagination">
+  <div class="b-pagination__total">Found 250</div>
+  <div class="b-pagination__pages">Page 2 of 25</div>
+
+  <ul class="b-pagination__list">
+    <li class="b-pagination__item">
+      <a class="b-pagination__link -type_prev" href="#">←</a>
+    </li>
+    <li class="b-pagination__item">
+      <a class="b-pagination__link" href="#">1</a>
+    </li>
+    <li class="b-pagination__item">
+      <span class="b-pagination__link -state_current">2</span>
+    </li>
+    <li class="b-pagination__item">
+      <span class="b-pagination__link -type_dots">…</span>
+    </li>
+    <li class="b-pagination__item">
+      <a class="b-pagination__link" href="#">25</a>
+    </li>
+    <li class="b-pagination__item">
+      <a class="b-pagination__link -type_next" href="#">→</a>
+    </li>
+  </ul>
+</div>
+```
