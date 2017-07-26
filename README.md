@@ -1,6 +1,11 @@
 # WP-framework
 Based on [HTML Framework](https://github.com/ideus-team/html-framework)
 
+* [Установка](#Установка)
+* [Сниппеты](#Сниппеты)
+  * [Breadcrumbs](#breadcrumbs)
+  * [Pagination](#pagination)
+
 ## Установка
 1. Скачиваем с [офсайта](https://wordpress.org/download/) архив голого Wordpress и заливаем его в новый пустой проект
 2. Удаляем:
