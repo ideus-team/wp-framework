@@ -195,3 +195,4 @@ function nc_breadcrumbs_default_loc( $l10n ) {
  * Includes
  */
 require_once( get_theme_file_path( 'includes/ajax.php' ) );
+require_once( get_theme_file_path( 'includes/options.php' ) );
