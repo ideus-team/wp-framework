@@ -8,15 +8,6 @@ get_header();
 ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
-  <?php
-  /* Get Custom Fields Example
-  $meta = nc_get_post_meta( get_the_ID(), array(
-    'text1',
-    'text2',
-    'group',
-  ) );
-  */
-  ?>
 
   <main class="l-contentText">
 
@@ -28,6 +19,7 @@ get_header();
     </section>
 
   </main>
+
 <?php endwhile; ?>
 
 <?php get_footer(); ?>
