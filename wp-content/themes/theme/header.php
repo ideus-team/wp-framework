@@ -1,35 +1,18 @@
-<?php
-switch ( nc_device() ) {
-  case 'mobile':
-    $viewport     = '1024px';
-    $viewportMeta = '1024';
-    break;
-  case 'tablet':
-    $viewport     = 'device-width';
-    $viewportMeta = 'device-width';
-    break;
-  case 'desktop':
-  default:
-    $viewport     = 'device-width';
-    $viewportMeta = 'device-width';
-    break;
-}
-?>
 <!doctype html>
-<html class="l-html -device_<?php echo nc_device(); ?> no-js" <?php language_attributes(); ?>>
+<html class="l-html no-js" <?php language_attributes(); ?>>
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <!-- <meta property="og:image" content="<?php echo get_theme_file_uri( 'assets/img/userfiles/og-image.png' ); ?>" /> -->
 
-  <meta name="viewport" content="width=<?php echo $viewportMeta; ?>" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <style>
     @-ms-viewport {
-      width: <?php echo $viewport; ?>;
+      width: device-width;
     }
     @viewport {
-      width: <?php echo $viewport; ?>;
+      width: device-width;
     }
   </style>
 

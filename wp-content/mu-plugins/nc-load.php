@@ -14,9 +14,6 @@ require WPMU_PLUGIN_DIR . '/nc-functions/cookie.php';
 // Modify body-class
 require WPMU_PLUGIN_DIR . '/nc-functions/body-class.php';
 
-// Mobile Detect
-require WPMU_PLUGIN_DIR . '/nc-functions/mobile_detect.php';
-
 // Alternative Walkers
 require WPMU_PLUGIN_DIR . '/nc-functions/walkers.php';
 
