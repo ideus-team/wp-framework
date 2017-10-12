@@ -12,8 +12,7 @@
   &__item {
     color: #464646;
 
-    &.current-menu-item,
-    &.current-page-ancestor {
+    &.-state_active {
 
     }
   }

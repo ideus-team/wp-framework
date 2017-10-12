@@ -30,6 +30,10 @@ class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
     $classes[] = '-depth_'.($depth + 1);
     $classes[] = '-id_' . $item->ID;
 
+    if ( in_array( 'current-menu-item', $classes ) || in_array( 'current-menu-ancestor', $classes ) ) {
+      $classes[] =  '-state_active';
+    }
+
     $args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
 
     $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
