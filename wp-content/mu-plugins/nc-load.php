@@ -17,6 +17,9 @@ require WPMU_PLUGIN_DIR . '/nc-functions/body-class.php';
 // Alternative Walkers
 require WPMU_PLUGIN_DIR . '/nc-functions/walkers.php';
 
+// Second level menu
+require WPMU_PLUGIN_DIR . '/nc-functions/submenu.php';
+
 // Pagination
 require WPMU_PLUGIN_DIR . '/nc-functions/pagination.php';
 
