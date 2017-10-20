@@ -12,8 +12,8 @@
  *   'show_parent'   => true,
  * ) );
  */
-add_filter( 'wp_nav_menu_objects', 'my_wp_nav_menu_objects_sub_menu', 10, 2 );
-function my_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
+add_filter( 'wp_nav_menu_objects', 'nc_wp_nav_menu_objects_sub_menu', 10, 2 );
+function nc_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
   if ( ! empty( $args->sub_menu ) ) {
     $root_id = 0;
 
