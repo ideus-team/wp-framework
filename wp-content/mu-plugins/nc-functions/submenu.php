@@ -4,6 +4,13 @@
  * https://christianvarga.com/how-to-get-submenu-items-from-a-wordpress-menu-based-on-parent-or-sibling/
  *
  * react on wp_nav_menu flags: sub_menu, direct_parent, show_parent
+ * Example:
+ * wp_nav_menu( array(
+ *   'menu'          => 'Menu Name',
+ *   'sub_menu'      => true,
+ *   'direct_parent' => true,
+ *   'show_parent'   => true,
+ * ) );
  */
 add_filter( 'wp_nav_menu_objects', 'my_wp_nav_menu_objects_sub_menu', 10, 2 );
 function my_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
