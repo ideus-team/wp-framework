@@ -5,7 +5,7 @@
  */
 add_filter( 'wp_nav_menu_objects', 'my_wp_nav_menu_objects_sub_menu', 10, 2 );
 function my_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
-  if ( isset( $args->sub_menu ) ) {
+  if ( ! empty( $args->sub_menu ) ) {
     $root_id = 0;
 
     // find the current menu item
@@ -18,7 +18,7 @@ function my_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
     }
 
     // find the top level parent
-    if ( ! isset( $args->direct_parent ) ) {
+    if ( empty( $args->direct_parent ) ) {
       $prev_root_id = $root_id;
       while ( $prev_root_id != 0 ) {
         foreach ( $sorted_menu_items as $menu_item ) {
@@ -31,6 +31,7 @@ function my_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
         }
       }
     }
+
     $menu_item_parents = array();
     foreach ( $sorted_menu_items as $key => $item ) {
       // init menu_item_parents
@@ -38,7 +39,7 @@ function my_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
       if ( in_array( $item->menu_item_parent, $menu_item_parents ) ) {
         // part of sub-tree: keep!
         $menu_item_parents[] = $item->ID;
-      } else if ( ! ( isset( $args->show_parent ) && in_array( $item->ID, $menu_item_parents ) ) ) {
+      } else if ( ! ( ! empty( $args->show_parent ) && in_array( $item->ID, $menu_item_parents ) ) ) {
         // not part of sub-tree: away with it!
         unset( $sorted_menu_items[$key] );
       }
