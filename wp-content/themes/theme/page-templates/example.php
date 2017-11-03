@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Template Example
+Template Name: Example
 Template Post Type: page
 */
 
