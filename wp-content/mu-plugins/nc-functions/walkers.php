@@ -27,7 +27,7 @@ class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
 
     $classes = empty( $item->classes ) ? array() : (array) $item->classes;
     $classes[] = 'menu-item-' . $item->ID;
-    $classes[] = '-depth_'.($depth + 1);
+    $classes[] = '-depth_'. ($depth + 1);
     $classes[] = '-id_' . $item->ID;
 
     if ( function_exists( 'get_field' ) ) {
@@ -45,7 +45,7 @@ class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
 
     $id = '';
 
-    $output .= $indent . '<li' . $id . $class_names .'>';
+    $output .= $indent . '<li' . $id . $class_names . '>';
 
     $atts = array();
     $atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title            : '';
@@ -54,7 +54,7 @@ class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
     $atts['href']   = ! empty( $item->url )        ? $item->url                   : '';
     $atts['class']  = ! empty( $args->menu_class ) ? $args->menu_class . '__link' : '';
 
-    $atts['class'] .= ' -depth_'.($depth + 1);
+    $atts['class'] .= ' -depth_' . ($depth + 1);
 
     $atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
 
@@ -71,11 +71,11 @@ class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
     $title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
 
     $item_output = $args->before;
-    $item_output .= '<a'. $attributes .'>';
+    $item_output .= '<a'. $attributes . '>';
     $item_output .= $args->link_before . $title . $args->link_after;
     $item_output .= '</a>';
     $item_output .= $args->after;
-    $item_output .= ( ! empty( $item->description ) ) ? '<span class="'.$args->menu_class.'__descr">'.$item->description.'</span>' : '';
+    $item_output .= ( ! empty( $item->description ) ) ? '<span class="' . $args->menu_class . '__descr">' . $item->description . '</span>' : '';
 
     $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
   }
