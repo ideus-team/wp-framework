@@ -7,3 +7,16 @@ body[class *= "span"] {
   float: none;
   margin-left: 0;
 }
+
+.acf-field-wysiwyg.-height_low {
+  $editor_height_low: 100px;
+
+  iframe {
+    height: #{$editor_height_low} !important;
+    min-height: #{$editor_height_low} !important;
+  }
+
+  .wp-editor-area {
+    height: #{$editor_height_low + 22px} !important;
+  }
+}
