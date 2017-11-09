@@ -2,7 +2,7 @@
 
 /**
  * Хлебные крошки для WordPress (breadcrumbs)
- * http://wp-kama.ru/id_541/samyie-hlebnyie-kroshki-breabcrumbs-dlya-wordpress.html
+ * @link http://wp-kama.ru/id_541/samyie-hlebnyie-kroshki-breabcrumbs-dlya-wordpress.html
  *
  * @param  string [$sep  = '']      Разделитель. По умолчанию ' » '
  * @param  array  [$l10n = array()] Для локализации. См. переменную $default_l10n.

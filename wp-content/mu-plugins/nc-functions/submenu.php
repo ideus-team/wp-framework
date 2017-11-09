@@ -1,7 +1,7 @@
 <?php
-/*
+/**
  * Get submenu items from a WordPress menu based on parent or sibling
- * https://christianvarga.com/how-to-get-submenu-items-from-a-wordpress-menu-based-on-parent-or-sibling/
+ * @link https://christianvarga.com/how-to-get-submenu-items-from-a-wordpress-menu-based-on-parent-or-sibling/
  *
  * react on wp_nav_menu flags: sub_menu, direct_parent, show_parent
  * Example:

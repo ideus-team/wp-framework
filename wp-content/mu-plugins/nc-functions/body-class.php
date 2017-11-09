@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Modifiers for body
  */
 add_filter( 'body_class', 'nc_body_class' );

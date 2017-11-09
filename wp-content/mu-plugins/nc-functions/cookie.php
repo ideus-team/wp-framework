@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Set auth cookie age
  */
 add_action('init', 'nc_cookie_init');

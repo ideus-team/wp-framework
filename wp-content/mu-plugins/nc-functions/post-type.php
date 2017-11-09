@@ -39,7 +39,7 @@ function nc_post_blog() {
 }
 */
 
-/*
+/**
  * Modify loops
  */
 // add_action( 'pre_get_posts', 'nc_loop_modify' );

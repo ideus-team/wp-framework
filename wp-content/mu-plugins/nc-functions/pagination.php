@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Pagination
  */
 function nc_pagenavi( $args = array() ) {
@@ -79,7 +79,7 @@ function nc_pagenavi( $args = array() ) {
   }
 }
 
-/*
+/**
  * Page Navigation
  */
 function nc_pageNav( $args = array() ) {

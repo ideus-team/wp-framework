@@ -1,11 +1,12 @@
 <?php
-/*
+/**
  * Constants
  */
 // define( 'NAME', 'value' );
 
-/*
- * Content Width (http://codex.wordpress.org/Content_Width)
+/**
+ * Content Width
+ * @link http://codex.wordpress.org/Content_Width
  */
 if ( ! isset( $content_width ) ) {
   $content_width = 500;
@@ -13,7 +14,7 @@ if ( ! isset( $content_width ) ) {
 
 add_action( 'after_setup_theme', 'nc_setup' );
 function nc_setup() {
-  /*
+  /**
    * Make theme available for translation.
    */
   load_theme_textdomain( 'nc_theme', get_template_directory() . '/languages' );
@@ -28,38 +29,38 @@ function nc_setup() {
   // remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
   // remove_action( 'wp_head', 'rel_canonical' );
 
-  /*
+  /**
    * This feature enables plugins and themes to manage the document title tag. This should be used in place of wp_title() function.
    */
   add_theme_support( 'title-tag' );
 
-  /*
+  /**
    * Enable RSS link
    */
   // add_theme_support( 'automatic-feed-links' );
 
-  /*
+  /**
    * This feature allows the use of HTML5 markup for the search forms, comment forms, comment lists, gallery, and caption.
    */
   add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
-  /*
+  /**
    * This feature enables Post Thumbnails support for a Theme.
    */
   // add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
   add_theme_support( 'post-thumbnails' );
 
-  /*
+  /**
    * This feature enables Post Formats support for a Theme.
    */
   // add_theme_support( 'post-formats', array( 'aside', 'gallery' ) );
 
-  /*
+  /**
    * Styles for editor
    */
   add_editor_style( 'assets/css/editor-style.min.css' );
 
-  /*
+  /**
    * Navigation
    */
   register_nav_menus( array(
@@ -68,7 +69,7 @@ function nc_setup() {
   ) );
 }
 
-/*
+/**
  * Styles
  */
 add_action( 'wp_enqueue_scripts', 'nc_styles' );
@@ -79,7 +80,7 @@ function nc_styles() {
   wp_enqueue_style( 'css-main', get_theme_file_uri( 'assets/css/main.min.css' ), false, filemtime( get_theme_file_path( 'assets/css/main.min.css' ) ) );
 }
 
-/*
+/**
  * Scripts
  */
 add_action( 'wp_enqueue_scripts', 'nc_scripts' );
@@ -92,7 +93,7 @@ function nc_scripts() {
   wp_enqueue_script( 'js-main', get_theme_file_uri( 'assets/js/scripts.js' ), array( 'modernizr', 'jquery' ), filemtime( get_theme_file_path( 'assets/js/scripts.js' ) ), true );
   // wp_enqueue_script( 'js-extra', get_theme_file_uri( 'assets/js/scripts-extra.js' ), array( 'js-main' ), filemtime( get_theme_file_path( 'assets/js/scripts-extra.js' ) ), true );
 
-  /*
+  /**
    * Variables for JS (ncVar.ajaxurl & ncVar.themeurl)
    */
   wp_localize_script( 'js-main', 'ncVar', array(
@@ -101,7 +102,7 @@ function nc_scripts() {
   ) );
 }
 
-/*
+/**
  * Admin styles
  */
 add_action('admin_head', 'nc_admin_styles');
@@ -110,7 +111,7 @@ function nc_admin_styles() {
 }
 
 
-/*
+/**
  * Disable important plugins deactivation
  */
 add_filter( 'plugin_action_links', 'nc_disable_plugin_deactivation', 10, 2 );
@@ -131,7 +132,7 @@ function nc_disable_plugin_deactivation( $actions, $plugin_file ) {
 }
 
 
-/*
+/**
  * Modify except
  */
 function nc_excerpt( $num_words = 25, $more = '… →' ) {
@@ -160,7 +161,7 @@ function nc_tel( $phone = '' ) {
 }
 
 
-/*
+/**
  * Breadcrumbs settings
  */
 add_filter( 'kama_breadcrumbs_default_args', 'nc_breadcrumbs_default_args' );
@@ -182,7 +183,7 @@ function nc_breadcrumbs_default_args( $args ) {
   return $args;
 }
 
-/*
+/**
  * Breadcrumbs localization
  */
 add_filter( 'kama_breadcrumbs_default_loc', 'nc_breadcrumbs_default_loc' );
@@ -206,14 +207,16 @@ function nc_breadcrumbs_default_loc( $l10n ) {
   return $l10n;
 }
 
-/*
+/**
  * Hide the Advanced Custom Fields menu
  */
 // add_filter( 'acf/settings/show_admin', '__return_false' );
 
 
-/*
+/**
  * Includes
  */
 require_once( get_theme_file_path( 'includes/ajax.php' ) );
 require_once( get_theme_file_path( 'includes/options.php' ) );
+require_once( get_theme_file_path( 'includes/polylang.php' ) );
+require_once( get_theme_file_path( 'includes/other.php' ) );

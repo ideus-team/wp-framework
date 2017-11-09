@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Walker for wp_nav_menu
  */
 class nc_Walker_Nav_Menu extends Walker_Nav_Menu {
