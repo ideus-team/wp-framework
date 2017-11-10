@@ -13,7 +13,7 @@ if ( function_exists( 'acf_add_options_page' ) ) {
   ) );
 
   /*
-  acf_add_options_sub_page(array(
+  acf_add_options_sub_page( array(
     'page_title'  => 'Options subpage',
     'menu_title'  => 'Options subpage',
     'menu_slug'   => 'nc-options-subpage',
