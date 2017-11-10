@@ -121,6 +121,7 @@ function nc_disable_plugin_deactivation( $actions, $plugin_file ) {
     'advanced-custom-fields-pro/acf.php',
     'contact-form-7/wp-contact-form-7.php',
     'polylang/polylang.php',
+    'polylang-pro/polylang.php',
   );
   if ( in_array( $plugin_file, $important_plugins ) ) {
     unset( $actions['deactivate'] );
