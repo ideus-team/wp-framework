@@ -1,6 +1,6 @@
 /**
-* @section Site Navigation Bottom
-*/
+ * @section siteNavigationBottom
+ */
 .l-siteNavigationBottom {
 
 }
@@ -12,10 +12,11 @@
   &__item {
     color: #464646;
 
-    &.-state_active {
+    &.-state_current {
 
     }
   }
+
   &__link {
     @include hover-underline;
     color: inherit;

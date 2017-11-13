@@ -1,6 +1,6 @@
 /**
-* @subsection Main Site Nav
-*/
+ * @section siteNavigation
+ */
 .l-siteNavigation {
   clear: both;
   width: 100%;
@@ -21,10 +21,11 @@
     height: 100%;
     color: #000;
 
-    &.-state_active {
+    &.-state_current {
 
     }
   }
+
   &__link {
     @include hover-underline;
     display: block;
