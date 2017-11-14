@@ -11,7 +11,7 @@ function nc_body_class( $classes ) {
 
   $classes[] = ( is_front_page() ) ? '-page_home' : '-page_inner';
 
-  if ($slug) {
+  if ( $slug ) {
     $classes[] = '-page_' . $slug;
   }
 
