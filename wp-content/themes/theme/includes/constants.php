@@ -2,4 +2,4 @@
 /**
  * Constants
  */
-// define( 'NAME', 'value' );
+// define( 'NC_NAME', 'value' );
