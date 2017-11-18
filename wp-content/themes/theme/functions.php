@@ -140,6 +140,7 @@ function nc_disable_plugin_deactivation( $actions, $plugin_file ) {
 /**
  * Includes
  */
+require_once( get_theme_file_path( 'includes/settings.php' ) );
 require_once( get_theme_file_path( 'includes/ajax.php' ) );
 require_once( get_theme_file_path( 'includes/options.php' ) );
 // require_once( get_theme_file_path( 'includes/polylang.php' ) );
