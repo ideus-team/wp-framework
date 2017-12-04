@@ -68,3 +68,14 @@ function nc_breadcrumbs_default_loc( $l10n ) {
 
   return $l10n;
 }
+
+
+/**
+ * Breadcrumbs add link to page example
+ */
+// add_action( 'kama_breadcrumbs_home_after', 'nc_breadcrumbs_blog_link', 10, 4 );
+function nc_breadcrumbs_blog_link( $false, $linkpatt, $sep, $ptype ) {
+  $post_id = 1;
+  $page = get_post( $post_id );
+  return sprintf( $linkpatt, get_permalink( $page ), $page->post_title ) . $sep;
+}
