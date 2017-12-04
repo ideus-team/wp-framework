@@ -27,11 +27,14 @@
 @import 'blocks/common';
 @import 'blocks/b-text';
 
+/* Wordpress only code */
+@import 'blocks/b-breadcrumbs';
+@import 'blocks/b-pagination';
+
 @import 'blocks/b-siteHeader';
 @import 'blocks/b-siteLogo';
 @import 'blocks/b-siteSearch';
 @import 'blocks/b-siteNavigation';
-@import 'blocks/b-pagination';
 @import 'blocks/b-siteFooter';
 @import 'blocks/b-siteNavigationBottom';
 @import 'blocks/b-siteCopyright';
