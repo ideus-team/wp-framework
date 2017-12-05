@@ -8,9 +8,11 @@ require_once( get_theme_file_path( 'includes/theme-styles.php' ) );
 require_once( get_theme_file_path( 'includes/theme-scripts.php' ) );
 require_once( get_theme_file_path( 'includes/theme-plugins.php' ) );
 
+require_once( get_theme_file_path( 'includes/functions.php' ) );
+
 
 /**
- * Other Includes
+ * Project
  */
 require_once( get_theme_file_path( 'includes/ajax.php' ) );
 require_once( get_theme_file_path( 'includes/options.php' ) );
