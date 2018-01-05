@@ -17,15 +17,17 @@
   </style>
 
   <link rel="shortcut icon" href="<?php echo home_url( '/favicon.ico' ); ?>" />
-  <link rel="apple-touch-icon" href="<?php echo home_url( '/apple-touch-icon.png' ); ?>" />
+  <link rel="manifest" href="<?php echo home_url( '/site.webmanifest' ); ?>" />
+  <link rel="apple-touch-icon" href="<?php echo home_url( '/icon.png' ); ?>" />
+
   <!--<meta name="theme-color" content="#ed1c24" />-->
 
   <?php wp_head(); ?>
   <?php get_template_part( 'template-parts/scripts', 'header' ); ?>
 </head>
 <body <?php body_class( 'l-body' ); ?>>
-  <!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
   <div class="l-wrapper">
