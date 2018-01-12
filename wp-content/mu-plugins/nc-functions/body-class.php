@@ -5,6 +5,11 @@
 add_filter( 'body_class', 'nc_body_class' );
 function nc_body_class( $classes ) {
   global $post;
+
+  if ( ! $post ) {
+    return array();
+  }
+
   $post_data = get_post( $post->ID, ARRAY_A );
 
   $slug = ( is_front_page() ) ? '' : $post_data['post_name'];
