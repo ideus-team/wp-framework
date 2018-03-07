@@ -2,7 +2,7 @@
 /**
  * Default content for posts, pages & other post types
  */
-add_filter( 'default_content', 'nc_default_editor_content' );
+// add_filter( 'default_content', 'nc_default_editor_content' );
 function nc_default_editor_content( $content ) {
   global $post_type;
 
