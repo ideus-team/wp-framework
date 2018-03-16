@@ -19,3 +19,12 @@ add_action( 'admin_enqueue_scripts', 'nc_admin_styles' );
 function nc_admin_styles() {
   wp_enqueue_style( 'css-admin', get_theme_file_uri( 'assets/css/admin.min.css' ), false, filemtime( get_theme_file_path( 'assets/css/admin.min.css' ) ) );
 }
+
+
+/**
+ * Login styles
+ */
+// add_action( 'login_enqueue_scripts', 'nc_login_styles' );
+function nc_login_styles() {
+  wp_enqueue_style( 'css-login', get_theme_file_uri( 'assets/css/login.min.css' ), false, filemtime( get_theme_file_path( 'assets/css/login.min.css' ) ) );
+}
