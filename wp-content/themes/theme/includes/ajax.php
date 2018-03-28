@@ -1,6 +1,6 @@
 <?php
 /**
- * Обрабатываем AJAX-запрос типа ncAction
+ * Processing AJAX request, type: ncAction
  */
 /*
 add_action( 'wp_ajax_ncAction', 'ncAction_callback' );
