@@ -16,9 +16,11 @@
     }
   </style>
 
-  <link rel="shortcut icon" href="<?php echo home_url( '/favicon.ico' ); ?>" />
-  <link rel="manifest" href="<?php echo home_url( '/site.webmanifest' ); ?>" />
-  <link rel="apple-touch-icon" href="<?php echo home_url( '/icon.png' ); ?>" />
+  <?php if ( ! has_site_icon() ) : ?>
+    <link rel="shortcut icon" href="<?php echo home_url( '/favicon.ico' ); ?>" />
+    <link rel="manifest" href="<?php echo home_url( '/site.webmanifest' ); ?>" />
+    <link rel="apple-touch-icon" href="<?php echo home_url( '/icon.png' ); ?>" />
+  <?php endif; ?>
 
   <!--<meta name="theme-color" content="#ed1c24" />-->
 
