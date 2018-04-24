@@ -153,7 +153,13 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
 
       // This would be the path of our resized image if the dimensions existed
       $imageExt = pathinfo( $imagePath, PATHINFO_EXTENSION );
-      $imagePath = preg_replace( '/^(.*)\.' . $imageExt . '$/', sprintf( '$1-%sx%s.%s', $new_width, $new_height, $imageExt ) , $imagePath );
+      $original_size = getimagesize( $imagePath );
+      $sizes = image_resize_dimensions( $original_size[0], $original_size[1], $size[0], $size[1], true );
+      if( empty( $sizes ) ) {
+        $imagePath = preg_replace( '/^(.*)\.' . $imageExt . '$/', sprintf( '$1-%sx%s.%s', $new_width, $new_height, $imageExt ) , $imagePath );
+      } else {
+        $imagePath = preg_replace( '/^(.*)\.' . $imageExt . '$/', sprintf( '$1-%sx%s.%s', $sizes[4], $sizes[5], $imageExt ) , $imagePath );
+      }
       $att_url = wp_get_attachment_url( $id );
 
       // If it already exists, serve it
