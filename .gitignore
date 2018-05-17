@@ -32,6 +32,7 @@ wp-content/wflogs/
 
 # ignore specific themes
 wp-content/themes/twenty*/
+wp-content/languages/themes/twenty*/
 
 # ignore debug.log
 wp-content/debug.log
