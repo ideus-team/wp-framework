@@ -38,7 +38,6 @@
         <div class="l-siteLogo">
           <?php
           $siteLogo__iconURL = get_theme_file_uri( 'assets/img/blocks/siteLogo/siteLogo-logo.png' );
-          //$siteLogo__iconURL = ( nc_device()=='mobile' ) ? get_theme_file_uri( 'assets/img/blocks/siteLogo/siteLogo-logo-mobile.png' ) : get_theme_file_uri( 'assets/img/blocks/siteLogo/siteLogo-logo.png' );
           $siteLogo__tag  = ( is_front_page() && ! is_paged() ) ? 'h1' : 'div';
           $siteLogo__link = ( is_front_page() && ! is_paged() ) ? '' : ' href="' . home_url( '/' ) . '"';
           ?>
