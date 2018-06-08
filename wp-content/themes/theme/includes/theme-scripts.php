@@ -20,3 +20,13 @@ function nc_scripts() {
     'themeurl' => get_template_directory_uri(),
   ) );
 }
+
+
+/**
+ * Clean up script tags
+ */
+add_filter( 'script_loader_tag', 'nc_clean_script_tag' );
+function nc_clean_script_tag( $input ) {
+  $input = str_replace( ' type="text/javascript"', '', $input );
+  return $input;
+}
