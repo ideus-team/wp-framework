@@ -1,8 +1,8 @@
 <?php
-/*
-Template Name: Example
-Template Post Type: page
-*/
+/**
+ * Template Name: Example
+ * Template Post Type: page
+ */
 
 get_header();
 ?>
