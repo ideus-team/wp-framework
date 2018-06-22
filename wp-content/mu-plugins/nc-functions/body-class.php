@@ -10,13 +10,20 @@ function nc_body_class( $classes ) {
     return array();
   }
 
-  $post_data = get_post( $post->ID, ARRAY_A );
+  if ( is_front_page() ) {
+    // Homepage
+    $classes[] = '-page_home';
+  } else {
+    $classes[] = '-page_inner';
 
-  $slug = ( is_front_page() ) ? '' : $post_data['post_name'];
-
-  $classes[] = ( is_front_page() ) ? '-page_home' : '-page_inner';
-
-  if ( $slug ) {
+    if ( is_home() ) {
+      // Posts page
+      $slug = get_queried_object()->post_name;
+    } else {
+      // Inner Page
+      $post_data = get_post( $post->ID, ARRAY_A );
+      $slug = $post_data['post_name'];
+    }
     $classes[] = '-page_' . $slug;
   }
 
