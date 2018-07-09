@@ -44,16 +44,16 @@
   .aligncenter {
     clear: both;
     display: block;
-    margin-right: auto;
+    margin: 0.375em auto 1em;
     margin-left: auto;
   }
   .alignright {
     float: right;
-    margin: 0.375em 0 1.75em 1.75em;
+    margin: 0.375em 0 1em 1em;
   }
   .alignleft {
     float: left;
-    margin: 0.375em 1.75em 1.75em 0;
+    margin: 0.375em 1em 1em 0;
   }
   .alignnone {
 
@@ -61,6 +61,10 @@
 
   .wp-caption {
     margin: 1em 0;
+
+    img {
+
+    }
   }
 
   .wp-caption-text {
@@ -74,5 +78,17 @@
   .size-thumbnail {
     max-width: 100%;
     height: auto;
+  }
+
+  .gallery dl {}
+  .gallery dt {}
+  .gallery dd {}
+  .gallery dl a {}
+  .gallery dl img {}
+  .gallery-caption {}
+
+  .wp-smiley {
+    margin: 0;
+    max-height: 1em;
   }
 }
