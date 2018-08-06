@@ -40,6 +40,13 @@
 </IfModule>
 ## Add Expires headers ##
 
+## Configure entity tags (ETags) ##
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+FileETag None
+## Configure entity tags (ETags) ##
+
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
