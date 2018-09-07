@@ -15,6 +15,7 @@ require_once( get_theme_file_path( 'includes/functions.php' ) );
  * Project
  */
 require_once( get_theme_file_path( 'includes/ajax.php' ) );
+require_once( get_theme_file_path( 'includes/shortcodes.php' ) );
 require_once( get_theme_file_path( 'includes/options.php' ) );
 // require_once( get_theme_file_path( 'includes/polylang.php' ) );
 require_once( get_theme_file_path( 'includes/content-default.php' ) );
