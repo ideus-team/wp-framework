@@ -22,3 +22,11 @@ if ( function_exists( 'acf_add_options_page' ) ) {
   */
 
 }
+
+/**
+ * Google Maps API key for ACF Pro
+ */
+// add_action( 'acf/init', 'nc_acf_init' );
+function nc_acf_init() {
+  acf_update_setting( 'google_api_key', 'xxx' );
+}
