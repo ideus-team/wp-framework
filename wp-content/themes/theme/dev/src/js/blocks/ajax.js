@@ -10,7 +10,7 @@ $.ajax({
     'action'   : 'ncAction',
   },
   dataType: 'json',
-  success: function(result){
+  success: function(result) {
     if ( result.success == true ) {
       console.log( result.data );
     } else {
