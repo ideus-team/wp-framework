@@ -1,7 +1,7 @@
 <?php
 /**
  * Styles
- * use 'get_footer' hook for move CSS to footer
+ * use 'get_footer' instead 'wp_enqueue_scripts' hook for move CSS to footer
  */
 add_action( 'wp_enqueue_scripts', 'nc_styles' );
 function nc_styles() {
