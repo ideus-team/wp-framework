@@ -37,13 +37,12 @@
       <div class="b-siteHeader">
         <div class="l-siteLogo">
           <?php
-          $siteLogo__iconURL = get_theme_file_uri( 'assets/img/blocks/siteLogo/siteLogo-logo.png' );
           $siteLogo__tag  = ( is_front_page() && ! is_paged() ) ? 'h1' : 'div';
           $siteLogo__link = ( is_front_page() && ! is_paged() ) ? '' : ' href="' . home_url( '/' ) . '"';
           ?>
           <<?php echo $siteLogo__tag; ?> class="b-siteLogo" itemscope itemtype="http://schema.org/Organization">
             <a class="b-siteLogo__link"<?php echo $siteLogo__link; ?> itemprop="url">
-              <img class="b-siteLogo__icon" src="<?php echo $siteLogo__iconURL; ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" itemprop="logo" />
+              <img class="b-siteLogo__icon" src="<?php echo get_theme_file_uri( 'assets/img/blocks/siteLogo/siteLogo-logo.png' ); ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" itemprop="logo" />
             </a>
           </<?php echo $siteLogo__tag; ?>>
         </div>
