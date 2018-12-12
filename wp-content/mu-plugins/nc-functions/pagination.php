@@ -48,7 +48,7 @@ function nc_pagenavi( $args = array() ) {
     '-type_prev',
     '-type_next',
     '-type_dots',
-    '-state_current',
+    '-state_active',
     '',
   );
 
