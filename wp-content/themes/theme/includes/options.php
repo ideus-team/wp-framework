@@ -13,12 +13,24 @@ if ( function_exists( 'acf_add_options_page' ) ) {
   ) );
 
   /*
+  // Subpage
   acf_add_options_sub_page( array(
     'page_title'  => 'Options subpage',
     'menu_title'  => 'Options subpage',
     'menu_slug'   => 'nc-options-subpage',
     'parent_slug' => 'nc-options-main',
   ) );
+
+  // Multilingual options for Polylang
+  foreach ( pll_languages_list() as $lang ) {
+    acf_add_options_sub_page( array(
+      'page_title'  => 'Options subpage (' . $lang . ')',
+      'menu_title'  => 'Options subpage (' . $lang . ')',
+      'menu_slug'   => 'nc-options-subpage-' . $lang,
+      'post_id'     => 'option-' . $lang,
+      'parent_slug' => 'nc-options-main',
+    ) );
+  }
   */
 
 }
