@@ -23,7 +23,6 @@
  */
 if ( file_exists( dirname( __FILE__ ) . '/dev-config.php' ) ) {
   include( dirname( __FILE__ ) . '/dev-config.php' );
-  define( 'WP_LOCAL_DEV', true );
 } else {
   // ** MySQL settings - You can get this info from your web host ** //
   /** The name of the database for WordPress */

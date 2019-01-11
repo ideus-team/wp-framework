@@ -10,3 +10,6 @@ define('DB_PASSWORD', 'password_here');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
+
+
+define( 'WP_LOCAL_DEV', true );
