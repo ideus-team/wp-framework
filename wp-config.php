@@ -18,18 +18,26 @@
  * @package WordPress
  */
 
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define('DB_NAME', 'database_name_here');
+/**
+ * Remove dev-config.php for production server
+ */
+if ( file_exists( dirname( __FILE__ ) . '/dev-config.php' ) ) {
+  include( dirname( __FILE__ ) . '/dev-config.php' );
+  define( 'WP_LOCAL_DEV', true );
+} else {
+  // ** MySQL settings - You can get this info from your web host ** //
+  /** The name of the database for WordPress */
+  define('DB_NAME', 'database_name_here');
 
-/** MySQL database username */
-define('DB_USER', 'username_here');
+  /** MySQL database username */
+  define('DB_USER', 'username_here');
 
-/** MySQL database password */
-define('DB_PASSWORD', 'password_here');
+  /** MySQL database password */
+  define('DB_PASSWORD', 'password_here');
 
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
+  /** MySQL hostname */
+  define('DB_HOST', 'localhost');
+}
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -78,6 +86,16 @@ $table_prefix  = 'wp_';
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define('WP_DEBUG', false);
+
+// define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] );
+// define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
+
+/**
+ * Contact Form 7 constants
+ * @link https://contactform7.com/controlling-behavior-by-setting-constants/
+ */
+define( 'WPCF7_AUTOP',    false );
+define( 'WPCF7_LOAD_CSS', true );
 
 /* That's all, stop editing! Happy blogging. */
 
