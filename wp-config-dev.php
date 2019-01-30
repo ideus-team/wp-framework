@@ -13,3 +13,6 @@ define('DB_HOST', 'localhost');
 
 define( 'WP_DEBUG', true );
 define( 'WP_LOCAL_DEV', true );
+
+// define( 'WP_SITEURL','http://' . $_SERVER['HTTP_HOST'] );
+// define( 'WP_HOME','http://' . $_SERVER['HTTP_HOST'] );
