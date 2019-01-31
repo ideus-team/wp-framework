@@ -21,8 +21,8 @@
 /**
  * Remove dev-config.php for production server
  */
-if ( file_exists( dirname( __FILE__ ) . '/dev-config.php' ) ) {
-  include( dirname( __FILE__ ) . '/dev-config.php' );
+if ( file_exists( dirname( __FILE__ ) . '/wp-config-dev.php' ) ) {
+  include( dirname( __FILE__ ) . '/wp-config-dev.php' );
 } else {
   // ** MySQL settings - You can get this info from your web host ** //
   /** The name of the database for WordPress */
@@ -84,7 +84,9 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+if ( ! file_exists( dirname( __FILE__ ) . '/wp-config-dev.php' ) ) {
+  define( 'WP_DEBUG', false );
+}
 
 // define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] );
 // define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
