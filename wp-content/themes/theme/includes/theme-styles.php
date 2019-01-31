@@ -33,4 +33,3 @@ function nc_login_styles() {
     wp_enqueue_style( 'css-login', get_theme_file_uri( 'assets/css/login.min.css' ), false, filemtime( get_theme_file_path( 'assets/css/login.min.css' ) ) );
   }
 }
-
