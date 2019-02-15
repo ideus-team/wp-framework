@@ -14,11 +14,12 @@ function nc_scripts() {
   }
 
   /**
-   * Variables for JS (ncVar.ajaxurl & ncVar.themeurl)
+   * Variables for JS (ncVar.ajax_url, ncVar.home_url, ncVar.theme_url, etc.)
    */
   wp_localize_script( 'js-main', 'ncVar', array(
-    'ajaxurl'  => admin_url( 'admin-ajax.php' ),
-    'themeurl' => get_template_directory_uri(),
+    'ajax_url'  => admin_url( 'admin-ajax.php' ),
+    'home_url'  => home_url(),
+    'theme_url' => get_stylesheet_directory_uri(),
   ) );
 }
 

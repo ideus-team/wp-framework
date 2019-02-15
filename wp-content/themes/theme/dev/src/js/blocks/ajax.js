@@ -4,7 +4,7 @@
 /*
 $.ajax({
   type: 'POST',
-  url: ncVar.ajaxurl,
+  url: ncVar.ajax_url,
   data: {
     'postdata' : $('.js-form').serialize(),
     'action'   : 'ncAction',
