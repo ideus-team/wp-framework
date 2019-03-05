@@ -2,7 +2,7 @@
 
     <footer class="l-siteFooter">
       <div class="b-siteFooter">
-        <?php if ( has_nav_menu( 'footer' ) ): ?>
+        <?php if ( has_nav_menu( 'footer' ) ) : ?>
           <div class="l-siteNavigationBottom" role="navigation">
             <?php
             wp_nav_menu( array(

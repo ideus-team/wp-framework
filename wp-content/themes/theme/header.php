@@ -49,7 +49,7 @@
 
         <?php get_search_form(); ?>
 
-        <?php if ( has_nav_menu( 'header' ) ): ?>
+        <?php if ( has_nav_menu( 'header' ) ) : ?>
           <nav class="l-siteNavigation">
             <?php
             wp_nav_menu( array(
