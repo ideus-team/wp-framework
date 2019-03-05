@@ -23,7 +23,7 @@ function nc_pagenavi( $args = array() ) {
 
   $pages = '';
   $max = $query->max_num_pages;
-  if ( ! $current = get_query_var('paged') ) $current = 1;
+  if ( ! $current = get_query_var( 'paged' ) ) $current = 1;
   $paginate = array(
     'base'      => str_replace( 999999999, '%#%', get_pagenum_link( 999999999 ) ),
     'total'     => $max,
@@ -53,12 +53,12 @@ function nc_pagenavi( $args = array() ) {
   );
 
   if ($max > 1) {
-    $pages .= '<div class="' . $args['class'] . ($args['modifier'] ? ' ' . $args['modifier'] : '') . '">' . "\r";
+    $pages .= '<div class="' . $args['class'] . ( $args['modifier'] ? ' ' . $args['modifier'] : '' ) . '">' . "\r";
 
-    if ($args['found']) {
+    if ( $args['found'] ) {
       $pages .= '<span class="' . $args['class'] . '__total">Found ' . $query->found_posts . '</span>' . "\r";
     }
-    if ($args['total']) {
+    if ( $args['total'] ) {
       $pages .= '<span class="' . $args['class'] . '__pages">Page ' . $current . ' of ' . $max . '</span>' . "\r";
     }
 
