@@ -3,7 +3,7 @@
  * Modify except
  */
 function nc_excerpt( $num_words = 25, $more = '… →' ) {
-  $excerpt = wp_trim_words( get_the_excerpt(), $num_words, $more );
+  $excerpt = wp_trim_words( get_the_content(), $num_words, $more );
   echo apply_filters( 'the_excerpt', $excerpt );
 }
 
