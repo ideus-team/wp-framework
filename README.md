@@ -34,7 +34,8 @@ Based on [HTML Framework](https://github.com/ideus-team/html-framework)
 <div class="b-article__description b-text">
   <p>Это текст статьи, полный или сокращённый — неважно</p>
   <ul>
-    <li>
+    <li>пункт меню</li>
+  </ul>
 </div>
 …
 ```
