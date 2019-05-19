@@ -21,6 +21,8 @@ wp-content/plugins/hello.php
 wp-content/w3tc-config/
 wp-content/wflogs/
 
+wp-snapshots/
+
 /license.txt
 /readme.html
 /wp-config-sample.php
