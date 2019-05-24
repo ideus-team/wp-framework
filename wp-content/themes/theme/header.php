@@ -25,12 +25,14 @@
   <!--<meta name="theme-color" content="#ed1c24" />-->
 
   <?php wp_head(); ?>
-  <?php get_template_part( 'template-parts/scripts', 'header' ); ?>
+  <?php get_template_part( 'template-parts/scripts/header' ); ?>
 </head>
 <body <?php body_class( 'l-body' ); ?>>
   <!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
+
+  <?php get_template_part( 'template-parts/scripts/body' ); ?>
 
   <div class="l-wrapper">
     <header class="l-siteHeader">
