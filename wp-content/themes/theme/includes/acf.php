@@ -1,9 +1,9 @@
 <?php
-/**
- * Options pages for ACF Pro
- */
 if ( function_exists( 'acf_add_options_page' ) ) {
 
+  /**
+   * Options pages for ACF Pro
+   */
   acf_add_options_page( array(
     'page_title'  => 'Theme Options',
     'menu_title'  => 'Theme Options',
@@ -33,29 +33,26 @@ if ( function_exists( 'acf_add_options_page' ) ) {
   }
   */
 
-}
-
-/**
- * Google Maps API key for ACF Pro
- */
-// add_action( 'acf/init', 'nc_acf_init' );
-function nc_acf_init() {
-  acf_update_setting( 'google_api_key', NC_GOOGLE_MAP_API );
-}
+  /**
+   * Google Maps API key for ACF Pro
+   */
+  // add_action( 'acf/init', 'nc_acf_init' );
+  function nc_acf_init() {
+    acf_update_setting( 'google_api_key', NC_GOOGLE_MAP_API );
+  }
 
 
-/**
- * Styled menu element
- */
-add_filter( 'nav_menu_css_class', 'nc_change_menu_item_css_classes', 10, 4 );
-function nc_change_menu_item_css_classes( $classes, $item ) {
-  if ( function_exists( 'acf_add_options_page' ) ) {
+  /**
+   * Styled menu element
+   */
+  add_filter( 'nav_menu_css_class', 'nc_change_menu_item_css_classes', 10, 4 );
+  function nc_change_menu_item_css_classes( $classes, $item ) {
     $styled = get_field( '_nc_styled', $item->ID );
 
     if ( $styled ) {
       $classes[] = '-styled_true';
     }
-  }
 
-  return $classes;
+    return $classes;
+  }
 }
