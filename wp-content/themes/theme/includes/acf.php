@@ -4,7 +4,6 @@
  */
 if ( function_exists( 'acf_add_options_page' ) ) {
 
-  /*
   acf_add_options_page( array(
     'page_title'  => 'Theme Options',
     'menu_title'  => 'Theme Options',
@@ -12,7 +11,6 @@ if ( function_exists( 'acf_add_options_page' ) ) {
     'capability'  => 'edit_posts',
     'redirect'    => false,
   ) );
-  */
 
   /*
   // Subpage
@@ -49,11 +47,14 @@ function nc_acf_init() {
 /**
  * Styled menu element
  */
-// add_filter( 'nav_menu_css_class', 'nc_change_menu_item_css_classes', 10, 4 );
+add_filter( 'nav_menu_css_class', 'nc_change_menu_item_css_classes', 10, 4 );
 function nc_change_menu_item_css_classes( $classes, $item ) {
-  $styled = get_field( '_nc_styled', $item->ID );
-  if( $styled ){
-    $classes[] = '-styled_true';
+  if ( function_exists( 'acf_add_options_page' ) ) {
+    $styled = get_field( '_nc_styled', $item->ID );
+
+    if ( $styled ) {
+      $classes[] = '-styled_true';
+    }
   }
 
   return $classes;
