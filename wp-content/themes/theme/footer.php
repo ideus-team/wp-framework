@@ -2,8 +2,10 @@
 
     <footer class="l-siteFooter">
       <div class="b-siteFooter">
+
         <?php if ( has_nav_menu( 'footer' ) ) : ?>
-          <div class="l-siteNavigationBottom" role="navigation">
+
+          <div class="l-bottomNavigation" role="navigation">
             <?php
             wp_nav_menu( array(
               'theme_location' => 'footer',
@@ -16,6 +18,7 @@
             ) );
             ?>
           </div>
+
         <?php endif; ?>
 
         <address class="l-siteCopyright vcard" itemscope itemtype="http://schema.org/Organization">
