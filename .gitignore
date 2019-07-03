@@ -35,7 +35,7 @@ wp-snapshots/
 
 # ignore specific themes
 wp-content/themes/twenty*/
-wp-content/languages/themes/twenty*/
+wp-content/languages/themes/twenty*
 
 # ignore debug.log
 wp-content/debug.log
