@@ -53,7 +53,7 @@
 
         <?php if ( has_nav_menu( 'header' ) ) : ?>
 
-          <nav class="l-siteNavigation">
+          <nav class="l-mainNavigation">
             <?php
             wp_nav_menu( array(
               'theme_location' => 'header',
