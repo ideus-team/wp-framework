@@ -55,4 +55,19 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 
     return $classes;
   }
+
+
+  /**
+   * Menu item label
+   */
+  add_filter( 'nav_menu_item_args', 'nc_menu_item_label', 10, 3 );
+  function nc_menu_item_label( $args, $item, $depth ) {
+    $label = get_field( '_nc_label', $item->ID );
+
+    if ( $label ) {
+      $args->before = $label . ' ';
+    }
+
+    return $args;
+  }
 }
