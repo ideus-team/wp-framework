@@ -43,8 +43,8 @@
 ## Configure entity tags (ETags) ##
 <IfModule mod_headers.c>
   Header unset ETag
+  FileETag None
 </IfModule>
-FileETag None
 ## Configure entity tags (ETags) ##
 
 # BEGIN WordPress
