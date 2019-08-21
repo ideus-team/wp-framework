@@ -5,11 +5,11 @@ if ( function_exists( 'acf_add_options_page' ) ) {
    * Options pages for ACF Pro
    */
   acf_add_options_page( array(
-    'page_title'  => 'Theme Options',
-    'menu_title'  => 'Theme Options',
-    'menu_slug'   => 'nc-options-main',
-    'capability'  => 'edit_posts',
-    'redirect'    => false,
+    'page_title' => 'Theme Options',
+    'menu_title' => 'Theme Options',
+    'menu_slug'  => 'nc-options-main',
+    'capability' => 'edit_posts',
+    'redirect'   => false,
   ) );
 
   /*
