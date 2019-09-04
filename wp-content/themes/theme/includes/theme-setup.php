@@ -57,7 +57,9 @@ function nc_setup() {
   /**
    * Styles for editor
    */
-  add_editor_style( 'assets/css/editor-style.min.css' );
+  if ( file_exists( get_theme_file_path( 'assets/css/editor-style.min.css' ) ) ) {
+    add_editor_style( 'assets/css/editor-style.min.css' );
+  }
 
   /**
    * Navigation
