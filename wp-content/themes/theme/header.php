@@ -4,8 +4,6 @@
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <!-- <meta property="og:image" content="<?php echo get_theme_file_uri( 'assets/img/userfiles/og-image.png' ); ?>" /> -->
-
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <style>
     @-ms-viewport {
