@@ -71,6 +71,27 @@ function nc_breadcrumbs_default_loc( $l10n ) {
 
 
 /**
+ * Breadcrumbs schema.org position
+ */
+add_action( 'kama_breadcrumbs', 'nc_breadcrumbs_position' );
+function nc_breadcrumbs_position( $out, $sep, $loc, $arg ) {
+  $breadcrumbs_old = explode( '</a>', $out );
+  $count = count( $breadcrumbs_old ) - 1;
+
+  $breadcrumbs_new = '';
+  foreach ( $breadcrumbs_old as $key => $value ) {
+    $breadcrumbs_new .= $value;
+
+    if ( $key != $count ) {
+      $breadcrumbs_new .= '<meta itemprop="position" content="' . $key . '"></a>';
+    }
+  }
+
+  return $breadcrumbs_new;
+}
+
+
+/**
  * Breadcrumbs add link to page example
  */
 // add_action( 'kama_breadcrumbs_home_after', 'nc_breadcrumbs_blog_link', 10, 4 );
