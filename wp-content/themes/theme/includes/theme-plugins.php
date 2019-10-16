@@ -74,7 +74,7 @@ function nc_breadcrumbs_default_loc( $l10n ) {
  * Breadcrumbs schema.org position
  */
 add_action( 'kama_breadcrumbs', 'nc_breadcrumbs_position' );
-function nc_breadcrumbs_position( $out, $sep, $loc, $arg ) {
+function nc_breadcrumbs_position( $out ) {
   $breadcrumbs_old = explode( '</a>', $out );
   $count = count( $breadcrumbs_old ) - 1;
 
