@@ -1,0 +1,81 @@
+/**
+ * @section Contact Form 7
+ */
+.wpcf7 {position: relative;
+
+  .ajax-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    visibility: hidden;
+    margin: -32px 0 0 -32px;
+    width: 64px;
+    height: 64px;
+    background-image: url('../img/ajax-loader.gif');
+
+    &.is-active {
+      visibility: visible;
+    }
+  }
+
+  .ajax-error {
+    display: none;
+  }
+
+  .placeheld {
+    color: #888;
+  }
+
+  .screen-reader-response {
+    display: none;
+  }
+}
+
+.wpcf7-response-output {
+  margin: .4em;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.wpcf7-mail-sent-ok {
+  color: #398f14;
+}
+
+.wpcf7-mail-sent-ng {
+  color: #f00;
+}
+
+.wpcf7-spam-blocked {
+  color: #ffa500;
+}
+
+.wpcf7-validation-errors {
+  color: #f00;
+}
+
+.wpcf7-form-control-wrap {
+  position: relative;
+}
+
+.wpcf7-not-valid {
+  border: 1px solid #f00 !important;
+}
+
+.wpcf7-not-valid-tip {
+  display: none;
+  color: #f00;
+  font-size: 12px;
+}
+
+.wpcf7-list-item {
+  margin-left: .5em;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.wpcf7-display-none {
+  display: none;
+}

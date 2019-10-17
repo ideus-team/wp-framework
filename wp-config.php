@@ -96,7 +96,7 @@ if ( ! file_exists( dirname( __FILE__ ) . '/wp-config-dev.php' ) ) {
  * @link https://contactform7.com/controlling-behavior-by-setting-constants/
  */
 define( 'WPCF7_AUTOP',    false );
-define( 'WPCF7_LOAD_CSS', true );
+define( 'WPCF7_LOAD_CSS', false );
 
 /* That's all, stop editing! Happy publishing. */
 
