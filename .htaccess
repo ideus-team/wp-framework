@@ -47,6 +47,12 @@
 </IfModule>
 ## Configure entity tags (ETags) ##
 
+## Configure Cache-Control ##
+<filesMatch ".(jpg|jpeg|png|gif|svg|eot|ttf|woff|woff2)$">
+  Header set Cache-Control "max-age=31536000"
+</filesMatch>
+## Configure Cache-Control ##
+
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
