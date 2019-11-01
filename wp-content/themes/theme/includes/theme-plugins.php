@@ -51,7 +51,7 @@ function nc_breadcrumbs_default_args( $args ) {
 add_filter( 'kama_breadcrumbs_default_loc', 'nc_breadcrumbs_default_loc' );
 function nc_breadcrumbs_default_loc( $l10n ) {
   $l10n_new = array(
-    'home'       => 'Front page',
+    'home'       => 'Home',
     'paged'      => 'Page %d',
     '_404'       => 'Error 404',
     'search'     => 'Search results by query - <b>%s</b>',
