@@ -54,14 +54,14 @@ function nc_breadcrumbs_default_loc( $l10n ) {
     'home'       => 'Home',
     'paged'      => 'Page %d',
     '_404'       => 'Error 404',
-    'search'     => 'Search results by query - <b>%s</b>',
-    'author'     => 'Author archive: <b>%s</b>',
-    'year'       => 'Archive by <b>%d</b> year',
-    'month'      => 'Archive by: <b>%s</b>',
+    'search'     => 'Search results for "<strong>%s</strong>"',
+    'author'     => 'Author archive: <strong>%s</strong>',
+    'year'       => 'Archive by <strong>%d</strong> year',
+    'month'      => 'Archive by: <strong>%s</strong>',
     'day'        => '',
     'attachment' => 'Media: %s',
-    'tag'        => 'Posts by tag: <b>%s</b>',
-    'tax_tag'    => '%1$s from "%2$s" by tag: <b>%3$s</b>',
+    'tag'        => 'Posts by tag: <strong>%s</strong>',
+    'tax_tag'    => '%1$s from "%2$s" by tag: <strong>%3$s</strong>',
   );
 
   $l10n = wp_parse_args( $l10n_new, $l10n );
