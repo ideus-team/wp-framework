@@ -35,6 +35,20 @@
 
   a {
     @include underline-hover;
+
+    &[href ^= tel] {
+      color: inherit;
+      cursor: default;
+      text-decoration: none;
+
+      &:hover {
+        color: inherit;
+      }
+
+      @media screen and (min-width: 768px) {
+        pointer-events: none;
+      }
+    }
   }
 
   img {
