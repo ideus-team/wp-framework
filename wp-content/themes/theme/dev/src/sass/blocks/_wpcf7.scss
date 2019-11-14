@@ -59,6 +59,7 @@
   position: relative;
 }
 
+.wpcf7-select:invalid + .jq-selectbox__select,
 .wpcf7-not-valid {
   border: 1px solid #f00 !important;
 }
