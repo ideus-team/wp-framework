@@ -52,15 +52,3 @@ function nc_loop_modify( $query ) {
     }
   }
 }
-
-
-/**
- * Remove "View Post" Link
- */
-// add_filter( 'post_row_actions', 'remove_row_actions', 10, 1 );
-function remove_row_actions( $actions, $post ) {
-  if ( in_array( $post->post_type, array( 'post_type' ) ) ) {
-    unset( $actions['view'] );
-  }
-  return $actions;
-}
