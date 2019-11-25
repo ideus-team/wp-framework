@@ -20,7 +20,7 @@ function nc_taxonomy_blog() {
   $args   = array(
     'labels'             => $labels,
     'public'             => true,
-    'publicly_queryable' => false,
+    'publicly_queryable' => true,
     'show_in_nav_menus'  => true,
     'show_ui'            => true,
     'show_tagcloud'      => false,
