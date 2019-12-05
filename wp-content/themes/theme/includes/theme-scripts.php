@@ -4,7 +4,7 @@
  */
 add_action( 'wp_enqueue_scripts', 'nc_scripts' );
 function nc_scripts() {
-  wp_register_script( 'modernizr', get_theme_file_uri( 'assets/js/vendor/modernizr-3.6.0.min.js' ), false, '3.6.0', true );
+  wp_register_script( 'modernizr', get_theme_file_uri( 'assets/js/vendor/modernizr-3.7.1.min.js' ), false, '3.7.1', true );
 
   wp_deregister_script( 'jquery' );
   wp_register_script( 'jquery', get_theme_file_uri( 'assets/js/vendor/jquery-3.4.1.min.js' ), false, '3.4.1', true );
