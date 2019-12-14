@@ -1,5 +1,5 @@
 # WP-framework
-Based on [HTML Framework](https://github.com/ideus-team/html-framework)
+Based on [`HTML Framework`](https://github.com/ideus-team/html-framework)
 
 * [Установка](#Установка)
 * [Вёрстка](#Вёрстка)
@@ -12,7 +12,7 @@ Based on [HTML Framework](https://github.com/ideus-team/html-framework)
 2. Удаляем:
    * `wp-content/plugins/hello.php`
    * `wp-content/themes/` все-стандартные-темы
-3. Clone https://github.com/ideus-team/wp-framework.git
+3. Clone `https://github.com/ideus-team/wp-framework.git`
 4. Содержимое репозитория копируем в корень своего проекта копируем поверх существующих файлов
 5. Переименовываем тему:
    * правим соответствующие строки в `wp-content/themes/theme/style.css`

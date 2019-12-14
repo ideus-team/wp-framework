@@ -6,8 +6,8 @@
   font: 11px $Arial;
 }
 .b-siteCopyright {
-  margin: 0 0 15px;
-  text-transform: uppercase;
+  margin: 15px 0;
+  @include first-last-margin;
 
   &__link {
     @include hover-underline;
