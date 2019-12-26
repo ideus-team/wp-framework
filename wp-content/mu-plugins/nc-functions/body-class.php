@@ -6,6 +6,12 @@ add_filter( 'body_class', 'nc_body_class' );
 function nc_body_class( $classes ) {
   global $post;
 
+  $classes[] = 'l-body';
+
+  if ( function_exists( 'get_field' ) && get_field( '_nc_theme_style', 'option' ) ) {
+    $classes[] = get_field( '_nc_theme_style', 'option' );
+  }
+
   if ( is_front_page() ) {
     // Homepage
     $classes[] = '-page_home';
