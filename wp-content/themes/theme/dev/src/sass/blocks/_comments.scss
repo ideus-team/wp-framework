@@ -25,8 +25,8 @@
 
 .commentlist .comment-meta {}
 .commentlist .comment-meta a {}
-.commentlist .commentmetadata {}
-.commentlist .commentmetadata a {}
+.commentlist .comment-metadata {}
+.commentlist .comment-metadata a {}
 
 .commentlist .parent {}
 .commentlist .comment {}
@@ -36,7 +36,8 @@
 .commentlist .comment-author {}
 .commentlist .comment-author-admin {}
 
-.commentlist {}
+.commentlist .comment-content {}
+
 .commentlist li {}
 .commentlist li p {}
 .commentlist li ul {}
@@ -49,4 +50,4 @@
 .commentlist li ul.children li.comment-author-admin {}
 
 #cancel-comment-reply {}
-#cancel-comment-reply a {}
+#cancel-comment-reply-link {}
