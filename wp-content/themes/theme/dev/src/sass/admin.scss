@@ -1,5 +1,19 @@
 @charset "utf-8";
 
+@import 'mixins';
+
+/* Project files… */
+@import 'fonts';
+@import 'settings';
+
+/* Generated… */
+@import 'sprites';
+@import 'base64';
+
+/* Plugins */
+
+/* Primary styles */
+
 /**
  * Fix Wordfence Security styles
  */
