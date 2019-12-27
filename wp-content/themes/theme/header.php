@@ -38,7 +38,7 @@
         <div class="l-siteLogo">
           <?php
           $siteLogo__tag  = ( is_front_page() && ! is_paged() ) ? 'h1' : 'div';
-          $siteLogo__link = ( is_front_page() && ! is_paged() ) ? '' : ' href="' . home_url( '/' ) . '"';
+          $siteLogo__link = ( is_front_page() && ! is_paged() ) ? '' : ' href="' . home_url() . '"';
           ?>
           <<?php echo $siteLogo__tag; ?> class="b-siteLogo" itemscope itemtype="http://schema.org/Organization">
             <a class="b-siteLogo__link"<?php echo $siteLogo__link; ?> itemprop="url">
