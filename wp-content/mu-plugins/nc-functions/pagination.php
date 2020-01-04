@@ -40,7 +40,7 @@ function nc_pagenavi( $args = array() ) {
     'prev',
     'next',
     'dots',
-    'current',
+    ' current',
     '/page/1/',
   );
   $replace = array(
@@ -48,7 +48,7 @@ function nc_pagenavi( $args = array() ) {
     '-type_prev',
     '-type_next',
     '-type_dots',
-    '-state_active',
+    ' -state_active',
     '',
   );
 
