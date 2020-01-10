@@ -1,21 +1,28 @@
 /**
- * Send AJAX request, type: ncAction
+ * Send AJAX request
  */
 /*
-$.ajax({
-  type: 'POST',
-  url: ncVar.ajax_url,
-  data: {
-    'postdata' : $('.js-form').serialize(),
-    'action'   : 'ncAction',
-  },
-  dataType: 'json',
-  success: function(result) {
-    if ( result.success == true ) {
-      console.log( result.data );
-    } else {
-      console.warn( result.data.error );
-    }
-  }
-});
-*/
+function initAjax() {
+  $('.js-form').on('submit', function(e){
+    e.preventDefault();
+    var form = $(this);
+    var action = form.data('action');
+
+    $.ajax({
+      type: 'POST',
+      url: ncVar.ajax_url,
+      data: {
+        'postdata' : form.serialize(),
+        'action'   : action,
+      },
+      dataType: 'json',
+      success: function(result) {
+        if ( result.success == true ) {
+          console.log( result.data );
+        } else {
+          console.warn( result.data.error );
+        }
+      }
+    });
+  });
+}

@@ -12,10 +12,14 @@ function ncAction_callback() {
     $result['error'] = 'Empty postdata';
   } else {
     $args = wp_parse_args( $_POST['postdata'], array(
-
+      '_wpnonce' => '',
     ) );
 
-    $result = $args;
+    if ( ! wp_verify_nonce( $args['_wpnonce'] ) ) {
+      $result['error'] = 'Nonce failed!';
+    } else {
+      $result = $args;
+    }
   }
 
   if ( ! $result['error'] ) {
