@@ -88,8 +88,18 @@ if ( ! file_exists( dirname( __FILE__ ) . '/wp-config-dev.php' ) ) {
   define( 'WP_DEBUG', false );
 }
 
+
+/**
+ * Limit WordPress revisions
+ */
+if ( ! file_exists( dirname( __FILE__ ) . '/wp-config-dev.php' ) ) {
+  define( 'WP_POST_REVISIONS', 5 );
+}
+
+
 // define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] );
 // define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
+
 
 /**
  * Contact Form 7 constants
@@ -97,6 +107,7 @@ if ( ! file_exists( dirname( __FILE__ ) . '/wp-config-dev.php' ) ) {
  */
 define( 'WPCF7_AUTOP',    false );
 define( 'WPCF7_LOAD_CSS', false );
+
 
 /* That's all, stop editing! Happy publishing. */
 

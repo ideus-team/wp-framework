@@ -11,11 +11,18 @@ define( 'DB_PASSWORD', 'password_here' );
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
 
+
+/**
+ * For developers: WordPress debugging mode.
+ */
 define( 'WP_DEBUG', true );
 define( 'WP_LOCAL_DEV', true );
 
+
+/**
+ * Disable WordPress revisions
+ */
+define( 'WP_POST_REVISIONS', false );
+
 // define( 'WP_SITEURL','http://' . $_SERVER['HTTP_HOST'] );
 // define( 'WP_HOME','http://' . $_SERVER['HTTP_HOST'] );
-
-/** Disable WordPress revisions */
-define( 'WP_POST_REVISIONS', false );
