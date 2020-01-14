@@ -16,3 +16,6 @@ define( 'WP_LOCAL_DEV', true );
 
 // define( 'WP_SITEURL','http://' . $_SERVER['HTTP_HOST'] );
 // define( 'WP_HOME','http://' . $_SERVER['HTTP_HOST'] );
+
+/** Disable WordPress revisions */
+define( 'WP_POST_REVISIONS', false );
