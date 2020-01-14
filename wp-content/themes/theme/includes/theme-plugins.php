@@ -4,10 +4,10 @@
  */
 add_filter( 'plugin_action_links', 'nc_disable_plugin_deactivation', 10, 2 );
 function nc_disable_plugin_deactivation( $actions, $plugin_file ) {
-  // Remove action "edit" from all plugins
+  /** Remove action "edit" from all plugins */
   unset( $actions['edit'] );
 
-  // Remove action "deactivate" from important plugins
+  /** Remove action "deactivate" from important plugins */
   $important_plugins = array(
     'advanced-custom-fields-pro/acf.php',
     'contact-form-7/wp-contact-form-7.php',
