@@ -5,14 +5,19 @@
 function initAjax() {
   $('.js-form').on('submit', function(e){
     e.preventDefault();
-    var form = $(this);
-    var action = form.data('action');
+    let form     = $(this);
+    let action   = form.data('action');
+    let postdata = form.serialize();
+    let button   = form.find('input[type=submit], button[type=submit]');
+
+    button.prop('disabled', true);
+    form.addClass('g-loading');
 
     $.ajax({
       type: 'POST',
       url: ncVar.ajax_url,
       data: {
-        'postdata' : form.serialize(),
+        'postdata' : postdata,
         'action'   : action,
       },
       dataType: 'json',
@@ -22,7 +27,11 @@ function initAjax() {
         } else {
           console.warn( result.data.error );
         }
+
+        button.prop('disabled', false);
+        form.removeClass('g-loading');
       }
     });
   });
 }
+*/
