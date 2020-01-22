@@ -18,7 +18,7 @@ function ncAction_callback() {
     if ( ! wp_verify_nonce( $args['_wpnonce'] ) ) {
       $result['error'] = 'Nonce failed!';
     } else {
-      $result = $args;
+      $result['args'] = $args;
     }
   }
 
