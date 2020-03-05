@@ -16,3 +16,22 @@ add_filter( 'excerpt_length', 'nc_excerpt_length' );
 function nc_excerpt_length( $length ) {
   return 20;
 }
+
+
+/**
+ * Modify nav menu objects
+ */
+add_filter( 'wp_nav_menu_objects', 'nc_nav_menu_objects', 10, 2 );
+function nc_nav_menu_objects( $sorted_menu_items, $args ) {
+  foreach ( $sorted_menu_items as $item ) {
+    if ( function_exists( 'get_field' ) && get_field( '_nc_class', $item->ID ) ) {
+      $item->classes[] = get_field( '_nc_class', $item->ID );
+    }
+
+    if ( function_exists( 'get_field' ) && get_field( '_nc_anchor', $item->ID ) ) {
+      $item->url .= '#' . get_field( '_nc_anchor', $item->ID );
+    }
+  }
+
+  return $sorted_menu_items;
+}
