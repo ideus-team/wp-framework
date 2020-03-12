@@ -25,4 +25,8 @@
     @include hover-underline;
     color: inherit;
   }
+
+  &__descr {
+    display: none;
+  }
 }
