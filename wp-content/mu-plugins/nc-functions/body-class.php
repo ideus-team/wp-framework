@@ -29,7 +29,10 @@ function nc_body_class( $classes ) {
       $post_data = get_post( $post->ID, ARRAY_A );
       $slug = $post_data['post_name'];
     }
-    $classes[] = '-page_' . $slug;
+
+    if ( isset( $slug ) ) {
+      $classes[] = '-page_' . $slug;
+    }
   }
 
   return $classes;
