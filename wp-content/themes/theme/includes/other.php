@@ -37,3 +37,12 @@ function nc_nav_menu_objects( $sorted_menu_items, $args ) {
 
   return $sorted_menu_items;
 }
+
+
+/**
+ * Change login header URL
+ */
+add_filter( 'login_headerurl', 'nc_change_login_header_url' );
+function nc_change_login_header_url( $login_header_url ) {
+  return home_url();
+}
