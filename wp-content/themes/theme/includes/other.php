@@ -40,6 +40,19 @@ function nc_nav_menu_objects( $sorted_menu_items, $args ) {
 
 
 /**
+ * Modify nav menu link attributes
+ */
+add_filter( 'nav_menu_link_attributes', 'nc_nav_menu_link_attributes', 10, 4 );
+function nc_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
+  if ( function_exists( 'get_field' ) && get_field( '_nc_modal', $item->ID ) ) {
+    $atts['class'] .= ' js-modal';
+  }
+
+  return $atts;
+}
+
+
+/**
  * Change login header URL
  */
 add_filter( 'login_headerurl', 'nc_change_login_header_url' );
