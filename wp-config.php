@@ -85,7 +85,9 @@ $table_prefix = 'wp_';
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 if ( ! file_exists( dirname( __FILE__ ) . '/wp-config-dev.php' ) ) {
-  define( 'WP_DEBUG', false );
+  if ( isset( $_GET['debug'] ) && 'debug' == $_GET['debug'] ) {
+    define( 'WP_DEBUG', true );
+  }
 }
 
 
