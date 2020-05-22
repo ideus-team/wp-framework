@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: OTF Regenerate Thumbnails
-Plugin URI: http://github.com
+Plugin URI: https://github.com/gambitph/WP-OTF-Regenerate-Thumbnails
 Description: Automatically regenerates your thumbnails on the fly (OTF) after changing the thumbnail sizes or switching themes.
 Author: Benjamin Intal - Gambit Technologies Inc
 Version: 0.3
