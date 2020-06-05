@@ -28,9 +28,6 @@
   <?php get_template_part( 'template-parts/scripts/header' ); ?>
 </head>
 <body <?php body_class(); ?>>
-  <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
 
   <?php get_template_part( 'template-parts/scripts/body' ); ?>
 
