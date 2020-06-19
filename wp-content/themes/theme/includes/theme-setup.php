@@ -69,4 +69,9 @@ function nc_setup() {
     'header' => 'Header Menu',
     'footer' => 'Footer Menu',
   ) );
+
+  /**
+   * WooCommerce support
+   */
+  // add_theme_support( 'woocommerce' );
 }
