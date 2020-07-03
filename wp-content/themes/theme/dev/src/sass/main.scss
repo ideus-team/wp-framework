@@ -27,13 +27,6 @@
 @import 'blocks/common';
 @import 'blocks/b-text';
 
-/* Wordpress only code */
-@import 'blocks/wpcf7';
-@import 'blocks/widgets';
-@import 'blocks/comments';
-@import 'blocks/b-breadcrumbs';
-@import 'blocks/b-pagination';
-
 @import 'blocks/b-siteHeader';
 @import 'blocks/b-siteLogo';
 @import 'blocks/b-siteSearch';
@@ -42,6 +35,13 @@
 @import 'blocks/b-bottomNavigation';
 @import 'blocks/b-siteCopyright';
 @import 'blocks/b-developerCopyright';
+
+/* Wordpress only code */
+@import 'blocks/wpcf7';
+@import 'blocks/widgets';
+@import 'blocks/comments';
+@import 'blocks/b-breadcrumbs';
+@import 'blocks/b-pagination';
 
 
 /**
