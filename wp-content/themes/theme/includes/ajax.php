@@ -16,7 +16,7 @@ function ncAction_callback() {
     ) );
 
     if ( ! wp_verify_nonce( $args['_wpnonce'] ) ) {
-      $result['error'] = 'Nonce failed!';
+      $result['error'] = 'An error occurred, please refresh the page and try again';
     } else {
       $result['args'] = $args;
     }
