@@ -47,8 +47,7 @@ function nc_post_blog() {
 function nc_loop_modify( $query ) {
   if ( $query->is_main_query() ) {
     if ( isset( $query->query['post_type'] ) && in_array( $query->query['post_type'], array( 'post_type' ) ) ) {
-      $query->set( 'orderby', 'menu_order' );
-      $query->set( 'order', 'ASC' );
+      $query->set( 'orderby', array( 'menu_order' => 'ASC' ) );
     }
   }
 }
