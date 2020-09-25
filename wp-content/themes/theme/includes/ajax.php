@@ -1,4 +1,10 @@
 <?php
+/** include all AJAX files */
+foreach ( glob( get_stylesheet_directory() . '/includes/ajax/*.php' ) as $file ) {
+  require_once( $file );
+}
+
+
 /**
  * Processing AJAX request, type: ncAction
  */
