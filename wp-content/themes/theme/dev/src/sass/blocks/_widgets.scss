@@ -37,12 +37,12 @@
 
 /* tag-cloud widget */
 .widget_links {}
-.widget_links li:after {}
-.widget_links li:before {}
+.widget_links li::after {}
+.widget_links li::before {}
 .widget_tag_cloud {}
 .widget_tag_cloud a {}
-.widget_tag_cloud a:after {}
-.widget_tag_cloud a:before {}
+.widget_tag_cloud a::after {}
+.widget_tag_cloud a::before {}
 
 /* calendar widget */
 .widget_calendar {}

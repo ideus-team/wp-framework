@@ -12,12 +12,12 @@
   &__item {
     display: inline-block;
 
-    &:before {
+    &::before {
       content: ' | ';
     }
 
     &:first-child {
-      &:before {
+      &::before {
         display: none;
       }
     }
