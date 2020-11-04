@@ -42,7 +42,7 @@ function nc_setup() {
   /**
    * This feature allows the use of HTML5 markup for the search forms, comment forms, comment lists, gallery, and caption.
    */
-  add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+  add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'script' ) );
 
   /**
    * This feature enables Post Thumbnails support for a Theme.
