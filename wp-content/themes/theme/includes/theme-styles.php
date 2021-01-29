@@ -33,3 +33,12 @@ function nc_login_styles() {
     wp_enqueue_style( 'css-login', get_theme_file_uri( 'assets/css/login.min.css' ), false, filemtime( get_theme_file_path( 'assets/css/login.min.css' ) ) );
   }
 }
+
+
+/**
+ * Preload fonts
+ */
+// add_action( 'wp_head', 'nc_preload_fonts', 5 );
+function nc_preload_fonts() {
+  echo '<link rel="preload" href="' . get_theme_file_uri( 'assets/fonts/fontname.woff2' ) . '" as="font" type="font/woff2" crossorigin="anonymous">';
+}
