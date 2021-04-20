@@ -1,6 +1,8 @@
 <!doctype html>
 <html class="l-html no-js" <?php language_attributes(); ?>>
 <head>
+  <?php get_template_part( 'template-parts/scripts/header-start' ); ?>
+
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
