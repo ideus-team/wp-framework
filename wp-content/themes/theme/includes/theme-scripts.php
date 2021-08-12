@@ -16,7 +16,7 @@ function nc_scripts() {
   /**
    * Variables for JS (ncVar.ajax_url, ncVar.home_url, ncVar.theme_url, etc.)
    */
-  wp_localize_script( 'js-main', 'ncVar', array(
+  wp_localize_script( 'js-main', 'nc_params', array(
     'ajax_url'  => admin_url( 'admin-ajax.php' ),
     'home_url'  => home_url(),
     'theme_url' => get_stylesheet_directory_uri(),
