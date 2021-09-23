@@ -13,61 +13,82 @@
     width: 64px;
     height: 64px;
     background-image: url('../img/loading-ico.gif');
-
-    &.is-active {
-      visibility: visible;
-    }
-  }
-
-  .ajax-error {
-    display: none;
-  }
-
-  .placeheld {
-    color: #888;
   }
 
   .screen-reader-response {
-    display: none;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    width: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
   }
-}
 
-.wpcf7-response-output {
-  margin: .4em;
-  text-align: center;
-  font-weight: bold;
-  font-size: 14px;
-}
+  form {
+    .wpcf7-response-output {
+      margin: .4em;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
 
-.wpcf7-mail-sent-ok {
-  color: #398f14;
-}
+    &.init .wpcf7-response-output,
+    &.resetting .wpcf7-response-output,
+    &.submitting .wpcf7-response-output {
+      display: none;
+    }
 
-.wpcf7-mail-sent-ng {
-  color: #f00;
-}
+    &.sent .wpcf7-response-output {
+      color: #398f14;
+    }
 
-.wpcf7-spam-blocked {
-  color: #ffa500;
-}
+    &.failed .wpcf7-response-output,
+    &.aborted .wpcf7-response-output {
+      color: #f00;
+    }
 
-.wpcf7-validation-errors {
-  color: #f00;
+    &.spam .wpcf7-response-output {
+      color: #ffa500;
+    }
+
+    &.invalid .wpcf7-response-output,
+    &.unaccepted .wpcf7-response-output {
+      color: #f00;
+    }
+
+    &.submitting .ajax-loader {
+      visibility: visible;
+    }
+  }
 }
 
 .wpcf7-form-control-wrap {
   position: relative;
 }
 
-.wpcf7-select:invalid + .jq-selectbox__select,
-.wpcf7-not-valid {
-  border: 1px solid #f00 !important;
-}
-
 .wpcf7-not-valid-tip {
   display: none;
   color: #f00;
   font-size: 12px;
+  font-weight: normal;
+
+  .use-floating-validation-tip & {
+    position: relative;
+    top: -2ex;
+    left: 1em;
+    z-index: 100;
+    border: 1px solid #dc3232;
+    background: #fff;
+    padding: .2em .8em;
+    width: 24em;
+  }
+}
+
+.wpcf7-select:invalid + .jq-selectbox__select,
+.wpcf7-not-valid {
+  border: 1px solid #f00 !important;
 }
 
 .wpcf7-list-item {
@@ -76,8 +97,4 @@
   &:first-child {
     margin-left: 0;
   }
-}
-
-.wpcf7-display-none {
-  display: none;
 }
