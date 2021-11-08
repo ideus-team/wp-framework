@@ -21,9 +21,9 @@ function nc_body_class( $classes ) {
     if ( is_404() ) {
       // Page 404
       $slug = '404';
-    } elseif ( is_home() ) {
+    } elseif ( is_home() && $queried_object = get_queried_object() ) {
       // Posts page
-      $slug = get_queried_object()->post_name;
+      $slug = $queried_object->post_name;
     } elseif ( $post ) {
       // Inner Page
       $post_data = get_post( $post->ID, ARRAY_A );
