@@ -110,6 +110,11 @@ if ( ! file_exists( dirname( __FILE__ ) . '/wp-config-dev.php' ) ) {
 define( 'WPCF7_AUTOP',    false );
 define( 'WPCF7_LOAD_CSS', false );
 
+/**
+ * ACF Pro License Key
+ */
+// define( 'ACF_PRO_LICENSE', 'yourkeyhere' );
+
 
 /* That's all, stop editing! Happy publishing. */
 
