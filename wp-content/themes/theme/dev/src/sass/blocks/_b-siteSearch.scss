@@ -1,10 +1,7 @@
-/**
- * @section siteSearch
- */
 .l-siteSearch {
+  right: 20px;
   float: right;
   overflow: hidden;
-  right: 20px;
   width: 200px;
 }
 .b-siteSearch {
@@ -13,7 +10,9 @@
     display: block;
   }
 
-  &__label {}
+  &__label {
+
+  }
 
   &__input {
     box-sizing: border-box !important;

@@ -1,33 +1,33 @@
 /**
- * @section WordPress Default Widgets
+ * WordPress Default Widgets
  */
 .widget {}
 
-/* links widget */
+/** links widget */
 .widget_links {}
 .widget_links ul {}
 .widget_links ul li {}
 .widget_links ul li a {}
 
-/* meta widget */
+/** meta widget */
 .widget_meta {}
 .widget_meta ul {}
 .widget_meta ul li {}
 .widget_meta ul li a {}
 
-/* pages widget */
+/** pages widget */
 .widget_pages {}
 .widget_pages ul {}
 .widget_pages ul li {}
 .widget_pages ul li a {}
 
-/* recent-posts widget */
+/** recent-posts widget */
 .widget_recent_entries {}
 .widget_recent_entries ul {}
 .widget_recent_entries ul li {}
 .widget_recent_entries ul li a {}
 
-/* archives widget */
+/** archives widget */
 .widget_archive {}
 .widget_archive ul {}
 .widget_archive ul li {}
@@ -35,7 +35,7 @@
 .widget_archive select {}
 .widget_archive option {}
 
-/* tag-cloud widget */
+/** tag-cloud widget */
 .widget_links {}
 .widget_links li::after {}
 .widget_links li::before {}
@@ -44,7 +44,7 @@
 .widget_tag_cloud a::after {}
 .widget_tag_cloud a::before {}
 
-/* calendar widget */
+/** calendar widget */
 .widget_calendar {}
 #calendar_wrap {}
 #calendar_wrap th {}
@@ -58,7 +58,7 @@
 #wp-calendar #next a {}
 #wp-calendar #prev a {}
 
-/* category widget */
+/** category widget */
 .widget_categories {}
 .widget_categories ul {}
 .widget_categories ul li {}
@@ -73,19 +73,19 @@
 .widget_categories .level-2 {}
 .widget_categories .level-3 {}
 
-/* recent-comments widget */
+/** recent-comments widget */
 .recentcomments {}
 #recentcomments {}
 #recentcomments li {}
 #recentcomments li a {}
 .widget_recent_comments {}
 
-/* search widget */
+/** search widget */
 #searchform {}
 .widget_search {}
 .screen-reader-text {}
 
-/* text widget */
+/** text widget */
 .textwidget {}
 .widget_text {}
 .textwidget p {}

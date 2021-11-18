@@ -1,13 +1,10 @@
-/**
- * @section siteCopyright
- */
 .l-siteCopyright {
   color: #464646;
   font: 11px $Arial;
 }
 .b-siteCopyright {
-  margin: 15px 0;
   @include first-last-margin;
+  margin: 15px 0;
 
   &__link {
     @include hover-underline;
