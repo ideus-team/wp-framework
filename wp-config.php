@@ -27,7 +27,9 @@ define( 'WP_ENVIRONMENT_TYPE', 'development' );
 /**
  * Include file with MySQL and other environment settings
  */
-include( dirname( __FILE__ ) . '/wp-config.' . WP_ENVIRONMENT_TYPE . '.php' );
+if ( file_exists( dirname( __FILE__ ) . '/wp-config.' . WP_ENVIRONMENT_TYPE . '.php' ) ) {
+  include( dirname( __FILE__ ) . '/wp-config.' . WP_ENVIRONMENT_TYPE . '.php' );
+}
 
 /**#@+
  * Authentication unique keys and salts.
