@@ -101,3 +101,24 @@ if ( ! function_exists( 'the_slug' ) ) {
     echo $slug;
   }
 }
+
+
+/**
+ * Insert something after paragraph #
+ */
+function nc_insert_after_paragraph( $insertion, $paragraph_id, $content ) {
+  $closing_p = '</p>';
+  $paragraphs = explode( $closing_p, $content );
+
+  foreach ($paragraphs as $index => $paragraph) {
+    if ( trim( $paragraph ) ) {
+      $paragraphs[$index] .= $closing_p;
+    }
+
+    if ( $paragraph_id == $index + 1 ) {
+      $paragraphs[$index] .= $insertion;
+    }
+  }
+
+  return implode( '', $paragraphs );
+}
