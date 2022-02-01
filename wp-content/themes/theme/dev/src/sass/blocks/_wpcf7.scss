@@ -4,7 +4,7 @@
 .wpcf7 {
   position: relative;
 
-  .ajax-loader {
+  .wpcf7-spinner {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -19,11 +19,13 @@
     position: absolute;
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
     height: 1px;
     width: 1px;
-    margin: 0;
+    margin: -1px;
     padding: 0;
     border: 0;
+    word-wrap: normal !important;
   }
 
   form {
@@ -54,11 +56,12 @@
     }
 
     &.invalid .wpcf7-response-output,
-    &.unaccepted .wpcf7-response-output {
+    &.unaccepted .wpcf7-response-output,
+    &.payment-required .wpcf7-response-output {
       color: #f00;
     }
 
-    &.submitting .ajax-loader {
+    &.submitting .wpcf7-spinner {
       visibility: visible;
     }
   }
