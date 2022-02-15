@@ -97,6 +97,12 @@ define( 'WPCF7_LOAD_CSS', false );
 
 
 /**
+ * Stop WP installing core plugins & themes
+ */
+define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
+
+
+/**
  * ACF Pro License Key
  */
 // define( 'ACF_PRO_LICENSE', 'yourkeyhere' );
