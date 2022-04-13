@@ -52,7 +52,7 @@ function nc_pagenavi( $args = array() ) {
     '',
   );
 
-  if ($max > 1) {
+  if ( $max > 1 ) {
     $pages .= '<div class="' . $args['class'] . ( $args['modifier'] ? ' ' . $args['modifier'] : '' ) . '">' . "\r";
 
     if ( $args['found'] ) {
