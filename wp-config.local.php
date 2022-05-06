@@ -18,8 +18,8 @@ define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );
 
 
-// define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] );
-// define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
+define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] );
+define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
 
 
 /**
