@@ -42,3 +42,13 @@ function nc_login_styles() {
 function nc_preload_fonts() {
   echo '<link rel="preload" href="' . get_theme_file_uri( 'assets/fonts/fontname.woff2' ) . '" as="font" type="font/woff2" crossorigin="anonymous">';
 }
+
+
+/**
+ * Remove global styles
+ */
+add_action( 'init', 'nc_remove_global_css' );
+function nc_remove_global_css() {
+  remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
+  remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+}
