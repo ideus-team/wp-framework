@@ -1,5 +1,19 @@
 <?php
 /**
+ * Custom except
+ */
+function nc_excerpt( $args = array() ) {
+  $args = wp_parse_args( $args, array(
+    'num_words' => 25,
+    'more'      => '… →',
+  ) );
+
+  $excerpt = wp_trim_words( get_the_content(), $args['num_words'], $args['more'] );
+  echo apply_filters( 'the_excerpt', $excerpt );
+}
+
+
+/**
  * Fix phone number for links
  */
 function nc_tel( $phone = '' ) {
