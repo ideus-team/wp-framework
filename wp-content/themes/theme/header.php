@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="l-html no-js" <?php language_attributes(); ?>>
+<html class="l-html" <?php language_attributes(); ?>>
 <head>
   <?php get_template_part( 'template-parts/scripts/header-start' ); ?>
 
