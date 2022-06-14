@@ -106,7 +106,7 @@ class Kama_Breadcrumbs {
 
       $wrappatt  = $mark['wrappatt'];
       $arg->linkpatt  = $arg->nofollow ? str_replace( '<a ', '<a rel="nofollow"', $mark['linkpatt'] ) : $mark['linkpatt'];
-      $arg->sep      .= $mark['sep_after'] . "\n" ;
+      $arg->sep      .= $mark['sep_after'];
     }
 
     $linkpatt = $arg->linkpatt; // упростим
@@ -355,7 +355,7 @@ class Kama_Breadcrumbs {
     return '';
   }
 
-  // добалвяет заголовок к переданному тексту, с учетом всех опций. Добавляет разделитель в начало, если надо.
+  // добавляет заголовок к переданному тексту, с учетом всех опций. Добавляет разделитель в начало, если надо.
   function _add_title( $add_to, $obj, $term_title = '' ) {
     $arg = & $this->arg; // упростим…
     $title = $term_title ? $term_title : esc_html( $obj->post_title ); // $term_title чиститься отдельно, теги могут быть…
