@@ -123,10 +123,10 @@ class Kama_Breadcrumbs {
       $ptype = & $wp_post_types[ $post->post_type ];
     }
 
-    // paged
+    /** paged */
     $arg->pg_end = '';
     if ( ( $paged_num = get_query_var( 'paged' ) ) || ( $paged_num = get_query_var( 'page' ) ) ) {
-      $arg->pg_end = ' ' . sprintf( $loc->paged, (int) $paged_num ) . $sep;
+      $arg->pg_end = $sep . sprintf( $arg->title_patt, sprintf( $loc->paged, (int) $paged_num ) );
     }
 
     $pg_end = $arg->pg_end; // упростим

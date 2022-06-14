@@ -52,7 +52,7 @@ add_filter( 'kama_breadcrumbs_default_loc', 'nc_breadcrumbs_default_loc' );
 function nc_breadcrumbs_default_loc( $l10n ) {
   $l10n_new = array(
     'home'       => 'Home',
-    'paged'      => '(Page %d)',
+    'paged'      => 'Page %d',
     '_404'       => 'Error 404',
     'search'     => 'Search results for "<strong>%s</strong>"',
     'author'     => 'Author archive: <strong>%s</strong>',
