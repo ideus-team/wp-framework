@@ -123,10 +123,12 @@ class Kama_Breadcrumbs {
       $ptype = & $wp_post_types[ $post->post_type ];
     }
 
-    /** paged */
+    /** paged & custom search */
     $arg->pg_end = '';
     if ( ( $paged_num = get_query_var( 'paged' ) ) || ( $paged_num = get_query_var( 'page' ) ) ) {
       $arg->pg_end = $sep . sprintf( $arg->title_patt, sprintf( $loc->paged, (int) $paged_num ) );
+    } elseif ( get_query_var( 'search' ) ) {
+      $arg->pg_end = $sep . sprintf( $arg->title_patt, sprintf( $loc->search, esc_html( get_query_var( 'search' ) ) ) );
     }
 
     $pg_end = $arg->pg_end; // упростим
@@ -359,8 +361,8 @@ class Kama_Breadcrumbs {
     $title = $term_title ? $term_title : esc_html( $obj->post_title ); // $term_title чиститься отдельно, теги могут быть…
     $show_title = $term_title ? $arg->show_term_title : $arg->show_post_title;
 
-    // пагинация
     if ( $arg->pg_end ) {
+      /** пагинация или кастомный поиск */
       $link = $term_title ? get_term_link( $obj ) : get_permalink( $obj );
       $add_to .= ( $add_to ? $arg->sep : '' ) . sprintf( $arg->linkpatt, $link, $title ) . $arg->pg_end;
     } elseif ( $add_to ) {
