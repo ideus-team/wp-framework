@@ -36,6 +36,23 @@ function nc_login_styles() {
 
 
 /**
+ * Google fonts preconnect
+ */
+add_filter( 'wp_resource_hints', 'nc_preconnect_googlefonts', 10, 2 );
+function nc_preconnect_googlefonts( $urls, $relation_type ) {
+  if ( wp_style_is( 'googlefonts' ) && 'preconnect' === $relation_type ) {
+    $urls[] = 'https://fonts.googleapis.com';
+    $urls[] = array(
+      'href'        => 'https://fonts.gstatic.com',
+      'crossorigin' => 'anonymous',
+    );
+  }
+
+  return $urls;
+}
+
+
+/**
  * Preload fonts
  */
 // add_action( 'wp_head', 'nc_preload_fonts', 5 );
