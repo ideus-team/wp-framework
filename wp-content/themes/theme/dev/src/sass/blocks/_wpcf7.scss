@@ -95,7 +95,7 @@
 }
 
 .wpcf7-select:invalid + .jq-selectbox__select,
-.wpcf7-not-valid {
+.wpcf7-not-valid:not(.wpcf7-select) {
   border: 1px solid #f00 !important;
 }
 
