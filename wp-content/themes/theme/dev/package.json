@@ -7,6 +7,8 @@
     "@babel/preset-env": "7.18.2",
     "autoprefixer": "9.8.8",
     "cssnano": "4.1.11",
+    "dart-sass": "1.25.0",
+    "fibers": "5.0.1",
     "grunt": "1.5.3",
     "grunt-babel": "8.0.0",
     "grunt-concurrent": "3.0.0",
@@ -24,7 +26,6 @@
     "grunt-terser": "2.0.0",
     "jshint-stylish": "2.2.1",
     "load-grunt-config": "3.0.2",
-    "node-sass": "7.0.1",
     "pixrem": "5.0.0"
   },
   "browserslist": [
