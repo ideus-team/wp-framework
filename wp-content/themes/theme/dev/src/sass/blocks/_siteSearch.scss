@@ -1,9 +1,7 @@
 .l-siteSearch {
-  right: 20px;
-  float: right;
-  overflow: hidden;
-  width: 200px;
+
 }
+
 .b-siteSearch {
 
   &__search {
@@ -15,7 +13,6 @@
   }
 
   &__input {
-    box-sizing: border-box !important;
     margin: 0;
     width: 100%;
   }
