@@ -5,28 +5,41 @@
 
 @import 'mixins';
 
-/* Project files… */
+/**
+ * Settings
+ */
 @import 'fonts';
 @import 'settings';
 
-/* Generated… */
+/**
+ * Generated
+ */
 @import 'sprites';
 
-/* Plugins */
+/**
+ * Plugins
+ */
 
 
 /* ==|== primary styles =====================================================
    Authors: %Author Name%
    ========================================================================== */
 
-/* Framework Common Libraries */
-@import 'other/g-blocks';
+/**
+ * Framework Common Libraries
+ */
+@import "other/g-blocks";
 
-/* Project only code */
-@import 'other/common';
+/**
+ * Project only code
+ */
+@import "other/common";
 @import 'other/plugins';
-@import 'blocks/text';
+@import "blocks/text";
 
+/**
+ * Blocks
+ */
 @import 'blocks/siteHeader';
 @import 'blocks/siteLogo';
 @import 'blocks/siteSearch';
@@ -39,13 +52,17 @@
 @import 'blocks/pagination';
 @import 'blocks/pageNav';
 
-/* Wordpress only code */
+/**
+ * Wordpress only code
+ */
 @import 'other/wpcf7';
 @import 'other/widgets';
 @import 'other/comments';
-
+@import 'blocks/breadcrumbs';
+@import 'blocks/pagination';
+@import 'blocks/pageNav';
 
 /**
  * Print styles
  */
-@import 'other/print';
+@import "print";
