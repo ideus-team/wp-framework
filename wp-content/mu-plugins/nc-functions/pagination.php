@@ -6,17 +6,18 @@ function nc_pagenavi( $args = array() ) {
   global $wp_query, $wp_rewrite;
 
   $args = wp_parse_args( $args, array(
-    'query'     => $wp_query,
-    'mid_size'  => 1,
-    'end_size'  => 3,
-    'prev_text' => '←',
-    'next_text' => '→',
-    'type'      => 'array',
-    'class'     => 'b-pagination',
-    'modifier'  => '',
-    'found'     => false, // Show "Found N"
-    'total'     => false, // Show "Page N of N"
-    'echo'      => true,
+    'query'      => $wp_query,
+    'mid_size'   => 1,
+    'end_size'   => 3,
+    'prev_text'  => '←',
+    'next_text'  => '→',
+    'type'       => 'array',
+    'class'      => 'b-pagination',
+    'modifier'   => '',
+    'found'      => false, // Show "Found N"
+    'total'      => false, // Show "Page N of N"
+    'total_text' => false,
+    'echo'       => true,
   ) );
 
   $query = $args['query'];
@@ -58,8 +59,13 @@ function nc_pagenavi( $args = array() ) {
     if ( $args['found'] ) {
       $pages .= '<span class="' . $args['class'] . '__total">Found ' . $query->found_posts . '</span>' . "\r";
     }
+
     if ( $args['total'] ) {
-      $pages .= '<span class="' . $args['class'] . '__pages">Page ' . $current . ' of ' . $max . '</span>' . "\r";
+      if ( ! $args['total_text'] ) {
+        $args['total_text'] = 'Page ' . $current . ' of ' . $max;
+      }
+
+      $pages .= '<span class="' . $args['class'] . '__pages">' . $args['total_text'] . '</span>' . "\r";
     }
 
     $pages .= '<ul class="' . $args['class'] . '__list">' . "\r";
