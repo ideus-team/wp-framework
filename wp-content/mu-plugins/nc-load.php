@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: WP-framework
-Plugin URI:
-Description: Functions for WP-framework
-Author: iDeus
-Version:
-Author URI: http://ideus.biz
-*/
+/**
+ * Plugin Name: WP-framework
+ * Plugin URI:
+ * Description: Functions for WP-framework
+ * Author: iDeus
+ * Version: 1.10.0
+ * Author URI: https://ideus.biz
+ */
 
 // Cookie Change
 require WPMU_PLUGIN_DIR . '/nc-functions/cookie.php';
