@@ -31,3 +31,6 @@ require WPMU_PLUGIN_DIR . '/nc-functions/taxonomy.php';
 
 // Breadcrumbs
 require WPMU_PLUGIN_DIR . '/nc-functions/breadcrumbs.php';
+
+// Development
+require WPMU_PLUGIN_DIR . '/nc-functions/development.php';
