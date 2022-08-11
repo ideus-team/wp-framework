@@ -5,6 +5,7 @@ Thumbs.db
 .ftpquota
 .DS_Store
 .idea
+.vscode
 
 # .gitignore template for Wordpress: https://github.com/github/gitignore/blob/master/WordPress.gitignore
 *.log
