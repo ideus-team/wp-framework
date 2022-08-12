@@ -63,6 +63,21 @@ function nc_get_youtube_id( $url ) {
 
 
 /**
+ * Get Vimeo Video ID
+ * Source: https://gist.github.com/anjan011/1fcecdc236594e6d700f
+ */
+function nc_get_vimeo_id( $url ) {
+  $video_id = false;
+
+  if ( preg_match( "/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/", $url, $output_array ) ) {
+    $video_id = $output_array[5];
+  }
+
+  return $video_id;
+}
+
+
+/**
  * Get remote JSON & cache with Transients API
  */
 function nc_remote_api_get( $api_url, $expiration = HOUR_IN_SECONDS ) {
