@@ -69,3 +69,12 @@ function nc_remove_global_css() {
   remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
   remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
 }
+
+
+/**
+ * Remove Gutenberg CSS
+ */
+add_action( 'wp_print_styles', 'nc_deregister_styles', 100 );
+function nc_deregister_styles() {
+  wp_dequeue_style( 'wp-block-library' );
+}
