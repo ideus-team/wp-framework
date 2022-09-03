@@ -279,7 +279,7 @@ class Kama_Breadcrumbs {
           }
         }
       } elseif ( is_attachment() ) {
-        /** влоежния от записи без терминов */
+        /** вложения от записи без терминов */
         $parent = get_post( $post->post_parent );
         $parent_link = sprintf( $linkpatt, get_permalink( $parent ), esc_html( $parent->post_title ) );
         $_out = $parent_link;
