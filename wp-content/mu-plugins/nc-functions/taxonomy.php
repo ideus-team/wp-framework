@@ -1,8 +1,7 @@
 <?php
 /*
 // Example Taxonomy
-add_action( 'init', 'nc_taxonomy_blog', 0 );
-function nc_taxonomy_blog() {
+add_action( 'init', function() {
   $labels = array(
     'name'              => __( 'Blog Categories' ),
     'singular_name'     => __( 'Category' ),
@@ -29,5 +28,5 @@ function nc_taxonomy_blog() {
     'query_var'          => true,
   );
   register_taxonomy( 'blog-cat', 'blog', $args );
-}
+}, 0 );
 */

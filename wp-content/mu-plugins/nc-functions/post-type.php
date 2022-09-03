@@ -1,8 +1,7 @@
 <?php
 /*
 // Example Post Type
-add_action( 'init', 'nc_post_blog' );
-function nc_post_blog() {
+add_action( 'init', function() {
   $labels = array(
     'name'               => __( 'Our Blog' ),
     'singular_name'      => __( 'Article' ),
@@ -36,7 +35,7 @@ function nc_post_blog() {
     'query_var'           => true,
   );
   register_post_type( 'blog', $args );
-}
+} );
 */
 
 
