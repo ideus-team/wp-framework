@@ -39,11 +39,11 @@ class Kama_Breadcrumbs {
 
   // Параметры по умолчанию
   static $args = array(
-    'on_front_page'   => true,  // выводить крошки на главной странице
-    'show_post_title' => true,  // показывать ли название записи в конце (последний элемент). Для записей, страниц, вложений
-    'show_term_title' => true,  // показывать ли название элемента таксономии в конце (последний элемент). Для меток, рубрик и других такс
+    'on_front_page'   => true, // выводить крошки на главной странице
+    'show_post_title' => true, // показывать ли название записи в конце (последний элемент). Для записей, страниц, вложений
+    'show_term_title' => true, // показывать ли название элемента таксономии в конце (последний элемент). Для меток, рубрик и других такс
     'title_patt'      => '<li class="b-breadcrumbs__item -state_current">%s</li>', // шаблон для последнего заголовка. Если включено: show_post_title или show_term_title
-    'last_sep'        => true,  // показывать последний разделитель, когда заголовок в конце не отображается
+    'last_sep'        => true, // показывать последний разделитель, когда заголовок в конце не отображается
     'markup'          => 'schema.org', // 'markup' - микроразметка. Может быть: 'rdf.data-vocabulary.org', 'schema.org', '' - без микроразметки
                                        // или можно указать свой массив разметки:
                                        // array( 'wrappatt'=>'<div class="kama_breadcrumbs">%s</div>', 'linkpatt'=>'<a href="%s">%s</a>', 'sep_after'=>'', )
@@ -52,7 +52,7 @@ class Kama_Breadcrumbs {
                                   // Например: array( 'category'=>array(45,'term_name'), 'tax_name'=>array(1,2,'name') )
                                   // 'category' - такса для которой указываются приор. элементы: 45 - ID термина и 'term_name' - ярлык.
                                   // порядок 45 и 'term_name' имеет значение: чем раньше тем важнее. Все указанные термины важнее неуказанных…
-    'nofollow' => false, // добавлять rel=nofollow к ссылкам?
+    'nofollow'        => false, // добавлять rel=nofollow к ссылкам?
 
     // служебные
     'sep'             => '',
@@ -77,7 +77,7 @@ class Kama_Breadcrumbs {
 
     // микроразметка ---
     if ( 1 ) {
-      $mark = & $arg->markup;
+      $mark = $arg->markup;
 
       if ( ! $mark ) {
         // Разметка по умолчанию
@@ -100,8 +100,22 @@ class Kama_Breadcrumbs {
           'linkpatt'   => '<li class="b-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="b-breadcrumbs__link" href="%s" itemprop="item"><span class="b-breadcrumbs__name" itemprop="name">%s</span></a>',
           'sep_after'  => '</li>',
         );
+      } elseif ( $mark === 'ld+json' ) {
+        // ld+json
+        $mark = array(
+          'wrappatt'   => '<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ %s ]}</script>',
+          'linkpatt'   => '{ "@type": "ListItem", "item": "%s", "name": "%s"',
+          'sep_after'  => '}, ',
+        );
       } elseif ( ! is_array( $mark ) ) {
         die( __CLASS__ . ': "markup" parameter must be array…');
+      }
+
+      /** якщо це ld+json, примусово замінимо шаблон для останнього заголовка */
+      if ( 'ld+json' == $arg->markup ) {
+        $arg->show_post_title = true;
+        $arg->show_term_title = true;
+        $arg->title_patt      = '{ "@type": "ListItem", "name": "%s" }';
       }
 
       $wrappatt  = $mark['wrappatt'];

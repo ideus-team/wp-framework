@@ -71,23 +71,41 @@ function nc_breadcrumbs_default_loc( $l10n ) {
 
 
 /**
- * Breadcrumbs schema.org position
+ * Breadcrumbs position for schema.org & ld+json
  */
-add_action( 'kama_breadcrumbs', 'nc_breadcrumbs_position' );
-function nc_breadcrumbs_position( $out ) {
-  $breadcrumbs_old = explode( '</a>', $out );
-  $count = count( $breadcrumbs_old ) - 1;
+add_action( 'kama_breadcrumbs', 'nc_breadcrumbs_position', 10, 4 );
+function nc_breadcrumbs_position( $out, $sep, $loc, $arg ) {
+  if ( 'schema.org' == $arg->markup ) {
+    $breadcrumbs_old = explode( '</a>', $out );
+    $count = count( $breadcrumbs_old ) - 1;
 
-  $breadcrumbs_new = '';
-  foreach ( $breadcrumbs_old as $key => $value ) {
-    $breadcrumbs_new .= $value;
+    $breadcrumbs_new = '';
+    foreach ( $breadcrumbs_old as $key => $value ) {
+      $breadcrumbs_new .= $value;
 
-    if ( $key != $count ) {
-      $breadcrumbs_new .= '<meta itemprop="position" content="' . $key . '"></a>';
+      if ( $key != $count ) {
+        $breadcrumbs_new .= '<meta itemprop="position" content="' . $key . '"></a>';
+      }
     }
+
+    $out = $breadcrumbs_new;
+  } elseif ( 'ld+json' == $arg->markup ) {
+    $breadcrumbs_old = explode( '"@type": "ListItem",', $out );
+    $count = count( $breadcrumbs_old ) - 1;
+
+    $breadcrumbs_new = '';
+    foreach ( $breadcrumbs_old as $key => $value ) {
+      $breadcrumbs_new .= $value;
+
+      if ( $key != $count ) {
+        $breadcrumbs_new .= '"@type": "ListItem", "position": ' . $key . ',';
+      }
+    }
+
+    $out = $breadcrumbs_new;
   }
 
-  return $breadcrumbs_new;
+  return $out;
 }
 
 
