@@ -206,7 +206,7 @@ class Kama_Breadcrumbs {
         // учитывает если вложения прикрепляются к таксам древовидным - все бывает :)
         $taxonomies = get_object_taxonomies( $post->post_type );
         // оставим только древовидные и публичные, мало ли…
-        $taxonomies = array_intersect( $taxonomies, get_taxonomies( array('hierarchical' => true, 'public' => true) ) );
+        $taxonomies = array_intersect( $taxonomies, get_taxonomies( array( 'hierarchical' => true, 'public' => true, 'publicly_queryable' => true ) ) );
 
         if ( $taxonomies ) {
           // сортируем по приоритету
