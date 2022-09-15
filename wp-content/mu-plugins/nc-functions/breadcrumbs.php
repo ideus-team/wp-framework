@@ -231,7 +231,7 @@ class Kama_Breadcrumbs {
               if ( $prior_terms && count( $terms ) > 2 ) {
                 foreach ( (array) $prior_terms as $term_id ) {
                   $filter_field = is_numeric( $term_id ) ? 'term_id' : 'slug';
-                  $_terms = wp_list_filter( $terms, array( $filter_field=>$term_id ) );
+                  $_terms = wp_list_filter( $terms, array( $filter_field => $term_id ) );
 
                   if ( $_terms ) {
                     $term = array_shift( $_terms );
