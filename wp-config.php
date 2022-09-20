@@ -22,7 +22,13 @@
  * Current environment type
  * Possible values are 'local', 'development', 'staging', and 'production'
  */
-define( 'WP_ENVIRONMENT_TYPE', 'development' );
+if ( 'site.local' == $_SERVER['SERVER_NAME'] ) {
+  define( 'WP_ENVIRONMENT_TYPE', 'local' );
+} elseif ( 'site.dev' == $_SERVER['SERVER_NAME'] ) {
+  define( 'WP_ENVIRONMENT_TYPE', 'development' );
+} else {
+  define( 'WP_ENVIRONMENT_TYPE', 'production' );
+}
 
 /**
  * Include file with MySQL and other environment settings
