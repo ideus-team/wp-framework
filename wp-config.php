@@ -21,11 +21,15 @@
 /**
  * Current environment type
  * Possible values are 'local', 'development', 'staging', and 'production'
+ *
+ * You can change 'site.local', 'site.dev', 'site.staging' to your domain names
  */
 if ( 'site.local' == $_SERVER['SERVER_NAME'] ) {
   define( 'WP_ENVIRONMENT_TYPE', 'local' );
 } elseif ( 'site.dev' == $_SERVER['SERVER_NAME'] ) {
   define( 'WP_ENVIRONMENT_TYPE', 'development' );
+} elseif ( 'site.staging' == $_SERVER['SERVER_NAME'] ) {
+  define( 'WP_ENVIRONMENT_TYPE', 'staging' );
 } else {
   define( 'WP_ENVIRONMENT_TYPE', 'production' );
 }
