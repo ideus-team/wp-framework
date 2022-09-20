@@ -60,3 +60,16 @@ add_filter( 'login_headerurl', 'nc_change_login_header_url' );
 function nc_change_login_header_url( $login_header_url ) {
   return home_url();
 }
+
+
+/**
+ * Remove attachment pages
+ */
+add_action( 'wp', 'nc_remove_attachment_page' );
+function nc_remove_attachment_page() {
+  global $wp_query;
+  if ( is_attachment() ) {
+    $wp_query->set_404();
+    status_header( 404 );
+  }
+}
