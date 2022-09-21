@@ -68,8 +68,36 @@ function nc_change_login_header_url( $login_header_url ) {
 add_action( 'wp', 'nc_remove_attachment_page' );
 function nc_remove_attachment_page() {
   global $wp_query;
+
   if ( is_attachment() ) {
     $wp_query->set_404();
     status_header( 404 );
   }
+}
+
+
+/**
+ * Remove author pages
+ */
+add_action( 'wp', 'nc_remove_author_page' );
+function nc_remove_author_page() {
+  global $wp_query;
+
+  if ( is_author() ) {
+    $wp_query->set_404();
+    status_header( 404 );
+  }
+}
+
+
+/**
+ * Remove author pages from sitemap
+ */
+add_filter( 'wp_sitemaps_add_provider', 'nc_remove_author_pages_from_sitemap', 10, 2 );
+function nc_remove_author_pages_from_sitemap( $provider, $name ) {
+  if ( 'users' === $name ) {
+    return false;
+  }
+
+  return $provider;
 }
