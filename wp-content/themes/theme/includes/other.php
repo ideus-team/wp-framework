@@ -63,27 +63,13 @@ function nc_change_login_header_url( $login_header_url ) {
 
 
 /**
- * Remove attachment pages
+ * Remove attachment and author pages
  */
-add_action( 'wp', 'nc_remove_attachment_page' );
-function nc_remove_attachment_page() {
+add_action( 'wp', 'nc_remove_attachment_author_page' );
+function nc_remove_attachment_author_page() {
   global $wp_query;
 
-  if ( is_attachment() ) {
-    $wp_query->set_404();
-    status_header( 404 );
-  }
-}
-
-
-/**
- * Remove author pages
- */
-add_action( 'wp', 'nc_remove_author_page' );
-function nc_remove_author_page() {
-  global $wp_query;
-
-  if ( is_author() ) {
+  if ( is_attachment() || is_author() ) {
     $wp_query->set_404();
     status_header( 404 );
   }
