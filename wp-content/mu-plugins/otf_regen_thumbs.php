@@ -4,7 +4,7 @@ Plugin Name: OTF Regenerate Thumbnails
 Plugin URI: https://github.com/gambitph/WP-OTF-Regenerate-Thumbnails
 Description: Automatically regenerates your thumbnails on the fly (OTF) after changing the thumbnail sizes or switching themes.
 Author: Benjamin Intal - Gambit Technologies Inc
-Version: 0.3 (fixed by iDeus)
+Version: 0.3.1 (fixed by iDeus)
 Author URI: http://gambit.ph
 */
 
@@ -119,7 +119,7 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
 
 
     // If the size given is a custom array size
-    } else if ( is_array( $size ) ) {
+    } elseif ( is_array( $size ) ) {
       $imagePath = get_attached_file( $id );
 
       $crop = array_key_exists(2, $size) ? $size[2] : true;
@@ -127,27 +127,25 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
       $new_height = $size[1];
 
       // If crop is false, calculate new image dimensions
-      if (!$crop) {
+      if ( ! $crop ) {
         if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'photon' ) ) {
           add_filter( 'jetpack_photon_override_image_downsize', '__return_true' );
-          $trueData = wp_get_attachment_image_src($id, 'large');
+          $trueData = wp_get_attachment_image_src( $id, 'large' );
           remove_filter( 'jetpack_photon_override_image_downsize', '__return_true' );
-        }
-        else {
-          $trueData = wp_get_attachment_image_src($id, 'large');
+        } else {
+          $trueData = wp_get_attachment_image_src( $id, 'large' );
         }
 
-        if ($trueData[1] > $trueData[2]) {
+        if ( $trueData[1] > $trueData[2] ) {
           // Width > height
           $ratio = $trueData[1] / $size[0];
-          $new_height = round($trueData[2] / $ratio);
+          $new_height = round( $trueData[2] / $ratio );
           $new_width = $size[0];
-        }
-        else {
+        } else {
           // Height > width
           $ratio = $trueData[2] / $size[1];
           $new_height = $size[1];
-          $new_width = round($trueData[1] / $ratio);
+          $new_width = round( $trueData[1] / $ratio );
         }
       }
 
