@@ -26,7 +26,7 @@ function nc_nav_menu_objects( $sorted_menu_items, $args ) {
     if ( function_exists( 'get_field' ) && get_field( '_nc_anchor', $item->ID ) ) {
       $anchor = '#' . get_field( '_nc_anchor', $item->ID );
 
-      if ( function_exists( 'get_field' ) && get_field( '_nc_modal', $item->ID ) || home_url( $_SERVER['REQUEST_URI'] ) == $item->url ) {
+      if ( $item->url == home_url( $_SERVER['REQUEST_URI'] ) || get_field( '_nc_modal', $item->ID ) ) {
         $item->url = $anchor;
       } else {
         $item->url = $item->url . $anchor;
