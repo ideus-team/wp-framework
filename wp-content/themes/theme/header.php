@@ -47,6 +47,7 @@
         <?php if ( has_nav_menu( 'header' ) ) : ?>
 
           <nav class="l-mainNavigation">
+
             <?php
             wp_nav_menu( array(
               'theme_location' => 'header',
@@ -58,6 +59,7 @@
               'walker'         => new nc_Walker_Nav_Menu,
             ) );
             ?>
+
           </nav>
 
         <?php endif; ?>

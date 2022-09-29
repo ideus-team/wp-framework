@@ -6,6 +6,7 @@
         <?php if ( has_nav_menu( 'footer' ) ) : ?>
 
           <div class="l-bottomNavigation" role="navigation">
+
             <?php
             wp_nav_menu( array(
               'theme_location' => 'footer',
@@ -17,6 +18,7 @@
               'walker'         => new nc_Walker_Nav_Menu,
             ) );
             ?>
+
           </div>
 
         <?php endif; ?>
