@@ -28,56 +28,6 @@ function nc_tel( $phone = '' ) {
 
 
 /**
- * Get YouTube Video ID
- * Source: http://code.runnable.com/VUpjz28i-V4jETgo/get-youtube-video-id-from-url-for-php
- */
-function nc_get_youtube_id( $url ) {
-  $video_id = false;
-  $url      = parse_url( $url );
-
-  if ( strcasecmp( $url['host'], 'youtu.be' ) === 0 ) {
-    #### (dontcare)://youtu.be/<video id>
-    $video_id = substr( $url['path'], 1 );
-  } elseif ( strcasecmp( $url['host'], 'www.youtube.com' ) === 0 ) {
-    if ( isset( $url['query'] ) ) {
-      parse_str( $url['query'], $url['query'] );
-
-      if ( isset( $url['query']['v'] ) ) {
-        #### (dontcare)://www.youtube.com/(dontcare)?v=<video id>
-        $video_id = $url['query']['v'];
-      }
-    }
-
-    if ( $video_id == false ) {
-      $url['path'] = explode( '/', substr( $url['path'], 1 ) );
-
-      if ( in_array( $url['path'][0], array( 'e', 'embed', 'v' ) ) ) {
-        #### (dontcare)://www.youtube.com/(whitelist)/<video id>
-        $video_id = $url['path'][1];
-      }
-    }
-  }
-
-  return $video_id;
-}
-
-
-/**
- * Get Vimeo Video ID
- * Source: https://gist.github.com/anjan011/1fcecdc236594e6d700f
- */
-function nc_get_vimeo_id( $url ) {
-  $video_id = false;
-
-  if ( preg_match( "/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/", $url, $output_array ) ) {
-    $video_id = $output_array[5];
-  }
-
-  return $video_id;
-}
-
-
-/**
  * Get remote JSON & cache with Transients API
  */
 function nc_remote_api_get( $api_url, $expiration = HOUR_IN_SECONDS ) {
@@ -101,6 +51,66 @@ function nc_remote_api_get( $api_url, $expiration = HOUR_IN_SECONDS ) {
   }
 
   return json_decode( $body );
+}
+
+
+/**
+ * Get YouTube/Vimeo video type & ID
+ *
+ * @param  string $url YouTube or Vimeo video URL
+ * @return array       Video type & ID
+ */
+function nc_determine_video_url( $url ) {
+  $is_match_youtube = preg_match( '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/', $url, $youtube_matches );
+
+  $is_match_vimeo = preg_match( '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $url, $vimeo_matches );
+
+  if ( $is_match_youtube ) {
+    $video_type = 'youtube';
+    $video_id   = $youtube_matches[5];
+  } elseif ( $is_match_vimeo ) {
+    $video_type = 'vimeo';
+    $video_id   = $vimeo_matches[5];
+  } else {
+    $video_type = 'none';
+    $video_id   = 0;
+  }
+
+  $data = array(
+    'type' => $video_type,
+    'id'   => $video_id,
+  );
+
+  return $data;
+}
+
+
+/**
+ * Get YouTube thumbnail
+ *
+ * @param  string $video_id YouTube video ID
+ * @param  string $size     Thumbnail size: hqdefault / sddefault / maxresdefault
+ * @return string           Thumbnail URL
+ */
+function nc_get_youtube_thumb( $video_id, $size = 'sddefault' ) {
+  $thumbnail_url = 'https://i.ytimg.com/vi/' . $video_id . '/' . $size . '.jpg';
+
+  return $thumbnail_url;
+}
+
+
+/**
+ * Get Vimeo thumbnail
+ *
+ * @param  string $video_id Vimeo video ID
+ * @param  string $size     Thumbnail size: thumbnail_small / thumbnail_medium / thumbnail_large
+ * @return string           Thumbnail URL
+ */
+function nc_get_vimeo_thumb( $video_id, $size = 'thumbnail_large' ) {
+  $data = nc_remote_api_get( 'https://vimeo.com/api/v2/video/' . $video_id . '.json' );
+  $thumbnail_url = str_replace( 'http://', 'https://', $data[0]->$size );
+
+  return $thumbnail_url;
 }
 
 
