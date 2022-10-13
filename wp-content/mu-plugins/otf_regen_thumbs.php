@@ -4,7 +4,7 @@ Plugin Name: OTF Regenerate Thumbnails
 Plugin URI: https://github.com/gambitph/WP-OTF-Regenerate-Thumbnails
 Description: Automatically regenerates your thumbnails on the fly (OTF) after changing the thumbnail sizes or switching themes.
 Author: Benjamin Intal - Gambit Technologies Inc
-Version: 0.3.1 (fixed by iDeus)
+Version: 0.3.2 (fixed by iDeus)
 Author URI: http://gambit.ph
 */
 
@@ -40,13 +40,10 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
 
       foreach ( $interimSizes as $sizeName ) {
         if ( in_array( $sizeName, array( 'thumbnail', 'medium', 'large' ) ) ) {
-
-          $_gambit_otf_regen_thumbs_all_image_sizes[ $sizeName ]['width'] = get_option( $sizeName . '_size_w' );
+          $_gambit_otf_regen_thumbs_all_image_sizes[ $sizeName ]['width']  = get_option( $sizeName . '_size_w' );
           $_gambit_otf_regen_thumbs_all_image_sizes[ $sizeName ]['height'] = get_option( $sizeName . '_size_h' );
-          $_gambit_otf_regen_thumbs_all_image_sizes[ $sizeName ]['crop'] = (bool) get_option( $sizeName . '_crop' );
-
+          $_gambit_otf_regen_thumbs_all_image_sizes[ $sizeName ]['crop']   = (bool) get_option( $sizeName . '_crop' );
         } elseif ( isset( $_wp_additional_image_sizes[ $sizeName ] ) ) {
-
           $_gambit_otf_regen_thumbs_all_image_sizes[ $sizeName ] = $_wp_additional_image_sizes[ $sizeName ];
         }
       }
@@ -73,7 +70,6 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
 
       // If the size has already been previously created, use it
       if ( ! empty( $imagedata['sizes'][ $size ] ) && ! empty( $allSizes[ $size ] ) ) {
-
         // But only if the size remained the same
         if ( $allSizes[ $size ]['width'] == $imagedata['sizes'][ $size ]['width']
         && $allSizes[ $size ]['height'] == $imagedata['sizes'][ $size ]['height'] ) {
@@ -88,7 +84,6 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
             return false;
           }
         }
-
       }
 
       // Resize the image
@@ -108,7 +103,7 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
       $imagedata['sizes'][ $size ] = $resized;
 
       // Save some additional info so that we'll know next time whether we've resized this before
-      $imagedata['sizes'][ $size ]['width_query'] = $allSizes[ $size ]['width'];
+      $imagedata['sizes'][ $size ]['width_query']  = $allSizes[ $size ]['width'];
       $imagedata['sizes'][ $size ]['height_query'] = $allSizes[ $size ]['height'];
 
       wp_update_attachment_metadata( $id, $imagedata );
@@ -120,10 +115,10 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
 
     // If the size given is a custom array size
     } elseif ( is_array( $size ) ) {
-      $imagePath = get_attached_file( $id );
+      $imagePath  = get_attached_file( $id );
 
-      $crop = array_key_exists(2, $size) ? $size[2] : true;
-      $new_width = $size[0];
+      $crop       = array_key_exists(2, $size) ? $size[2] : true;
+      $new_width  = $size[0];
       $new_height = $size[1];
 
       // If crop is false, calculate new image dimensions
@@ -138,22 +133,22 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
 
         if ( $trueData[1] > $trueData[2] ) {
           // Width > height
-          $ratio = $trueData[1] / $size[0];
+          $ratio      = $trueData[1] / $size[0];
           $new_height = round( $trueData[2] / $ratio );
-          $new_width = $size[0];
+          $new_width  = $size[0];
         } else {
           // Height > width
-          $ratio = $trueData[2] / $size[1];
+          $ratio      = $trueData[2] / $size[1];
           $new_height = $size[1];
-          $new_width = round( $trueData[1] / $ratio );
+          $new_width  = round( $trueData[1] / $ratio );
         }
       }
 
       // This would be the path of our resized image if the dimensions existed
-      $imageExt = pathinfo( $imagePath, PATHINFO_EXTENSION );
+      $imageExt      = pathinfo( $imagePath, PATHINFO_EXTENSION );
       $original_size = getimagesize( $imagePath );
-      $sizes = image_resize_dimensions( $original_size[0], $original_size[1], $size[0], $size[1], true );
-      if( empty( $sizes ) ) {
+      $sizes         = image_resize_dimensions( $original_size[0], $original_size[1], $size[0], $size[1], true );
+      if ( empty( $sizes ) ) {
         $imagePath = preg_replace( '/^(.*)\.' . $imageExt . '$/', sprintf( '$1-%sx%s.%s', $new_width, $new_height, $imageExt ) , $imagePath );
       } else {
         $imagePath = preg_replace( '/^(.*)\.' . $imageExt . '$/', sprintf( '$1-%sx%s.%s', $sizes[4], $sizes[5], $imageExt ) , $imagePath );
