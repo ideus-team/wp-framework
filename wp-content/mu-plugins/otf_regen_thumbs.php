@@ -145,7 +145,13 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
       }
 
       // This would be the path of our resized image if the dimensions existed
-      $imageExt      = pathinfo( $imagePath, PATHINFO_EXTENSION );
+      $imageExt = pathinfo( $imagePath, PATHINFO_EXTENSION );
+
+      // Check if image
+      if ( ! in_array( $imageExt, array( 'jpg', 'jpeg', 'png', 'gif', 'webp' ) ) ) {
+        return false;
+      }
+
       $original_size = getimagesize( $imagePath );
       $sizes         = image_resize_dimensions( $original_size[0], $original_size[1], $size[0], $size[1], true );
       if ( empty( $sizes ) ) {
