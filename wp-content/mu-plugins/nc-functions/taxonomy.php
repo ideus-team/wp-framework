@@ -23,6 +23,7 @@ add_action( 'init', function() {
     'show_in_nav_menus'  => true,
     'show_ui'            => true,
     'show_tagcloud'      => false,
+    'show_admin_column'  => true,
     'hierarchical'       => true,
     'rewrite'            => array( 'slug' => 'blog-cat' ),
     'query_var'          => true,
