@@ -6,12 +6,12 @@ foreach ( glob( get_stylesheet_directory() . '/includes/ajax/*.php' ) as $file )
 
 
 /**
- * Processing AJAX request, type: ncAction
+ * Processing AJAX request, type: nc_action
  */
 /*
-add_action( 'wp_ajax_ncAction', 'ncAction_callback' );
-add_action( 'wp_ajax_nopriv_ncAction', 'ncAction_callback' );
-function ncAction_callback() {
+add_action( 'wp_ajax_nc_action', 'nc_action_callback' );
+add_action( 'wp_ajax_nopriv_nc_action', 'nc_action_callback' );
+function nc_action_callback() {
   $result = array();
 
   if ( ! $_POST['postdata'] ) {
