@@ -8,7 +8,7 @@
  *
  * This file contains the following configurations:
  *
- * * MySQL settings
+ * * Database settings
  * * Secret keys
  * * Database table prefix
  * * ABSPATH
