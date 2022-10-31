@@ -25,9 +25,13 @@
 
         <address class="l-siteCopyright vcard" itemscope itemtype="http://schema.org/Organization">
           <div class="b-siteCopyright">© <?php echo date( 'Y' ); ?>
-            <a rel="me" itemprop="name" class="b-siteCopyright__link fn n org url work" href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a>. <?php _e( 'Все права защищены' ); ?>
+            <a class="b-siteCopyright__link fn n org url work" href="<?php echo home_url(); ?>" rel="me" itemprop="name"><?php bloginfo( 'name' ); ?></a>.
+            <?php _e( 'All rights reserved' ); ?>
           </div>
-          <div class="b-developerCopyright"><?php _e( 'Разработано в' ); ?> <a class="b-developerCopyright__link" href="https://ideus.biz/" rel="friend" target="_blank">iDeus</a></div>
+
+          <div class="b-developerCopyright">
+            <a class="b-developerCopyright__link" href="https://ideus.biz/" rel="friend" target="_blank">iDeus</a>
+          </div>
         </address>
       </div>
     </footer>
