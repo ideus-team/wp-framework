@@ -43,8 +43,8 @@ function nc_nav_menu_objects( $sorted_menu_items, $args ) {
 /**
  * Modify nav menu link attributes
  */
-add_filter( 'nav_menu_link_attributes', 'nc_nav_menu_link_attributes', 10, 4 );
-function nc_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
+add_filter( 'nav_menu_link_attributes', 'nc_nav_menu_link_attributes', 10, 2 );
+function nc_nav_menu_link_attributes( $atts, $item ) {
   if ( function_exists( 'get_field' ) && get_field( '_nc_modal', $item->ID ) ) {
     $atts['class'] .= ' js-modal';
   }
