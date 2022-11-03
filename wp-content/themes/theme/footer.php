@@ -24,7 +24,8 @@
         <?php endif; ?>
 
         <address class="l-siteCopyright vcard" itemscope itemtype="http://schema.org/Organization">
-          <div class="b-siteCopyright">© <?php echo date( 'Y' ); ?>
+          <div class="b-siteCopyright">
+            © <?php echo date( 'Y' ); ?>
             <a class="b-siteCopyright__link fn n org url work" href="<?php echo home_url(); ?>" rel="me" itemprop="name"><?php bloginfo( 'name' ); ?></a>.
             <?php _e( 'All rights reserved' ); ?>
           </div>
