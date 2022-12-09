@@ -8,8 +8,5 @@
  * Version:     0.0.1
  * Author:      WordPress Contributors
  * Author URI:  https://github.com/WordPress/classic-editor/
- * License:     GPLv2 or later
- * License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Text Domain: classic-editor
- * Domain Path: /languages
  */
