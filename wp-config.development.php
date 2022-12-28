@@ -18,10 +18,21 @@ define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );
 
 
-// define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] );
-// define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
-
+/**
+ * Debug
+ *
+ * WP_DEBUG - Enable WP_DEBUG mode
+ * WP_DEBUG_DISPLAY - show debug logging on the screen
+ * WP_DEBUG_LOG - write debug logging to the /wp-content/debug.log file
+ */
 define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_DISPLAY', true );
+define( 'WP_DEBUG_LOG', false );
+
+
+// define( 'WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] );
+// define( 'WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] );
+
 
 /**
  * Disable WordPress revisions
