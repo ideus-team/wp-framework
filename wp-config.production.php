@@ -34,6 +34,9 @@ define( 'WP_DEBUG_LOG', false );
 // define( 'WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] );
 
 
+/**
+ * SSL
+ */
 @ini_set( 'session.cookie_httponly', true );
 @ini_set( 'session.cookie_secure', true );
 @ini_set( 'session.use_only_cookies', true );
