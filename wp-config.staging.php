@@ -12,7 +12,7 @@ define( 'DB_PASSWORD', 'password_here' );
 define( 'DB_HOST', 'localhost' );
 
 /** Database charset to use in creating database tables. */
-define( 'DB_CHARSET', 'utf8' );
+define( 'DB_CHARSET', 'utf8mb4' );
 
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
@@ -32,6 +32,14 @@ define( 'WP_DEBUG_LOG', false );
 
 // define( 'WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] );
 // define( 'WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] );
+
+
+/**
+ * SSL
+ */
+@ini_set( 'session.cookie_httponly', true );
+@ini_set( 'session.cookie_secure', true );
+@ini_set( 'session.use_only_cookies', true );
 
 
 /**
