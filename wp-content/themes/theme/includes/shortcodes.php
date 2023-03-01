@@ -6,10 +6,11 @@
 // Example Shortcode
 /*
 add_shortcode( 'nc_test', 'nc_test_shortcode' );
-function nc_test_shortcode( $atts, $content ) {
-  $atts = shortcode_atts( array(
+function nc_test_shortcode( $atts, $content = '' ) {
+  $atts   = shortcode_atts( array(
 
   ), $atts );
+  $output = $content;
 
   ob_start();
   ?>
@@ -17,8 +18,8 @@ function nc_test_shortcode( $atts, $content ) {
   Test
 
   <?php
-  $content = ob_get_clean();
+  $output = ob_get_clean();
 
-  return $content;
+  return $output;
 }
 */
