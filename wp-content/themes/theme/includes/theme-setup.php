@@ -4,7 +4,9 @@
  * @link http://codex.wordpress.org/Content_Width
  */
 if ( ! isset( $content_width ) ) {
-  $content_width = 640;
+  if ( is_admin() ) {
+    $content_width = 640;
+  }
 }
 
 
