@@ -4,7 +4,7 @@
  * @link http://codex.wordpress.org/Content_Width
  */
 if ( ! isset( $content_width ) ) {
-  $content_width = 500;
+  $content_width = 640;
 }
 
 
