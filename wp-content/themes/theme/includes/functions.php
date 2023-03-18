@@ -103,12 +103,12 @@ function nc_get_youtube_thumb( $video_id, $size = 'sddefault' ) {
  * Get Vimeo thumbnail
  *
  * @param  string $video_id Vimeo video ID
- * @param  string $size     Thumbnail size: thumbnail_small / thumbnail_medium / thumbnail_large
+ * @param  string $size     Thumbnail size: 640 / 1280
  * @return string           Thumbnail URL
  */
-function nc_get_vimeo_thumb( $video_id, $size = 'thumbnail_large' ) {
+function nc_get_vimeo_thumb( $video_id, $size = '640' ) {
   $data = nc_remote_api_get( 'https://vimeo.com/api/v2/video/' . $video_id . '.json' );
-  $thumbnail_url = str_replace( 'http://', 'https://', $data[0]->$size );
+  $thumbnail_url = str_replace( '-d_640', '-d_' . $size, $data[0]->thumbnail_large );
 
   return $thumbnail_url;
 }
