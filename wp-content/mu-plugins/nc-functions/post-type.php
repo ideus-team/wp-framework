@@ -3,7 +3,7 @@
 // Example Post Type
 add_action( 'init', function() {
   $labels = array(
-    'name'               => __( 'Our Blog' ),
+    'name'               => __( 'Articles' ),
     'singular_name'      => __( 'Article' ),
     'add_new'            => __( 'Add New' ),
     'add_new_item'       => __( 'Add New Article' ),
@@ -11,6 +11,7 @@ add_action( 'init', function() {
     'new_item'           => __( 'New Article' ),
     'all_items'          => __( 'All Articles' ),
     'view_item'          => __( 'View Article' ),
+    'parent_item_colon'  => __( 'Parent Articles:' )
     'search_items'       => __( 'Search Articles' ),
     'not_found'          => __( 'No articles found' ),
     'not_found_in_trash' => __( 'No articles found in Trash' ),
@@ -18,19 +19,21 @@ add_action( 'init', function() {
   );
   $args   = array(
     'labels'              => $labels,
+    'description'         => '',
     'public'              => true,
-    'exclude_from_search' => false,
     'publicly_queryable'  => true,
+    'exclude_from_search' => false,
     'show_ui'             => true,
     'show_in_nav_menus'   => true,
     'show_in_menu'        => true,
     'show_in_admin_bar'   => true,
+    'show_in_rest'        => false,
     'menu_position'       => null,
     'menu_icon'           => 'dashicons-admin-post', // You can use dashicons here: https://developer.wordpress.org/resource/dashicons/
     'hierarchical'        => false,
     'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'page-attributes' ),
     'taxonomies'          => array(),
-    'has_archive'         => true,
+    'has_archive'         => false,
     'rewrite'             => true,
     'query_var'           => true,
   );
