@@ -53,3 +53,11 @@ function nc_loop_modify( $query ) {
     }
   }
 }
+
+
+/**
+ * Disable post types and taxonomies from the ACF admin
+ *
+ * @link https://www.advancedcustomfields.com/resources/acf-settings-enable_post_types/
+ */
+add_filter( 'acf/settings/enable_post_types', '__return_false' );
