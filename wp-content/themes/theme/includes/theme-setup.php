@@ -1,6 +1,7 @@
 <?php
 /**
  * Content Width
+ *
  * @link http://codex.wordpress.org/Content_Width
  */
 if ( ! isset( $content_width ) ) {
