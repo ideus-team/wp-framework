@@ -43,21 +43,6 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 
 
   /**
-   * Styled menu element
-   */
-  add_filter( 'nav_menu_css_class', 'nc_change_menu_item_css_classes', 10, 4 );
-  function nc_change_menu_item_css_classes( $classes, $item ) {
-    $styled = get_field( '_nc_styled', $item->ID );
-
-    if ( $styled ) {
-      $classes[] = '-styled_true';
-    }
-
-    return $classes;
-  }
-
-
-  /**
    * Menu item label
    */
   add_filter( 'nav_menu_item_args', 'nc_menu_item_label', 10, 3 );
@@ -69,5 +54,50 @@ if ( function_exists( 'acf_add_options_page' ) ) {
     }
 
     return $args;
+  }
+}
+
+
+if ( function_exists( 'acf_add_local_field_group' ) ) {
+
+  /**
+   * Add field group for styled item
+   */
+  acf_add_local_field_group( array(
+    'key'      => 'group_menu_item_styled',
+    'title'    => 'Menu Item',
+    'fields'   => array(
+      array(
+        'key'   => 'field_styled',
+        'label' => 'Styled',
+        'name'  => '_nc_styled',
+        'type'  => 'true_false',
+        'ui'    => 1,
+      ),
+    ),
+    'location' => array(
+      array(
+        array(
+          'param'    => 'nav_menu_item',
+          'operator' => '==',
+          'value'    => 'all',
+        ),
+      ),
+    ),
+  ) );
+
+
+  /**
+   * Styled menu element
+   */
+  add_filter( 'nav_menu_css_class', 'nc_change_menu_item_css_classes', 10, 4 );
+  function nc_change_menu_item_css_classes( $classes, $item ) {
+    $styled = get_field( '_nc_styled', $item->ID );
+
+    if ( $styled ) {
+      $classes[] = '-styled_true';
+    }
+
+    return $classes;
   }
 }
