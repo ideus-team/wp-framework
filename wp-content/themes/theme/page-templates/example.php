@@ -31,6 +31,11 @@ get_header();
 
         <p><img class="alignright size-full" src="https://fakeimg.pl/440x230/282828/eae0d0/?text=Image" width="440" height="230" />Aliquam ac nulla iaculis, viverra eros feugiat, ullamcorper magna. Aliquam at volutpat eros. Praesent quis consequat nisl. Mauris risus purus, ultrices ac lacus vitae, imperdiet consectetur sem. Nunc et leo tristique, finibus felis eget, maximus lacus. Donec quis consequat risus. Etiam dolor velit, convallis ut odio finibus, scelerisque semper neque. Nunc ornare eros vel purus fringilla, sit amet bibendum nibh tempus. Sed lacinia augue at est commodo, non pellentesque dolor varius. Integer magna mauris, tempor ut aliquam ac, iaculis vel risus. Nam condimentum elit eget tellus dictum, a ultrices metus aliquet. Mauris sollicitudin ornare mi, vitae blandit erat dapibus auctor. Duis et risus in lacus hendrerit auctor. Fusce sit amet iaculis lacus. Duis eleifend fermentum urna id tempor.</p>
 
+        <figure class="wp-caption aligncenter">
+          <img class="size-full" src="https://fakeimg.pl/1600x400/282828/eae0d0/?text=Image" width="1600" height="400" />
+          <figcaption class="wp-caption-text">Image description</figcaption>
+        </figure>
+
         <p>In vitae arcu quis justo ullamcorper hendrerit id eget elit. Nam est ligula, cursus feugiat vulputate non, ultricies non leo. Etiam ac mauris ultricies, viverra dolor vel, pellentesque ligula. Proin eleifend purus nibh. Vivamus in dui sit amet eros tempor tincidunt. Morbi eleifend non turpis luctus condimentum. Mauris dictum risus non condimentum finibus. Nulla non hendrerit mi. Maecenas consequat tempor sem. Cras scelerisque iaculis laoreet. Suspendisse tincidunt magna eu orci posuere, non iaculis ex pretium. Aliquam id faucibus eros, tristique dignissim ex.</p>
 
         <ul>
