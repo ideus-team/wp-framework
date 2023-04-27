@@ -24,7 +24,7 @@ function nc_body_class( $classes ) {
     } elseif ( is_home() && $queried_object = get_queried_object() ) {
       // Posts page
       $slug = $queried_object->post_name;
-    } elseif ( $post ) {
+    } elseif ( is_single() || is_singular( array( 'page', 'attachment' ) ) ) {
       // Inner Page
       $post_data = get_post( $post->ID, ARRAY_A );
       $slug = $post_data['post_name'];
