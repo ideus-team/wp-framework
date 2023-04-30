@@ -92,9 +92,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
    */
   add_filter( 'nav_menu_css_class', 'nc_change_menu_item_css_classes', 10, 4 );
   function nc_change_menu_item_css_classes( $classes, $item ) {
-    $styled = get_field( '_nc_styled', $item->ID );
-
-    if ( $styled ) {
+    if ( get_field( '_nc_styled', $item->ID ) ) {
       $classes[] = '-styled_true';
     }
 
