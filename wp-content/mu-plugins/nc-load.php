@@ -4,7 +4,7 @@
  * Plugin URI:
  * Description: Functions for WP-framework
  * Author: iDeus
- * Version: 1.11.3
+ * Version: 1.12.0
  * Author URI: https://ideus.biz
  */
 
@@ -34,3 +34,6 @@ require WPMU_PLUGIN_DIR . '/nc-functions/breadcrumbs.php';
 
 // Development
 require WPMU_PLUGIN_DIR . '/nc-functions/development.php';
+
+// Close from search engines indexing for dev, stage environment
+require WPMU_PLUGIN_DIR . '/nc-functions/class-disable-indexing.php';
