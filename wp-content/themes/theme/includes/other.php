@@ -63,13 +63,13 @@ function nc_change_login_header_url( $login_header_url ) {
 
 
 /**
- * Remove attachment and author pages
+ * Remove author pages
  */
 add_action( 'wp', 'nc_remove_attachment_author_page' );
 function nc_remove_attachment_author_page() {
   global $wp_query;
 
-  if ( is_attachment() || is_author() ) {
+  if ( is_author() ) {
     $wp_query->set_404();
     status_header( 404 );
   }
@@ -86,4 +86,16 @@ function nc_remove_author_pages_from_sitemap( $provider, $name ) {
   }
 
   return $provider;
+}
+
+
+/**
+ * Redirect attachment to the exact file instead of the attachment page
+ */
+add_action( 'template_redirect', 'nc_attachment_redirect', 10 );
+function nc_attachment_redirect() {
+  if ( is_attachment() ) {
+    $url = wp_get_attachment_url( get_queried_object_id() );
+    wp_redirect( $url, 301 );
+  }
 }
