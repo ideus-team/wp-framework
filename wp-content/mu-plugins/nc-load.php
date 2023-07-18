@@ -4,7 +4,7 @@
  * Plugin URI:
  * Description: Functions for WP-framework
  * Author: iDeus
- * Version: 1.12.3
+ * Version: 1.12.4
  * Author URI: https://ideus.biz
  */
 
