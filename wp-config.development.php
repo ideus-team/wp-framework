@@ -30,6 +30,21 @@ define( 'WP_DEBUG_DISPLAY', true );
 define( 'WP_DEBUG_LOG', false );
 
 
+/**
+ * Development mode can be set via the `WP_DEVELOPMENT_MODE` constant in `wp-config.php`.
+ * Possible values are 'core', 'plugin', 'theme', 'all', or an empty string to disable
+ * development mode. 'all' is a special value to signify that all three development modes
+ * ('core', 'plugin', and 'theme') are enabled.
+ *
+ * Development mode is considered separately from `WP_DEBUG` and wp_get_environment_type().
+ * It does not affect debugging output, but rather functional nuances in WordPress.
+ *
+ * This function retrieves the currently set development mode value. To check whether
+ * a specific development mode is enabled, use wp_is_development_mode().
+ */
+define( 'WP_DEVELOPMENT_MODE', 'theme' );
+
+
 // define( 'WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] );
 // define( 'WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] );
 
