@@ -1,9 +1,20 @@
 <?php
 /**
+ * Content Width
+ *
+ * @link http://codex.wordpress.org/Content_Width
+ */
+if ( ! isset( $content_width ) ) {
+  if ( is_admin() ) {
+    $content_width = 640;
+  }
+}
+
+/**
  * Setup Theme
  */
 require_once( get_theme_file_path( 'includes/constants.php' ) );
-require_once( get_theme_file_path( 'includes/theme-setup.php' ) );
+require_once( get_theme_file_path( 'includes/class-theme.php' ) );
 require_once( get_theme_file_path( 'includes/theme-styles.php' ) );
 require_once( get_theme_file_path( 'includes/theme-scripts.php' ) );
 require_once( get_theme_file_path( 'includes/theme-plugins.php' ) );
