@@ -15,8 +15,7 @@ if ( ! isset( $content_width ) ) {
  */
 require_once( get_theme_file_path( 'includes/constants.php' ) );
 require_once( get_theme_file_path( 'includes/class-theme.php' ) );
-require_once( get_theme_file_path( 'includes/theme-styles.php' ) );
-require_once( get_theme_file_path( 'includes/theme-scripts.php' ) );
+require_once( get_theme_file_path( 'includes/class-resources.php' ) );
 require_once( get_theme_file_path( 'includes/theme-plugins.php' ) );
 
 require_once( get_theme_file_path( 'includes/functions.php' ) );
@@ -36,3 +35,9 @@ require_once( get_theme_file_path( 'includes/other.php' ) );
  * Hide the Advanced Custom Fields menu
  */
 // add_filter( 'acf/settings/show_admin', '__return_false' );
+
+
+/**
+ * Initialize main theme class
+ */
+new \iDeus\Theme\Theme();

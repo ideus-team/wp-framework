@@ -24,6 +24,9 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
     public function __construct() {
       // Theme Setup
       add_action( 'after_setup_theme', array( $this, 'setup' ) );
+
+      // JS & CSS
+      new \iDeus\Theme\Resources();
     }
 
 
@@ -97,6 +100,4 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
     }
 
   }
-
-  new \iDeus\Theme\Theme();
 }
