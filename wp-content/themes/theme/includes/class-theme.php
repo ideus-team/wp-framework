@@ -27,6 +27,9 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 
       // JS & CSS
       new \iDeus\Theme\Resources();
+
+      // Disable important plugins deactivation
+      add_filter( 'plugin_action_links', array( $this, 'disable_plugin_deactivation' ), 10, 2 );
     }
 
 
@@ -97,6 +100,35 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
        * WooCommerce support
        */
       // add_theme_support( 'woocommerce' );
+    }
+
+
+    /**
+     * Filters the action links displayed for each plugin in the Plugins list table
+     *
+     * @since X.X.X
+     *
+     * @param  string[] $actions     An array of plugin action links. By default this can include
+     *                              'activate', 'deactivate', and 'delete'. With Multisite active
+     *                              this can also include 'network_active' and 'network_only' items.
+     * @param  string   $plugin_file Path to the plugin file relative to the plugins directory.
+     * @return array
+     */
+    public function disable_plugin_deactivation( $actions, $plugin_file ) {
+      // Important plugins
+      $important_plugins = array(
+        'advanced-custom-fields-pro/acf.php',
+        'contact-form-7/wp-contact-form-7.php',
+        'polylang/polylang.php',
+        'polylang-pro/polylang.php',
+      );
+
+      // Remove action 'deactivate' from important plugins
+      if ( in_array( $plugin_file, $important_plugins ) ) {
+        unset( $actions['deactivate'] );
+      }
+
+      return $actions;
     }
 
   }
