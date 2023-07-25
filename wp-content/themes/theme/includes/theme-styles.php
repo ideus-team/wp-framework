@@ -8,7 +8,12 @@ function nc_styles() {
   // wp_enqueue_style( 'googlefonts', 'https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Open+Sans:wght@300;400;600;700;800&display=swap', false, null );
 
   if ( file_exists( get_theme_file_path( 'assets/css/main.min.css' ) ) ) {
-    wp_enqueue_style( 'nc-main', get_theme_file_uri( 'assets/css/main.min.css' ), false, filemtime( get_theme_file_path( 'assets/css/main.min.css' ) ) );
+    wp_enqueue_style(
+      'nc-main',
+      get_theme_file_uri( 'assets/css/main.min.css' ),
+      false,
+      filemtime( get_theme_file_path( 'assets/css/main.min.css' ) )
+    );
   }
 }
 
@@ -19,7 +24,12 @@ function nc_styles() {
 add_action( 'admin_enqueue_scripts', 'nc_admin_styles' );
 function nc_admin_styles() {
   if ( file_exists( get_theme_file_path( 'assets/css/admin.min.css' ) ) ) {
-    wp_enqueue_style( 'nc-admin', get_theme_file_uri( 'assets/css/admin.min.css' ), false, filemtime( get_theme_file_path( 'assets/css/admin.min.css' ) ) );
+    wp_enqueue_style(
+      'nc-admin',
+      get_theme_file_uri( 'assets/css/admin.min.css' ),
+      false,
+      ilemtime( get_theme_file_path( 'assets/css/admin.min.css' ) )
+    );
   }
 }
 
@@ -30,7 +40,12 @@ function nc_admin_styles() {
 add_action( 'login_enqueue_scripts', 'nc_login_styles' );
 function nc_login_styles() {
   if ( file_exists( get_theme_file_path( 'assets/css/login.min.css' ) ) ) {
-    wp_enqueue_style( 'nc-login', get_theme_file_uri( 'assets/css/login.min.css' ), false, filemtime( get_theme_file_path( 'assets/css/login.min.css' ) ) );
+    wp_enqueue_style(
+      'nc-login',
+      get_theme_file_uri( 'assets/css/login.min.css' ),
+      false,
+      filemtime( get_theme_file_path( 'assets/css/login.min.css' ) )
+    );
   }
 }
 
