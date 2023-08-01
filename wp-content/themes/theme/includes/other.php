@@ -51,12 +51,3 @@ function nc_nav_menu_link_attributes( $atts, $item ) {
 
   return $atts;
 }
-
-
-/**
- * Change login header URL
- */
-add_filter( 'login_headerurl', 'nc_change_login_header_url' );
-function nc_change_login_header_url( $login_header_url ) {
-  return home_url();
-}

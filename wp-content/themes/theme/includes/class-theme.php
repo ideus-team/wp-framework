@@ -40,6 +40,9 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
       // SEO
       new \iDeus\Theme\SEO();
 
+      // Branding
+      new \iDeus\Theme\Branding();
+
       // Disable important plugins deactivation
       add_filter( 'plugin_action_links', array( $this, 'disable_plugin_deactivation' ), 10, 2 );
     }
