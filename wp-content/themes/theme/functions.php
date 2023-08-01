@@ -17,7 +17,7 @@ require_once( get_theme_file_path( 'includes/constants.php' ) );
 require_once( get_theme_file_path( 'includes/class-theme.php' ) );
 require_once( get_theme_file_path( 'includes/class-resources.php' ) );
 require_once( get_theme_file_path( 'includes/class-breadcrumbs.php' ) );
-require_once( get_theme_file_path( 'includes/theme-plugins.php' ) );
+require_once( get_theme_file_path( 'includes/class-contact-form-7.php' ) );
 
 require_once( get_theme_file_path( 'includes/functions.php' ) );
 

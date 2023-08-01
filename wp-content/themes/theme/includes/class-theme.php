@@ -31,6 +31,9 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
       // Breadcrumbs
       new \iDeus\Theme\Breadcrumbs();
 
+      // Contact Form 7
+      new \iDeus\Theme\Contact_Form_7();
+
       // SEO
       new \iDeus\Theme\SEO();
 
