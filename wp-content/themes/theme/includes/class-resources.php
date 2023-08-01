@@ -3,7 +3,7 @@
  * Class Resources
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.0.0
  */
 
 namespace iDeus\Theme;
@@ -12,14 +12,14 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
   /**
    * Resources
    *
-   * @since X.X.X
+   * @since 2.0.0
    */
   class Resources {
 
     /**
      * Class initialization
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function __construct() {
       // Scripts
@@ -49,7 +49,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
      *
      * Use 'get_footer' instead 'wp_enqueue_scripts' hook for move CSS to footer.
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function styles() {
       // wp_enqueue_style( 'googlefonts', 'https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Open+Sans:wght@300;400;600;700;800&display=swap', false, null );
@@ -68,7 +68,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
     /**
      * Admin styles
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function admin_styles() {
       if ( file_exists( get_theme_file_path( 'assets/css/admin.min.css' ) ) ) {
@@ -85,7 +85,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
     /**
      * Login styles
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function login_styles() {
       if ( file_exists( get_theme_file_path( 'assets/css/login.min.css' ) ) ) {
@@ -102,7 +102,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
     /**
      * Scripts
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function scripts() {
       wp_deregister_script( 'jquery' );
@@ -127,7 +127,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
       /**
        * Variables for JS (nc_params.ajax_url, nc_params.home_url, nc_params.theme_url, etc.)
        *
-       * @since X.X.X
+       * @since 2.0.0
        */
       wp_localize_script( 'nc-main', 'nc_params', array(
         'ajax_url'  => admin_url( 'admin-ajax.php' ),
@@ -140,7 +140,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
     /**
      * Google fonts preconnect
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function preconnect_googlefonts( $urls, $relation_type ) {
       if ( wp_style_is( 'googlefonts' ) && 'preconnect' === $relation_type ) {
@@ -158,7 +158,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
     /**
      * Preload fonts
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function preload_fonts() {
       echo '<link rel="preload" href="' . get_theme_file_uri( 'assets/fonts/fontname.woff2' ) . '" as="font" type="font/woff2" crossorigin="anonymous">';
@@ -168,7 +168,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
     /**
      * Remove global styles
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function remove_global_css() {
       remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
@@ -179,7 +179,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
     /**
      * Remove Gutenberg CSS
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function deregister_styles() {
       wp_dequeue_style( 'wp-block-library' );

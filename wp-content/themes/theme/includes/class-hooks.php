@@ -3,7 +3,7 @@
  * Class Hooks
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.0.0
  */
 
 namespace iDeus\Theme;
@@ -12,14 +12,14 @@ if ( ! class_exists( 'iDeus\Theme\Hooks' ) ) {
   /**
    * Hooks
    *
-   * @since X.X.X
+   * @since 2.0.0
    */
   class Hooks {
 
     /**
      * Class initialization
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function __construct() {
       // Change text displayed after a trimmed excerpt
@@ -32,7 +32,7 @@ if ( ! class_exists( 'iDeus\Theme\Hooks' ) ) {
     /**
      * Change text displayed after a trimmed excerpt
      *
-     * @since X.X.X
+     * @since 2.0.0
      * @link https://developer.wordpress.org/reference/hooks/excerpt_more/
      *
      * @param  string $text Text displayed after a trimmed excerpt

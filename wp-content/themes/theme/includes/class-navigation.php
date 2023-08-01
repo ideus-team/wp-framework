@@ -3,7 +3,7 @@
  * Class Navigation
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.0.0
  */
 
 namespace iDeus\Theme;
@@ -12,14 +12,14 @@ if ( ! class_exists( 'iDeus\Theme\Navigation' ) ) {
   /**
    * Navigation modifications
    *
-   * @since X.X.X
+   * @since 2.0.0
    */
   class Navigation {
 
     /**
      * Class initialization
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function __construct() {
       // Styled menu item
@@ -40,7 +40,7 @@ if ( ! class_exists( 'iDeus\Theme\Navigation' ) ) {
     /**
      * Styled menu item
      *
-     * @since X.X.X
+     * @since 2.0.0
      * @link https://developer.wordpress.org/reference/hooks/nav_menu_css_class/
      *
      * @param  string[] $classes   Array of the CSS classes that are applied to the menu item's `<li>` element.
@@ -59,7 +59,7 @@ if ( ! class_exists( 'iDeus\Theme\Navigation' ) ) {
     /**
      * Add field group for styled menu item
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     private function styled_menu_element_field() {
       if ( function_exists( 'acf_add_local_field_group' ) ) {
@@ -92,7 +92,7 @@ if ( ! class_exists( 'iDeus\Theme\Navigation' ) ) {
     /**
      * Modify nav menu objects
      *
-     * @since X.X.X
+     * @since 2.0.0
      * @link https://developer.wordpress.org/reference/hooks/wp_nav_menu_objects/
      *
      * @param  array    $sorted_menu_items The menu items, sorted by each menu item's menu order
@@ -125,7 +125,7 @@ if ( ! class_exists( 'iDeus\Theme\Navigation' ) ) {
     /**
      * Modify nav menu link attributes
      *
-     * @since X.X.X
+     * @since 2.0.0
      * @link https://developer.wordpress.org/reference/hooks/nav_menu_link_attributes/
      *
      * @param  array   $atts      The HTML attributes applied to the menu item's `<a>` element, empty strings are ignored
@@ -144,7 +144,7 @@ if ( ! class_exists( 'iDeus\Theme\Navigation' ) ) {
     /**
      * Menu item label
      *
-     * @since X.X.X
+     * @since 2.0.0
      * @link https://developer.wordpress.org/reference/hooks/nav_menu_item_args/
      *
      * @param  stdClass $args      An object of wp_nav_menu() arguments

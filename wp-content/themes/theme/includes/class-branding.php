@@ -3,7 +3,7 @@
  * Class Branding
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.0.0
  */
 
 namespace iDeus\Theme;
@@ -12,14 +12,14 @@ if ( ! class_exists( 'iDeus\Theme\Branding' ) ) {
   /**
    * Branding
    *
-   * @since X.X.X
+   * @since 2.0.0
    */
   class Branding {
 
     /**
      * Class initialization
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function __construct() {
       // Change login header URL from WP to site homepage
@@ -30,7 +30,7 @@ if ( ! class_exists( 'iDeus\Theme\Branding' ) ) {
     /**
      * Change login header URL from WP to site homepage
      *
-     * @since X.X.X
+     * @since 2.0.0
      *
      * @param  string $login_header_url Login header URL
      * @return string

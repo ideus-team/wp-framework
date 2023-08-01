@@ -3,7 +3,7 @@
  * Class Theme
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.0.0
  */
 
 namespace iDeus\Theme;
@@ -12,14 +12,14 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
   /**
    * Theme
    *
-   * @since X.X.X
+   * @since 2.0.0
    */
   class Theme {
 
     /**
      * Class initialization
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function __construct() {
       // Theme Setup
@@ -66,7 +66,7 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
     /**
      * Theme Setup
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function setup() {
       /**
@@ -136,7 +136,7 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
     /**
      * Filters the action links displayed for each plugin in the Plugins list table
      *
-     * @since X.X.X
+     * @since 2.0.0
      *
      * @param  string[] $actions     An array of plugin action links. By default this can include
      *                               'activate', 'deactivate', and 'delete'. With Multisite active

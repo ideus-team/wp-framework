@@ -3,7 +3,7 @@
  * Class Polylang
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.0.0
  */
 
 namespace iDeus\Theme;
@@ -12,14 +12,14 @@ if ( ! class_exists( 'iDeus\Theme\Polylang' ) ) {
   /**
    * Polylang modifications
    *
-   * @since X.X.X
+   * @since 2.0.0
    */
   class Polylang {
 
     /**
      * Class initialization
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function __construct() {
       $this->register_strings();
@@ -29,7 +29,7 @@ if ( ! class_exists( 'iDeus\Theme\Polylang' ) ) {
     /**
      * Register Polylang strings
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     private function register_strings() {
       if ( function_exists( 'pll_register_string' ) ) {

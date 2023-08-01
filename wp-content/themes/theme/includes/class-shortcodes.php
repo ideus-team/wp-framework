@@ -3,7 +3,7 @@
  * Class Shortcodes
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.0.0
  */
 
 namespace iDeus\Theme;
@@ -12,14 +12,14 @@ if ( ! class_exists( 'iDeus\Theme\Shortcodes' ) ) {
   /**
    * Custom Shorcodes
    *
-   * @since X.X.X
+   * @since 2.0.0
    */
   class Shortcodes {
 
     /**
      * Class initialization
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function __construct() {
       // Example: Add shortcode [nc_test]
@@ -30,7 +30,7 @@ if ( ! class_exists( 'iDeus\Theme\Shortcodes' ) ) {
     /**
      * Example: Add shortcode [nc_test]
      *
-     * @since X.X.X
+     * @since 2.0.0
      *
      * @param  array  $atts    Shortcode attributes
      * @param  string $content Shortcode content

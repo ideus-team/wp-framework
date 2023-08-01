@@ -3,7 +3,7 @@
  * Class ACF
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.0.0
  */
 
 namespace iDeus\Theme;
@@ -12,14 +12,14 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
   /**
    * Advanced Custom Fields modifications
    *
-   * @since X.X.X
+   * @since 2.0.0
    */
   class ACF {
 
     /**
      * Class initialization
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function __construct() {
       // Update settings
@@ -33,7 +33,7 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
     /**
      * Remove author pages
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function update_settings() {
       // acf_update_setting( 'google_api_key', NC_GOOGLE_MAP_API );
@@ -43,7 +43,7 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
     /**
      * Options pages
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     private function options_pages() {
       if ( function_exists( 'acf_add_options_page' ) ) {

@@ -3,7 +3,7 @@
  * Class Breadcrumbs
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.0.0
  */
 
 namespace iDeus\Theme;
@@ -12,14 +12,14 @@ if ( ! class_exists( 'iDeus\Theme\Breadcrumbs' ) ) {
   /**
    * Breadcrumbs modifications
    *
-   * @since X.X.X
+   * @since 2.0.0
    */
   class Breadcrumbs {
 
     /**
      * Class initialization
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function __construct() {
       // Settings
@@ -39,7 +39,7 @@ if ( ! class_exists( 'iDeus\Theme\Breadcrumbs' ) ) {
     /**
      * Settings
      *
-     * @since X.X.X
+     * @since 2.0.0
      *
      * @param  array $args Breadcrumbs settings
      * @return array
@@ -66,7 +66,7 @@ if ( ! class_exists( 'iDeus\Theme\Breadcrumbs' ) ) {
     /**
      * Localization
      *
-     * @since X.X.X
+     * @since 2.0.0
      *
      * @param  array $l10n Localization strings
      * @return array
@@ -95,7 +95,7 @@ if ( ! class_exists( 'iDeus\Theme\Breadcrumbs' ) ) {
     /**
      * Position for schema.org & ld+json
      *
-     * @since X.X.X
+     * @since 2.0.0
      *
      * @param  string $out Breadcrumbs html code
      * @param  string $sep Separator
@@ -141,7 +141,7 @@ if ( ! class_exists( 'iDeus\Theme\Breadcrumbs' ) ) {
     /**
      * Example: Add link to some page after home
      *
-     * @since X.X.X
+     * @since 2.0.0
      *
      * @param  string $false    Empty string by default
      * @param  string $linkpatt Link pattern

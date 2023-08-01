@@ -3,7 +3,7 @@
  * Class SEO
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.0.0
  */
 
 namespace iDeus\Theme;
@@ -12,14 +12,14 @@ if ( ! class_exists( 'iDeus\Theme\SEO' ) ) {
   /**
    * SEO
    *
-   * @since X.X.X
+   * @since 2.0.0
    */
   class SEO {
 
     /**
      * Class initialization
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function __construct() {
       // Remove author pages
@@ -36,7 +36,7 @@ if ( ! class_exists( 'iDeus\Theme\SEO' ) ) {
     /**
      * Remove author pages
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function remove_author_page() {
       global $wp_query;
@@ -51,7 +51,7 @@ if ( ! class_exists( 'iDeus\Theme\SEO' ) ) {
     /**
      * Remove author pages from sitemap
      *
-     * @since X.X.X
+     * @since 2.0.0
      *
      * @param  WP_Sitemaps_Provider $provider Instance of a WP_Sitemaps_Provider.
      * @param  string               $name     Name of the sitemap provider.
@@ -69,7 +69,7 @@ if ( ! class_exists( 'iDeus\Theme\SEO' ) ) {
     /**
      * Redirect attachment to the exact file instead of the attachment page
      *
-     * @since X.X.X
+     * @since 2.0.0
      */
     public function attachment_redirect() {
       if ( is_attachment() ) {
