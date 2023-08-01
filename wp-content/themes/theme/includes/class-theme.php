@@ -34,6 +34,9 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
       // Custom Shorcodes
       new \iDeus\Theme\Shortcodes();
 
+      // Hooks
+      new \iDeus\Theme\Hooks();
+
       // SEO
       new \iDeus\Theme\SEO();
 
