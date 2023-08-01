@@ -46,6 +46,9 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
       // Breadcrumbs
       new \iDeus\Theme\Breadcrumbs();
 
+      // Advanced Custom Fields
+      new \iDeus\Theme\ACF();
+
       // Contact Form 7
       new \iDeus\Theme\Contact_Form_7();
 
