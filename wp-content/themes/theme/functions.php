@@ -24,7 +24,7 @@ require_once( get_theme_file_path( 'includes/class-hooks.php' ) );
 
 require_once( get_theme_file_path( 'includes/ajax.php' ) );
 require_once( get_theme_file_path( 'includes/acf.php' ) );
-require_once( get_theme_file_path( 'includes/class-SEO.php' ) );
+require_once( get_theme_file_path( 'includes/class-seo.php' ) );
 require_once( get_theme_file_path( 'includes/class-branding.php' ) );
 
 require_once( get_theme_file_path( 'includes/class-breadcrumbs.php' ) );
