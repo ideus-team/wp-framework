@@ -18,6 +18,7 @@ require_once( get_theme_file_path( 'includes/class-theme.php' ) );
 require_once( get_theme_file_path( 'includes/class-resources.php' ) );
 require_once( get_theme_file_path( 'includes/class-breadcrumbs.php' ) );
 require_once( get_theme_file_path( 'includes/class-contact-form-7.php' ) );
+require_once( get_theme_file_path( 'includes/class-shortcodes.php' ) );
 
 require_once( get_theme_file_path( 'includes/functions.php' ) );
 
@@ -26,7 +27,6 @@ require_once( get_theme_file_path( 'includes/functions.php' ) );
  * Project
  */
 require_once( get_theme_file_path( 'includes/ajax.php' ) );
-require_once( get_theme_file_path( 'includes/shortcodes.php' ) );
 require_once( get_theme_file_path( 'includes/acf.php' ) );
 // require_once( get_theme_file_path( 'includes/polylang.php' ) );
 require_once( get_theme_file_path( 'includes/other.php' ) );

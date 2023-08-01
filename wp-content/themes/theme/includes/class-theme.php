@@ -34,6 +34,9 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
       // Contact Form 7
       new \iDeus\Theme\Contact_Form_7();
 
+      // Custom Shorcodes
+      new \iDeus\Theme\Shortcodes();
+
       // SEO
       new \iDeus\Theme\SEO();
 
