@@ -1,17 +1,10 @@
 <?php
-/** include all AJAX files */
-foreach ( glob( get_stylesheet_directory() . '/includes/ajax/*.php' ) as $file ) {
-  require_once( $file );
-}
-
-
 /**
- * Processing AJAX request, type: nc_action
+ * Example: Processing AJAX request, type 'nc_example'
  */
-/*
-add_action( 'wp_ajax_nc_action', 'nc_action_callback' );
-add_action( 'wp_ajax_nopriv_nc_action', 'nc_action_callback' );
-function nc_action_callback() {
+// add_action( 'wp_ajax_nc_example', 'nc_example_callback' );
+// add_action( 'wp_ajax_nopriv_nc_example', 'nc_example_callback' );
+function nc_example_callback() {
   $result = array();
 
   if ( ! $_POST['postdata'] ) {
@@ -34,4 +27,3 @@ function nc_action_callback() {
     wp_send_json_error( $result );
   }
 }
-*/

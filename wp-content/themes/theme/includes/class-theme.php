@@ -37,6 +37,9 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
       // Hooks
       new \iDeus\Theme\Hooks();
 
+      // AJAX
+      new \iDeus\Theme\AJAX();
+
       // SEO
       new \iDeus\Theme\SEO();
 

@@ -10,26 +10,30 @@ if ( ! isset( $content_width ) ) {
   }
 }
 
+
 /**
- * Setup Theme
+ * Theme constants & functions
  */
-require_once( get_theme_file_path( 'includes/constants.php' ) );
-require_once( get_theme_file_path( 'includes/class-theme.php' ) );
-require_once( get_theme_file_path( 'includes/class-resources.php' ) );
-require_once( get_theme_file_path( 'includes/class-navigation.php' ) );
-require_once( get_theme_file_path( 'includes/class-shortcodes.php' ) );
+require_once get_theme_file_path( 'includes/constants.php' );
+require_once get_theme_file_path( 'includes/functions.php' );
 
-require_once( get_theme_file_path( 'includes/functions.php' ) );
-require_once( get_theme_file_path( 'includes/class-hooks.php' ) );
 
-require_once( get_theme_file_path( 'includes/ajax.php' ) );
-require_once( get_theme_file_path( 'includes/class-seo.php' ) );
-require_once( get_theme_file_path( 'includes/class-branding.php' ) );
+/**
+ * Classes
+ */
+require_once get_theme_file_path( 'includes/class-theme.php' );
+require_once get_theme_file_path( 'includes/class-resources.php' );
+require_once get_theme_file_path( 'includes/class-navigation.php' );
+require_once get_theme_file_path( 'includes/class-shortcodes.php' );
+require_once get_theme_file_path( 'includes/class-hooks.php' );
+require_once get_theme_file_path( 'includes/class-ajax.php' );
+require_once get_theme_file_path( 'includes/class-seo.php' );
+require_once get_theme_file_path( 'includes/class-branding.php' );
 
-require_once( get_theme_file_path( 'includes/class-breadcrumbs.php' ) );
-require_once( get_theme_file_path( 'includes/class-acf.php' ) );
-require_once( get_theme_file_path( 'includes/class-contact-form-7.php' ) );
-require_once( get_theme_file_path( 'includes/class-polylang.php' ) );
+require_once get_theme_file_path( 'includes/class-breadcrumbs.php' );
+require_once get_theme_file_path( 'includes/class-acf.php' );
+require_once get_theme_file_path( 'includes/class-contact-form-7.php' );
+require_once get_theme_file_path( 'includes/class-polylang.php' );
 
 
 /**
@@ -39,6 +43,6 @@ require_once( get_theme_file_path( 'includes/class-polylang.php' ) );
 
 
 /**
- * Initialize main theme class
+ * Setup Theme
  */
 new \iDeus\Theme\Theme();
