@@ -28,6 +28,9 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
       // JS & CSS
       new \iDeus\Theme\Resources();
 
+      // Breadcrumbs
+      new \iDeus\Theme\Breadcrumbs();
+
       // SEO
       new \iDeus\Theme\SEO();
 
