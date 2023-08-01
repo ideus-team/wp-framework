@@ -28,14 +28,8 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
       // JS & CSS
       new \iDeus\Theme\Resources();
 
-      // Breadcrumbs
-      new \iDeus\Theme\Breadcrumbs();
-
-      // Contact Form 7
-      new \iDeus\Theme\Contact_Form_7();
-
-      // Contact Form 7
-      new \iDeus\Theme\Polylang();
+      // Navigation
+      new \iDeus\Theme\Navigation();
 
       // Custom Shorcodes
       new \iDeus\Theme\Shortcodes();
@@ -45,6 +39,15 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 
       // Branding
       new \iDeus\Theme\Branding();
+
+      // Breadcrumbs
+      new \iDeus\Theme\Breadcrumbs();
+
+      // Contact Form 7
+      new \iDeus\Theme\Contact_Form_7();
+
+      // Contact Form 7
+      new \iDeus\Theme\Polylang();
 
       // Disable important plugins deactivation
       add_filter( 'plugin_action_links', array( $this, 'disable_plugin_deactivation' ), 10, 2 );
