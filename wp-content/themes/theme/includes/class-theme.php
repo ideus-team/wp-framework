@@ -28,6 +28,9 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
       // JS & CSS
       new \iDeus\Theme\Resources();
 
+      // SEO
+      new \iDeus\Theme\SEO();
+
       // Disable important plugins deactivation
       add_filter( 'plugin_action_links', array( $this, 'disable_plugin_deactivation' ), 10, 2 );
     }
@@ -109,8 +112,8 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
      * @since X.X.X
      *
      * @param  string[] $actions     An array of plugin action links. By default this can include
-     *                              'activate', 'deactivate', and 'delete'. With Multisite active
-     *                              this can also include 'network_active' and 'network_only' items.
+     *                               'activate', 'deactivate', and 'delete'. With Multisite active
+     *                               this can also include 'network_active' and 'network_only' items.
      * @param  string   $plugin_file Path to the plugin file relative to the plugins directory.
      * @return array
      */

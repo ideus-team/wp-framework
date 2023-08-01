@@ -29,6 +29,7 @@ require_once( get_theme_file_path( 'includes/shortcodes.php' ) );
 require_once( get_theme_file_path( 'includes/acf.php' ) );
 // require_once( get_theme_file_path( 'includes/polylang.php' ) );
 require_once( get_theme_file_path( 'includes/other.php' ) );
+require_once( get_theme_file_path( 'includes/class-SEO.php' ) );
 
 
 /**
