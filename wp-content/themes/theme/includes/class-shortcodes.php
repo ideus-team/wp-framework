@@ -36,7 +36,7 @@ if ( ! class_exists( 'iDeus\Theme\Shortcodes' ) ) {
      * @param  string $content Shortcode content
      * @return string          Returned shortcode HTML
      */
-    function nc_test( $atts, $content = '' ) {
+    public function nc_test( $atts, $content = '' ) {
       $atts   = shortcode_atts( array(
 
       ), $atts );
