@@ -31,7 +31,7 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
 
 
     /**
-     * Remove author pages
+     * Update ACF Settings
      *
      * @since 2.0.0
      */
