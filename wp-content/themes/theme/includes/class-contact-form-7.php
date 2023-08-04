@@ -22,7 +22,44 @@ if ( ! class_exists( 'iDeus\Theme\Contact_Form_7' ) ) {
      * @since 2.0.0
      */
     public function __construct() {
+      // Set default empty option for select
+      // add_filter( 'wpcf7_form_elements', array( $this, 'select_empty_option' ) );
+    }
 
+
+    /**
+     * Set default empty option for select
+     *
+     * @since 2.1.0
+     *
+     * @param  [type] $html [description]
+     * @return [type]       [description]
+     */
+    public function select_empty_option( $html ) {
+      $this->replace_include_blank( 'location', 'Select One', $html );
+
+      return $html;
+    }
+
+
+    /**
+     * [replace_include_blank description]
+     *
+     * @since 2.1.0
+     *
+     * @param  [type] $name  [description]
+     * @param  [type] $text  [description]
+     * @param  [type] &$html [description]
+     * @return [type]        [description]
+     */
+    private function replace_include_blank( $name, $text, &$html ) {
+      $matches = false;
+      preg_match( '/<select name="' . $name . '"[^>]*>(.*)<\/select>/iU', $html, $matches );
+
+      if ( $matches ) {
+        $select = str_replace( '<option value="">---</option>', '<option value="">' . $text . '</option>', $matches[0] );
+        $html = preg_replace( '/<select name="' . $name . '"[^>]*>(.*)<\/select>/iU', $select, $html );
+      }
     }
 
   }
