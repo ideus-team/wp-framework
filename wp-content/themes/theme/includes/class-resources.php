@@ -52,7 +52,12 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
      * @since 2.0.0
      */
     public function styles() {
-      // wp_enqueue_style( 'googlefonts', 'https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Open+Sans:wght@300;400;600;700;800&display=swap', false, null );
+      // wp_enqueue_style(
+      //   'googlefonts',
+      //   'https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Open+Sans:wght@300;400;600;700;800&display=swap',
+      //   false,
+      //   null
+      // );
 
       if ( file_exists( get_theme_file_path( 'assets/css/main.min.css' ) ) ) {
         wp_enqueue_style(
