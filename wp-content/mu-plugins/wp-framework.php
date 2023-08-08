@@ -14,6 +14,12 @@ require WPMU_PLUGIN_DIR . '/wp-framework/class-plugin.php';
 // Walker_Nav_Menu
 require WPMU_PLUGIN_DIR . '/wp-framework/class-walker-nav-menu.php';
 
+// Breadcrumbs
+require WPMU_PLUGIN_DIR . '/wp-framework/class-breadcrumbs.php';
+
+// Close from search engines indexing for dev, stage environment
+require WPMU_PLUGIN_DIR . '/wp-framework/class-disable-indexing.php';
+
 // Pagination
 require WPMU_PLUGIN_DIR . '/wp-framework/pagination.php';
 
@@ -22,9 +28,3 @@ require WPMU_PLUGIN_DIR . '/wp-framework/post-type.php';
 
 // Custom Taxonomies
 require WPMU_PLUGIN_DIR . '/wp-framework/taxonomy.php';
-
-// Breadcrumbs
-require WPMU_PLUGIN_DIR . '/wp-framework/class-breadcrumbs.php';
-
-// Close from search engines indexing for dev, stage environment
-require WPMU_PLUGIN_DIR . '/wp-framework/class-disable-indexing.php';

@@ -85,6 +85,7 @@ function nc_pagenavi( $args = array() ) {
   }
 }
 
+
 /**
  * Page Navigation
  */

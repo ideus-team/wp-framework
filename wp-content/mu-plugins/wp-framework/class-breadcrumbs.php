@@ -3,6 +3,7 @@
  * Class Breadcrumbs
  *
  * @package WP-framework
+ * @since X.X.X
  */
 namespace iDeus\Framework;
 
@@ -11,6 +12,7 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
   /**
    * Breadcrumbs
    *
+   * @since X.X.X
    * @link http://wp-kama.ru/id_541/samyie-hlebnyie-kroshki-breabcrumbs-dlya-wordpress.html
    * @version 3.3.1
    */
