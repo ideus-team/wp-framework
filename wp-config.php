@@ -99,14 +99,6 @@ if ( ! defined( 'WP_POST_REVISIONS' ) ) {
 
 
 /**
- * Contact Form 7 constants
- * @link https://contactform7.com/controlling-behavior-by-setting-constants/
- */
-define( 'WPCF7_AUTOP',    false );
-define( 'WPCF7_LOAD_CSS', false );
-
-
-/**
  * Stop WP installing core plugins & themes
  */
 define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
