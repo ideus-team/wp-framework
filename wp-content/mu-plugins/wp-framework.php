@@ -11,8 +11,8 @@
 // Main plugin class
 require WPMU_PLUGIN_DIR . '/wp-framework/class-plugin.php';
 
-// Alternative Walkers
-require WPMU_PLUGIN_DIR . '/wp-framework/walkers.php';
+// Walker_Nav_Menu
+require WPMU_PLUGIN_DIR . '/wp-framework/class-walker-nav-menu.php';
 
 // Second level menu
 require WPMU_PLUGIN_DIR . '/wp-framework/submenu.php';
