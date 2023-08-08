@@ -1,21 +1,36 @@
 <?php
-namespace iDeus;
+/**
+ * Class Disable_Indexing
+ *
+ * @package WP-framework
+ * @since 1.11.3
+ */
+namespace iDeus\Framework;
 
-if ( ! class_exists( '\iDeus\Disable_Indexing' ) ) {
+if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
 
   /**
-   * Close from search engines indexing for dev, stage environment
+   * Close from search engines indexing for dev, stage environment.
+   *
+   * @since 1.11.3
    */
   final class Disable_Indexing {
 
     /**
-     * Class initialization
+     * Class initialization.
+     *
+     * @since 1.11.3
      */
     public function __construct() {
       add_action( 'init', array( __CLASS__, 'disable_indexing' ) );
     }
 
 
+    /**
+     * Disable indexing.
+     *
+     * @since 1.11.3
+     */
     public static function disable_indexing(): void {
 
       if ( ! self::is_blocking_on() ) {
@@ -32,6 +47,10 @@ if ( ! class_exists( '\iDeus\Disable_Indexing' ) ) {
 
     /**
      * Checks whether we should disable indexing.
+     *
+     * @since 1.11.3
+     *
+     * @return bool
      */
     private static function is_blocking_on(): bool {
 
@@ -49,6 +68,8 @@ if ( ! class_exists( '\iDeus\Disable_Indexing' ) ) {
 
     /**
      * 403 response for search agents.
+     *
+     * @since 1.11.3
      */
     private static function block_search_agents(): void {
       $robots = 'libwww|Wget|LWP|damnBot|BBBike|spider|crawl|google|bing|yandex|msnbot';
@@ -62,6 +83,14 @@ if ( ! class_exists( '\iDeus\Disable_Indexing' ) ) {
     }
 
 
+    /**
+     * Callback for hook `wp_headers`.
+     *
+     * @since 1.11.3
+     *
+     * @param  array $headers HTTP headers
+     * @return array
+     */
     public static function HTTP_header( array $headers ): array {
       $headers['X-Robots-Tag'] = 'noindex, nofollow';
 
@@ -69,6 +98,13 @@ if ( ! class_exists( '\iDeus\Disable_Indexing' ) ) {
     }
 
 
+    /**
+     * Callback for hook `robots_txt`.
+     *
+     * @since 1.11.3
+     *
+     * @return string Robots.txt content
+     */
     public static function robots_txt(): string {
       return "User-agent: *\nDisallow: /";
     }
@@ -77,6 +113,11 @@ if ( ! class_exists( '\iDeus\Disable_Indexing' ) ) {
     /**
      * Callback for hook `wp_robots`.
      * Adds `<meta name='robots' content='noindex, follow' />` HTML meta tag.
+     *
+     * @since 1.11.3
+     *
+     * @param  array $robots Meta tags for robots
+     * @return array
      */
     public static function robots_meta_tag( array $robots ): array {
       $robots['noindex'] = true;
@@ -88,5 +129,5 @@ if ( ! class_exists( '\iDeus\Disable_Indexing' ) ) {
 
   }
 
-  new \iDeus\Disable_Indexing();
+  new \iDeus\Framework\Disable_Indexing();
 }
