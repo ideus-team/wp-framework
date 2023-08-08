@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Contact Form 7
+ * Class Contact_Form_7
  *
  * @package WP-framework
  * @since 2.0.0
@@ -10,14 +10,14 @@ namespace iDeus\Theme;
 
 if ( ! class_exists( 'iDeus\Theme\Contact_Form_7' ) ) {
   /**
-   * Contact Form 7 modifications
+   * Contact Form 7 modifications.
    *
    * @since 2.0.0
    */
   class Contact_Form_7 {
 
     /**
-     * Class initialization
+     * Class initialization.
      *
      * @since 2.0.0
      */
@@ -34,12 +34,12 @@ if ( ! class_exists( 'iDeus\Theme\Contact_Form_7' ) ) {
 
 
     /**
-     * Set default empty option for select
+     * Set default empty option for select.
      *
-     * @since 2.1.0
+     * @since 2.0.2
      *
-     * @param  [type] $html [description]
-     * @return [type]       [description]
+     * @param  string $html Form HTML
+     * @return string
      */
     public function select_empty_option( $html ) {
       $this->replace_include_blank( 'location', 'Select One', $html );
@@ -49,16 +49,16 @@ if ( ! class_exists( 'iDeus\Theme\Contact_Form_7' ) ) {
 
 
     /**
-     * [replace_include_blank description]
+     * Replace empty option with custom.
      *
-     * @since 2.1.0
+     * @since 2.0.2
      *
-     * @param  [type] $name  [description]
-     * @param  [type] $text  [description]
-     * @param  [type] &$html [description]
-     * @return [type]        [description]
+     * @param  string $name  Select name
+     * @param  string $text  Select text
+     * @param  string $html  Form HTML
+     * @return string        Form HTML
      */
-    private function replace_include_blank( $name, $text, &$html ) {
+    private function replace_include_blank( $name, $text, $html ) {
       $matches = false;
       preg_match( '/<select name="' . $name . '"[^>]*>(.*)<\/select>/iU', $html, $matches );
 
@@ -66,6 +66,8 @@ if ( ! class_exists( 'iDeus\Theme\Contact_Form_7' ) ) {
         $select = str_replace( '<option value="">---</option>', '<option value="">' . $text . '</option>', $matches[0] );
         $html = preg_replace( '/<select name="' . $name . '"[^>]*>(.*)<\/select>/iU', $select, $html );
       }
+
+      return $html;
     }
 
   }
