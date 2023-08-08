@@ -8,11 +8,8 @@
  * Author URI: https://ideus.biz
  */
 
-// Cookie Change
-require WPMU_PLUGIN_DIR . '/wp-framework/cookie.php';
-
-// Modify body-class
-require WPMU_PLUGIN_DIR . '/wp-framework/body-class.php';
+// Main plugin class
+require WPMU_PLUGIN_DIR . '/wp-framework/class-plugin.php';
 
 // Alternative Walkers
 require WPMU_PLUGIN_DIR . '/wp-framework/walkers.php';
@@ -31,9 +28,6 @@ require WPMU_PLUGIN_DIR . '/wp-framework/taxonomy.php';
 
 // Breadcrumbs
 require WPMU_PLUGIN_DIR . '/wp-framework/class-breadcrumbs.php';
-
-// Development
-require WPMU_PLUGIN_DIR . '/wp-framework/development.php';
 
 // Close from search engines indexing for dev, stage environment
 require WPMU_PLUGIN_DIR . '/wp-framework/class-disable-indexing.php';
