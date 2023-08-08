@@ -3,7 +3,7 @@
  * Class Plugin
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.1.0
  */
 namespace iDeus\Framework;
 use Walker_Nav_Menu as Standart_Walker_Nav_Menu;
@@ -13,14 +13,14 @@ if ( ! class_exists( '\iDeus\Framework\Walker_Nav_Menu' ) ) {
   /**
    * Walker for wp_nav_menu
    *
-   * @since X.X.X
+   * @since 2.1.0
    */
   class Walker_Nav_Menu extends Standart_Walker_Nav_Menu {
 
     /**
      * Starts the list before the elements are added.
      *
-     * @since X.X.X
+     * @since 2.1.0
      *
      * @param  string   $output Used to append additional content (passed by reference).
      * @param  int      $depth  Depth of menu item. Used for padding.
@@ -43,7 +43,7 @@ if ( ! class_exists( '\iDeus\Framework\Walker_Nav_Menu' ) ) {
     /**
      * Starts the element output.
      *
-     * @since X.X.X
+     * @since 2.1.0
      *
      * @param string   $output Used to append additional content (passed by reference).
      * @param WP_Post  $item   Menu item data object.

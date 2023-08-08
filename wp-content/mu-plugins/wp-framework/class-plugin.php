@@ -3,7 +3,7 @@
  * Class Plugin
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.1.0
  */
 namespace iDeus\Framework;
 
@@ -12,14 +12,14 @@ if ( ! class_exists( '\iDeus\Framework\Plugin' ) ) {
   /**
    * Main plugin class
    *
-   * @since X.X.X
+   * @since 2.1.0
    */
   class Plugin {
 
     /**
      * Class initialization.
      *
-     * @since X.X.X
+     * @since 2.1.0
      */
     public function __construct() {
       // Set auth cookie age
@@ -36,7 +36,7 @@ if ( ! class_exists( '\iDeus\Framework\Plugin' ) ) {
     /**
      * Set auth cookie age.
      *
-     * @since X.X.X
+     * @since 2.1.0
      *
      * @param  int  $length   Duration of the expiration period in seconds.
      * @param  int  $user_id  User ID.
@@ -51,7 +51,7 @@ if ( ! class_exists( '\iDeus\Framework\Plugin' ) ) {
     /**
      * Modifiers for body.
      *
-     * @since X.X.X
+     * @since 2.1.0
      *
      * @param  array $classes An array of body class names.
      * @return array
@@ -95,7 +95,7 @@ if ( ! class_exists( '\iDeus\Framework\Plugin' ) ) {
     /**
      * Disable SSL verification for `wp_remote_*()` if localhost.
      *
-     * @since X.X.X
+     * @since 2.1.0
      *
      * @param  array $parsed_args An array of HTTP request arguments.
      * @return array

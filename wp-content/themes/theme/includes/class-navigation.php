@@ -52,7 +52,7 @@ if ( ! class_exists( 'iDeus\Theme\Navigation' ) ) {
      *   'show_parent'   => true,
      * ) );
      *
-     * @since X.X.X
+     * @since 2.1.0
      * @link https://christianvarga.com/how-to-get-submenu-items-from-a-wordpress-menu-based-on-parent-or-sibling/
      *
      * @param  array    $sorted_menu_items The menu items, sorted by each menu item's menu order.
