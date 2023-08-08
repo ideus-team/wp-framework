@@ -1,5 +1,19 @@
 <?php
 /**
+ * Show breadcrumbs
+ *
+ * @param  string [$sep  = '']      Розділювач. За замовчуванням ''
+ * @param  array  [$l10n = array()] Для локалізації. Див. змінну $default_l10n.
+ * @param  array  [$args = array()] Опції. Див. змінну $def_args
+ * @return void                     Виводить на екран HTML код
+ */
+function nc_breadcrumbs( $sep = '', $l10n = array(), $args = array() ) {
+  $breadcrumbs = new \iDeus\Framework\Breadcrumbs();
+  echo $breadcrumbs->get_crumbs( $sep, $l10n, $args );
+}
+
+
+/**
  * Custom except
  */
 function nc_excerpt( $args = array() ) {
