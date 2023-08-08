@@ -30,7 +30,7 @@ require WPMU_PLUGIN_DIR . '/nc-functions/post-type.php';
 require WPMU_PLUGIN_DIR . '/nc-functions/taxonomy.php';
 
 // Breadcrumbs
-require WPMU_PLUGIN_DIR . '/nc-functions/breadcrumbs.php';
+require WPMU_PLUGIN_DIR . '/nc-functions/class-breadcrumbs.php';
 
 // Development
 require WPMU_PLUGIN_DIR . '/nc-functions/development.php';
