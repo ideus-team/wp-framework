@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WP-framework
- * Plugin URI:
+ * Plugin URI: https://github.com/ideus-team/wp-framework
  * Description: Functions for WP-framework
  * Author: iDeus
  * Version: 2.0.2
@@ -9,31 +9,31 @@
  */
 
 // Cookie Change
-require WPMU_PLUGIN_DIR . '/nc-functions/cookie.php';
+require WPMU_PLUGIN_DIR . '/wp-framework/cookie.php';
 
 // Modify body-class
-require WPMU_PLUGIN_DIR . '/nc-functions/body-class.php';
+require WPMU_PLUGIN_DIR . '/wp-framework/body-class.php';
 
 // Alternative Walkers
-require WPMU_PLUGIN_DIR . '/nc-functions/walkers.php';
+require WPMU_PLUGIN_DIR . '/wp-framework/walkers.php';
 
 // Second level menu
-require WPMU_PLUGIN_DIR . '/nc-functions/submenu.php';
+require WPMU_PLUGIN_DIR . '/wp-framework/submenu.php';
 
 // Pagination
-require WPMU_PLUGIN_DIR . '/nc-functions/pagination.php';
+require WPMU_PLUGIN_DIR . '/wp-framework/pagination.php';
 
 // Custom Post Types
-require WPMU_PLUGIN_DIR . '/nc-functions/post-type.php';
+require WPMU_PLUGIN_DIR . '/wp-framework/post-type.php';
 
 // Custom Taxonomies
-require WPMU_PLUGIN_DIR . '/nc-functions/taxonomy.php';
+require WPMU_PLUGIN_DIR . '/wp-framework/taxonomy.php';
 
 // Breadcrumbs
-require WPMU_PLUGIN_DIR . '/nc-functions/class-breadcrumbs.php';
+require WPMU_PLUGIN_DIR . '/wp-framework/class-breadcrumbs.php';
 
 // Development
-require WPMU_PLUGIN_DIR . '/nc-functions/development.php';
+require WPMU_PLUGIN_DIR . '/wp-framework/development.php';
 
 // Close from search engines indexing for dev, stage environment
-require WPMU_PLUGIN_DIR . '/nc-functions/class-disable-indexing.php';
+require WPMU_PLUGIN_DIR . '/wp-framework/class-disable-indexing.php';
