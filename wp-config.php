@@ -104,12 +104,6 @@ if ( ! defined( 'WP_POST_REVISIONS' ) ) {
 define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
 
 
-/**
- * ACF Pro License Key
- */
-// define( 'ACF_PRO_LICENSE', 'yourkeyhere' );
-
-
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
