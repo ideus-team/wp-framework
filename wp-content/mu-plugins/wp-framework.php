@@ -14,9 +14,6 @@ require WPMU_PLUGIN_DIR . '/wp-framework/class-plugin.php';
 // Walker_Nav_Menu
 require WPMU_PLUGIN_DIR . '/wp-framework/class-walker-nav-menu.php';
 
-// Second level menu
-require WPMU_PLUGIN_DIR . '/wp-framework/submenu.php';
-
 // Pagination
 require WPMU_PLUGIN_DIR . '/wp-framework/pagination.php';
 
