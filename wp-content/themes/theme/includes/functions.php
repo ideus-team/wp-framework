@@ -2,6 +2,8 @@
 /**
  * Show breadcrumbs
  *
+ * @since 2.0.0
+ *
  * @param  string [$sep  = '']      Розділювач. За замовчуванням ''
  * @param  array  [$l10n = array()] Для локалізації. Див. змінну $default_l10n.
  * @param  array  [$args = array()] Опції. Див. змінну $def_args
@@ -15,6 +17,11 @@ function nc_breadcrumbs( $sep = '', $l10n = array(), $args = array() ) {
 
 /**
  * Custom except
+ *
+ * @since 2.0.0
+ *
+ * @param  array  $args Arguments.
+ * @return string       Custom except.
  */
 function nc_excerpt( $args = array() ) {
   $args = wp_parse_args( $args, array(
@@ -29,6 +36,11 @@ function nc_excerpt( $args = array() ) {
 
 /**
  * Fix phone number for links
+ *
+ * @since 2.0.0
+ *
+ * @param  string $phone Phone number.
+ * @return string        Fixed phone number.
  */
 function nc_tel( $phone = '' ) {
   $patterns[0] = '/\ /';
@@ -43,8 +55,16 @@ function nc_tel( $phone = '' ) {
 
 /**
  * Get remote JSON & cache with Transients API
+ *
+ * @since 2.0.0
+ *
+ * @param  string       $url        URL to retrieve.
+ * @param  array        $args       Optional. Request arguments. Default empty array.
+ *                                  See WP_Http::request() for information on accepted arguments.
+ * @param  str          $expiration Number of seconds.
+ * @return object|false             The response or WP_Error on failure.
  */
-function nc_remote_api_get( $api_url, $expiration = HOUR_IN_SECONDS ) {
+function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SECONDS ) {
   $api_url_hash = 'nc_cache_' . md5( $api_url );
   $cache = get_transient( $api_url_hash );
 
@@ -70,6 +90,8 @@ function nc_remote_api_get( $api_url, $expiration = HOUR_IN_SECONDS ) {
 
 /**
  * Get YouTube/Vimeo video type & ID
+ *
+ * @since 2.0.0
  *
  * @param  string $url YouTube or Vimeo video URL
  * @return array       Video type & ID
@@ -102,6 +124,8 @@ function nc_determine_video_url( $url ) {
 /**
  * Get YouTube thumbnail
  *
+ * @since 2.0.0
+ *
  * @param  string $video_id YouTube video ID
  * @param  string $size     Thumbnail size: hqdefault / sddefault / maxresdefault
  * @return string           Thumbnail URL
@@ -115,6 +139,8 @@ function nc_get_youtube_thumb( $video_id, $size = 'sddefault' ) {
 
 /**
  * Get Vimeo thumbnail
+ *
+ * @since 2.0.0
  *
  * @param  string $video_id Vimeo video ID
  * @param  string $size     Thumbnail size: 640 / 1280
@@ -130,6 +156,11 @@ function nc_get_vimeo_thumb( $video_id, $size = '640' ) {
 
 /**
  * Get the page or post slug
+ *
+ * @since 2.0.0
+ *
+ * @param  int    $post Post ID.
+ * @return string       Post slug.
  */
 if ( ! function_exists( 'get_the_slug' ) ) {
   function get_the_slug( $post = 0 ) {
@@ -142,10 +173,15 @@ if ( ! function_exists( 'get_the_slug' ) ) {
   }
 }
 
+
 /**
  * Display the page or post slug
  *
  * Uses get_the_slug()
+ *
+ * @since 2.0.0
+ *
+ * @return void Echo post slug.
  */
 if ( ! function_exists( 'the_slug' ) ) {
   function the_slug() {
@@ -158,8 +194,15 @@ if ( ! function_exists( 'the_slug' ) ) {
 
 /**
  * Insert something after paragraph #
+ *
+ * @since 2.0.0
+ *
+ * @param  string  $insertion     Text to be inserted.
+ * @param  int     $paragraph_num Number of paragraph to insert.
+ * @param  string  $content       Text where to insert.
+ * @return string                 Final text.
  */
-function nc_insert_after_paragraph( $insertion, $paragraph_id, $content ) {
+function nc_insert_after_paragraph( $insertion, $paragraph_num, $content ) {
   $closing_p = '</p>';
   $paragraphs = explode( $closing_p, $content );
 
@@ -168,7 +211,7 @@ function nc_insert_after_paragraph( $insertion, $paragraph_id, $content ) {
       $paragraphs[$index] .= $closing_p;
     }
 
-    if ( $paragraph_id == $index + 1 ) {
+    if ( $paragraph_num == $index + 1 ) {
       $paragraphs[$index] .= $insertion;
     }
   }
