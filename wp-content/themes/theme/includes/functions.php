@@ -71,7 +71,7 @@ function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SEC
   if ( $cache ) {
     $body = $cache;
   } else {
-    $request = wp_remote_get( $api_url );
+    $request = wp_remote_get( $api_url, $args );
 
     if ( is_wp_error( $request ) ) {
       return false;
