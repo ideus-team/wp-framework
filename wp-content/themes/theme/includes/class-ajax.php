@@ -24,6 +24,9 @@ if ( ! class_exists( 'iDeus\Theme\AJAX' ) ) {
     public function __construct() {
       // Include all AJAX files
       $this->include_ajax_files();
+
+      // Example: AJAX request, action 'nc_example'
+      // new \iDeus\Theme\AJAX_Example();
     }
 
 
