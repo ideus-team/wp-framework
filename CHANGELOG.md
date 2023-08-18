@@ -1,3 +1,10 @@
+### 2.2.0
+* Remove "Default empty option for CF7 select" method, we can use 'first_as_label' attribute for it
+* Refactor functions.php
+* Refactor \iDeus\Theme\Resources
+* Fix nc_remote_api_get()
+* Refactor AJAX (go to OOP)
+
 ### 2.1.0
 * Replace Contact Form 7 constants with filters
 * Move submenu to theme
