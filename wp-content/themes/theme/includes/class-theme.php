@@ -55,7 +55,7 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
       // Contact Form 7
       new \iDeus\Theme\Contact_Form_7();
 
-      // Contact Form 7
+      // Polylang
       new \iDeus\Theme\Polylang();
 
       // Disable important plugins deactivation
