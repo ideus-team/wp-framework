@@ -53,7 +53,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
       wp_deregister_script( 'jquery' );
       wp_register_script(
         'jquery',
-        get_theme_file_uri( 'assets/js/vendor/jquery-3.7.0.min.js' ),
+        get_theme_file_uri( 'assets/js/vendor/jquery-3.7.1.min.js' ),
         false,
         '3.7.0',
         true
