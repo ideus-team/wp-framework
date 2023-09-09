@@ -19,6 +19,8 @@ if ( ! class_exists( 'iDeus\Theme\AJAX_Example' ) ) {
 
     /**
      * Class initialization
+     *
+     * @since 2.2.0
      */
     public function __construct() {
       add_action( 'wp_ajax_nc_example', array( $this, 'ajax_callback' ) );
