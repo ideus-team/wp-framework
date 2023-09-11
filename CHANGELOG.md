@@ -1,3 +1,6 @@
+### 2.2.3
+* Update changelog
+
 ### 2.2.2
 * Update jQuery to 3.7.1
 * Update some comments
