@@ -1,7 +1,15 @@
+### 2.2.2
+* Update jQuery to 3.7.1
+* Update some comments
+
+### 2.2.1
+* Update packages
+* Fix some comments
+
 ### 2.2.0
 * Remove "Default empty option for CF7 select" method, we can use 'first_as_label' attribute for it
 * Refactor functions.php
-* Refactor \iDeus\Theme\Resources
+* Refactor \iDeus\Theme\Resources()
 * Fix nc_remote_api_get()
 * Refactor AJAX (go to OOP)
 
