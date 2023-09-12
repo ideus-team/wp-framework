@@ -1,7 +1,7 @@
 # WP-framework
 Based on [`HTML Framework`](https://github.com/ideus-team/html-framework)
 
-* [Встановлення](встановлення)
+* [Встановлення](#встановлення)
 * [Верстка](#верстка)
 * [Сніпети](#сніпети)
   * [Breadcrumbs](#breadcrumbs)
