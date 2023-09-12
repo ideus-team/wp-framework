@@ -1,3 +1,7 @@
+### 2.2.5
+* Update packages
+* Remove Russian language from README.md
+
 ### 2.2.4
 * Fix errors if ACF plugin is disabled
 
