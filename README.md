@@ -1,29 +1,34 @@
 # WP-framework
 Based on [`HTML Framework`](https://github.com/ideus-team/html-framework)
 
-* [Установка](#установка)
+* [Встановлення](встановлення)
 * [Верстка](#верстка)
 * [Сніпети](#сніпети)
   * [Breadcrumbs](#breadcrumbs)
   * [Pagination](#pagination)
   * [Inline SVG](#inline-svg)
 
-## Установка
-1. Скачиваем с [офсайта](https://wordpress.org/download/) архив голого Wordpress и заливаем его в новый пустой проект
-2. Удаляем:
+## Встановлення
+1. Завантажуємо з [офсайту](https://wordpress.org/download/) архів останнього WordPress та заливаємо його в новий порожній проект
+2. Видаляємо:
    * `wp-content/plugins/hello.php`
-   * `wp-content/themes/` все-стандартные-темы
-3. Clone `https://github.com/ideus-team/wp-framework.git`
-4. Содержимое репозитория копируем в корень своего проекта копируем поверх существующих файлов
-5. Переименовываем тему:
-   * правим соответствующие строки в `wp-content/themes/theme/style.css`
-   * заменяем `wp-content/themes/theme/screenshot.png` на скриншот проекта (1200х900px)
-   * переименовываем папку `wp-content/themes/theme` по имени проекта
-6. Во время установки указываем email `wordpress@ideus.biz` (или клиента, но не личный!)
-7. Активируем нашу тему
-8. Permalink Settings → Common Settings → Post name (если WP попросит внести изменения в `.htaccess` — нужно это сделать)
-9. Settings → General - выставляем таймозону, форматы даты-времени и т.д.
-10. На время разработки следует закрыть сайт паролем при помощи плагина [Password Protected](https://wordpress.org/plugins/password-protected/)
+   * `wp-content/themes/*` (всі стандартні теми)
+3. Завантажуємо останню версію [WP-framework](https://github.com/ideus-team/wp-framework/releases/latest)
+4. Копіюємо вміст архіву в корінь свого проекту поверх існуючих файлів
+5. Перейменовуємо тему:
+   * правимо відповідні рядки в `wp-content/themes/theme/style.css`
+   * замінюємо `wp-content/themes/theme/screenshot.png` на скріншот проекту (1200х900px)
+   * перейменовуємо теку `wp-content/themes/theme` на ім'я проекту
+6. Правимо `wp-config.php`:
+   * прописуємо dev/local домени для автоматичного визначення ***environment type***
+   * правимо необхідні `wp-config.*.php`
+   * не забуваємо згенерувати ***Authentication unique keys and salts***
+7. Встановлюємо WordPress
+   * під час встановлення вказуємо email `wordpress@ideus.biz` (або клієнта, але не особистий!)
+8. Активуємо нашу тему
+9. Permalink Settings → Common Settings → Post name (якщо WP попросить внести зміни до `.htaccess` — потрібно це зробити)
+10. Settings → General — встановлюємо таймозону, формати дати-часу тощо.
+11. На час розробки слід закрити сайт паролем за допомогою плагіна [Password Protected](https://wordpress.org/plugins/password-protected/)
 
 ## Верстка
 * На етапі верстки під кожну сторінку створюється шаблон виду `pagename.php` у теці `page-templates` (ці сторінки також потрібно створити в адміїнці у Pages та прив'язати до них відповідні шаблони). У жодному разі не чіпати без потреби `index.php`, це універсальний темплейт, а не головна сторінка.
