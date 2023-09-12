@@ -1,3 +1,6 @@
+### 2.2.4
+* Fix errors if ACF plugin is disabled
+
 ### 2.2.3
 * Update changelog
 
