@@ -223,9 +223,7 @@ if ( ! class_exists( 'iDeus\Theme\Navigation' ) ) {
      * @return object
      */
     public function menu_item_label( $args, $item, $depth ) {
-      $label = get_field( '_nc_label', $item->ID );
-
-      if ( $label ) {
+      if ( function_exists( 'get_field' ) && $label = get_field( '_nc_label', $item->ID ) ) {
         $args->before = $label . ' ';
       }
 
