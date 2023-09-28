@@ -1,3 +1,10 @@
+### 2.3.0
+* Fix README.md
+* Update metadata in style.css
+* Fix variable names
+* Add login page css
+* Update packages
+
 ### 2.2.5
 * Update packages
 * Remove Russian language from README.md
