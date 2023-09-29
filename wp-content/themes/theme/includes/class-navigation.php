@@ -25,9 +25,11 @@ if ( ! class_exists( 'iDeus\Theme\Navigation' ) ) {
       // Get submenu items from a WordPress menu based on parent or sibling
       add_filter( 'wp_nav_menu_objects', array( $this, 'sub_menu' ), 10, 2 );
 
+      // Add field group for menu item
+      $this->menu_element_fields();
+
       // Styled menu item
       add_filter( 'nav_menu_css_class', array( $this, 'styled_menu_element' ), 10, 4 );
-      $this->styled_menu_element_field();
 
       // Modify nav menu objects
       add_filter( 'wp_nav_menu_objects', array( $this, 'modify_menu_objects' ), 10, 2 );
@@ -127,11 +129,11 @@ if ( ! class_exists( 'iDeus\Theme\Navigation' ) ) {
 
 
     /**
-     * Add field group for styled menu item
+     * Add field group for menu item
      *
      * @since 2.0.0
      */
-    private function styled_menu_element_field() {
+    private function menu_element_fields() {
       if ( function_exists( 'acf_add_local_field_group' ) ) {
         acf_add_local_field_group( array(
           'key'      => 'group_menu_item_styled',
@@ -143,6 +145,13 @@ if ( ! class_exists( 'iDeus\Theme\Navigation' ) ) {
               'name'  => '_nc_styled',
               'type'  => 'true_false',
               'ui'    => 1,
+            ),
+            array(
+              'key'     => 'field_anchor',
+              'label'   => 'Anchor',
+              'name'    => '_nc_anchor',
+              'type'    => 'text',
+              'prepend' => '#',
             ),
           ),
           'location' => array(
@@ -175,6 +184,7 @@ if ( ! class_exists( 'iDeus\Theme\Navigation' ) ) {
           $item->classes[] = get_field( '_nc_class', $item->ID );
         }
 
+        // Link anchor
         if ( function_exists( 'get_field' ) && get_field( '_nc_anchor', $item->ID ) ) {
           $anchor = '#' . get_field( '_nc_anchor', $item->ID );
 
