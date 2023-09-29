@@ -1,3 +1,6 @@
+### 2.4.0
+* Add menu link anchor
+
 ### 2.3.0
 * Fix README.md
 * Update metadata in style.css
