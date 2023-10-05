@@ -26,16 +26,16 @@
   <?php wp_body_open(); ?>
   <?php get_template_part( 'template-parts/scripts/body' ); ?>
 
-  <div class="l-wrapper">
+  <div class="l-wrapper" id="top">
     <header class="l-siteHeader">
       <div class="b-siteHeader">
         <div class="l-siteLogo">
           <?php
           $logo_tag  = ( is_front_page() && ! is_paged() ) ? 'h1' : 'div';
-          $logo_link = ( is_front_page() && ! is_paged() ) ? '' : ' href="' . home_url() . '"';
+          $logo_link = ( is_front_page() && ! is_paged() ) ? home_url( '#top' ) : home_url() . '"';
           ?>
           <<?php echo $logo_tag; ?> class="b-siteLogo" itemscope itemtype="http://schema.org/Organization">
-            <a class="b-siteLogo__link"<?php echo $logo_link; ?> itemprop="url">
+            <a class="b-siteLogo__link" href="<?php echo $logo_link; ?>" itemprop="url">
               <img class="b-siteLogo__icon" src="<?php echo get_theme_file_uri( 'assets/img/logos/siteLogo-logo.png' ); ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" itemprop="logo">
             </a>
           </<?php echo $logo_tag; ?>>
