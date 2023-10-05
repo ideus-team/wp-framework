@@ -1,3 +1,6 @@
+### 2.4.1
+* Fix microdata error
+
 ### 2.4.0
 * Add menu link anchor
 
