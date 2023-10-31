@@ -1,3 +1,6 @@
+### 2.4.2
+* Update packages
+
 ### 2.4.1
 * Fix microdata error
 
