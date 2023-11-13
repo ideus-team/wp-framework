@@ -1,5 +1,20 @@
 <?php
 /**
+ * Theme functions and definitions.
+ *
+ * @package WP-framework
+ * @since 2.0.0
+ */
+
+/**
+ * Exit if accessed directly
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+  die( 'No script kiddies please!' );
+}
+
+
+/**
  * Content Width
  *
  * @link http://codex.wordpress.org/Content_Width
