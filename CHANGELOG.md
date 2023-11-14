@@ -1,3 +1,9 @@
+### 2.4.3
+* Fix CRLF → LF
+* Exit if functions.php accessed directly
+* Update MU plugins
+* Update packages
+
 ### 2.4.2
 * Update packages
 
