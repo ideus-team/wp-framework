@@ -1,3 +1,6 @@
+### 2.4.4
+* Replace dart-sass to sass
+
 ### 2.4.3
 * Fix CRLF → LF
 * Exit if functions.php accessed directly
