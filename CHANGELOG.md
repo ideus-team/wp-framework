@@ -1,3 +1,7 @@
+### 2.4.5
+* Fix header logo link
+* Update packages
+
 ### 2.4.4
 * Replace dart-sass to sass
 
