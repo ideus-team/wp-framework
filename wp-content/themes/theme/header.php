@@ -32,7 +32,7 @@
         <div class="l-siteLogo">
           <?php
           $logo_tag  = ( is_front_page() && ! is_paged() ) ? 'h1' : 'div';
-          $logo_link = ( is_front_page() && ! is_paged() ) ? home_url( '#top' ) : home_url() . '"';
+          $logo_link = ( is_front_page() && ! is_paged() ) ? home_url( '#top' ) : home_url();
           ?>
           <<?php echo $logo_tag; ?> class="b-siteLogo" itemscope itemtype="http://schema.org/Organization">
             <a class="b-siteLogo__link" href="<?php echo $logo_link; ?>" itemprop="url">
