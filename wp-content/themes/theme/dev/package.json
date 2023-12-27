@@ -3,8 +3,8 @@
   "version": "2.4.5",
   "description": "Our HTML5 boilerplate",
   "devDependencies": {
-    "@babel/core": "7.23.5",
-    "@babel/preset-env": "7.23.5",
+    "@babel/core": "7.23.6",
+    "@babel/preset-env": "7.23.6",
     "autoprefixer": "9.8.8",
     "cssnano": "4.1.11",
     "grunt": "1.6.1",
