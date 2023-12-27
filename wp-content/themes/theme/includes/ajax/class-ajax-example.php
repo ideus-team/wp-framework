@@ -3,7 +3,6 @@
  * Class AJAX_Example
  *
  * @package WP-framework
- * @since 2.2.0
  */
 
 namespace iDeus\Theme;
@@ -12,15 +11,11 @@ use WP_Query;
 if ( ! class_exists( 'iDeus\Theme\AJAX_Example' ) ) {
   /**
    * AJAX request, action 'nc_example'
-   *
-   * @since 2.2.0
    */
   class AJAX_Example {
 
     /**
      * Class initialization
-     *
-     * @since 2.2.0
      */
     public function __construct() {
       add_action( 'wp_ajax_nc_example', array( $this, 'ajax_callback' ) );
@@ -30,8 +25,6 @@ if ( ! class_exists( 'iDeus\Theme\AJAX_Example' ) ) {
 
     /**
      * Processing AJAX request
-     *
-     * @since 2.2.0
      */
     public function ajax_callback() {
       $result = array();
