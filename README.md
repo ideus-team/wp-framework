@@ -4,27 +4,27 @@ Based on [`HTML Framework`](https://github.com/ideus-team/html-framework)
 * [Встановлення](#встановлення)
 * [Верстка](#верстка)
 * [Сніпети](#сніпети)
-  * [Breadcrumbs](#breadcrumbs)
-  * [Pagination](#pagination)
-  * [Inline SVG](#inline-svg)
+	* [Breadcrumbs](#breadcrumbs)
+	* [Pagination](#pagination)
+	* [Inline SVG](#inline-svg)
 
 ## Встановлення
 1. Завантажуємо з [офсайту](https://wordpress.org/download/) архів останнього WordPress та заливаємо його в новий порожній проект
 2. Видаляємо:
-   * `wp-content/plugins/hello.php`
-   * `wp-content/themes/*` (всі стандартні теми)
+	 * `wp-content/plugins/hello.php`
+	 * `wp-content/themes/*` (всі стандартні теми)
 3. Завантажуємо останню версію [WP-framework](https://github.com/ideus-team/wp-framework/releases/latest)
 4. Копіюємо вміст архіву в корінь свого проекту поверх існуючих файлів
 5. Перейменовуємо тему:
-   * правимо відповідні рядки в `wp-content/themes/theme/style.css`
-   * замінюємо `wp-content/themes/theme/screenshot.png` на скріншот проекту (1200х900px)
-   * перейменовуємо теку `wp-content/themes/theme` на ім'я проекту
+	 * правимо відповідні рядки в `wp-content/themes/theme/style.css`
+	 * замінюємо `wp-content/themes/theme/screenshot.png` на скріншот проекту (1200х900px)
+	 * перейменовуємо теку `wp-content/themes/theme` на ім'я проекту
 6. Правимо `wp-config.php`:
-   * прописуємо dev/local домени для автоматичного визначення ***environment type***
-   * правимо необхідні `wp-config.*.php`
-   * не забуваємо згенерувати ***Authentication unique keys and salts***
+	 * прописуємо dev/local домени для автоматичного визначення ***environment type***
+	 * правимо необхідні `wp-config.*.php`
+	 * не забуваємо згенерувати ***Authentication unique keys and salts***
 7. Встановлюємо WordPress
-   * під час встановлення вказуємо email `wordpress@ideus.biz` (або клієнта, але не особистий!)
+	 * під час встановлення вказуємо email `wordpress@ideus.biz` (або клієнта, але не особистий!)
 8. Активуємо нашу тему
 9. Permalink Settings → Common Settings → Post name (якщо WP попросить внести зміни до `.htaccess` — потрібно це зробити)
 10. Settings → General — встановлюємо таймозону, формати дати-часу тощо.
@@ -39,10 +39,10 @@ Based on [`HTML Framework`](https://github.com/ideus-team/html-framework)
 ```html
 …
 <div class="b-article__description b-text">
-  <p>Це текст статті, повний чи скорочений — не має значення</p>
-  <ul>
-    <li>пункт меню</li>
-  </ul>
+	<p>Це текст статті, повний чи скорочений — не має значення</p>
+	<ul>
+		<li>пункт меню</li>
+	</ul>
 </div>
 …
 ```
@@ -52,16 +52,16 @@ Based on [`HTML Framework`](https://github.com/ideus-team/html-framework)
 …
 .b-article {
 
-  &__description {
+	&__description {
 
-    p {
-      font-size: 15px;
-    }
+		p {
+			font-size: 15px;
+		}
 
-    ul {
-      line-height: 2em;
-    }
-  }
+		ul {
+			line-height: 2em;
+		}
+	}
 }
 …
 ```
@@ -72,19 +72,19 @@ Based on [`HTML Framework`](https://github.com/ideus-team/html-framework)
 ### Breadcrumbs
 ```html
 <div class="l-breadcrumbs">
-  <ul class="b-breadcrumbs">
-    <li class="b-breadcrumbs__item">
-      <a class="b-breadcrumbs__link" href="#">Item</a>
-    </li>
+	<ul class="b-breadcrumbs">
+		<li class="b-breadcrumbs__item">
+			<a class="b-breadcrumbs__link" href="#">Item</a>
+		</li>
 
-    <li class="b-breadcrumbs__item">
-      <a class="b-breadcrumbs__link" href="#">Item</a>
-    </li>
+		<li class="b-breadcrumbs__item">
+			<a class="b-breadcrumbs__link" href="#">Item</a>
+		</li>
 
-    <li class="b-breadcrumbs__item -state_current">
-      Item
-    </li>
-  </ul>
+		<li class="b-breadcrumbs__item -state_current">
+			Item
+		</li>
+	</ul>
 </div>
 ```
 або просто вставити ось цей код, який одразу буде виводити актуальний HTML для них:
@@ -95,29 +95,29 @@ Based on [`HTML Framework`](https://github.com/ideus-team/html-framework)
 ### Pagination
 ```html
 <div class="b-pagination">
-  <div class="b-pagination__total">Found 250</div>
-  <div class="b-pagination__pages">Page 2 of 25</div>
+	<div class="b-pagination__total">Found 250</div>
+	<div class="b-pagination__pages">Page 2 of 25</div>
 
-  <ul class="b-pagination__list">
-    <li class="b-pagination__item">
-      <a class="b-pagination__link -type_prev" href="#">←</a>
-    </li>
-    <li class="b-pagination__item">
-      <a class="b-pagination__link" href="#">1</a>
-    </li>
-    <li class="b-pagination__item">
-      <span class="b-pagination__link -state_active">2</span>
-    </li>
-    <li class="b-pagination__item">
-      <span class="b-pagination__link -type_dots">…</span>
-    </li>
-    <li class="b-pagination__item">
-      <a class="b-pagination__link" href="#">25</a>
-    </li>
-    <li class="b-pagination__item">
-      <a class="b-pagination__link -type_next" href="#">→</a>
-    </li>
-  </ul>
+	<ul class="b-pagination__list">
+		<li class="b-pagination__item">
+			<a class="b-pagination__link -type_prev" href="#">←</a>
+		</li>
+		<li class="b-pagination__item">
+			<a class="b-pagination__link" href="#">1</a>
+		</li>
+		<li class="b-pagination__item">
+			<span class="b-pagination__link -state_active">2</span>
+		</li>
+		<li class="b-pagination__item">
+			<span class="b-pagination__link -type_dots">…</span>
+		</li>
+		<li class="b-pagination__item">
+			<a class="b-pagination__link" href="#">25</a>
+		</li>
+		<li class="b-pagination__item">
+			<a class="b-pagination__link -type_next" href="#">→</a>
+		</li>
+	</ul>
 </div>
 ```
 

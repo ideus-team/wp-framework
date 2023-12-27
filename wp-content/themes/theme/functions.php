@@ -10,7 +10,7 @@
  * Exit if accessed directly
  */
 if ( ! defined( 'ABSPATH' ) ) {
-  die( 'No script kiddies please!' );
+	die( 'No script kiddies please!' );
 }
 
 
@@ -20,9 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @link http://codex.wordpress.org/Content_Width
  */
 if ( ! isset( $content_width ) ) {
-  if ( is_admin() ) {
-    $content_width = 640;
-  }
+	if ( is_admin() ) {
+		$content_width = 640;
+	}
 }
 
 

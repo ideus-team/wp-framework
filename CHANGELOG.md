@@ -1,3 +1,7 @@
+### 2.5.0
+* Using Akismet in Custom Forms
+* Update packages
+
 ### 2.4.5
 * Fix header logo link
 * Update packages

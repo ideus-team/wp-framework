@@ -25,20 +25,20 @@
  * You can change 'site.local', 'site.dev', 'site.staging' to your domain names
  */
 if ( 'site.local' == $_SERVER['SERVER_NAME'] ) {
-  define( 'WP_ENVIRONMENT_TYPE', 'local' );
+	define( 'WP_ENVIRONMENT_TYPE', 'local' );
 } elseif ( 'site.dev' == $_SERVER['SERVER_NAME'] ) {
-  define( 'WP_ENVIRONMENT_TYPE', 'development' );
+	define( 'WP_ENVIRONMENT_TYPE', 'development' );
 } elseif ( 'site.staging' == $_SERVER['SERVER_NAME'] ) {
-  define( 'WP_ENVIRONMENT_TYPE', 'staging' );
+	define( 'WP_ENVIRONMENT_TYPE', 'staging' );
 } else {
-  define( 'WP_ENVIRONMENT_TYPE', 'production' );
+	define( 'WP_ENVIRONMENT_TYPE', 'production' );
 }
 
 /**
  * Include file with MySQL and other environment settings
  */
 if ( file_exists( dirname( __FILE__ ) . '/wp-config.' . WP_ENVIRONMENT_TYPE . '.php' ) ) {
-  include( dirname( __FILE__ ) . '/wp-config.' . WP_ENVIRONMENT_TYPE . '.php' );
+	include( dirname( __FILE__ ) . '/wp-config.' . WP_ENVIRONMENT_TYPE . '.php' );
 }
 
 /**#@+
@@ -84,7 +84,7 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 if ( ! defined( 'WP_DEBUG' ) && isset( $_GET['debug'] ) && 'debug' == $_GET['debug'] ) {
-  define( 'WP_DEBUG', true );
+	define( 'WP_DEBUG', true );
 }
 
 /* Add any custom values between this line and the "stop editing" line. */
@@ -94,7 +94,7 @@ if ( ! defined( 'WP_DEBUG' ) && isset( $_GET['debug'] ) && 'debug' == $_GET['deb
  * Limit WordPress revisions
  */
 if ( ! defined( 'WP_POST_REVISIONS' ) ) {
-  define( 'WP_POST_REVISIONS', 5 );
+	define( 'WP_POST_REVISIONS', 5 );
 }
 
 
@@ -108,7 +108,7 @@ define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
-  define( 'ABSPATH', __DIR__ . '/' );
+	define( 'ABSPATH', __DIR__ . '/' );
 }
 
 /** Sets up WordPress vars and included files. */

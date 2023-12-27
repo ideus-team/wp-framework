@@ -10,8 +10,8 @@
  * @return void                     Виводить на екран HTML код
  */
 function nc_breadcrumbs( $sep = '', $l10n = array(), $args = array() ) {
-  $breadcrumbs = new \iDeus\Framework\Breadcrumbs();
-  echo $breadcrumbs->get_crumbs( $sep, $l10n, $args );
+	$breadcrumbs = new \iDeus\Framework\Breadcrumbs();
+	echo $breadcrumbs->get_crumbs( $sep, $l10n, $args );
 }
 
 
@@ -24,13 +24,13 @@ function nc_breadcrumbs( $sep = '', $l10n = array(), $args = array() ) {
  * @return string       Custom except.
  */
 function nc_excerpt( $args = array() ) {
-  $args = wp_parse_args( $args, array(
-    'num_words' => 25,
-    'more'      => '… →',
-  ) );
+	$args = wp_parse_args( $args, array(
+		'num_words' => 25,
+		'more'      => '… →',
+	) );
 
-  $excerpt = wp_trim_words( get_the_content(), $args['num_words'], $args['more'] );
-  echo apply_filters( 'the_excerpt', $excerpt );
+	$excerpt = wp_trim_words( get_the_content(), $args['num_words'], $args['more'] );
+	echo apply_filters( 'the_excerpt', $excerpt );
 }
 
 
@@ -43,13 +43,13 @@ function nc_excerpt( $args = array() ) {
  * @return string        Fixed phone number.
  */
 function nc_tel( $phone = '' ) {
-  $patterns[0] = '/\ /';
-  $patterns[1] = '/\./';
-  $patterns[2] = '/\(/';
-  $patterns[3] = '/\)/';
-  $patterns[4] = '/\-/';
+	$patterns[0] = '/\ /';
+	$patterns[1] = '/\./';
+	$patterns[2] = '/\(/';
+	$patterns[3] = '/\)/';
+	$patterns[4] = '/\-/';
 
-  return preg_replace( $patterns, '', $phone );
+	return preg_replace( $patterns, '', $phone );
 }
 
 
@@ -65,26 +65,26 @@ function nc_tel( $phone = '' ) {
  * @return object|false             The response or WP_Error on failure.
  */
 function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SECONDS ) {
-  $api_url_hash = 'nc_cache_' . md5( $api_url );
-  $cache = get_transient( $api_url_hash );
+	$api_url_hash = 'nc_cache_' . md5( $api_url );
+	$cache = get_transient( $api_url_hash );
 
-  if ( $cache ) {
-    $body = $cache;
-  } else {
-    $request = wp_remote_get( $api_url, $args );
+	if ( $cache ) {
+		$body = $cache;
+	} else {
+		$request = wp_remote_get( $api_url, $args );
 
-    if ( is_wp_error( $request ) ) {
-      return false;
-    }
+		if ( is_wp_error( $request ) ) {
+			return false;
+		}
 
-    $body = wp_remote_retrieve_body( $request );
+		$body = wp_remote_retrieve_body( $request );
 
-    if ( $expiration ) {
-      set_transient( $api_url_hash, $body, $expiration );
-    }
-  }
+		if ( $expiration ) {
+			set_transient( $api_url_hash, $body, $expiration );
+		}
+	}
 
-  return json_decode( $body );
+	return json_decode( $body );
 }
 
 
@@ -97,27 +97,27 @@ function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SEC
  * @return array       Video type & ID
  */
 function nc_determine_video_url( $url ) {
-  $is_match_youtube = preg_match( '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/', $url, $youtube_matches );
+	$is_match_youtube = preg_match( '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/', $url, $youtube_matches );
 
-  $is_match_vimeo = preg_match( '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $url, $vimeo_matches );
+	$is_match_vimeo = preg_match( '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $url, $vimeo_matches );
 
-  if ( $is_match_youtube ) {
-    $video_type = 'youtube';
-    $video_id   = $youtube_matches[5];
-  } elseif ( $is_match_vimeo ) {
-    $video_type = 'vimeo';
-    $video_id   = $vimeo_matches[5];
-  } else {
-    $video_type = false;
-    $video_id   = 0;
-  }
+	if ( $is_match_youtube ) {
+		$video_type = 'youtube';
+		$video_id   = $youtube_matches[5];
+	} elseif ( $is_match_vimeo ) {
+		$video_type = 'vimeo';
+		$video_id   = $vimeo_matches[5];
+	} else {
+		$video_type = false;
+		$video_id   = 0;
+	}
 
-  $data = array(
-    'type' => $video_type,
-    'id'   => $video_id,
-  );
+	$data = array(
+		'type' => $video_type,
+		'id'   => $video_id,
+	);
 
-  return $data;
+	return $data;
 }
 
 
@@ -131,9 +131,9 @@ function nc_determine_video_url( $url ) {
  * @return string           Thumbnail URL
  */
 function nc_get_youtube_thumb( $video_id, $size = 'sddefault' ) {
-  $thumbnail_url = 'https://i.ytimg.com/vi/' . $video_id . '/' . $size . '.jpg';
+	$thumbnail_url = 'https://i.ytimg.com/vi/' . $video_id . '/' . $size . '.jpg';
 
-  return $thumbnail_url;
+	return $thumbnail_url;
 }
 
 
@@ -147,10 +147,10 @@ function nc_get_youtube_thumb( $video_id, $size = 'sddefault' ) {
  * @return string           Thumbnail URL
  */
 function nc_get_vimeo_thumb( $video_id, $size = '640' ) {
-  $data = nc_remote_api_get( 'https://vimeo.com/api/v2/video/' . $video_id . '.json' );
-  $thumbnail_url = str_replace( '-d_640', '-d_' . $size, $data[0]->thumbnail_large );
+	$data = nc_remote_api_get( 'https://vimeo.com/api/v2/video/' . $video_id . '.json' );
+	$thumbnail_url = str_replace( '-d_640', '-d_' . $size, $data[0]->thumbnail_large );
 
-  return $thumbnail_url;
+	return $thumbnail_url;
 }
 
 
@@ -163,14 +163,14 @@ function nc_get_vimeo_thumb( $video_id, $size = '640' ) {
  * @return string       Post slug.
  */
 if ( ! function_exists( 'get_the_slug' ) ) {
-  function get_the_slug( $post = 0 ) {
-    $post = get_post( $post );
+	function get_the_slug( $post = 0 ) {
+		$post = get_post( $post );
 
-    $slug = isset( $post->post_name ) ? $post->post_name : '';
-    $id = isset( $post->ID ) ? $post->ID : 0;
+		$slug = isset( $post->post_name ) ? $post->post_name : '';
+		$id = isset( $post->ID ) ? $post->ID : 0;
 
-    return apply_filters( 'the_slug', $slug, $id );
-  }
+		return apply_filters( 'the_slug', $slug, $id );
+	}
 }
 
 
@@ -184,11 +184,11 @@ if ( ! function_exists( 'get_the_slug' ) ) {
  * @return void Echo post slug.
  */
 if ( ! function_exists( 'the_slug' ) ) {
-  function the_slug() {
-    $slug = get_the_slug();
+	function the_slug() {
+		$slug = get_the_slug();
 
-    echo $slug;
-  }
+		echo $slug;
+	}
 }
 
 
@@ -203,20 +203,20 @@ if ( ! function_exists( 'the_slug' ) ) {
  * @return string                 Final text.
  */
 function nc_insert_after_paragraph( $insertion, $paragraph_num, $content ) {
-  $closing_p = '</p>';
-  $paragraphs = explode( $closing_p, $content );
+	$closing_p = '</p>';
+	$paragraphs = explode( $closing_p, $content );
 
-  foreach ($paragraphs as $index => $paragraph) {
-    if ( trim( $paragraph ) ) {
-      $paragraphs[$index] .= $closing_p;
-    }
+	foreach ($paragraphs as $index => $paragraph) {
+		if ( trim( $paragraph ) ) {
+			$paragraphs[$index] .= $closing_p;
+		}
 
-    if ( $paragraph_num == $index + 1 ) {
-      $paragraphs[$index] .= $insertion;
-    }
-  }
+		if ( $paragraph_num == $index + 1 ) {
+			$paragraphs[$index] .= $insertion;
+		}
+	}
 
-  return implode( '', $paragraphs );
+	return implode( '', $paragraphs );
 }
 
 
@@ -233,43 +233,43 @@ function nc_insert_after_paragraph( $insertion, $paragraph_num, $content ) {
  * @param string $content['comment_content']      Message.
  */
 function nc_check_spam( $content ) {
-  // innocent until proven guilty
-  $is_spam = false;
+	// innocent until proven guilty
+	$is_spam = false;
 
-  $content = (array) $content;
+	$content = (array) $content;
 
-  if ( function_exists( 'akismet_init' ) ) {
-    $wpcom_api_key = get_option( 'wordpress_api_key' );
+	if ( function_exists( 'akismet_init' ) ) {
+		$wpcom_api_key = get_option( 'wordpress_api_key' );
 
-    if ( ! empty( $wpcom_api_key ) ) {
-      global $akismet_api_host, $akismet_api_port;
+		if ( ! empty( $wpcom_api_key ) ) {
+			global $akismet_api_host, $akismet_api_port;
 
-      // set remaining required values for akismet api
-      $content['user_ip']    = preg_replace( '/[^0-9., ]/', '', $_SERVER['REMOTE_ADDR'] );
-      $content['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
-      $content['referrer']   = $_SERVER['HTTP_REFERER'];
-      $content['blog']       = get_option( 'home' );
+			// set remaining required values for akismet api
+			$content['user_ip']    = preg_replace( '/[^0-9., ]/', '', $_SERVER['REMOTE_ADDR'] );
+			$content['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
+			$content['referrer']   = $_SERVER['HTTP_REFERER'];
+			$content['blog']       = get_option( 'home' );
 
-      if ( empty( $content['referrer'] ) ) {
-        $content['referrer'] = get_permalink();
-      }
+			if ( empty( $content['referrer'] ) ) {
+				$content['referrer'] = get_permalink();
+			}
 
-      $query_string = '';
+			$query_string = '';
 
-      foreach ( $content as $key => $data ) {
-        if ( ! empty( $data ) ) {
-          $query_string .= $key . '=' . urlencode(stripslashes($data)) . '&';
-        }
-      }
+			foreach ( $content as $key => $data ) {
+				if ( ! empty( $data ) ) {
+					$query_string .= $key . '=' . urlencode(stripslashes($data)) . '&';
+				}
+			}
 
-      $response = akismet_http_post( $query_string, $akismet_api_host, '/1.1/comment-check', $akismet_api_port );
+			$response = akismet_http_post( $query_string, $akismet_api_host, '/1.1/comment-check', $akismet_api_port );
 
-      if ( 'true' == $response[1] ) {
-        update_option( 'akismet_spam_count', get_option( 'akismet_spam_count' ) + 1 );
-        $is_spam = true;
-      }
-    }
-  }
+			if ( 'true' == $response[1] ) {
+				update_option( 'akismet_spam_count', get_option( 'akismet_spam_count' ) + 1 );
+				$is_spam = true;
+			}
+		}
+	}
 
-  return $is_spam;
+	return $is_spam;
 }

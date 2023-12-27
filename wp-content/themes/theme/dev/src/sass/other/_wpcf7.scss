@@ -2,109 +2,109 @@
  * Contact Form 7
  */
 .wpcf7 {
-  position: relative;
+	position: relative;
 
-  .wpcf7-spinner {
-    display: none;
-  }
+	.wpcf7-spinner {
+		display: none;
+	}
 
-  .screen-reader-response {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    clip-path: inset(50%);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    word-wrap: normal !important;
-  }
+	.screen-reader-response {
+		position: absolute;
+		overflow: hidden;
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		height: 1px;
+		width: 1px;
+		margin: -1px;
+		padding: 0;
+		border: 0;
+		word-wrap: normal !important;
+	}
 
-  form {
-    .wpcf7-response-output {
-      margin: .4em;
-      text-align: center;
-      font-weight: bold;
-      font-size: 14px;
-    }
+	form {
+		.wpcf7-response-output {
+			margin: .4em;
+			text-align: center;
+			font-weight: bold;
+			font-size: 14px;
+		}
 
-    &.init .wpcf7-response-output,
-    &.resetting .wpcf7-response-output,
-    &.submitting .wpcf7-response-output {
-      display: none;
-    }
+		&.init .wpcf7-response-output,
+		&.resetting .wpcf7-response-output,
+		&.submitting .wpcf7-response-output {
+			display: none;
+		}
 
-    &.sent .wpcf7-response-output {
-      color: #398f14;
-    }
+		&.sent .wpcf7-response-output {
+			color: #398f14;
+		}
 
-    &.failed .wpcf7-response-output,
-    &.aborted .wpcf7-response-output {
-      color: #f00;
-    }
+		&.failed .wpcf7-response-output,
+		&.aborted .wpcf7-response-output {
+			color: #f00;
+		}
 
-    &.spam .wpcf7-response-output {
-      color: #ffa500;
-    }
+		&.spam .wpcf7-response-output {
+			color: #ffa500;
+		}
 
-    &.invalid .wpcf7-response-output,
-    &.unaccepted .wpcf7-response-output,
-    &.payment-required .wpcf7-response-output {
-      color: #f00;
-    }
+		&.invalid .wpcf7-response-output,
+		&.unaccepted .wpcf7-response-output,
+		&.payment-required .wpcf7-response-output {
+			color: #f00;
+		}
 
-    &.submitting {
-      opacity: .6;
+		&.submitting {
+			opacity: .6;
 
-      &::before {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        z-index: 1000;
-        width: 40px;
-        height: 40px;
-        border: 6px solid #eaeaea;
-        border-top-color: #282828;
-        border-radius: 50%;
-        content: '';
-        animation: spinner 1.2s ease infinite;
-      }
-    }
-  }
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				z-index: 1000;
+				width: 40px;
+				height: 40px;
+				border: 6px solid #eaeaea;
+				border-top-color: #282828;
+				border-radius: 50%;
+				content: '';
+				animation: spinner 1.2s ease infinite;
+			}
+		}
+	}
 }
 
 .wpcf7-form-control-wrap {
-  position: relative;
+	position: relative;
 }
 
 .wpcf7-not-valid-tip {
-  display: none;
-  color: #f00;
-  font-size: 12px;
-  font-weight: normal;
+	display: none;
+	color: #f00;
+	font-size: 12px;
+	font-weight: normal;
 
-  .use-floating-validation-tip & {
-    position: relative;
-    top: -2ex;
-    left: 1em;
-    z-index: 100;
-    border: 1px solid #dc3232;
-    background: #fff;
-    padding: .2em .8em;
-    width: 24em;
-  }
+	.use-floating-validation-tip & {
+		position: relative;
+		top: -2ex;
+		left: 1em;
+		z-index: 100;
+		border: 1px solid #dc3232;
+		background: #fff;
+		padding: .2em .8em;
+		width: 24em;
+	}
 }
 
 .wpcf7-select:invalid + .jq-selectbox__select,
 .wpcf7-not-valid:not(.wpcf7-select) {
-  border: 1px solid #f00 !important;
+	border: 1px solid #f00 !important;
 }
 
 .wpcf7-list-item {
-  margin-left: .5em;
+	margin-left: .5em;
 
-  &:first-child {
-    margin-left: 0;
-  }
+	&:first-child {
+		margin-left: 0;
+	}
 }

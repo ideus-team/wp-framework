@@ -1,45 +1,45 @@
-    </div><!--content-->
+		</div><!--content-->
 
-    <footer class="l-siteFooter">
-      <div class="b-siteFooter">
+		<footer class="l-siteFooter">
+			<div class="b-siteFooter">
 
-        <?php if ( has_nav_menu( 'footer' ) ) : ?>
+				<?php if ( has_nav_menu( 'footer' ) ) : ?>
 
-          <div class="l-bottomNavigation" role="navigation">
+					<div class="l-bottomNavigation" role="navigation">
 
-            <?php
-            wp_nav_menu( array(
-              'theme_location' => 'footer',
-              'container'      => false,
-              'menu_class'     => 'b-bottomNavigation',
-              'fallback_cb'    => false,
-              'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
-              'depth'          => 1,
-              'walker'         => new \iDeus\Framework\Walker_Nav_Menu(),
-            ) );
-            ?>
+						<?php
+						wp_nav_menu( array(
+							'theme_location' => 'footer',
+							'container'      => false,
+							'menu_class'     => 'b-bottomNavigation',
+							'fallback_cb'    => false,
+							'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
+							'depth'          => 1,
+							'walker'         => new \iDeus\Framework\Walker_Nav_Menu(),
+						) );
+						?>
 
-          </div>
+					</div>
 
-        <?php endif; ?>
+				<?php endif; ?>
 
-        <address class="l-siteCopyright vcard" itemscope itemtype="http://schema.org/Organization">
-          <div class="b-siteCopyright">
-            © <?php echo date( 'Y' ); ?>
-            <a class="b-siteCopyright__link fn n org url work" href="<?php echo home_url(); ?>" rel="me" itemprop="name"><?php bloginfo( 'name' ); ?></a>.
-            <?php _e( 'All rights reserved' ); ?>
-          </div>
+				<address class="l-siteCopyright vcard" itemscope itemtype="http://schema.org/Organization">
+					<div class="b-siteCopyright">
+						© <?php echo date( 'Y' ); ?>
+						<a class="b-siteCopyright__link fn n org url work" href="<?php echo home_url(); ?>" rel="me" itemprop="name"><?php bloginfo( 'name' ); ?></a>.
+						<?php _e( 'All rights reserved' ); ?>
+					</div>
 
-          <div class="b-developerCopyright">
-            <a class="b-developerCopyright__link" href="https://ideus.biz/" rel="friend" target="_blank">iDeus</a>
-          </div>
-        </address>
-      </div>
-    </footer>
-  </div><!--wrapper-->
+					<div class="b-developerCopyright">
+						<a class="b-developerCopyright__link" href="https://ideus.biz/" rel="friend" target="_blank">iDeus</a>
+					</div>
+				</address>
+			</div>
+		</footer>
+	</div><!--wrapper-->
 
-  <?php wp_footer(); ?>
-  <?php get_template_part( 'template-parts/scripts/footer' ); ?>
+	<?php wp_footer(); ?>
+	<?php get_template_part( 'template-parts/scripts/footer' ); ?>
 
 </body>
 </html>

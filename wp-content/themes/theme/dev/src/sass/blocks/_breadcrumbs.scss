@@ -1,32 +1,31 @@
 .l-breadcrumbs {
 
 }
+
 .b-breadcrumbs {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 
-  &__item {
-    display: inline-block;
+	&__item {
+		display: inline-block;
 
-    &::before {
-      content: ' | ';
-    }
+		&::before {
+			content: ' | ';
+		}
 
-    &:first-child {
-      &::before {
-        display: none;
-      }
-    }
+		&:first-child {
+			&::before {
+				display: none;
+			}
+		}
 
-    &.-state_current {}
-  }
+		&.-state_current {}
+	}
 
-  &__link {
-    display: inline-block;
-  }
+	&__link {
+		display: inline-block;
+	}
 
-  &__name {
-
-  }
+	&__name {}
 }

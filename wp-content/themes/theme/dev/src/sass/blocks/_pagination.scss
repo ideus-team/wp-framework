@@ -1,25 +1,25 @@
 .b-pagination {
 
-  &__total {}
+	&__total {}
 
-  &__pages {}
+	&__pages {}
 
-  &__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+	&__list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
 
-  &__item {
-    display: inline-block;
-  }
+	&__item {
+		display: inline-block;
+	}
 
-  &__link {
-    display: block;
+	&__link {
+		display: block;
 
-    &.-type_prev {}
-    &.-type_next {}
-    &.-type_dots {}
-    &.-state_active {}
-  }
+		&.-type_prev {}
+		&.-type_next {}
+		&.-type_dots {}
+		&.-state_active {}
+	}
 }
