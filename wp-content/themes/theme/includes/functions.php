@@ -218,3 +218,58 @@ function nc_insert_after_paragraph( $insertion, $paragraph_num, $content ) {
 
   return implode( '', $paragraphs );
 }
+
+
+/**
+ * Using Akismet in Custom Forms
+ *
+ * @since X.X.X
+ *
+ * @link https://www.binarymoon.co.uk/2010/03/akismet-plugin-theme-stop-spam-dead/
+ *
+ * @param string $content['comment_author']       Name.
+ * @param string $content['comment_author_email'] Email.
+ * @param string $content['comment_author_url']   Website.
+ * @param string $content['comment_content']      Message.
+ */
+function nc_check_spam( $content ) {
+  // innocent until proven guilty
+  $is_spam = false;
+
+  $content = (array) $content;
+
+  if ( function_exists( 'akismet_init' ) ) {
+    $wpcom_api_key = get_option( 'wordpress_api_key' );
+
+    if ( ! empty( $wpcom_api_key ) ) {
+      global $akismet_api_host, $akismet_api_port;
+
+      // set remaining required values for akismet api
+      $content['user_ip']    = preg_replace( '/[^0-9., ]/', '', $_SERVER['REMOTE_ADDR'] );
+      $content['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
+      $content['referrer']   = $_SERVER['HTTP_REFERER'];
+      $content['blog']       = get_option( 'home' );
+
+      if ( empty( $content['referrer'] ) ) {
+        $content['referrer'] = get_permalink();
+      }
+
+      $query_string = '';
+
+      foreach ( $content as $key => $data ) {
+        if ( ! empty( $data ) ) {
+          $query_string .= $key . '=' . urlencode(stripslashes($data)) . '&';
+        }
+      }
+
+      $response = akismet_http_post( $query_string, $akismet_api_host, '/1.1/comment-check', $akismet_api_port );
+
+      if ( 'true' == $response[1] ) {
+        update_option( 'akismet_spam_count', get_option( 'akismet_spam_count' ) + 1 );
+        $is_spam = true;
+      }
+    }
+  }
+
+  return $is_spam;
+}
