@@ -1,6 +1,6 @@
 <?php
 /**
- * Class ACF
+ * Class ACF.
  *
  * @package WP-framework
  * @since 2.0.0
@@ -10,28 +10,27 @@ namespace iDeus\Theme;
 
 if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
 	/**
-	 * Advanced Custom Fields modifications
+	 * Advanced Custom Fields modifications.
 	 *
 	 * @since 2.0.0
 	 */
 	class ACF {
-
 		/**
-		 * Class initialization
+		 * Class initialization.
 		 *
 		 * @since 2.0.0
 		 */
 		public function __construct() {
-			// Update settings
+			// Update settings.
 			add_action( 'acf/init', array( $this, 'update_settings' ) );
 
-			// Options pages
+			// Options pages.
 			$this->options_pages();
 		}
 
 
 		/**
-		 * Update ACF Settings
+		 * Update ACF Settings.
 		 *
 		 * @since 2.0.0
 		 */
@@ -41,16 +40,14 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
 
 
 		/**
-		 * Options pages
+		 * Options pages for ACF Pro.
 		 *
 		 * @since 2.0.0
 		 */
 		private function options_pages() {
 			if ( function_exists( 'acf_add_options_page' ) ) {
 
-				/**
-				 * Options pages for ACF Pro
-				 */
+				// Options pages.
 				acf_add_options_page( array(
 					'page_title' => 'Theme Options',
 					'menu_title' => 'Theme Options',
@@ -81,6 +78,5 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
 				*/
 			}
 		}
-
 	}
 }

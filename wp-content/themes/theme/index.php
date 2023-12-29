@@ -1,8 +1,20 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Main template.
+ *
+ * @package WP-framework
+ * @since 2.0.0
+ */
+
+get_header();
+?>
 
 <main class="l-contentText">
 
-	<?php while ( have_posts() ) : the_post(); ?>
+	<?php
+	while ( have_posts() ) :
+		the_post();
+		?>
 
 		<section class="b-contentText">
 			<h2 class="b-contentText__title"><?php the_title(); ?></h2>

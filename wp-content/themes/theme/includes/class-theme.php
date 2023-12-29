@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Theme
+ * Class Theme.
  *
  * @package WP-framework
  * @since 2.0.0
@@ -10,61 +10,60 @@ namespace iDeus\Theme;
 
 if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 	/**
-	 * Theme
+	 * Theme.
 	 *
 	 * @since 2.0.0
 	 */
 	class Theme {
-
 		/**
-		 * Class initialization
+		 * Class initialization.
 		 *
 		 * @since 2.0.0
 		 */
 		public function __construct() {
-			// Theme Setup
+			// Theme Setup.
 			add_action( 'after_setup_theme', array( $this, 'setup' ) );
 
-			// JS & CSS
+			// JS & CSS.
 			new \iDeus\Theme\Resources();
 
-			// Navigation
+			// Navigation.
 			new \iDeus\Theme\Navigation();
 
-			// Custom Shorcodes
+			// Custom Shorcodes.
 			new \iDeus\Theme\Shortcodes();
 
-			// Hooks
+			// Hooks.
 			new \iDeus\Theme\Hooks();
 
-			// AJAX
+			// AJAX.
 			new \iDeus\Theme\AJAX();
 
-			// SEO
+			// SEO.
 			new \iDeus\Theme\SEO();
 
-			// Branding
+			// Branding.
 			new \iDeus\Theme\Branding();
 
-			// Breadcrumbs
+			// Breadcrumbs.
 			new \iDeus\Theme\Breadcrumbs();
 
-			// Advanced Custom Fields
+			// Advanced Custom Fields.
 			new \iDeus\Theme\ACF();
 
-			// Contact Form 7
+			// Contact Form 7.
 			new \iDeus\Theme\Contact_Form_7();
 
-			// Polylang
+			// Polylang.
 			new \iDeus\Theme\Polylang();
 
-			// Disable important plugins deactivation
+			// Disable important plugins deactivation.
 			add_filter( 'plugin_action_links', array( $this, 'disable_plugin_deactivation' ), 10, 2 );
 		}
 
 
 		/**
-		 * Theme Setup
+		 * Theme Setup.
 		 *
 		 * @since 2.0.0
 		 */
@@ -91,7 +90,7 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 			add_theme_support( 'title-tag' );
 
 			/**
-			 * Enable RSS link
+			 * Enable RSS link.
 			 */
 			// add_theme_support( 'automatic-feed-links' );
 
@@ -112,14 +111,14 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 			// add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 
 			/**
-			 * Styles for editor
+			 * Styles for editor.
 			 */
 			if ( file_exists( get_theme_file_path( 'assets/css/editor-style.min.css' ) ) ) {
 				add_editor_style( 'assets/css/editor-style.min.css' );
 			}
 
 			/**
-			 * Navigation
+			 * Navigation.
 			 */
 			register_nav_menus( array(
 				'header' => 'Header Menu',
@@ -127,14 +126,14 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 			) );
 
 			/**
-			 * WooCommerce support
+			 * WooCommerce support.
 			 */
 			// add_theme_support( 'woocommerce' );
 		}
 
 
 		/**
-		 * Filters the action links displayed for each plugin in the Plugins list table
+		 * Filters the action links displayed for each plugin in the Plugins list table.
 		 *
 		 * @since 2.0.0
 		 *
@@ -154,12 +153,11 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 			);
 
 			// Remove action 'deactivate' from important plugins
-			if ( in_array( $plugin_file, $important_plugins ) ) {
+			if ( in_array( $plugin_file, $important_plugins, true ) ) {
 				unset( $actions['deactivate'] );
 			}
 
 			return $actions;
 		}
-
 	}
 }

@@ -1,3 +1,12 @@
+<?php
+/**
+ * Header template.
+ *
+ * @package WP-framework
+ * @since 2.0.0
+ */
+
+?>
 <!doctype html>
 <html class="l-html" <?php language_attributes(); ?>>
 <head>
@@ -10,9 +19,9 @@
 
 	<?php if ( ! has_site_icon() ) : ?>
 
-		<link rel="shortcut icon" href="<?php echo home_url( '/favicon.ico' ); ?>">
-		<link rel="manifest" href="<?php echo home_url( '/site.webmanifest' ); ?>">
-		<link rel="apple-touch-icon" href="<?php echo home_url( '/icon.png' ); ?>">
+		<link rel="shortcut icon" href="<?php echo esc_url( home_url( '/favicon.ico' ) ); ?>">
+		<link rel="manifest" href="<?php echo esc_url( home_url( '/site.webmanifest' ) ); ?>">
+		<link rel="apple-touch-icon" href="<?php echo esc_url( home_url( '/icon.png' ) ); ?>">
 
 	<?php endif; ?>
 
@@ -35,8 +44,8 @@
 					$logo_link = ( is_front_page() && ! is_paged() ) ? home_url( '#top' ) : home_url();
 					?>
 					<<?php echo $logo_tag; ?> class="b-siteLogo" itemscope itemtype="http://schema.org/Organization">
-						<a class="b-siteLogo__link" href="<?php echo $logo_link; ?>" itemprop="url">
-							<img class="b-siteLogo__icon" src="<?php echo get_theme_file_uri( 'assets/img/logos/siteLogo-logo.png' ); ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" itemprop="logo">
+						<a class="b-siteLogo__link" href="<?php echo esc_url( $logo_link ); ?>" itemprop="url">
+							<img class="b-siteLogo__icon" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/logos/siteLogo-logo.png' ) ); ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" itemprop="logo">
 						</a>
 					</<?php echo $logo_tag; ?>>
 				</div>
@@ -48,15 +57,17 @@
 					<nav class="l-mainNavigation">
 
 						<?php
-						wp_nav_menu( array(
-							'theme_location' => 'header',
-							'container'      => false,
-							'menu_class'     => 'b-mainNavigation',
-							'fallback_cb'    => false,
-							'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
-							'depth'          => 1,
-							'walker'         => new \iDeus\Framework\Walker_Nav_Menu(),
-						) );
+						wp_nav_menu(
+							array(
+								'theme_location' => 'header',
+								'container'      => false,
+								'menu_class'     => 'b-mainNavigation',
+								'fallback_cb'    => false,
+								'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
+								'depth'          => 1,
+								'walker'         => new \iDeus\Framework\Walker_Nav_Menu(),
+							)
+						);
 						?>
 
 					</nav>

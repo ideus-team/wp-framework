@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Resources
+ * Class Resources.
  *
  * @package WP-framework
  * @since 2.0.0
@@ -10,42 +10,41 @@ namespace iDeus\Theme;
 
 if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 	/**
-	 * Resources
+	 * Resources.
 	 *
 	 * @since 2.0.0
 	 */
 	class Resources {
-
 		/**
-		 * Class initialization
+		 * Class initialization.
 		 *
 		 * @since 2.0.0
 		 */
 		public function __construct() {
-			// Scripts
+			// Scripts.
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
 
-			// Styles
+			// Styles.
 			add_action( 'wp_enqueue_scripts', array( $this, 'styles' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
 			add_action( 'login_enqueue_scripts', array( $this, 'login_styles' ) );
 
-			// Google fonts preconnect
+			// Google fonts preconnect.
 			add_filter( 'wp_resource_hints', array( $this, 'preconnect_googlefonts' ), 10, 2 );
 
-			// Preload fonts
+			// Preload fonts.
 			// add_action( 'wp_head', array( $this, 'preload_fonts' ), 5 );
 
-			// Remove global styles
+			// Remove global styles.
 			add_action( 'init', array( $this, 'remove_global_css' ) );
 
-			// Remove Gutenberg CSS
+			// Remove Gutenberg CSS.
 			add_action( 'wp_print_styles', array( $this, 'deregister_styles' ), 100 );
 		}
 
 
 		/**
-		 * Scripts
+		 * Scripts.
 		 *
 		 * @since 2.0.0
 		 */
@@ -70,20 +69,24 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 			}
 
 			/**
-			 * Variables for JS (nc_params.ajax_url, nc_params.home_url, nc_params.theme_url, etc.)
+			 * Variables for JS (nc_params.ajax_url, nc_params.home_url, nc_params.theme_url, etc.).
 			 *
 			 * @since 2.0.0
 			 */
-			wp_localize_script( 'nc-main', 'nc_params', array(
-				'ajax_url'  => admin_url( 'admin-ajax.php' ),
-				'home_url'  => home_url(),
-				'theme_url' => get_stylesheet_directory_uri(),
-			) );
+			wp_localize_script(
+				'nc-main',
+				'nc_params',
+				array(
+					'ajax_url'  => admin_url( 'admin-ajax.php' ),
+					'home_url'  => home_url(),
+					'theme_url' => get_stylesheet_directory_uri(),
+				)
+			);
 		}
 
 
 		/**
-		 * Styles
+		 * Styles.
 		 *
 		 * Use 'get_footer' instead 'wp_enqueue_scripts' hook for move CSS to footer.
 		 *
@@ -109,7 +112,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 
 
 		/**
-		 * Admin styles
+		 * Admin styles.
 		 *
 		 * @since 2.0.0
 		 */
@@ -126,7 +129,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 
 
 		/**
-		 * Login styles
+		 * Login styles.
 		 *
 		 * @since 2.0.0
 		 */
@@ -143,9 +146,12 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 
 
 		/**
-		 * Google fonts preconnect
+		 * Google fonts preconnect.
 		 *
 		 * @since 2.0.0
+		 *
+		 * @param array  $urls          Array of resources and their attributes, or URLs to print for resource hints.
+		 * @param string $relation_type The relation type the URLs are printed for, e.g. 'preconnect' or 'prerender'.
 		 */
 		public function preconnect_googlefonts( $urls, $relation_type ) {
 			if ( wp_style_is( 'googlefonts' ) && 'preconnect' === $relation_type ) {
@@ -161,17 +167,17 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 
 
 		/**
-		 * Preload fonts
+		 * Preload fonts.
 		 *
 		 * @since 2.0.0
 		 */
 		public function preload_fonts() {
-			echo '<link rel="preload" href="' . get_theme_file_uri( 'assets/fonts/fontname.woff2' ) . '" as="font" type="font/woff2" crossorigin="anonymous">';
+			echo '<link rel="preload" href="' . esc_url( get_theme_file_uri( 'assets/fonts/fontname.woff2' ) ) . '" as="font" type="font/woff2" crossorigin="anonymous">';
 		}
 
 
 		/**
-		 * Remove global styles
+		 * Remove global styles.
 		 *
 		 * @since 2.0.0
 		 */
@@ -182,13 +188,12 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 
 
 		/**
-		 * Remove Gutenberg CSS
+		 * Remove Gutenberg CSS.
 		 *
 		 * @since 2.0.0
 		 */
 		public function deregister_styles() {
 			wp_dequeue_style( 'wp-block-library' );
 		}
-
 	}
 }

@@ -5,6 +5,7 @@
  * @package WP-framework
  * @since 1.11.3
  */
+
 namespace iDeus\Framework;
 
 if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
@@ -15,7 +16,6 @@ if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
 	 * @since 1.11.3
 	 */
 	final class Disable_Indexing {
-
 		/**
 		 * Class initialization.
 		 *
@@ -39,7 +39,7 @@ if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
 
 			self::block_search_agents();
 
-			add_filter( 'wp_headers', array( __CLASS__, 'HTTP_header' ) );
+			add_filter( 'wp_headers', array( __CLASS__, 'http_header' ) );
 			add_filter( 'robots_txt', array( __CLASS__, 'robots_txt' ) );
 			add_filter( 'wp_robots', array( __CLASS__, 'robots_meta_tag' ), 999 );
 		}
@@ -72,7 +72,7 @@ if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
 		 * @since 1.11.3
 		 */
 		private static function block_search_agents(): void {
-			$robots = 'libwww|Wget|LWP|damnBot|BBBike|spider|crawl|google|bing|yandex|msnbot';
+			$robots     = 'libwww|Wget|LWP|damnBot|BBBike|spider|crawl|google|bing|yandex|msnbot';
 			$user_agent = ( $_SERVER['HTTP_USER_AGENT'] ?? '' );
 
 			if ( preg_match( "/$robots/i", $user_agent ) ) {
@@ -88,10 +88,10 @@ if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
 		 *
 		 * @since 1.11.3
 		 *
-		 * @param  array $headers HTTP headers
+		 * @param  array $headers HTTP headers.
 		 * @return array
 		 */
-		public static function HTTP_header( array $headers ): array {
+		public static function http_header( array $headers ): array {
 			$headers['X-Robots-Tag'] = 'noindex, nofollow';
 
 			return $headers;
@@ -103,7 +103,7 @@ if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
 		 *
 		 * @since 1.11.3
 		 *
-		 * @return string Robots.txt content
+		 * @return string Robots.txt content.
 		 */
 		public static function robots_txt(): string {
 			return "User-agent: *\nDisallow: /";
@@ -116,17 +116,16 @@ if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
 		 *
 		 * @since 1.11.3
 		 *
-		 * @param  array $robots Meta tags for robots
+		 * @param  array $robots Meta tags for robots.
 		 * @return array
 		 */
 		public static function robots_meta_tag( array $robots ): array {
-			$robots['noindex'] = true;
+			$robots['noindex']  = true;
 			$robots['nofollow'] = true;
 			unset( $robots['follow'] );
 
 			return $robots;
 		}
-
 	}
 
 	new \iDeus\Framework\Disable_Indexing();

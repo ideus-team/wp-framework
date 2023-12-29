@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Polylang
+ * Class Polylang.
  *
  * @package WP-framework
  * @since 2.0.0
@@ -10,14 +10,13 @@ namespace iDeus\Theme;
 
 if ( ! class_exists( 'iDeus\Theme\Polylang' ) ) {
 	/**
-	 * Polylang modifications
+	 * Polylang modifications.
 	 *
 	 * @since 2.0.0
 	 */
 	class Polylang {
-
 		/**
-		 * Class initialization
+		 * Class initialization.
 		 *
 		 * @since 2.0.0
 		 */
@@ -27,7 +26,7 @@ if ( ! class_exists( 'iDeus\Theme\Polylang' ) ) {
 
 
 		/**
-		 * Register Polylang strings
+		 * Register Polylang strings.
 		 *
 		 * @since 2.0.0
 		 */
@@ -37,6 +36,5 @@ if ( ! class_exists( 'iDeus\Theme\Polylang' ) ) {
 				// pll_register_string( $name, $string, $group, $multiline );
 			}
 		}
-
 	}
 }

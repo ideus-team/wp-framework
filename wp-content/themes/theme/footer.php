@@ -1,3 +1,12 @@
+<?php
+/**
+ * Footer template.
+ *
+ * @package WP-framework
+ * @since 2.0.0
+ */
+
+?>
 		</div><!--content-->
 
 		<footer class="l-siteFooter">
@@ -8,15 +17,17 @@
 					<div class="l-bottomNavigation" role="navigation">
 
 						<?php
-						wp_nav_menu( array(
-							'theme_location' => 'footer',
-							'container'      => false,
-							'menu_class'     => 'b-bottomNavigation',
-							'fallback_cb'    => false,
-							'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
-							'depth'          => 1,
-							'walker'         => new \iDeus\Framework\Walker_Nav_Menu(),
-						) );
+						wp_nav_menu(
+							array(
+								'theme_location' => 'footer',
+								'container'      => false,
+								'menu_class'     => 'b-bottomNavigation',
+								'fallback_cb'    => false,
+								'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
+								'depth'          => 1,
+								'walker'         => new \iDeus\Framework\Walker_Nav_Menu(),
+							)
+						);
 						?>
 
 					</div>
@@ -25,9 +36,9 @@
 
 				<address class="l-siteCopyright vcard" itemscope itemtype="http://schema.org/Organization">
 					<div class="b-siteCopyright">
-						© <?php echo date( 'Y' ); ?>
-						<a class="b-siteCopyright__link fn n org url work" href="<?php echo home_url(); ?>" rel="me" itemprop="name"><?php bloginfo( 'name' ); ?></a>.
-						<?php _e( 'All rights reserved' ); ?>
+						© <?php echo current_time( 'Y' ); ?>
+						<a class="b-siteCopyright__link fn n org url work" href="<?php echo esc_url( home_url() ); ?>" rel="me" itemprop="name"><?php bloginfo( 'name' ); ?></a>.
+						<?php esc_html_e( 'All rights reserved' ); ?>
 					</div>
 
 					<div class="b-developerCopyright">

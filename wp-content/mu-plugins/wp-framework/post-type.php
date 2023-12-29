@@ -48,7 +48,7 @@ add_action( 'init', function() {
 // add_action( 'pre_get_posts', 'nc_loop_modify' );
 function nc_loop_modify( $query ) {
 	if ( $query->is_main_query() ) {
-		if ( isset( $query->query['post_type'] ) && in_array( $query->query['post_type'], array( 'post_type' ) ) ) {
+		if ( isset( $query->query['post_type'] ) && in_array( $query->query['post_type'], array( 'post_type' ), true ) ) {
 			$query->set( 'orderby', array( 'menu_order' => 'ASC' ) );
 		}
 	}

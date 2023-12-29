@@ -1,3 +1,12 @@
+<?php
+/**
+ * 404 template.
+ *
+ * @package WP-framework
+ * @since 2.0.0
+ */
+
+?>
 <!doctype html>
 <html lang="en">
 

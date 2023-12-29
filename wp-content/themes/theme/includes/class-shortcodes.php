@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Shortcodes
+ * Class Shortcodes.
  *
  * @package WP-framework
  * @since 2.0.0
@@ -10,14 +10,13 @@ namespace iDeus\Theme;
 
 if ( ! class_exists( 'iDeus\Theme\Shortcodes' ) ) {
 	/**
-	 * Custom Shorcodes
+	 * Custom Shorcodes.
 	 *
 	 * @since 2.0.0
 	 */
 	class Shortcodes {
-
 		/**
-		 * Class initialization
+		 * Class initialization.
 		 *
 		 * @since 2.0.0
 		 */
@@ -28,18 +27,19 @@ if ( ! class_exists( 'iDeus\Theme\Shortcodes' ) ) {
 
 
 		/**
-		 * Example: Add shortcode [nc_test]
+		 * Example: Add shortcode [nc_test].
 		 *
 		 * @since 2.0.0
 		 *
-		 * @param  array  $atts    Shortcode attributes
-		 * @param  string $content Shortcode content
-		 * @return string          Returned shortcode HTML
+		 * @param  array  $atts    Shortcode attributes.
+		 * @param  string $content Shortcode content.
+		 * @return string          Returned shortcode HTML.
 		 */
 		public function nc_test( $atts, $content = '' ) {
-			$atts   = shortcode_atts( array(
-
-			), $atts );
+			$atts   = shortcode_atts(
+				array(),
+				$atts
+			);
 			$output = $content;
 
 			ob_start();
@@ -52,6 +52,5 @@ if ( ! class_exists( 'iDeus\Theme\Shortcodes' ) ) {
 
 			return $output;
 		}
-
 	}
 }

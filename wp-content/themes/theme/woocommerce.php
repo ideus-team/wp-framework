@@ -1,4 +1,13 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Template for WooCommerce.
+ *
+ * @package WP-framework
+ * @since 2.0.0
+ */
+
+get_header();
+?>
 
 <main class="l-contentText">
 

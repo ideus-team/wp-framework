@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: OTF Regenerate Thumbnails
-Plugin URI: https://github.com/gambitph/WP-OTF-Regenerate-Thumbnails
-Description: Automatically regenerates your thumbnails on the fly (OTF) after changing the thumbnail sizes or switching themes.
-Author: Benjamin Intal - Gambit Technologies Inc
-Version: 0.3.2 (fixed by iDeus)
-Author URI: http://gambit.ph
-*/
+/**
+ * Plugin Name: OTF Regenerate Thumbnails
+ * Plugin URI: https://github.com/gambitph/WP-OTF-Regenerate-Thumbnails
+ * Description: Automatically regenerates your thumbnails on the fly (OTF) after changing the thumbnail sizes or switching themes.
+ * Author: Benjamin Intal - Gambit Technologies Inc
+ * Version: 0.3.2 (fixed by iDeus)
+ * Author URI: http://gambit.ph
+ */
 
 /**
  * Simple but effectively resizes images on the fly. Doesn't upsize, just downsizes like how WordPress likes it.

@@ -2,12 +2,18 @@
 /**
  * Template Name: Example
  * Template Post Type: page
+ *
+ * @package WP-framework
+ * @since 2.0.0
  */
 
 get_header();
 ?>
 
-<?php while ( have_posts() ) : the_post(); ?>
+<?php
+while ( have_posts() ) :
+	the_post();
+	?>
 
 	<main class="l-contentText">
 

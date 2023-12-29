@@ -1,22 +1,33 @@
 <?php
-// Do not delete these lines
-if ( ! empty( $_SERVER['SCRIPT_FILENAME'] ) && 'comments.php' == basename( $_SERVER['SCRIPT_FILENAME'] ) ) {
+/**
+ * Comments template.
+ *
+ * @package WP-framework
+ * @since 2.0.0
+ */
+
+// Do not delete these lines.
+if ( ! empty( $_SERVER['SCRIPT_FILENAME'] ) && 'comments.php' === basename( $_SERVER['SCRIPT_FILENAME'] ) ) {
 	die( 'Please do not load this page directly. Thanks!' );
 }
 
-if ( post_password_required() ) { ?>
-		<p class="nocomments"><?php _e( 'This post is password protected. Enter the password to view comments.' ); ?></p>
+if ( post_password_required() ) :
+	?>
+
+		<p class="nocomments"><?php esc_html_e( 'This post is password protected. Enter the password to view comments.' ); ?></p>
+
 	<?php
 	return;
-}
+endif;
 ?>
 
 <!-- You can start editing here. -->
 
 <?php if ( have_comments() ) : ?>
+
 	<h3 id="comments">
 		<?php
-		if ( 1 == get_comments_number() ) {
+		if ( 1 === get_comments_number() ) {
 			printf(
 				/* translators: %s: Post title. */
 				__( 'One response to %s' ),
@@ -46,14 +57,14 @@ if ( post_password_required() ) { ?>
 		<div class="alignleft"><?php previous_comments_link(); ?></div>
 		<div class="alignright"><?php next_comments_link(); ?></div>
 	</div>
-<?php else : // this is displayed if there are no comments so far ?>
+<?php else : // this is displayed if there are no comments so far. ?>
 
 	<?php if ( comments_open() ) : ?>
 		<!-- If comments are open, but there are no comments. -->
 
-	<?php else : // comments are closed ?>
+	<?php else : // comments are closed. ?>
 		<!-- If comments are closed. -->
-		<p class="nocomments"><?php _e( 'Comments are closed.' ); ?></p>
+		<p class="nocomments"><?php esc_html_e( 'Comments are closed.' ); ?></p>
 
 	<?php endif; ?>
 <?php endif; ?>

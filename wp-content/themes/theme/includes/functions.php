@@ -1,13 +1,20 @@
 <?php
 /**
+ * Theme functions.
+ *
+ * @package WP-framework
+ * @since 2.0.0
+ */
+
+/**
  * Show breadcrumbs
  *
  * @since 2.0.0
  *
- * @param  string [$sep  = '']      Розділювач. За замовчуванням ''
- * @param  array  [$l10n = array()] Для локалізації. Див. змінну $default_l10n.
- * @param  array  [$args = array()] Опції. Див. змінну $def_args
- * @return void                     Виводить на екран HTML код
+ * @param  string [ $sep  = '' ]      Розділювач. За замовчуванням ''.
+ * @param  array  [ $l10n = array() ] Для локалізації. Див. змінну $default_l10n.
+ * @param  array  [ $args = array() ] Опції. Див. змінну $def_args.
+ * @return void                       Виводить на екран HTML код.
  */
 function nc_breadcrumbs( $sep = '', $l10n = array(), $args = array() ) {
 	$breadcrumbs = new \iDeus\Framework\Breadcrumbs();
@@ -16,12 +23,12 @@ function nc_breadcrumbs( $sep = '', $l10n = array(), $args = array() ) {
 
 
 /**
- * Custom except
+ * Custom except.
  *
  * @since 2.0.0
  *
- * @param  array  $args Arguments.
- * @return string       Custom except.
+ * @param  array $args Arguments.
+ * @return string      Custom except.
  */
 function nc_excerpt( $args = array() ) {
 	$args = wp_parse_args( $args, array(
@@ -35,7 +42,7 @@ function nc_excerpt( $args = array() ) {
 
 
 /**
- * Fix phone number for links
+ * Fix phone number for links.
  *
  * @since 2.0.0
  *
@@ -54,19 +61,18 @@ function nc_tel( $phone = '' ) {
 
 
 /**
- * Get remote JSON & cache with Transients API
+ * Get remote JSON & cache with Transients API.
  *
  * @since 2.0.0
  *
- * @param  string       $url        URL to retrieve.
- * @param  array        $args       Optional. Request arguments. Default empty array.
- *                                  See WP_Http::request() for information on accepted arguments.
- * @param  str          $expiration Number of seconds.
- * @return object|false             The response or WP_Error on failure.
+ * @param  string $api_url    URL to retrieve.
+ * @param  array  $args       Optional. Request arguments. Default empty array. See WP_Http::request() for information on accepted arguments.
+ * @param  str    $expiration Number of seconds.
+ * @return object|false       The response or WP_Error on failure.
  */
 function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SECONDS ) {
 	$api_url_hash = 'nc_cache_' . md5( $api_url );
-	$cache = get_transient( $api_url_hash );
+	$cache        = get_transient( $api_url_hash );
 
 	if ( $cache ) {
 		$body = $cache;
@@ -89,12 +95,12 @@ function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SEC
 
 
 /**
- * Get YouTube/Vimeo video type & ID
+ * Get YouTube/Vimeo video type & ID.
  *
  * @since 2.0.0
  *
- * @param  string $url YouTube or Vimeo video URL
- * @return array       Video type & ID
+ * @param  string $url YouTube or Vimeo video URL.
+ * @return array       Video type & ID.
  */
 function nc_determine_video_url( $url ) {
 	$is_match_youtube = preg_match( '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/', $url, $youtube_matches );
@@ -122,13 +128,13 @@ function nc_determine_video_url( $url ) {
 
 
 /**
- * Get YouTube thumbnail
+ * Get YouTube thumbnail.
  *
  * @since 2.0.0
  *
- * @param  string $video_id YouTube video ID
- * @param  string $size     Thumbnail size: hqdefault / sddefault / maxresdefault
- * @return string           Thumbnail URL
+ * @param  string $video_id YouTube video ID.
+ * @param  string $size     Thumbnail size: hqdefault / sddefault / maxresdefault.
+ * @return string           Thumbnail URL.
  */
 function nc_get_youtube_thumb( $video_id, $size = 'sddefault' ) {
 	$thumbnail_url = 'https://i.ytimg.com/vi/' . $video_id . '/' . $size . '.jpg';
@@ -138,16 +144,16 @@ function nc_get_youtube_thumb( $video_id, $size = 'sddefault' ) {
 
 
 /**
- * Get Vimeo thumbnail
+ * Get Vimeo thumbnail.
  *
  * @since 2.0.0
  *
- * @param  string $video_id Vimeo video ID
- * @param  string $size     Thumbnail size: 640 / 1280
- * @return string           Thumbnail URL
+ * @param  string $video_id Vimeo video ID.
+ * @param  string $size     Thumbnail size: 640 | 1280.
+ * @return string           Thumbnail URL.
  */
 function nc_get_vimeo_thumb( $video_id, $size = '640' ) {
-	$data = nc_remote_api_get( 'https://vimeo.com/api/v2/video/' . $video_id . '.json' );
+	$data          = nc_remote_api_get( 'https://vimeo.com/api/v2/video/' . $video_id . '.json' );
 	$thumbnail_url = str_replace( '-d_640', '-d_' . $size, $data[0]->thumbnail_large );
 
 	return $thumbnail_url;
@@ -155,7 +161,7 @@ function nc_get_vimeo_thumb( $video_id, $size = '640' ) {
 
 
 /**
- * Get the page or post slug
+ * Get the page or post slug.
  *
  * @since 2.0.0
  *
@@ -167,7 +173,7 @@ if ( ! function_exists( 'get_the_slug' ) ) {
 		$post = get_post( $post );
 
 		$slug = isset( $post->post_name ) ? $post->post_name : '';
-		$id = isset( $post->ID ) ? $post->ID : 0;
+		$id   = isset( $post->ID ) ? $post->ID : 0;
 
 		return apply_filters( 'the_slug', $slug, $id );
 	}
@@ -175,9 +181,9 @@ if ( ! function_exists( 'get_the_slug' ) ) {
 
 
 /**
- * Display the page or post slug
+ * Display the page or post slug.
  *
- * Uses get_the_slug()
+ * Uses get_the_slug().
  *
  * @since 2.0.0
  *
@@ -193,26 +199,26 @@ if ( ! function_exists( 'the_slug' ) ) {
 
 
 /**
- * Insert something after paragraph #
+ * Insert something after paragraph #.
  *
  * @since 2.0.0
  *
- * @param  string  $insertion     Text to be inserted.
- * @param  int     $paragraph_num Number of paragraph to insert.
- * @param  string  $content       Text where to insert.
- * @return string                 Final text.
+ * @param  string $insertion     Text to be inserted.
+ * @param  int    $paragraph_num Number of paragraph to insert.
+ * @param  string $content       Text where to insert.
+ * @return string                Final text.
  */
 function nc_insert_after_paragraph( $insertion, $paragraph_num, $content ) {
-	$closing_p = '</p>';
+	$closing_p  = '</p>';
 	$paragraphs = explode( $closing_p, $content );
 
-	foreach ($paragraphs as $index => $paragraph) {
+	foreach ( $paragraphs as $index => $paragraph ) {
 		if ( trim( $paragraph ) ) {
-			$paragraphs[$index] .= $closing_p;
+			$paragraphs[ $index ] .= $closing_p;
 		}
 
-		if ( $paragraph_num == $index + 1 ) {
-			$paragraphs[$index] .= $insertion;
+		if ( $paragraph_num === $index + 1 ) {
+			$paragraphs[ $index ] .= $insertion;
 		}
 	}
 
@@ -221,19 +227,21 @@ function nc_insert_after_paragraph( $insertion, $paragraph_num, $content ) {
 
 
 /**
- * Using Akismet in Custom Forms
+ * Using Akismet in Custom Forms.
+ *
+ * $content['comment_author']       Name.
+ * $content['comment_author_email'] Email.
+ * $content['comment_author_url']   Website.
+ * $content['comment_content']      Message.
  *
  * @since X.X.X
  *
  * @link https://www.binarymoon.co.uk/2010/03/akismet-plugin-theme-stop-spam-dead/
  *
- * @param string $content['comment_author']       Name.
- * @param string $content['comment_author_email'] Email.
- * @param string $content['comment_author_url']   Website.
- * @param string $content['comment_content']      Message.
+ * @param string[] $content Content to check for spam, see description.
  */
 function nc_check_spam( $content ) {
-	// innocent until proven guilty
+	// Innocent until proven guilty.
 	$is_spam = false;
 
 	$content = (array) $content;
@@ -244,7 +252,7 @@ function nc_check_spam( $content ) {
 		if ( ! empty( $wpcom_api_key ) ) {
 			global $akismet_api_host, $akismet_api_port;
 
-			// set remaining required values for akismet api
+			// Set remaining required values for akismet api.
 			$content['user_ip']    = preg_replace( '/[^0-9., ]/', '', $_SERVER['REMOTE_ADDR'] );
 			$content['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
 			$content['referrer']   = $_SERVER['HTTP_REFERER'];
@@ -258,13 +266,13 @@ function nc_check_spam( $content ) {
 
 			foreach ( $content as $key => $data ) {
 				if ( ! empty( $data ) ) {
-					$query_string .= $key . '=' . urlencode(stripslashes($data)) . '&';
+					$query_string .= $key . '=' . rawurlencode( stripslashes( $data ) ) . '&';
 				}
 			}
 
 			$response = akismet_http_post( $query_string, $akismet_api_host, '/1.1/comment-check', $akismet_api_port );
 
-			if ( 'true' == $response[1] ) {
+			if ( 'true' === $response[1] ) {
 				update_option( 'akismet_spam_count', get_option( 'akismet_spam_count' ) + 1 );
 				$is_spam = true;
 			}

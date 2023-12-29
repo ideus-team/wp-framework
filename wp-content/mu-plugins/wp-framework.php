@@ -6,25 +6,28 @@
  * Author: iDeus
  * Version: 2.4.5
  * Author URI: https://ideus.biz
+ *
+ * @package WP-framework
+ * @since 2.0.0
  */
 
-// Main plugin class
+// Main plugin class.
 require WPMU_PLUGIN_DIR . '/wp-framework/class-plugin.php';
 
-// Walker_Nav_Menu
+// Walker_Nav_Menu.
 require WPMU_PLUGIN_DIR . '/wp-framework/class-walker-nav-menu.php';
 
-// Breadcrumbs
+// Breadcrumbs.
 require WPMU_PLUGIN_DIR . '/wp-framework/class-breadcrumbs.php';
 
-// Close from search engines indexing for dev, stage environment
+// Close from search engines indexing for dev, stage environment.
 require WPMU_PLUGIN_DIR . '/wp-framework/class-disable-indexing.php';
 
-// Pagination
+// Pagination.
 require WPMU_PLUGIN_DIR . '/wp-framework/pagination.php';
 
-// Custom Post Types
+// Custom Post Types.
 require WPMU_PLUGIN_DIR . '/wp-framework/post-type.php';
 
-// Custom Taxonomies
+// Custom Taxonomies.
 require WPMU_PLUGIN_DIR . '/wp-framework/taxonomy.php';

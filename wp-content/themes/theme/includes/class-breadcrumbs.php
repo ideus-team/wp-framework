@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Breadcrumbs
+ * Class Breadcrumbs.
  *
  * @package WP-framework
  * @since 2.0.0
@@ -10,38 +10,37 @@ namespace iDeus\Theme;
 
 if ( ! class_exists( 'iDeus\Theme\Breadcrumbs' ) ) {
 	/**
-	 * Breadcrumbs modifications
+	 * Breadcrumbs modifications.
 	 *
 	 * @since 2.0.0
 	 */
 	class Breadcrumbs {
-
 		/**
-		 * Class initialization
+		 * Class initialization.
 		 *
 		 * @since 2.0.0
 		 */
 		public function __construct() {
-			// Settings
+			// Settings.
 			add_filter( 'kama_breadcrumbs_default_args', array( $this, 'default_args' ) );
 
-			// Localization
+			// Localization.
 			add_filter( 'kama_breadcrumbs_default_loc', array( $this, 'default_loc' ) );
 
-			// Position for schema.org & ld+json
+			// Position for schema.org & ld+json.
 			add_action( 'kama_breadcrumbs', array( $this, 'position' ), 10, 4 );
 
-			// Example: Add link to some page after home
+			// Example: Add link to some page after home.
 			// add_action( 'kama_breadcrumbs_home_after', array( $this, 'add_link_after_home' ), 10, 4 );
 		}
 
 
 		/**
-		 * Settings
+		 * Settings.
 		 *
 		 * @since 2.0.0
 		 *
-		 * @param  array $args Breadcrumbs settings
+		 * @param  array $args Breadcrumbs settings.
 		 * @return array
 		 */
 		public function default_args( $args ) {
@@ -64,11 +63,11 @@ if ( ! class_exists( 'iDeus\Theme\Breadcrumbs' ) ) {
 
 
 		/**
-		 * Localization
+		 * Localization.
 		 *
 		 * @since 2.0.0
 		 *
-		 * @param  array $l10n Localization strings
+		 * @param  array $l10n Localization strings.
 		 * @return array
 		 */
 		public function default_loc( $l10n ) {
@@ -93,40 +92,40 @@ if ( ! class_exists( 'iDeus\Theme\Breadcrumbs' ) ) {
 
 
 		/**
-		 * Position for schema.org & ld+json
+		 * Position for schema.org & ld+json.
 		 *
 		 * @since 2.0.0
 		 *
-		 * @param  string $out Breadcrumbs html code
-		 * @param  string $sep Separator
-		 * @param  array  $loc Localization strings
-		 * @param  array  $arg Breadcrumbs settings
+		 * @param  string $out Breadcrumbs html code.
+		 * @param  string $sep Separator.
+		 * @param  array  $loc Localization strings.
+		 * @param  array  $arg Breadcrumbs settings.
 		 * @return string
 		 */
 		public function position( $out, $sep, $loc, $arg ) {
-			if ( 'schema.org' == $arg->markup ) {
+			if ( 'schema.org' === $arg->markup ) {
 				$breadcrumbs_old = explode( '</a>', $out );
-				$count = count( $breadcrumbs_old ) - 1;
+				$count           = count( $breadcrumbs_old ) - 1;
 
 				$breadcrumbs_new = '';
 				foreach ( $breadcrumbs_old as $key => $value ) {
 					$breadcrumbs_new .= $value;
 
-					if ( $key != $count ) {
+					if ( $count !== $key ) {
 						$breadcrumbs_new .= '<meta itemprop="position" content="' . $key . '"></a>';
 					}
 				}
 
 				$out = $breadcrumbs_new;
-			} elseif ( 'ld+json' == $arg->markup ) {
+			} elseif ( 'ld+json' === $arg->markup ) {
 				$breadcrumbs_old = explode( '"@type": "ListItem",', $out );
-				$count = count( $breadcrumbs_old ) - 1;
+				$count           = count( $breadcrumbs_old ) - 1;
 
 				$breadcrumbs_new = '';
 				foreach ( $breadcrumbs_old as $key => $value ) {
 					$breadcrumbs_new .= $value;
 
-					if ( $key != $count ) {
+					if ( $count !== $key ) {
 						$breadcrumbs_new .= '"@type": "ListItem", "position": ' . $key . ',';
 					}
 				}
@@ -139,21 +138,20 @@ if ( ! class_exists( 'iDeus\Theme\Breadcrumbs' ) ) {
 
 
 		/**
-		 * Example: Add link to some page after home
+		 * Example: Add link to some page after home.
 		 *
 		 * @since 2.0.0
 		 *
-		 * @param  string $false    Empty string by default
-		 * @param  string $linkpatt Link pattern
-		 * @param  array  $sep      Separator
-		 * @param  array  $ptype    Post type
+		 * @param  string $false    Empty string by default.
+		 * @param  string $linkpatt Link pattern.
+		 * @param  array  $sep      Separator.
+		 * @param  array  $ptype    Post type.
 		 * @return string
 		 */
 		public function add_link_after_home( $false, $linkpatt, $sep, $ptype ) {
 			$post_id = 1;
-			$page = get_post( $post_id );
+			$page    = get_post( $post_id );
 			return sprintf( $linkpatt, get_permalink( $page ), $page->post_title ) . $sep;
 		}
-
 	}
 }

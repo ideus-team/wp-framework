@@ -1,6 +1,6 @@
 <?php
 /**
- * Class AJAX
+ * Class AJAX.
  *
  * @package WP-framework
  * @since 2.0.0
@@ -10,19 +10,18 @@ namespace iDeus\Theme;
 
 if ( ! class_exists( 'iDeus\Theme\AJAX' ) ) {
 	/**
-	 * AJAX
+	 * AJAX.
 	 *
 	 * @since 2.0.0
 	 */
 	class AJAX {
-
 		/**
-		 * Class initialization
+		 * Class initialization.
 		 *
 		 * @since 2.0.0
 		 */
 		public function __construct() {
-			// Include all AJAX files
+			// Include all AJAX files.
 			$this->include_ajax_files();
 
 			// Example: AJAX request, action 'nc_example'
@@ -31,7 +30,7 @@ if ( ! class_exists( 'iDeus\Theme\AJAX' ) ) {
 
 
 		/**
-		 * Include all AJAX files
+		 * Include all AJAX files.
 		 *
 		 * @since 2.0.0
 		 */
@@ -40,6 +39,5 @@ if ( ! class_exists( 'iDeus\Theme\AJAX' ) ) {
 				require_once $file;
 			}
 		}
-
 	}
 }
