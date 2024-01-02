@@ -1,5 +1,8 @@
 ### 2.5.0
+* Spaces → Tabs
 * Using Akismet in Custom Forms
+* Fix WPCS
+* Fix documentation
 * Update packages
 
 ### 2.4.5

@@ -234,7 +234,7 @@ function nc_insert_after_paragraph( $insertion, $paragraph_num, $content ) {
  * $content['comment_author_url']   Website.
  * $content['comment_content']      Message.
  *
- * @since X.X.X
+ * @since 2.5.0
  *
  * @link https://www.binarymoon.co.uk/2010/03/akismet-plugin-theme-stop-spam-dead/
  *
