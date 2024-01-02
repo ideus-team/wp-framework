@@ -238,7 +238,8 @@ function nc_insert_after_paragraph( $insertion, $paragraph_num, $content ) {
  *
  * @link https://www.binarymoon.co.uk/2010/03/akismet-plugin-theme-stop-spam-dead/
  *
- * @param string[] $content Content to check for spam, see description.
+ * @param  string[] $content Content to check for spam, see description.
+ * @return bool              Is spam.
  */
 function nc_check_spam( $content ) {
 	// Innocent until proven guilty.
