@@ -1,3 +1,7 @@
+### 2.5.1
+* Fix jQuery version
+* Update packages
+
 ### 2.5.0
 * Spaces → Tabs
 * Using Akismet in Custom Forms
