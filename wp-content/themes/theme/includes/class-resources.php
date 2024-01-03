@@ -54,7 +54,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 				'jquery',
 				get_theme_file_uri( 'assets/js/vendor/jquery-3.7.1.min.js' ),
 				false,
-				'3.7.0',
+				'3.7.1',
 				true
 			);
 
