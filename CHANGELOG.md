@@ -1,3 +1,7 @@
+### 2.5.2
+* Remove old code from _install.cmd
+* Update packages
+
 ### 2.5.1
 * Fix jQuery version
 * Update packages
