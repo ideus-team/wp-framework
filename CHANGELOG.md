@@ -1,3 +1,8 @@
+### 2.5.3
+* Disabling ACF shortcode
+* Theme version is now equal to WP-framework version
+* Update packages
+
 ### 2.5.2
 * Remove old code from _install.cmd
 * Update packages
