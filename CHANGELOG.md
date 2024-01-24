@@ -1,3 +1,7 @@
+### 2.5.4
+* Escape some output
+* Update packages
+
 ### 2.5.3
 * Disabling ACF shortcode
 * Theme version is now equal to WP-framework version
