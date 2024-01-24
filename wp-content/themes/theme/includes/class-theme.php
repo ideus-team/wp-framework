@@ -59,6 +59,12 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 
 			// Disable important plugins deactivation.
 			add_filter( 'plugin_action_links', array( $this, 'disable_plugin_deactivation' ), 10, 2 );
+
+			// Fix trailing slash on void elements.
+			if ( ! is_admin() && ( ! defined( 'DOING_AJAX' ) || ( defined( 'DOING_AJAX' ) && ! DOING_AJAX ) ) ) {
+				add_action( 'init', array( $this, 'html5_slash_fixer_start' ) );
+				add_action( 'shutdown', array( $this, 'html5_slash_fixer_flush' ) );
+			}
 		}
 
 
@@ -158,6 +164,36 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 			}
 
 			return $actions;
+		}
+
+
+		/**
+		 * Fix trailing slash on void elements - start.
+		 *
+		 * @since X.X.X
+		 */
+		public function html5_slash_fixer_start() {
+			ob_start( array( $this, 'html5_slash_fixer_callback' ) );
+		}
+
+
+		/**
+		 * Fix trailing slash on void elements - callback.
+		 *
+		 * @since X.X.X
+		 */
+		public function html5_slash_fixer_callback( $buffer ) {
+			return str_replace( ' />', '>', $buffer );
+		}
+
+
+		/**
+		 * Fix trailing slash on void elements - end.
+		 *
+		 * @since X.X.X
+		 */
+		public function html5_slash_fixer_flush() {
+			ob_end_flush();
 		}
 	}
 }
