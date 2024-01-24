@@ -38,7 +38,7 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
 			// Disabling ACF shortcode.
 			acf_update_setting( 'enable_shortcode', false );
 
-			// Set Googla Map API key.
+			// Set Google Map API key.
 			// acf_update_setting( 'google_api_key', NC_GOOGLE_MAP_API );
 		}
 
