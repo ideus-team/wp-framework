@@ -1,3 +1,7 @@
+### 2.5.5
+* Disable Gutenberg CSS
+* Fix some grammatical error
+
 ### 2.5.4
 * Escape some output
 * Update packages
