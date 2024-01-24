@@ -1,3 +1,6 @@
+### 2.6.0
+* Fix trailing slash on void elements
+
 ### 2.5.5
 * Disable Gutenberg CSS
 * Fix some grammatical error

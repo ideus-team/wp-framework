@@ -170,7 +170,7 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 		/**
 		 * Fix trailing slash on void elements - start.
 		 *
-		 * @since X.X.X
+		 * @since 2.6.0
 		 */
 		public function html5_slash_fixer_start() {
 			ob_start( array( $this, 'html5_slash_fixer_callback' ) );
@@ -180,7 +180,7 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 		/**
 		 * Fix trailing slash on void elements - callback.
 		 *
-		 * @since X.X.X
+		 * @since 2.6.0
 		 */
 		public function html5_slash_fixer_callback( $buffer ) {
 			return str_replace( ' />', '>', $buffer );
@@ -190,7 +190,7 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 		/**
 		 * Fix trailing slash on void elements - end.
 		 *
-		 * @since X.X.X
+		 * @since 2.6.0
 		 */
 		public function html5_slash_fixer_flush() {
 			ob_end_flush();
