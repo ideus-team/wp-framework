@@ -1,3 +1,7 @@
+### 2.6.1
+* Fix flush buffer notice
+* Update packages
+
 ### 2.6.0
 * Fix trailing slash on void elements
 
