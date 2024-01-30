@@ -193,7 +193,9 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 		 * @since 2.6.0
 		 */
 		public function html5_slash_fixer_flush() {
-			ob_end_flush();
+			if ( ob_get_length() ) {
+				ob_end_flush();
+			}
 		}
 	}
 }
