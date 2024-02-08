@@ -1,3 +1,7 @@
+### 2.6.2
+* Update arguments in wp_register_script()
+* Update packages
+
 ### 2.6.1
 * Fix flush buffer notice
 * Update packages
