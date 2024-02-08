@@ -55,7 +55,9 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 				get_theme_file_uri( 'assets/js/vendor/jquery-3.7.1.min.js' ),
 				false,
 				'3.7.1',
-				true
+				array(
+					'in_footer' => true,
+				)
 			);
 
 			if ( file_exists( get_theme_file_path( 'assets/js/scripts.js' ) ) ) {
@@ -64,7 +66,9 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 					get_theme_file_uri( 'assets/js/scripts.js' ),
 					array( 'jquery' ),
 					filemtime( get_theme_file_path( 'assets/js/scripts.js' ) ),
-					true
+					array(
+						'in_footer' => true,
+					)
 				);
 			}
 
