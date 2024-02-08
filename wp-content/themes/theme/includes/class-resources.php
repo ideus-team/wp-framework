@@ -35,8 +35,8 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 			// Preload fonts.
 			// add_action( 'wp_head', array( $this, 'preload_fonts' ), 5 );
 
-			// Remove global styles.
-			add_action( 'init', array( $this, 'remove_global_css' ) );
+			// Disable global styles.
+			add_action( 'init', array( $this, 'disable_global_css' ) );
 
 			// Remove Gutenberg CSS.
 			add_action( 'wp_print_styles', array( $this, 'deregister_styles' ), 100 );
@@ -185,7 +185,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 		 *
 		 * @since 2.0.0
 		 */
-		public function remove_global_css() {
+		public function disable_global_css() {
 			remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
 			remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
 		}
