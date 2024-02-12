@@ -4,7 +4,6 @@
  * Template Post Type: page
  *
  * @package WP-framework
- * @since 2.0.0
  */
 
 get_header();

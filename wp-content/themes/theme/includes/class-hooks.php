@@ -45,6 +45,8 @@ if ( ! class_exists( 'iDeus\Theme\Hooks' ) ) {
 		/**
 		 * Change the maximum number of words in a post excerpt.
 		 *
+		 * @since 2.0.0
+		 *
 		 * @param  int $length Maximum number of words in a post excerpt.
 		 * @return int
 		 */
