@@ -1,3 +1,8 @@
+### 2.6.3
+* iDeus\Theme\Resources: remove_global_css() → disable_global_css()
+* Update comments
+* Update packages
+
 ### 2.6.2
 * Update arguments in wp_register_script()
 * Update packages
