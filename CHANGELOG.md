@@ -1,3 +1,6 @@
+### 2.6.4
+* Update packages
+
 ### 2.6.3
 * iDeus\Theme\Resources: remove_global_css() → disable_global_css()
 * Update comments
