@@ -23,6 +23,9 @@ require WPMU_PLUGIN_DIR . '/wp-framework/class-breadcrumbs.php';
 // Close from search engines indexing for dev, stage environment.
 require WPMU_PLUGIN_DIR . '/wp-framework/class-disable-indexing.php';
 
+// Environment color for admin bar.
+require WPMU_PLUGIN_DIR . '/wp-framework/class-adminbar-env-color.php';
+
 // Pagination.
 require WPMU_PLUGIN_DIR . '/wp-framework/pagination.php';
 
