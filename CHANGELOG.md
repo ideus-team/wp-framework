@@ -1,3 +1,7 @@
+### 2.7.0
+* Add environment color for admin bar
+* Update packages
+
 ### 2.6.4
 * Update packages
 

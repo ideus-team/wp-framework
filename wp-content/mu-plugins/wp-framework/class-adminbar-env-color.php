@@ -5,7 +5,7 @@
  * @link https://gist.github.com/renakdup/36f4a8474d0cb13ecadf0393811d5330
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.7.0
  */
 
 namespace iDeus\Framework;
@@ -15,14 +15,14 @@ if ( ! class_exists( '\iDeus\Framework\Adminbar_Env_Color' ) ) {
 	/**
 	 * Main plugin class.
 	 *
-	 * @since X.X.X
+	 * @since 2.7.0
 	 */
 	class Adminbar_Env_Color {
 
 		/**
 		 * Class initialization.
 		 *
-		 * @since X.X.X
+		 * @since 2.7.0
 		 */
 		public function __construct() {
 			add_action( 'admin_head', array( $this, 'add_admin_bar_styles' ) );
@@ -34,7 +34,7 @@ if ( ! class_exists( '\iDeus\Framework\Adminbar_Env_Color' ) ) {
 		/**
 		 * Add admin bar styles.
 		 *
-		 * @since X.X.X
+		 * @since 2.7.0
 		 */
 		public function add_admin_bar_styles() {
 			$colors = apply_filters(
@@ -77,7 +77,7 @@ if ( ! class_exists( '\iDeus\Framework\Adminbar_Env_Color' ) ) {
 		/**
 		 * Add environment type to admin bar.
 		 *
-		 * @since X.X.X
+		 * @since 2.7.0
 		 *
 		 * @param WP_Admin_Bar $wp_admin_bar The WP_Admin_Bar instance, passed by reference.
 		 */
