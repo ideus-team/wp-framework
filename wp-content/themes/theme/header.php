@@ -45,7 +45,7 @@
 					?>
 					<<?php echo tag_escape( $logo_tag ); ?> class="b-siteLogo" itemscope itemtype="http://schema.org/Organization">
 						<a class="b-siteLogo__link" href="<?php echo esc_url( $logo_link ); ?>" itemprop="url">
-							<img class="b-siteLogo__icon" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/logos/siteLogo-logo.png' ) ); ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" itemprop="logo">
+							<img class="b-siteLogo__icon" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/logos/siteLogo.png' ) ); ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" itemprop="logo">
 						</a>
 					</<?php echo tag_escape( $logo_tag ); ?>>
 				</div>
