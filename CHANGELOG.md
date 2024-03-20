@@ -1,3 +1,9 @@
+### 2.8.0
+* Add font-stretch to font-face mixin
+* Rename default logo
+* Remove some SCSS comments
+* Update packages
+
 ### 2.7.1
 * Update packages
 
