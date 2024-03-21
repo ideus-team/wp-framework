@@ -12,13 +12,13 @@
 		position: absolute;
 		overflow: hidden;
 		clip: rect(1px, 1px, 1px, 1px);
-		clip-path: inset(50%);
-		height: 1px;
-		width: 1px;
 		margin: -1px;
 		padding: 0;
+		width: 1px;
+		height: 1px;
 		border: 0;
 		word-wrap: normal !important;
+		clip-path: inset(50%);
 	}
 
 	form {
@@ -81,18 +81,18 @@
 .wpcf7-not-valid-tip {
 	display: none;
 	color: #f00;
-	font-size: 12px;
 	font-weight: normal;
+	font-size: 12px;
 
 	.use-floating-validation-tip & {
 		position: relative;
 		top: -2ex;
 		left: 1em;
 		z-index: 100;
-		border: 1px solid #dc3232;
-		background: #fff;
 		padding: .2em .8em;
 		width: 24em;
+		border: 1px solid #dc3232;
+		background: #fff;
 	}
 }
 
