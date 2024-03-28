@@ -35,7 +35,7 @@ if ( ! class_exists( 'iDeus\Theme\Contact_Form_7' ) ) {
 		/**
 		 * Disable 'Unsafe email config is used without sufficient protection' check.
 		 *
-		 * @since X.X.X
+		 * @since 2.9.0
 		 * @link https://contactform7.com/2023/10/15/disabling-only-specific-error-types-of-config-validator/
 		 */
 		public function disable_errors_check( $error_codes, $contact_form ) {

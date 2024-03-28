@@ -1,3 +1,8 @@
+### 2.9.0
+* Disable 'Unsafe email config is used without sufficient protection' check
+* Fix SCSS codestyle
+* Update packages
+
 ### 2.8.0
 * Add font-stretch to font-face mixin
 * Rename default logo
