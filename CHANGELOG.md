@@ -1,3 +1,6 @@
+### 2.9.1
+* Update packages
+
 ### 2.9.0
 * Disable 'Unsafe email config is used without sufficient protection' check
 * Fix SCSS codestyle
