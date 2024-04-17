@@ -1,3 +1,6 @@
+### 2.9.2
+* Update packages
+
 ### 2.9.1
 * Update packages
 
