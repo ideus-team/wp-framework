@@ -1,6 +1,6 @@
 {
 	"name": "ideus-html-framework",
-	"version": "2.9.3",
+	"version": "2.9.4",
 	"description": "Our HTML5 boilerplate",
 	"devDependencies": {
 		"@babel/core": "7.24.5",
