@@ -1,3 +1,10 @@
+### 2.10.0
+* Remove Appearance > Patterns from menu
+* Update configs
+* Hide the Advanced Custom Fields menu on production
+* Update main style.css
+* Update packages
+
 ### 2.9.4
 * Update packages
 
