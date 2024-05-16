@@ -65,6 +65,9 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 				add_action( 'init', array( $this, 'html5_slash_fixer_start' ) );
 				add_action( 'shutdown', array( $this, 'html5_slash_fixer_flush' ) );
 			}
+
+			// Remove WP Block.
+			add_action( 'admin_init', array( $this, 'remove_wp_block_menu' ), 100 );
 		}
 
 
@@ -196,6 +199,17 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 			if ( ob_get_length() ) {
 				ob_end_flush();
 			}
+		}
+
+
+		/**
+		 * Remove WP Block.
+		 *
+		 * @since X.X.X
+		 */
+		public function remove_wp_block_menu() {
+			// Remove Appearance > Patterns from menu.
+			remove_submenu_page( 'themes.php', 'edit.php?post_type=wp_block' );
 		}
 	}
 }
