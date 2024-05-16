@@ -19,11 +19,11 @@ define( 'DB_COLLATE', '' );
 
 
 /**
- * Debug
+ * Debug.
  *
- * WP_DEBUG - Enable WP_DEBUG mode
- * WP_DEBUG_DISPLAY - show debug logging on the screen
- * WP_DEBUG_LOG - write debug logging to the /wp-content/debug.log file
+ * WP_DEBUG - Enable WP_DEBUG mode.
+ * WP_DEBUG_DISPLAY - show debug logging on the screen.
+ * WP_DEBUG_LOG - write debug logging to the /wp-content/debug.log file.
  */
 define( 'WP_DEBUG', false );
 define( 'WP_DEBUG_DISPLAY', false );
@@ -35,7 +35,7 @@ define( 'WP_DEBUG_LOG', false );
 
 
 /**
- * SSL
+ * SSL.
  */
 @ini_set( 'session.cookie_httponly', true );
 @ini_set( 'session.cookie_secure', true );

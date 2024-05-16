@@ -19,11 +19,11 @@ define( 'DB_COLLATE', '' );
 
 
 /**
- * Debug
+ * Debug.
  *
- * WP_DEBUG - Enable WP_DEBUG mode
- * WP_DEBUG_DISPLAY - show debug logging on the screen
- * WP_DEBUG_LOG - write debug logging to the /wp-content/debug.log file
+ * WP_DEBUG - Enable WP_DEBUG mode.
+ * WP_DEBUG_DISPLAY - show debug logging on the screen.
+ * WP_DEBUG_LOG - write debug logging to the /wp-content/debug.log file.
  */
 define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_DISPLAY', true );
@@ -50,7 +50,7 @@ define( 'WP_DEVELOPMENT_MODE', 'theme' );
 
 
 /**
- * SSL
+ * SSL.
  */
 @ini_set( 'session.cookie_httponly', true );
 @ini_set( 'session.cookie_secure', true );
@@ -58,6 +58,6 @@ define( 'WP_DEVELOPMENT_MODE', 'theme' );
 
 
 /**
- * Disable WordPress revisions
+ * Disable WordPress revisions.
  */
 define( 'WP_POST_REVISIONS', false );

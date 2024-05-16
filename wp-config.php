@@ -3,7 +3,7 @@
  * The base configuration for WordPress
  *
  * The wp-config.php creation script uses this file during the installation.
- * You don't have to use the web site, you can copy this file to "wp-config.php"
+ * You don't have to use the website, you can copy this file to "wp-config.php"
  * and fill in the values.
  *
  * This file contains the following configurations:
@@ -13,29 +13,29 @@
  * * Database table prefix
  * * ABSPATH
  *
- * @link https://wordpress.org/support/article/editing-wp-config-php/
+ * @link https://wordpress.org/documentation/article/editing-wp-config-php/
  *
  * @package WordPress
  */
 
 /**
- * Current environment type
- * Possible values are 'local', 'development', 'staging', and 'production'
+ * Current environment type.
+ * Possible values are 'local', 'development', 'staging', and 'production'.
  *
- * You can change 'site.local', 'site.dev', 'site.staging' to your domain names
+ * You can change 'site.local', 'site.dev', 'site.staging' to your domain names.
  */
-if ( 'site.local' == $_SERVER['SERVER_NAME'] ) {
+if ( 'site.local' === $_SERVER['SERVER_NAME'] ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'local' );
-} elseif ( 'site.dev' == $_SERVER['SERVER_NAME'] ) {
+} elseif ( 'site.dev' === $_SERVER['SERVER_NAME'] ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'development' );
-} elseif ( 'site.staging' == $_SERVER['SERVER_NAME'] ) {
+} elseif ( 'site.staging' === $_SERVER['SERVER_NAME'] ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'staging' );
 } else {
 	define( 'WP_ENVIRONMENT_TYPE', 'production' );
 }
 
 /**
- * Include file with MySQL and other environment settings
+ * Include file with MySQL and other environment settings.
  */
 if ( file_exists( dirname( __FILE__ ) . '/wp-config.' . WP_ENVIRONMENT_TYPE . '.php' ) ) {
 	include( dirname( __FILE__ ) . '/wp-config.' . WP_ENVIRONMENT_TYPE . '.php' );
@@ -81,7 +81,7 @@ $table_prefix = 'wp_';
  * For information on other constants that can be used for debugging,
  * visit the documentation.
  *
- * @link https://wordpress.org/support/article/debugging-in-wordpress/
+ * @link https://wordpress.org/documentation/article/debugging-in-wordpress/
  */
 if ( ! defined( 'WP_DEBUG' ) && isset( $_GET['debug'] ) && 'debug' == $_GET['debug'] ) {
 	define( 'WP_DEBUG', true );
@@ -91,7 +91,7 @@ if ( ! defined( 'WP_DEBUG' ) && isset( $_GET['debug'] ) && 'debug' == $_GET['deb
 
 
 /**
- * Limit WordPress revisions
+ * Limit WordPress revisions.
  */
 if ( ! defined( 'WP_POST_REVISIONS' ) ) {
 	define( 'WP_POST_REVISIONS', 5 );
@@ -99,7 +99,7 @@ if ( ! defined( 'WP_POST_REVISIONS' ) ) {
 
 
 /**
- * Stop WP installing core plugins & themes
+ * Stop WP installing core plugins & themes.
  */
 define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
 
