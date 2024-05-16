@@ -52,9 +52,11 @@ require_once get_theme_file_path( 'includes/class-polylang.php' );
 
 
 /**
- * Hide the Advanced Custom Fields menu
+ * Hide the Advanced Custom Fields menu on production.
+ *
+ * Set to true after production site is done.
  */
-// add_filter( 'acf/settings/show_admin', '__return_false' );
+define( 'NC_HIDE_ACF', false );
 
 
 /**

@@ -38,6 +38,11 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
 			// Disabling ACF shortcode.
 			acf_update_setting( 'enable_shortcode', false );
 
+			// Hide the Advanced Custom Fields menu on production.
+			if ( defined( 'NC_HIDE_ACF' ) && NC_HIDE_ACF && 'production' === wp_get_environment_type() ) {
+				add_filter( 'acf/settings/show_admin', '__return_false' );
+			}
+
 			// Set Google Map API key.
 			// acf_update_setting( 'google_api_key', NC_GOOGLE_MAP_API );
 		}
