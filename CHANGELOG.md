@@ -1,3 +1,6 @@
+### 2.10.1
+* Update packages
+
 ### 2.10.0
 * Remove Appearance > Patterns from menu
 * Update configs
