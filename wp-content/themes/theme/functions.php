@@ -7,7 +7,7 @@
  */
 
 /**
- * Exit if accessed directly
+ * Exit if accessed directly.
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No script kiddies please!' );
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /**
- * Content Width
+ * Content Width.
  *
  * @link http://codex.wordpress.org/Content_Width
  */
@@ -27,14 +27,14 @@ if ( ! isset( $content_width ) ) {
 
 
 /**
- * Theme constants & functions
+ * Theme constants & functions.
  */
 require_once get_theme_file_path( 'includes/constants.php' );
 require_once get_theme_file_path( 'includes/functions.php' );
 
 
 /**
- * Classes
+ * Classes.
  */
 require_once get_theme_file_path( 'includes/class-theme.php' );
 require_once get_theme_file_path( 'includes/class-resources.php' );
@@ -60,6 +60,6 @@ define( 'NC_HIDE_ACF', false );
 
 
 /**
- * Setup Theme
+ * Setup Theme.
  */
 new \iDeus\Theme\Theme();
