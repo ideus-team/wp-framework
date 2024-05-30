@@ -11,7 +11,7 @@ add_action( 'init', function() {
 		'new_item'           => __( 'New Article' ),
 		'all_items'          => __( 'All Articles' ),
 		'view_item'          => __( 'View Article' ),
-		'parent_item_colon'  => __( 'Parent Articles:' ),
+		'parent_item_colon'  => __( 'Parent Article:' ),
 		'search_items'       => __( 'Search Articles' ),
 		'not_found'          => __( 'No articles found' ),
 		'not_found_in_trash' => __( 'No articles found in Trash' ),
