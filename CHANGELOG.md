@@ -1,4 +1,5 @@
 ### 2.10.2
+* Fix WPCS
 * Update packages
 
 ### 2.10.1
