@@ -205,7 +205,7 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 		/**
 		 * Remove WP Block.
 		 *
-		 * @since X.X.X
+		 * @since 2.10.0
 		 */
 		public function remove_wp_block_menu() {
 			// Remove Appearance > Patterns from menu.
