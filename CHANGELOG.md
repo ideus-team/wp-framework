@@ -1,3 +1,8 @@
+### 2.10.4
+* Fix comments
+* Fix WPCS
+* Update packages
+
 ### 2.10.3
 * Fix register_post_type() labels
 * Update changelog
