@@ -43,7 +43,7 @@ add_action( 'init', function() {
 
 
 /**
- * Modify loops
+ * Modify loops.
  */
 // add_action( 'pre_get_posts', 'nc_loop_modify' );
 function nc_loop_modify( $query ) {
@@ -56,7 +56,7 @@ function nc_loop_modify( $query ) {
 
 
 /**
- * Disable post types and taxonomies from the ACF admin
+ * Disable post types and taxonomies from the ACF admin.
  *
  * @link https://www.advancedcustomfields.com/resources/acf-settings-enable_post_types/
  */
