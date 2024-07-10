@@ -1,3 +1,8 @@
+### 2.10.5
+* Fix codestyle
+* Add a folder for video files
+* Update packages
+
 ### 2.10.4
 * Fix comments
 * Fix WPCS
