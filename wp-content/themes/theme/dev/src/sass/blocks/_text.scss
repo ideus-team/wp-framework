@@ -11,7 +11,10 @@
 
 	h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, pre, code {
 		@include first-last-margin;
-		margin: 1em 0;
+
+		& {
+			margin: 1em 0;
+		}
 	}
 
 	h1 {}
@@ -115,13 +118,19 @@
 
 	.wp-video {
 		@include first-last-margin;
-		margin: 1em 0;
-		width: 100% !important;
+
+		& {
+			margin: 1em 0;
+			width: 100% !important;
+		}
 	}
 
 	.wp-audio-shortcode {
 		@include first-last-margin;
-		margin: 1em 0;
+
+		& {
+			margin: 1em 0;
+		}
 	}
 
 	.wp-smiley {
