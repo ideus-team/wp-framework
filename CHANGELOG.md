@@ -1,3 +1,7 @@
+### 2.10.6
+* Update packages
+* Update deprecated SCSS-code
+
 ### 2.10.5
 * Fix codestyle
 * Add a folder for video files
