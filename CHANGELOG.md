@@ -1,3 +1,7 @@
+### 2.11.0
+* Change Disable Comments plugin to Disable Comments (Must Use version)
+* Update packages
+
 ### 2.10.6
 * Update packages
 * Update deprecated SCSS-code
