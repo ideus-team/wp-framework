@@ -81,10 +81,10 @@ $table_prefix = 'wp_';
  * For information on other constants that can be used for debugging,
  * visit the documentation.
  *
- * @link https://wordpress.org/documentation/article/debugging-in-wordpress/
+ * @link https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/
  */
-if ( ! defined( 'WP_DEBUG' ) && isset( $_GET['debug'] ) && 'debug' == $_GET['debug'] ) {
-	define( 'WP_DEBUG', true );
+if ( ! defined( 'WP_DEBUG' ) ) {
+	define( 'WP_DEBUG', false );
 }
 
 /* Add any custom values between this line and the "stop editing" line. */

@@ -65,6 +65,10 @@ if ( ! class_exists( '\iDeus\Framework\Plugin' ) ) {
 				$classes[] = get_field( '_nc_theme_style', 'option' );
 			}
 
+			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+				$classes[] = '-debug_true';
+			}
+
 			if ( is_front_page() ) {
 				// Homepage.
 				$classes[] = '-page_home';
