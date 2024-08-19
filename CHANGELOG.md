@@ -1,3 +1,8 @@
+### 2.12.0
+* Fix debug mode
+* Update configs
+* Update packages
+
 ### 2.11.0
 * Change Disable Comments plugin to Disable Comments (Must Use version)
 * Update packages
