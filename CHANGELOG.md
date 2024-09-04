@@ -1,3 +1,6 @@
+### 2.12.1
+* Update packages
+
 ### 2.12.0
 * Fix debug mode
 * Update configs
