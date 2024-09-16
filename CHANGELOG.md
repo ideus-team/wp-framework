@@ -1,3 +1,7 @@
+### 2.12.2
+* Fix Wordpress → WordPress
+* Update development config
+
 ### 2.12.1
 * Update packages
 
