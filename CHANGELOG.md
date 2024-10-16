@@ -1,3 +1,7 @@
+### 2.12.3
+* Update packages
+* Fix Sass update issues
+
 ### 2.12.2
 * Fix Wordpress → WordPress
 * Update development config
