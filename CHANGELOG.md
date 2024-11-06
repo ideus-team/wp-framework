@@ -1,3 +1,7 @@
+### 2.12.4
+* Update packages
+* Fix Sass update issues
+
 ### 2.12.3
 * Update packages
 * Fix Sass update issues
