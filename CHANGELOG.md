@@ -1,3 +1,6 @@
+### 2.12.5
+* Revert to sass version 1.78.0
+
 ### 2.12.4
 * Update packages
 * Fix Sass update issues
