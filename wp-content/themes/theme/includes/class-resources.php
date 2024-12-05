@@ -53,7 +53,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 			wp_register_script(
 				'jquery',
 				get_theme_file_uri( 'assets/js/vendor/jquery-3.7.1.min.js' ),
-				false,
+				array(),
 				'3.7.1',
 				array(
 					'in_footer' => true,
@@ -64,7 +64,9 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 				wp_enqueue_script(
 					'nc-main',
 					get_theme_file_uri( 'assets/js/scripts.js' ),
-					array( 'jquery' ),
+					array(
+						'jquery',
+					),
 					filemtime( get_theme_file_path( 'assets/js/scripts.js' ) ),
 					array(
 						'in_footer' => true,
@@ -98,17 +100,17 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 		 */
 		public function styles() {
 			// wp_enqueue_style(
-			//   'googlefonts',
-			//   'https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Open+Sans:wght@300;400;600;700;800&display=swap',
-			//   false,
-			//   null
+			// 	'googlefonts',
+			// 	'https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Open+Sans:wght@300;400;600;700;800&display=swap',
+			// 	array(),
+			// 	null
 			// );
 
 			if ( file_exists( get_theme_file_path( 'assets/css/main.min.css' ) ) ) {
 				wp_enqueue_style(
 					'nc-main',
 					get_theme_file_uri( 'assets/css/main.min.css' ),
-					false,
+					array(),
 					filemtime( get_theme_file_path( 'assets/css/main.min.css' ) )
 				);
 			}
@@ -125,7 +127,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 				wp_enqueue_style(
 					'nc-admin',
 					get_theme_file_uri( 'assets/css/admin.min.css' ),
-					false,
+					array(),
 					filemtime( get_theme_file_path( 'assets/css/admin.min.css' ) )
 				);
 			}
@@ -142,7 +144,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 				wp_enqueue_style(
 					'nc-login',
 					get_theme_file_uri( 'assets/css/login.min.css' ),
-					false,
+					array(),
 					filemtime( get_theme_file_path( 'assets/css/login.min.css' ) )
 				);
 			}
@@ -176,7 +178,13 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 		 * @since 2.0.0
 		 */
 		public function preload_fonts() {
-			echo '<link rel="preload" href="' . esc_url( get_theme_file_uri( 'assets/fonts/fontname.woff2' ) ) . '" as="font" type="font/woff2" crossorigin="anonymous">';
+			$fonts = array(
+				'fontname',
+			);
+
+			foreach ( $fonts as $font ) {
+				echo '<link rel="preload" href="' . esc_url( get_theme_file_uri( 'assets/fonts/' . $font . '.woff2' ) ) . '" as="font" type="font/woff2" crossorigin="anonymous">';
+			}
 		}
 
 
