@@ -1,3 +1,8 @@
+### 2.12.6
+* Refactor Resources class
+* Add ExpiresByType for mp4
+* Update packages
+
 ### 2.12.5
 * Revert to sass version 1.78.0
 
