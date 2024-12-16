@@ -1,3 +1,9 @@
+### 2.13.0
+* Rename preconnect_googlefonts method to resource_hints
+* Add _update.cmd
+* grunt-postcss → @lodder/grunt-postcss
+* Update packages
+
 ### 2.12.6
 * Refactor Resources class
 * Add ExpiresByType for mp4
