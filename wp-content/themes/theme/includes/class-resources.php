@@ -30,7 +30,7 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 			add_action( 'login_enqueue_scripts', array( $this, 'login_styles' ) );
 
 			// Google fonts preconnect.
-			add_filter( 'wp_resource_hints', array( $this, 'preconnect_googlefonts' ), 10, 2 );
+			add_filter( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
 
 			// Preload fonts.
 			// add_action( 'wp_head', array( $this, 'preload_fonts' ), 5 );
@@ -152,14 +152,15 @@ if ( ! class_exists( 'iDeus\Theme\Resources' ) ) {
 
 
 		/**
+		 * Resource hints.
 		 * Google fonts preconnect.
 		 *
 		 * @since 2.0.0
 		 *
 		 * @param array  $urls          Array of resources and their attributes, or URLs to print for resource hints.
-		 * @param string $relation_type The relation type the URLs are printed for, e.g. 'preconnect' or 'prerender'.
+		 * @param string $relation_type The relation type the URLs are printed for. One of 'dns-prefetch', 'preconnect', 'prefetch', or 'prerender'.
 		 */
-		public function preconnect_googlefonts( $urls, $relation_type ) {
+		public function resource_hints( $urls, $relation_type ) {
 			if ( wp_style_is( 'googlefonts' ) && 'preconnect' === $relation_type ) {
 				$urls[] = 'https://fonts.googleapis.com';
 				$urls[] = array(
