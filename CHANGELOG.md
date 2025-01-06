@@ -1,3 +1,7 @@
+### 2.14.0
+* Refactor custom taxonomies & post types
+* Update packages
+
 ### 2.13.0
 * Rename preconnect_googlefonts method to resource_hints
 * Add _update.cmd
