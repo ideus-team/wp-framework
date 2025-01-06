@@ -30,7 +30,7 @@ require WPMU_PLUGIN_DIR . '/wp-framework/class-adminbar-env-color.php';
 require WPMU_PLUGIN_DIR . '/wp-framework/pagination.php';
 
 // Custom Post Types.
-require WPMU_PLUGIN_DIR . '/wp-framework/post-type.php';
+require WPMU_PLUGIN_DIR . '/wp-framework/class-post-type.php';
 
 // Custom Taxonomies.
-require WPMU_PLUGIN_DIR . '/wp-framework/taxonomy.php';
+require WPMU_PLUGIN_DIR . '/wp-framework/class-taxonomy.php';
