@@ -44,7 +44,7 @@ if ( ! class_exists( '\iDeus\Framework\Taxonomy' ) ) {
 				'back_to_items'      => __( 'Back to Categories' ),
 			);
 
-			$args   = array(
+			$args = array(
 				'labels'             => $labels,
 				'description'        => '',
 				'public'             => true,

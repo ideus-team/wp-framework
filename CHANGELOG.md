@@ -1,3 +1,7 @@
+### 2.14.1
+* Fix WPCS
+* Update packages
+
 ### 2.14.0
 * Refactor custom taxonomies & post types
 * Update packages

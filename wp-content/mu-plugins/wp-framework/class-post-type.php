@@ -50,7 +50,7 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 				'menu_name'          => __( 'Our Blog' ),
 			);
 
-			$args   = array(
+			$args = array(
 				'labels'              => $labels,
 				'description'         => '',
 				'public'              => true,
@@ -77,7 +77,8 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 
 		/**
 		 * Modify loops.
-		 * @param  [type] $query [description]
+		 *
+		 * @param WP_Query $query The WP_Query instance (passed by reference).
 		 */
 		public function loop_modify( $query ) {
 			if ( $query->is_main_query() ) {
