@@ -1,3 +1,7 @@
+### 2.14.2
+* Update methods names in Post_Type & Taxonomy
+* Update packages
+
 ### 2.14.1
 * Fix WPCS
 * Update packages
