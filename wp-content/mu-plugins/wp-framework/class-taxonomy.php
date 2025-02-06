@@ -18,14 +18,14 @@ if ( ! class_exists( '\iDeus\Framework\Taxonomy' ) ) {
 		 */
 		public function __construct() {
 			// Example.
-			// add_filter( 'init', array( $this, 'example_taxonomy' ), 0 );
+			// add_filter( 'init', array( $this, 'taxonomy_example' ), 0 );
 		}
 
 
 		/**
 		 * Example.
 		 */
-		public function example_taxonomy() {
+		public function taxonomy_example() {
 			$labels = array(
 				'name'               => __( 'Blog Categories' ),
 				'singular_name'      => __( 'Category' ),

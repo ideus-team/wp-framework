@@ -20,7 +20,7 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 		 */
 		public function __construct() {
 			// Example.
-			// add_filter( 'init', array( $this, 'example_post_type' ) );
+			// add_filter( 'init', array( $this, 'post_type_example' ) );
 
 			// Modify loops.
 			// add_action( 'pre_get_posts', array( $this, 'loop_modify' ) );
@@ -33,7 +33,7 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 		/**
 		 * Example.
 		 */
-		public function example_post_type() {
+		public function post_type_example() {
 			$labels = array(
 				'name'               => __( 'Articles' ),
 				'singular_name'      => __( 'Article' ),
@@ -47,7 +47,7 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 				'search_items'       => __( 'Search Articles' ),
 				'not_found'          => __( 'No articles found' ),
 				'not_found_in_trash' => __( 'No articles found in Trash' ),
-				'menu_name'          => __( 'Our Blog' ),
+				'menu_name'          => __( 'Example' ),
 			);
 
 			$args = array(
@@ -71,7 +71,7 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 				'query_var'           => true,
 			);
 
-			register_post_type( 'blog', $args );
+			register_post_type( 'example', $args );
 		}
 
 
