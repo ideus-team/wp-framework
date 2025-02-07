@@ -104,6 +104,15 @@ if ( ! defined( 'WP_POST_REVISIONS' ) ) {
 define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
 
 
+/**
+ * Restricting access to the Contact Form 7 administration panel.
+ *
+ * @link https://contactform7.com/restricting-access-to-the-administration-panel/
+ */
+define( 'WPCF7_ADMIN_READ_CAPABILITY', 'manage_options' );
+define( 'WPCF7_ADMIN_READ_WRITE_CAPABILITY', 'manage_options' );
+
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
