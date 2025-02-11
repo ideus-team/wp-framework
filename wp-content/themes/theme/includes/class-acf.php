@@ -61,7 +61,7 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
 					'page_title' => 'Theme Options',
 					'menu_title' => 'Theme Options',
 					'menu_slug'  => 'nc-options-main',
-					'capability' => 'edit_posts',
+					'capability' => 'manage_options',
 					'redirect'   => false,
 				) );
 
@@ -72,6 +72,7 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
 					'menu_title'  => 'Options subpage',
 					'menu_slug'   => 'nc-options-subpage',
 					'parent_slug' => 'nc-options-main',
+					'capability'  => 'manage_options',
 				) );
 
 				// Multilingual options for Polylang
@@ -82,6 +83,7 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
 						'menu_slug'   => 'nc-options-subpage-' . $lang,
 						'post_id'     => 'option-' . $lang,
 						'parent_slug' => 'nc-options-main',
+						'capability'  => 'manage_options',
 					) );
 				}
 				*/
