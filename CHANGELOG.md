@@ -1,3 +1,8 @@
+### 2.15.0
+* Restricting access to the Contact Form 7 administration panel
+* Change capabilities for ACF options pages
+* Update packages
+
 ### 2.14.2
 * Update methods names in Post_Type & Taxonomy
 * Update packages
