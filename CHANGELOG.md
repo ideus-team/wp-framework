@@ -1,3 +1,7 @@
+### 2.15.1
+* Small refactor custom taxonomies example
+* Update packages
+
 ### 2.15.0
 * Restricting access to the Contact Form 7 administration panel
 * Change capabilities for ACF options pages
