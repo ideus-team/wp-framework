@@ -1,3 +1,7 @@
+### 2.15.2
+* Fix errors in AJAX
+* Update packages
+
 ### 2.15.1
 * Small refactor custom taxonomies example
 * Update packages
