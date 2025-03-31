@@ -1,3 +1,7 @@
+### 2.15.3
+* Update packages
+* Update MU plugins
+
 ### 2.15.2
 * Fix errors in AJAX
 * Update packages
