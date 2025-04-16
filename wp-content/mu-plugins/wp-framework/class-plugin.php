@@ -30,6 +30,9 @@ if ( ! class_exists( '\iDeus\Framework\Plugin' ) ) {
 
 			// Disable SSL verification for `wp_remote_*()` if localhost.
 			add_filter( 'http_request_args', array( $this, 'disable_ssl_verification' ) );
+
+			// Speculation rules configuration.
+			add_filter( 'wp_speculation_rules_configuration', array( $this, 'speculation_rules_configuration' ) );
 		}
 
 
@@ -111,6 +114,22 @@ if ( ! class_exists( '\iDeus\Framework\Plugin' ) ) {
 			}
 
 			return $parsed_args;
+		}
+
+
+		/**
+		 * Speculation rules configuration.
+		 *
+		 * @param  array|null $config Associative array with 'mode' and 'eagerness' keys, or `null`.
+		 * @return array|null
+		 */
+		public function speculation_rules_configuration( $config ) {
+			if ( is_array( $config ) ) {
+				$config['mode']      = 'prerender';
+				$config['eagerness'] = 'moderate';
+			}
+
+			return $config;
 		}
 	}
 
