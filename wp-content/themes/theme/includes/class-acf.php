@@ -25,7 +25,7 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
 			add_action( 'acf/init', array( $this, 'update_settings' ) );
 
 			// Options pages.
-			$this->options_pages();
+			add_action( 'acf/init', array( $this, 'options_pages' ) );
 		}
 
 
@@ -53,7 +53,7 @@ if ( ! class_exists( 'iDeus\Theme\ACF' ) ) {
 		 *
 		 * @since 2.0.0
 		 */
-		private function options_pages() {
+		public function options_pages() {
 			if ( function_exists( 'acf_add_options_page' ) ) {
 
 				// Options pages.

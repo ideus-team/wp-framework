@@ -1,3 +1,8 @@
+### 2.16.0
+* Fix error translation loading for the acf
+* Speculation rules configuration
+* Update packages
+
 ### 2.15.3
 * Update packages
 * Update MU plugins
