@@ -81,7 +81,7 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 		 * @param WP_Query $query The WP_Query instance (passed by reference).
 		 */
 		public function loop_modify( $query ) {
-			if ( $query->is_main_query() ) {
+			if ( $query->is_main_query() && ! isset( $query->query['orderby'] ) ) {
 				if ( isset( $query->query['post_type'] ) && in_array( $query->query['post_type'], array( 'post_type' ), true ) ) {
 					$query->set( 'orderby', array( 'menu_order' => 'ASC' ) );
 				}
