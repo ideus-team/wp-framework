@@ -1,3 +1,7 @@
+### 2.16.1
+* Fix loops modification
+* Update packages
+
 ### 2.16.0
 * Fix error translation loading for the acf
 * Speculation rules configuration
