@@ -26,6 +26,9 @@ require WPMU_PLUGIN_DIR . '/wp-framework/class-disable-indexing.php';
 // Environment color for admin bar.
 require WPMU_PLUGIN_DIR . '/wp-framework/class-adminbar-env-color.php';
 
+// Maintenance mode.
+require WPMU_PLUGIN_DIR . '/wp-framework/class-maintenance.php';
+
 // Custom Post Types.
 require WPMU_PLUGIN_DIR . '/wp-framework/class-post-type.php';
 
