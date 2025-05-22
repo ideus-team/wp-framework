@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'ACF' ) ) {
+if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 	/**
 	 * Advanced Custom Fields modifications.
 	 *

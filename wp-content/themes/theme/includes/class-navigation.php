@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'Navigation' ) ) {
+if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 	/**
 	 * Navigation modifications.
 	 *

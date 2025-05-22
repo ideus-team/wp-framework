@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'AJAX' ) ) {
+if ( ! class_exists( '\iDeus\Theme\AJAX' ) ) {
 	/**
 	 * AJAX.
 	 *

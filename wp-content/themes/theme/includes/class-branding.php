@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'Branding' ) ) {
+if ( ! class_exists( '\iDeus\Theme\Branding' ) ) {
 	/**
 	 * Branding.
 	 *

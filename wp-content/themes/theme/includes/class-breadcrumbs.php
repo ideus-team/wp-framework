@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'Breadcrumbs' ) ) {
+if ( ! class_exists( '\iDeus\Theme\Breadcrumbs' ) ) {
 	/**
 	 * Breadcrumbs modifications.
 	 *

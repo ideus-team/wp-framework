@@ -7,7 +7,7 @@
 
 namespace iDeus\Framework;
 
-if ( ! class_exists( 'Post_Type' ) ) {
+if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 
 	/**
 	 * Post_Type class.

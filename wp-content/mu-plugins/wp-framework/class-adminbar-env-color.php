@@ -10,7 +10,7 @@
 
 namespace iDeus\Framework;
 
-if ( ! class_exists( 'Adminbar_Env_Color' ) ) {
+if ( ! class_exists( '\iDeus\Framework\Adminbar_Env_Color' ) ) {
 
 	/**
 	 * Main plugin class.

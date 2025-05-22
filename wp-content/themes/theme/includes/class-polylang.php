@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'Polylang' ) ) {
+if ( ! class_exists( '\iDeus\Theme\Polylang' ) ) {
 	/**
 	 * Polylang modifications.
 	 *

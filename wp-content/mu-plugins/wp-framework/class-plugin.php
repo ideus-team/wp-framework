@@ -8,7 +8,7 @@
 
 namespace iDeus\Framework;
 
-if ( ! class_exists( 'Plugin' ) ) {
+if ( ! class_exists( '\iDeus\Framework\Plugin' ) ) {
 
 	/**
 	 * Main plugin class.

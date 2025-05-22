@@ -8,7 +8,7 @@
 
 namespace iDeus\Framework;
 
-if ( ! class_exists( 'Maintenance' ) ) {
+if ( ! class_exists( '\iDeus\Framework\Maintenance' ) ) {
 	/**
 	 * Maintenance mode.
 	 *

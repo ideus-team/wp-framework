@@ -7,7 +7,7 @@
 
 namespace iDeus\Framework;
 
-if ( ! class_exists( 'Taxonomy' ) ) {
+if ( ! class_exists( '\iDeus\Framework\Taxonomy' ) ) {
 
 	/**
 	 * Taxonomy class.

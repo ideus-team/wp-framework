@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'Theme' ) ) {
+if ( ! class_exists( '\iDeus\Theme\Theme' ) ) {
 	/**
 	 * Theme.
 	 *
