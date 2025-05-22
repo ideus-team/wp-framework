@@ -10,7 +10,7 @@ namespace iDeus\Framework;
 
 use Walker_Nav_Menu as Standart_Walker_Nav_Menu;
 
-if ( ! class_exists( '\iDeus\Framework\Walker_Nav_Menu' ) ) {
+if ( ! class_exists( 'Walker_Nav_Menu' ) ) {
 
 	/**
 	 * Walker for wp_nav_menu

@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'iDeus\Theme\Hooks' ) ) {
+if ( ! class_exists( 'Hooks' ) ) {
 	/**
 	 * Hooks.
 	 *

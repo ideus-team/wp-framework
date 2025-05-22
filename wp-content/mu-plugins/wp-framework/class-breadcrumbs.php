@@ -8,7 +8,7 @@
 
 namespace iDeus\Framework;
 
-if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
+if ( ! class_exists( 'Breadcrumbs' ) ) {
 
 	/**
 	 * Breadcrumbs

@@ -9,7 +9,7 @@ namespace iDeus\Theme;
 
 use WP_Query;
 
-if ( ! class_exists( 'iDeus\Theme\AJAX_Example' ) ) {
+if ( ! class_exists( 'AJAX_Example' ) ) {
 	/**
 	 * AJAX request, action 'nc_example'.
 	 */

@@ -8,7 +8,7 @@
 
 namespace iDeus\Framework;
 
-if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
+if ( ! class_exists( 'Disable_Indexing' ) ) {
 
 	/**
 	 * Close from search engines indexing for dev, stage environment.
@@ -128,5 +128,5 @@ if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
 		}
 	}
 
-	new \iDeus\Framework\Disable_Indexing();
+	new Disable_Indexing();
 }

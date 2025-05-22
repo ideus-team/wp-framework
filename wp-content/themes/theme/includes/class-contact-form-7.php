@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'iDeus\Theme\Contact_Form_7' ) ) {
+if ( ! class_exists( 'Contact_Form_7' ) ) {
 	/**
 	 * Contact Form 7 modifications.
 	 *

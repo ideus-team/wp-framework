@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'iDeus\Theme\Shortcodes' ) ) {
+if ( ! class_exists( 'Shortcodes' ) ) {
 	/**
 	 * Custom Shorcodes.
 	 *

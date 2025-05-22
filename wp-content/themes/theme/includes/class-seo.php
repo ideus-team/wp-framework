@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'iDeus\Theme\SEO' ) ) {
+if ( ! class_exists( 'SEO' ) ) {
 	/**
 	 * SEO.
 	 *
