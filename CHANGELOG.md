@@ -1,3 +1,9 @@
+### 2.17.0
+* Add maintenance mode
+* Update nc_determine_video_url()
+* Remove unnecessary code
+* Fix WPCS compliance
+
 ### 2.16.1
 * Fix loops modification
 * Update packages

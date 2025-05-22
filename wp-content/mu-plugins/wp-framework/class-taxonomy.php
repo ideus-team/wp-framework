@@ -65,5 +65,5 @@ if ( ! class_exists( '\iDeus\Framework\Taxonomy' ) ) {
 		}
 	}
 
-	new \iDeus\Framework\Taxonomy();
+	new Taxonomy();
 }

@@ -4,7 +4,7 @@
  * Plugin URI:  https://github.com/ideus-team/wp-framework
  * Description: Functions for WP-framework
  * Author:      iDeus
- * Version:     2.16.1
+ * Version:     2.17.0
  * Author URI:  https://ideus.biz
  *
  * @package WP-framework
@@ -25,6 +25,9 @@ require WPMU_PLUGIN_DIR . '/wp-framework/class-disable-indexing.php';
 
 // Environment color for admin bar.
 require WPMU_PLUGIN_DIR . '/wp-framework/class-adminbar-env-color.php';
+
+// Maintenance mode.
+require WPMU_PLUGIN_DIR . '/wp-framework/class-maintenance.php';
 
 // Custom Post Types.
 require WPMU_PLUGIN_DIR . '/wp-framework/class-post-type.php';

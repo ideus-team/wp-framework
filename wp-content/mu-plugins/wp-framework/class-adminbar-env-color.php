@@ -96,5 +96,5 @@ if ( ! class_exists( '\iDeus\Framework\Adminbar_Env_Color' ) ) {
 		}
 	}
 
-	new \iDeus\Framework\Adminbar_Env_Color();
+	new Adminbar_Env_Color();
 }

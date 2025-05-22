@@ -67,7 +67,7 @@ function nc_tel( $phone = '' ) {
  *
  * @param  string $api_url    URL to retrieve.
  * @param  array  $args       Optional. Request arguments. Default empty array. See WP_Http::request() for information on accepted arguments.
- * @param  str    $expiration Number of seconds.
+ * @param  str    $expiration Time until expiration in seconds.
  * @return object|false       The response or WP_Error on failure.
  */
 function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SECONDS ) {
@@ -103,7 +103,7 @@ function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SEC
  * @return array       Video type & ID.
  */
 function nc_determine_video_url( $url ) {
-	$is_match_youtube = preg_match( '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/', $url, $youtube_matches );
+	$is_match_youtube = preg_match( '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/|shorts\/)?)([\w\-]+)(\S+)?$/', $url, $youtube_matches );
 
 	$is_match_vimeo = preg_match( '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $url, $vimeo_matches );
 

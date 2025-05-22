@@ -133,5 +133,5 @@ if ( ! class_exists( '\iDeus\Framework\Plugin' ) ) {
 		}
 	}
 
-	new \iDeus\Framework\Plugin();
+	new Plugin();
 }

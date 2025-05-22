@@ -89,5 +89,5 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 		}
 	}
 
-	new \iDeus\Framework\Post_Type();
+	new Post_Type();
 }

@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'iDeus\Theme\AJAX' ) ) {
+if ( ! class_exists( '\iDeus\Theme\AJAX' ) ) {
 	/**
 	 * AJAX.
 	 *
@@ -25,7 +25,7 @@ if ( ! class_exists( 'iDeus\Theme\AJAX' ) ) {
 			$this->include_ajax_files();
 
 			// Example: AJAX request, action 'nc_example'
-			// new \iDeus\Theme\AJAX_Example();
+			// new AJAX_Example();
 		}
 
 

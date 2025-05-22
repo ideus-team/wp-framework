@@ -8,7 +8,7 @@
 
 namespace iDeus\Theme;
 
-if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
+if ( ! class_exists( '\iDeus\Theme\Theme' ) ) {
 	/**
 	 * Theme.
 	 *
@@ -25,37 +25,37 @@ if ( ! class_exists( 'iDeus\Theme\Theme' ) ) {
 			add_action( 'after_setup_theme', array( $this, 'setup' ) );
 
 			// JS & CSS.
-			new \iDeus\Theme\Resources();
+			new Resources();
 
 			// Navigation.
-			new \iDeus\Theme\Navigation();
+			new Navigation();
 
 			// Custom Shorcodes.
-			new \iDeus\Theme\Shortcodes();
+			new Shortcodes();
 
 			// Hooks.
-			new \iDeus\Theme\Hooks();
+			new Hooks();
 
 			// AJAX.
-			new \iDeus\Theme\AJAX();
+			new AJAX();
 
 			// SEO.
-			new \iDeus\Theme\SEO();
+			new SEO();
 
 			// Branding.
-			new \iDeus\Theme\Branding();
+			new Branding();
 
 			// Breadcrumbs.
-			new \iDeus\Theme\Breadcrumbs();
+			new Breadcrumbs();
 
 			// Advanced Custom Fields.
-			new \iDeus\Theme\ACF();
+			new ACF();
 
 			// Contact Form 7.
-			new \iDeus\Theme\Contact_Form_7();
+			new Contact_Form_7();
 
 			// Polylang.
-			new \iDeus\Theme\Polylang();
+			new Polylang();
 
 			// Disable important plugins deactivation.
 			add_filter( 'plugin_action_links', array( $this, 'disable_plugin_deactivation' ), 10, 2 );

@@ -128,5 +128,5 @@ if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
 		}
 	}
 
-	new \iDeus\Framework\Disable_Indexing();
+	new Disable_Indexing();
 }
