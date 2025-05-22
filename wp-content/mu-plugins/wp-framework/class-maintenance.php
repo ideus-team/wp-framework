@@ -3,7 +3,7 @@
  * Class Maintenance.
  *
  * @package WP-framework
- * @since X.X.X
+ * @since 2.17.0
  */
 
 namespace iDeus\Framework;
@@ -12,13 +12,13 @@ if ( ! class_exists( '\iDeus\Framework\Maintenance' ) ) {
 	/**
 	 * Maintenance mode.
 	 *
-	 * @since X.X.X
+	 * @since 2.17.0
 	 */
 	class Maintenance {
 		/**
 		 * Class initialization.
 		 *
-		 * @since X.X.X
+		 * @since 2.17.0
 		 */
 		public function __construct() {
 			// Options page.
@@ -38,7 +38,7 @@ if ( ! class_exists( '\iDeus\Framework\Maintenance' ) ) {
 		/**
 		 * Options page.
 		 *
-		 * @since X.X.X
+		 * @since 2.17.0
 		 */
 		public function options_page() {
 			// Do nothing if ACF is not active.
@@ -63,7 +63,7 @@ if ( ! class_exists( '\iDeus\Framework\Maintenance' ) ) {
 		/**
 		 * Custom fields.
 		 *
-		 * @since X.X.X
+		 * @since 2.17.0
 		 */
 		public function custom_fields() {
 			// Do nothing if ACF is not active.
@@ -102,7 +102,7 @@ if ( ! class_exists( '\iDeus\Framework\Maintenance' ) ) {
 		/**
 		 * Add maintenance status to admin bar.
 		 *
-		 * @since X.X.X
+		 * @since 2.17.0
 		 *
 		 * @param WP_Admin_Bar $wp_admin_bar The WP_Admin_Bar instance, passed by reference.
 		 */
@@ -136,7 +136,7 @@ if ( ! class_exists( '\iDeus\Framework\Maintenance' ) ) {
 		/**
 		 * Set maintenance mode.
 		 *
-		 * @since X.X.X
+		 * @since 2.17.0
 		 */
 		public function maintenance() {
 			// Do nothing if ACF is not active.
