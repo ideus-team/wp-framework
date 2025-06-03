@@ -67,26 +67,31 @@ function nc_tel( $phone = '' ) {
  *
  * @param  string $api_url    URL to retrieve.
  * @param  array  $args       Optional. Request arguments. Default empty array. See WP_Http::request() for information on accepted arguments.
- * @param  str    $expiration Time until expiration in seconds.
- * @return object|false       The response or WP_Error on failure.
+ * @param  int    $expiration Time until expiration in seconds.
+ * @return object|false       The response or false on failure.
  */
 function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SECONDS ) {
-	$api_url_hash = 'nc_cache_' . md5( $api_url );
-	$cache        = get_transient( $api_url_hash );
+	// Create cache key based on URL.
+	$cache_key     = 'nc_cache_' . md5( $api_url );
+	$cached_result = get_transient( $cache_key );
 
-	if ( $cache ) {
-		$body = $cache;
+	if ( false !== $cached_result ) {
+		// Get cached result if exists.
+		$body = $cached_result;
 	} else {
+		// Use WordPress HTTP API to get response.
 		$request = wp_remote_get( $api_url, $args );
 
+		// Check if request was successful.
 		if ( is_wp_error( $request ) ) {
 			return false;
 		}
 
 		$body = wp_remote_retrieve_body( $request );
 
+		// Cache result.
 		if ( $expiration ) {
-			set_transient( $api_url_hash, $body, $expiration );
+			set_transient( $cache_key, $body, $expiration );
 		}
 	}
 

@@ -1,3 +1,7 @@
+### 2.18.0
+* Refactor nc_remote_api_get()
+* Update packages
+
 ### 2.17.0
 * Add maintenance mode
 * Update nc_determine_video_url()
