@@ -125,7 +125,7 @@ if ( ! class_exists( '\iDeus\Framework\Maintenance' ) ) {
 				'href'   => admin_url( 'admin.php?page=nc-maintenance' ),
 				'meta'   => array(
 					'class' => 'nc_adminbar_maintenance',
-					'title' => __( 'Your environment' ),
+					'title' => 'Maintenance Mode',
 				),
 			);
 
