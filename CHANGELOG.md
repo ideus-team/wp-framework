@@ -1,3 +1,6 @@
+### 2.18.1
+* Fix maintenance mode
+
 ### 2.18.0
 * Refactor nc_remote_api_get()
 * Update packages
