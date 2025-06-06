@@ -19,13 +19,15 @@
 
 	<?php if ( ! has_site_icon() ) : ?>
 
-		<link rel="shortcut icon" href="<?php echo esc_url( home_url( '/favicon.ico' ) ); ?>">
-		<link rel="manifest" href="<?php echo esc_url( home_url( '/site.webmanifest' ) ); ?>">
+		<link rel="icon" href="<?php echo esc_url( home_url( '/favicon.ico' ) ); ?>" sizes="any">
+		<link rel="icon" href="<?php echo esc_url( home_url( '/icon.svg' ) ); ?>" type="image/svg+xml">
 		<link rel="apple-touch-icon" href="<?php echo esc_url( home_url( '/icon.png' ) ); ?>">
+
+		<link rel="manifest" href="<?php echo esc_url( home_url( '/site.webmanifest' ) ); ?>">
 
 	<?php endif; ?>
 
-	<!--<meta name="theme-color" content="#ed1c24">-->
+	<!--<meta name="theme-color" content="#fafafa">-->
 
 	<?php wp_head(); ?>
 	<?php get_template_part( 'template-parts/scripts/header' ); ?>
