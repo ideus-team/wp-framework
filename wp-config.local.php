@@ -46,8 +46,8 @@ define( 'WP_DEBUG_LOG', false );
 define( 'WP_DEVELOPMENT_MODE', 'theme' );
 
 
-define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] );
-define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
+define( 'WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] );
+define( 'WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] );
 
 
 /**
