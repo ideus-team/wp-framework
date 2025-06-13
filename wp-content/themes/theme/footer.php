@@ -34,7 +34,7 @@
 
 				<?php endif; ?>
 
-				<address class="l-siteCopyright vcard" itemscope itemtype="http://schema.org/Organization">
+				<address class="l-siteCopyright vcard" itemscope itemtype="https://schema.org/Organization">
 					<div class="b-siteCopyright">
 						© <?php echo current_time( 'Y' ); ?>
 						<a class="b-siteCopyright__link fn n org url work" href="<?php echo esc_url( home_url() ); ?>" rel="me" itemprop="name"><?php bloginfo( 'name' ); ?></a>.
