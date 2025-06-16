@@ -19,13 +19,15 @@
 
 	<?php if ( ! has_site_icon() ) : ?>
 
-		<link rel="shortcut icon" href="<?php echo esc_url( home_url( '/favicon.ico' ) ); ?>">
-		<link rel="manifest" href="<?php echo esc_url( home_url( '/site.webmanifest' ) ); ?>">
+		<link rel="icon" href="<?php echo esc_url( home_url( '/favicon.ico' ) ); ?>" sizes="any">
+		<link rel="icon" href="<?php echo esc_url( home_url( '/icon.svg' ) ); ?>" type="image/svg+xml">
 		<link rel="apple-touch-icon" href="<?php echo esc_url( home_url( '/icon.png' ) ); ?>">
+
+		<link rel="manifest" href="<?php echo esc_url( home_url( '/site.webmanifest' ) ); ?>">
 
 	<?php endif; ?>
 
-	<!--<meta name="theme-color" content="#ed1c24">-->
+	<!--<meta name="theme-color" content="#fafafa">-->
 
 	<?php wp_head(); ?>
 	<?php get_template_part( 'template-parts/scripts/header' ); ?>
@@ -43,7 +45,7 @@
 					$logo_tag  = ( is_front_page() && ! is_paged() ) ? 'h1' : 'div';
 					$logo_link = ( is_front_page() && ! is_paged() ) ? home_url( '#top' ) : home_url();
 					?>
-					<<?php echo tag_escape( $logo_tag ); ?> class="b-siteLogo" itemscope itemtype="http://schema.org/Organization">
+					<<?php echo tag_escape( $logo_tag ); ?> class="b-siteLogo" itemscope itemtype="https://schema.org/Organization">
 						<a class="b-siteLogo__link" href="<?php echo esc_url( $logo_link ); ?>" itemprop="url">
 							<img class="b-siteLogo__icon" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/logos/siteLogo.png' ) ); ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" itemprop="logo">
 						</a>

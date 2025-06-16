@@ -124,7 +124,12 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 		 * @return array
 		 */
 		public function styled_menu_element( $classes, $menu_item ) {
-			if ( function_exists( 'get_field' ) && get_field( '_nc_styled', $menu_item->ID ) ) {
+			// Do nothing if ACF is not active.
+			if ( ! function_exists( 'get_field' ) ) {
+				return false;
+			}
+
+			if ( get_field( '_nc_styled', $menu_item->ID ) ) {
 				$classes[] = '-styled_true';
 			}
 
@@ -185,13 +190,18 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 		 * @return array
 		 */
 		public function modify_menu_objects( $sorted_menu_items, $args ) {
+			// Do nothing if ACF is not active.
+			if ( ! function_exists( 'get_field' ) ) {
+				return false;
+			}
+
 			foreach ( $sorted_menu_items as $item ) {
-				if ( function_exists( 'get_field' ) && get_field( '_nc_class', $item->ID ) ) {
+				if ( get_field( '_nc_class', $item->ID ) ) {
 					$item->classes[] = get_field( '_nc_class', $item->ID );
 				}
 
 				// Link anchor.
-				if ( function_exists( 'get_field' ) && get_field( '_nc_anchor', $item->ID ) ) {
+				if ( get_field( '_nc_anchor', $item->ID ) ) {
 					$anchor = '#' . get_field( '_nc_anchor', $item->ID );
 
 					if ( isset( $_SERVER['REQUEST_URI'] ) && home_url( $_SERVER['REQUEST_URI'] ) === $item->url || get_field( '_nc_modal', $item->ID ) ) {
@@ -219,7 +229,12 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 		 * @return array
 		 */
 		public function modify_link_attributes( $atts, $menu_item ) {
-			if ( function_exists( 'get_field' ) && get_field( '_nc_modal', $menu_item->ID ) ) {
+			// Do nothing if ACF is not active.
+			if ( ! function_exists( 'get_field' ) ) {
+				return false;
+			}
+
+			if ( get_field( '_nc_modal', $menu_item->ID ) ) {
 				$atts['class'] .= ' js-modal';
 			}
 
@@ -239,11 +254,15 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 		 * @return object
 		 */
 		public function menu_item_label( $args, $menu_item, $depth ) {
-			if ( function_exists( 'get_field' ) ) {
-				$label = get_field( '_nc_label', $menu_item->ID );
-				if ( $label ) {
-					$args->before = $label . ' ';
-				}
+			// Do nothing if ACF is not active.
+			if ( ! function_exists( 'get_field' ) ) {
+				return false;
+			}
+
+			$label = get_field( '_nc_label', $menu_item->ID );
+
+			if ( $label ) {
+				$args->before = $label . ' ';
 			}
 
 			return $args;
