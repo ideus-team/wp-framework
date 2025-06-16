@@ -1,3 +1,6 @@
+### 2.19.1
+* Add missing icon.svg
+
 ### 2.19.0
 * Update default favicons
 * Fix local config
