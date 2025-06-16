@@ -1,3 +1,11 @@
+### 2.19.0
+* Update default favicons
+* Fix local config
+* Add avif to image formats
+* Fix links to schema.org
+* Refactor \iDeus\Theme\Navigation()
+* Update packages
+
 ### 2.18.1
 * Fix maintenance mode
 
