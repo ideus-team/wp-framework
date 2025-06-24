@@ -1,3 +1,6 @@
+### 2.19.2
+* Prevent grunt-contrib-imagemin from removing viewBox
+
 ### 2.19.1
 * Add missing icon.svg
 
