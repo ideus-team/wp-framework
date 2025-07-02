@@ -1,3 +1,6 @@
+### 2.19.3
+* Update packages
+
 ### 2.19.2
 * Prevent grunt-contrib-imagemin from removing viewBox
 
