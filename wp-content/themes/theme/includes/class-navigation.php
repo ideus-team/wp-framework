@@ -126,7 +126,7 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 		public function styled_menu_element( $classes, $menu_item ) {
 			// Do nothing if ACF is not active.
 			if ( ! function_exists( 'get_field' ) ) {
-				return false;
+				return $classes;
 			}
 
 			if ( get_field( '_nc_styled', $menu_item->ID ) ) {
@@ -192,7 +192,7 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 		public function modify_menu_objects( $sorted_menu_items, $args ) {
 			// Do nothing if ACF is not active.
 			if ( ! function_exists( 'get_field' ) ) {
-				return false;
+				return $sorted_menu_items;
 			}
 
 			foreach ( $sorted_menu_items as $item ) {
@@ -231,7 +231,7 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 		public function modify_link_attributes( $atts, $menu_item ) {
 			// Do nothing if ACF is not active.
 			if ( ! function_exists( 'get_field' ) ) {
-				return false;
+				return $atts;
 			}
 
 			if ( get_field( '_nc_modal', $menu_item->ID ) ) {
@@ -256,7 +256,7 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 		public function menu_item_label( $args, $menu_item, $depth ) {
 			// Do nothing if ACF is not active.
 			if ( ! function_exists( 'get_field' ) ) {
-				return false;
+				return $args;
 			}
 
 			$label = get_field( '_nc_label', $menu_item->ID );
