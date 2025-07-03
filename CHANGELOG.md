@@ -1,3 +1,6 @@
+### 2.19.4
+* Fixed ACF activity check
+
 ### 2.19.3
 * Update packages
 
