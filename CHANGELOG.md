@@ -1,5 +1,8 @@
+### 2.20.0
+* Custom URL validation for ACF text field with name 'url'
+
 ### 2.19.4
-* Fixed ACF activity check
+* Fix ACF activity check
 
 ### 2.19.3
 * Update packages
