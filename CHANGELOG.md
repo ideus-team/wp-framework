@@ -1,3 +1,6 @@
+### 2.20.1
+* Add @since to new methods
+
 ### 2.20.0
 * Custom URL validation for ACF text field with name 'url'
 
