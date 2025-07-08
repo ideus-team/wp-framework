@@ -117,6 +117,8 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 		 * - Standard HTTP/HTTPS URLs
 		 * - Anchors and query parameters
 		 *
+		 * @since 2.20.0
+		 *
 		 * @param  bool|string $valid The validation status.
 		 * @param  string      $value The field value.
 		 * @param  array       $field The field settings.
@@ -190,6 +192,8 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 		/**
 		 * Process and sanitize custom URL field value before saving.
 		 *
+		 * @since 2.20.0
+		 *
 		 * @param  string $value   The field value.
 		 * @param  int    $post_id The post ID.
 		 * @param  array  $field   The field settings.
@@ -203,6 +207,8 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 
 		/**
 		 * Add instructions to the URL field in admin panel.
+		 *
+		 * @since 2.20.0
 		 *
 		 * @param  array $field The field settings.
 		 * @return array        Modified field settings.
