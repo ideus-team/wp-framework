@@ -24,9 +24,6 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 
 			// Modify loops.
 			// add_action( 'pre_get_posts', array( $this, 'loop_modify' ) );
-
-			// Disable post types and taxonomies from the ACF admin.
-			add_filter( 'acf/settings/enable_post_types', '__return_false' );
 		}
 
 
