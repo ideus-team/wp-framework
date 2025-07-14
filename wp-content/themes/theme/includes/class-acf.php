@@ -27,6 +27,9 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 			// Options pages.
 			add_action( 'acf/init', array( $this, 'options_pages' ) );
 
+			// Disable the UI for registering options pages from the ACF admin.
+			add_filter( 'acf/settings/enable_options_pages_ui', '__return_false' );
+
 			// Custom URL validation for ACF text field with name 'url'.
 			add_filter( 'acf/validate_value/name=url', array( $this, 'validate_acf_custom_url_field' ), 10, 4 );
 
