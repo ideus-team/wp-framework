@@ -1,3 +1,8 @@
+### 2.21.0
+* Disable the UI for registering options pages from the ACF admin
+* Move disabling the custom post type and taxonomies feature in the ACF admin from Must Use Plugins to theme
+* Update packages
+
 ### 2.20.1
 * Add @since to new methods
 
