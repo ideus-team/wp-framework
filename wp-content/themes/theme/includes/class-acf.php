@@ -27,7 +27,7 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 			// Options pages.
 			add_action( 'acf/init', array( $this, 'options_pages' ) );
 
-			// Move disabling the custom post type and taxonomies feature in the ACF admin from Must Use Plugins to theme.
+			// Disable the custom post type and taxonomies feature in the ACF admin.
 			add_filter( 'acf/settings/enable_post_types', '__return_false' );
 
 			// Disable the UI for registering options pages from the ACF admin.
