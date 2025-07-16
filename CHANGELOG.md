@@ -1,3 +1,6 @@
+### 2.21.2
+* Fix some comments
+
 ### 2.21.1
 * Update .gitignore
 * Update packages
