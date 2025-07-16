@@ -6,6 +6,7 @@ Thumbs.db
 .DS_Store
 .idea
 .vscode
+php.ini
 
 # .gitignore template for Wordpress: https://github.com/github/gitignore/blob/master/WordPress.gitignore
 *.log
