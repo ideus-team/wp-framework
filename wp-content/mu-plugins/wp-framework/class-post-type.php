@@ -61,7 +61,13 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 				'menu_position'       => null,
 				'menu_icon'           => 'dashicons-admin-post', // You can use dashicons here: https://developer.wordpress.org/resource/dashicons/
 				'hierarchical'        => false,
-				'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'page-attributes' ),
+				'supports'            => array(
+					'title',
+					'editor',
+					'excerpt',
+					'thumbnail',
+					'page-attributes',
+				),
 				'taxonomies'          => array(),
 				'has_archive'         => false,
 				'rewrite'             => true,

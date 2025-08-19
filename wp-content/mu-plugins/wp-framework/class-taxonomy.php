@@ -57,7 +57,9 @@ if ( ! class_exists( '\iDeus\Framework\Taxonomy' ) ) {
 				'meta_box_cb'        => 'post_categories_meta_box',
 				'show_admin_column'  => true,
 				'show_in_rest'       => false,
-				'rewrite'            => array( 'slug' => 'example-cat' ),
+				'rewrite'            => array(
+					'slug' => 'example-cat',
+				),
 				'query_var'          => true,
 			);
 
