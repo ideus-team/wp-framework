@@ -58,7 +58,7 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 				'show_in_menu'        => true,
 				'show_in_admin_bar'   => true,
 				'show_in_rest'        => false,
-				'menu_position'       => null,
+				'menu_position'       => 20,
 				'menu_icon'           => 'dashicons-admin-post', // You can use dashicons here: https://developer.wordpress.org/resource/dashicons/
 				'hierarchical'        => false,
 				'supports'            => array(
