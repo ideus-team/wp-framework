@@ -1,4 +1,9 @@
+### 2.21.5
+* Update changelog
+
 ### 2.21.4
+* Fix WPCS
+* Set menu_position for custom post type
 * Update packages
 
 ### 2.21.3
