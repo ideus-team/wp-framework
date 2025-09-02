@@ -22,7 +22,7 @@ body[class *= "span"] {
 }
 
 .acf-field-wysiwyg.-height_low {
-	$editor_height_low: 100px;
+	$editor_height_low: 150px;
 
 	iframe {
 		height: #{$editor_height_low} !important;
