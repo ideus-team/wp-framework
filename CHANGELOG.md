@@ -1,3 +1,7 @@
+### 2.22.0
+* Add custom text to nc_excerpt function
+* Update packages
+
 ### 2.21.7
 * Fix codestyle
 * Update packages

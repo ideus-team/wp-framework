@@ -31,12 +31,18 @@ function nc_breadcrumbs( $sep = '', $l10n = array(), $args = array() ) {
  * @return string      Custom except.
  */
 function nc_excerpt( $args = array() ) {
-	$args = wp_parse_args( $args, array(
-		'num_words' => 25,
-		'more'      => '… →',
-	) );
+	$args = wp_parse_args(
+		$args,
+		array(
+			'num_words' => 25,
+			'more'      => '… →',
+			'text'      => get_the_content(),
+		)
+	);
 
-	$excerpt = wp_trim_words( get_the_content(), $args['num_words'], $args['more'] );
+	// strip shortcodes tags
+	$pre_excerpt = preg_replace( '~\[[^\]]+\]~', '', $args['text'] );
+	$excerpt     = wp_trim_words( $pre_excerpt, $args['num_words'], $args['more'] );
 	echo apply_filters( 'the_excerpt', $excerpt );
 }
 
