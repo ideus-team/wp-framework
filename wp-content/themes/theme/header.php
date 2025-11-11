@@ -46,7 +46,7 @@
 					$logo_link = ( is_front_page() && ! is_paged() ) ? home_url( '#top' ) : home_url();
 					?>
 					<<?php echo tag_escape( $logo_tag ); ?> class="b-siteLogo" itemscope itemtype="https://schema.org/Organization">
-						<a class="b-siteLogo__link" href="<?php echo esc_url( $logo_link ); ?>" itemprop="url">
+						<a class="b-siteLogo__link" href="<?php echo esc_url( $logo_link ); ?>" itemprop="url" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 							<img class="b-siteLogo__icon" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/logos/siteLogo.png' ) ); ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" itemprop="logo">
 						</a>
 					</<?php echo tag_escape( $logo_tag ); ?>>
