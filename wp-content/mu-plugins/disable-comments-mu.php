@@ -11,7 +11,7 @@
  * License:            GPL2
  */
 
-if ( ! defined( 'ABSPATH' ) ){
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 

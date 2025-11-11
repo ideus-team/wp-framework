@@ -1,3 +1,7 @@
+### 2.22.1
+* Add aria-label to logo
+* Update packages
+
 ### 2.22.0
 * Add custom text to nc_excerpt function
 * Update packages
