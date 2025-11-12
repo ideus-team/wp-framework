@@ -210,6 +210,7 @@ if ( ! class_exists( '\iDeus\Theme\Theme' ) ) {
 		public function remove_wp_block_menu() {
 			// Remove Appearance > Patterns from menu.
 			remove_submenu_page( 'themes.php', 'edit.php?post_type=wp_block' );
+			remove_submenu_page( 'themes.php', 'site-editor.php?p=/pattern' );
 		}
 	}
 }
