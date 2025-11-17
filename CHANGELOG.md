@@ -1,3 +1,10 @@
+### 2.23.0
+* Update removing WP Block
+* Fix SCSS generation
+* Turn off source maps generation
+* Check if jquery file exists
+* Update packages
+
 ### 2.22.1
 * Add aria-label to logo
 * Update packages
