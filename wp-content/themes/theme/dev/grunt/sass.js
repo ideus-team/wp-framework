@@ -1,14 +1,14 @@
 module.exports = {
 	options: {
 		implementation: require('sass'),
-		sourceMap: true,
+		sourceMap: false,
 	},
 
 	dist: {
 		files: [{
 			expand: true,
 			cwd: '<%= sourceCSSDir %>',
-			src: '*.scss',
+			src: '**/*.scss',
 			dest: '<%= destCSSDir %>',
 			ext: '<%= destCSSExt %>',
 		}],

@@ -49,16 +49,18 @@ if ( ! class_exists( '\iDeus\Theme\Resources' ) ) {
 		 * @since 2.0.0
 		 */
 		public function scripts() {
-			wp_deregister_script( 'jquery' );
-			wp_register_script(
-				'jquery',
-				get_theme_file_uri( 'assets/js/vendor/jquery-3.7.1.min.js' ),
-				array(),
-				'3.7.1',
-				array(
-					'in_footer' => true,
-				)
-			);
+			if ( file_exists( get_theme_file_path( 'assets/js/vendor/jquery-3.7.1.min.js' ) ) ) {
+				wp_deregister_script( 'jquery' );
+				wp_register_script(
+					'jquery',
+					get_theme_file_uri( 'assets/js/vendor/jquery-3.7.1.min.js' ),
+					array(),
+					'3.7.1',
+					array(
+						'in_footer' => true,
+					)
+				);
+			}
 
 			if ( file_exists( get_theme_file_path( 'assets/js/scripts.js' ) ) ) {
 				wp_enqueue_script(

@@ -1,8 +1,6 @@
 module.exports = {
 	options: {
-		map: {
-			inline: false,
-		},
+		map: false,
 
 		processors: [
 			require('autoprefixer')(), // add vendor prefixes
@@ -18,7 +16,7 @@ module.exports = {
 		files: [{
 			expand: true,
 			cwd: '<%= destCSSDir %>',
-			src: '*' + '<%= destCSSExt %>',
+			src: '**/*' + '<%= destCSSExt %>',
 			dest: '<%= destCSSDir %>',
 			ext: '<%= destMinCSSExt %>',
 		}],
