@@ -65,6 +65,7 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 					'title',
 					'editor',
 					'excerpt',
+					'author',
 					'thumbnail',
 					'page-attributes',
 				),

@@ -1,6 +1,8 @@
 module.exports = {
 	options: {
-		map: false,
+		map: {
+			inline: false,
+		},
 
 		processors: [
 			require('autoprefixer')(), // add vendor prefixes
