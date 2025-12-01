@@ -1,3 +1,9 @@
+### 2.24.0
+* Escape tag attributes in header
+* Add author to custom post type supports
+* Turn on source maps generation
+* Update packages
+
 ### 2.23.0
 * Update removing WP Block
 * Fix SCSS generation
