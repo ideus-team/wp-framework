@@ -1,7 +1,7 @@
 module.exports = {
 	options: {
 		implementation: require('sass'),
-		sourceMap: false,
+		sourceMap: true,
 	},
 
 	dist: {
