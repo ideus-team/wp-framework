@@ -1,3 +1,6 @@
+### 2.24.1
+* Update packages
+
 ### 2.24.0
 * Escape tag attributes in header
 * Add author to custom post type supports

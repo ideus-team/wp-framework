@@ -4,7 +4,7 @@
  * Plugin URI:  https://github.com/ideus-team/wp-framework
  * Description: Functions for WP-framework
  * Author:      iDeus
- * Version:     2.24.0
+ * Version:     2.24.1
  * Author URI:  https://ideus.biz
  *
  * @package WP-framework
