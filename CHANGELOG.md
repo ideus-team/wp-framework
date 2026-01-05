@@ -1,3 +1,6 @@
+### 2.25.1
+* Fix removing `grunt-spritesmith`
+
 ### 2.25.0
 * Remove `grunt-spritesmith` & `grunt-shell`
 
