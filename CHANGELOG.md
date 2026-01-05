@@ -1,3 +1,6 @@
+### 2.25.0
+* Remove `grunt-spritesmith` & `grunt-shell`
+
 ### 2.24.1
 * Update packages
 
