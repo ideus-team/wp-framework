@@ -107,6 +107,11 @@ if ( ! class_exists( '\iDeus\Framework\Maintenance' ) ) {
 		 * @param WP_Admin_Bar $wp_admin_bar The WP_Admin_Bar instance, passed by reference.
 		 */
 		public function add_admin_bar_env_item( $wp_admin_bar ) {
+			// Do nothing if user is not admin.
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return false;
+			}
+
 			// Do nothing if ACF is not active.
 			if ( ! function_exists( 'get_field' ) ) {
 				return false;
