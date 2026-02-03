@@ -1,3 +1,6 @@
+### 2.26.1
+* Update packages
+
 ### 2.26.0
 * Do not add maintenance status to admin bar if user is not admin
 * Update packages
