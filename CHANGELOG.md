@@ -1,3 +1,6 @@
+### 2.26.2
+* Update packages
+
 ### 2.26.1
 * Update packages
 
