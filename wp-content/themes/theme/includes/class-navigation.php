@@ -144,6 +144,7 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 		 */
 		private function menu_element_fields() {
 			if ( function_exists( 'acf_add_local_field_group' ) ) {
+				// Add Styled & Anchor options.
 				acf_add_local_field_group(
 					array(
 						'key'      => 'group_menu_item_styled',
