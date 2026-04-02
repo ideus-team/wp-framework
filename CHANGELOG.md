@@ -1,3 +1,9 @@
+### 2.27.0
+* https://fakeimg.pl → https://placehold.co
+* Update MU plugins
+* Add some comments
+* Update packages
+
 ### 2.26.4
 * Update packages
 
