@@ -21,6 +21,10 @@
 		clip-path: inset(50%);
 	}
 
+	.hidden-fields-container {
+		display: none;
+	}
+
 	form {
 		.wpcf7-response-output {
 			margin: .4em;

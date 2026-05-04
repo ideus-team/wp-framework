@@ -1,3 +1,7 @@
+### 2.27.2
+* Fix CF7 .hidden-fields-container visibility
+* Update packages
+
 ### 2.27.1
 * Update packages
 
