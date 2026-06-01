@@ -1,3 +1,7 @@
+### 2.27.6
+* Update packages
+* Update Cyr to Lat Enhanced MU plugin
+
 ### 2.27.5
 * Update packages
 
