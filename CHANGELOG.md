@@ -1,3 +1,17 @@
+### 2.28.0
+* Update OTF Regenerate Thumbnails plugin:
+  * Refactor: Enforce strict WordPress Coding Standards (WPCS), including tab indentation, proper spacing, and separating the plugin header from the DocBlock.
+  * Style: Update variable naming conventions from camelCase to snake_case (e.g., $imagePath to $image_path).
+  * Enhancement: Add avif to the list of supported image extensions for modern WordPress compatibility.
+  * Refactor: Replace native PHP functions getimagesize() and basename() with WordPress-native wp_getimagesize() and wp_basename().
+  * Fix: Replace loose comparisons (==) with strict comparisons (===), add true to in_array(), and cast dimensions to (int).
+  * Fix: Add safety checks for get_attached_file(), $original_size, and $image_data to prevent PHP 8.0+ TypeError and warnings when physical files are missing or corrupted.
+  * Fix: Convert file extensions to lowercase (strtolower) before validation to correctly process uppercase extensions (e.g., .JPG).
+  * Fix: Separate original $image_path and target $target_path variables to avoid mutating the path string during custom array size processing.
+  * Security/Fix: Add preg_quote() to the regular expression for preg_replace to safely handle file extensions during path generation.
+  * Fix: Ensure image_make_intermediate_size() always uses the original attached file as the source instead of the non-existent target path.
+  * Fix: Add a physical file_exists() check for standard named sizes to force on-the-fly regeneration if the physical file was deleted from the disk but the database metadata still exists.
+
 ### 2.27.6
 * Update packages
 * Update Cyr to Lat Enhanced MU plugin
