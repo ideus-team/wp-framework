@@ -1,4 +1,5 @@
 ### 2.28.1
+* Improve remote API data fetching robustness
 * Update packages
 
 ### 2.28.0
