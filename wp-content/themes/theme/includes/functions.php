@@ -88,8 +88,8 @@ function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SEC
 		// Use WordPress HTTP API to get response.
 		$request = wp_remote_get( $api_url, $args );
 
-		// Check if request was successful.
-		if ( is_wp_error( $request ) ) {
+		// Check if request was successful and returned a valid 200 OK status.
+		if ( is_wp_error( $request ) || 200 !== wp_remote_retrieve_response_code( $request ) ) {
 			return false;
 		}
 
