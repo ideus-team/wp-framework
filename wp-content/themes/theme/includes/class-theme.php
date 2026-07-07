@@ -129,10 +129,12 @@ if ( ! class_exists( '\iDeus\Theme\Theme' ) ) {
 			/**
 			 * Navigation.
 			 */
-			register_nav_menus( array(
-				'header' => 'Header Menu',
-				'footer' => 'Footer Menu',
-			) );
+			register_nav_menus(
+				array(
+					'header' => 'Header Menu',
+					'footer' => 'Footer Menu',
+				)
+			);
 
 			/**
 			 * WooCommerce support.
@@ -176,7 +178,12 @@ if ( ! class_exists( '\iDeus\Theme\Theme' ) ) {
 		 * @since 2.6.0
 		 */
 		public function html5_slash_fixer_start() {
-			ob_start( array( $this, 'html5_slash_fixer_callback' ) );
+			ob_start(
+				array(
+					$this,
+					'html5_slash_fixer_callback',
+				)
+			);
 		}
 
 

@@ -46,12 +46,14 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 		 *
 		 * React on wp_nav_menu flags: sub_menu, direct_parent, show_parent
 		 * Example:
-		 * wp_nav_menu( array(
-		 *   'menu'          => 'Menu Name',
-		 *   'sub_menu'      => true,
-		 *   'direct_parent' => true,
-		 *   'show_parent'   => true,
-		 * ) );
+		 * wp_nav_menu(
+		 *   array(
+		 *     'menu'          => 'Menu Name',
+		 *     'sub_menu'      => true,
+		 *     'direct_parent' => true,
+		 *     'show_parent'   => true,
+		 *   )
+		 * );
 		 *
 		 * @since 2.1.0
 		 * @link https://christianvarga.com/how-to-get-submenu-items-from-a-wordpress-menu-based-on-parent-or-sibling/
