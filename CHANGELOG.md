@@ -1,3 +1,8 @@
+### 2.28.2
+* Fix changelog
+* Fix WPCS compliance
+* Update packages
+
 ### 2.28.1
 * Improve remote API data fetching robustness
 * Update packages
