@@ -1,18 +1,18 @@
 @charset 'utf-8';
 
+@use "config" as *;
 @use "sass:color";
-@use 'settings';
 
 .login h1 a {
-	width: settings.$logo-width;
-	height: settings.$logo-height;
-	background-image: url(settings.$logo-image-url);
+	width: $logo-width;
+	height: $logo-height;
+	background-image: url($logo-image-url);
 	background-size: 100%;
 }
 
 .login .message,
 .login .success {
-	border-color: settings.$color-main;
+	border-color: $color-main;
 }
 
 input[type=color],
@@ -31,29 +31,29 @@ input[type=url],
 input[type=week],
 select,
 textarea {
-	border-color: settings.$color-main;
+	border-color: $color-main;
 
 	&:focus {
-		border-color: settings.$color-main;
-		box-shadow: 0 0 0 1px settings.$color-main;
+		border-color: $color-main;
+		box-shadow: 0 0 0 1px $color-main;
 	}
 }
 
 .wp-core-ui .button-secondary {
-	color: settings.$color-main;
+	color: $color-main;
 }
 
 .wp-core-ui .button-primary {
-	border-color: settings.$color-main !important;
-	background: settings.$color-main !important;
+	border-color: $color-main !important;
+	background: $color-main !important;
 
 	&:hover {
-		border-color: color.adjust(settings.$color-main, $lightness: 5%) !important;
-		background: color.adjust(settings.$color-main, $lightness: 5%) !important;
+		border-color: color.adjust($color-main, $lightness: 5%) !important;
+		background: color.adjust($color-main, $lightness: 5%) !important;
 	}
 
 	&.focus,
 	&:focus {
-		box-shadow: 0 0 0 1px #fff, 0 0 0 3px settings.$color-main;
+		box-shadow: 0 0 0 1px #fff, 0 0 0 3px $color-main;
 	}
 }

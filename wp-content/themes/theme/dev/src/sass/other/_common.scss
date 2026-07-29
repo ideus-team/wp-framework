@@ -1,4 +1,4 @@
-@use "../settings";
+@use "../config" as *;
 
 a {
 	&:hover {
@@ -23,7 +23,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-	width: settings.$site-width;
+	width: $site-width;
 	min-height: 100vh;
 }
 

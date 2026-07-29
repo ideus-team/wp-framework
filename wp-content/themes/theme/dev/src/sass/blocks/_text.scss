@@ -1,4 +1,4 @@
-@use "../mixins";
+@use "../config" as *;
 
 /**
  *
@@ -9,10 +9,10 @@
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  */
 .b-text {
-	@include mixins.clearfix;
+	@include clearfix;
 
 	h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, pre, code {
-		@include mixins.first-last-margin;
+		@include first-last-margin;
 
 		& {
 			margin: 1em 0;
@@ -58,7 +58,7 @@
 		}
 
 		&[href ^= tel] {
-			@include mixins.tel;
+			@include tel;
 		}
 	}
 
@@ -119,7 +119,7 @@
 	.gallery-caption {}
 
 	.wp-video {
-		@include mixins.first-last-margin;
+		@include first-last-margin;
 
 		& {
 			margin: 1em 0;
@@ -128,7 +128,7 @@
 	}
 
 	.wp-audio-shortcode {
-		@include mixins.first-last-margin;
+		@include first-last-margin;
 
 		& {
 			margin: 1em 0;

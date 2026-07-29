@@ -1,7 +1,7 @@
-@use "../mixins";
+@use "../config" as *;
 
 .b-pageNav {
-	@include mixins.clearfix;
+	@include clearfix;
 
 	&__list {
 		margin: 0;
