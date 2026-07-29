@@ -1,10 +1,10 @@
 @charset "utf-8";
 
-@import 'mixins';
-@import 'fonts';
-@import 'settings';
+@use 'mixins';
+@use 'fonts';
+@use 'settings';
 
-@import 'blocks/text';
+@use 'blocks/text';
 
 body {
 	@extend .b-text;

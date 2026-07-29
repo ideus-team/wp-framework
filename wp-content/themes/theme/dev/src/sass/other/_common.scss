@@ -1,3 +1,5 @@
+@use "../settings";
+
 a {
 	&:hover {
 		text-decoration: none;
@@ -21,7 +23,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-	width: $site-width;
+	width: settings.$site-width;
 	min-height: 100vh;
 }
 

@@ -1,3 +1,5 @@
+@use "../mixins";
+
 /**
  * Image replacement
  * .g-ir
@@ -18,7 +20,7 @@
  * Telephone number
  */
 .g-tel {
-	@include tel;
+	@include mixins.tel;
 }
 
 
