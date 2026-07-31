@@ -1,10 +1,6 @@
 @charset "utf-8";
 
-@import 'mixins';
-
-/* Project files… */
-@import 'fonts';
-@import 'settings';
+@use "config" as *;
 
 /* Plugins */
 
