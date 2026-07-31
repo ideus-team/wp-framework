@@ -1,6 +1,6 @@
 {
 	"name": "ideus-html-framework",
-	"version": "2.28.2",
+	"version": "2.29.0",
 	"description": "Our HTML5 boilerplate",
 	"devDependencies": {
 		"@lodder/grunt-postcss": "3.1.1",

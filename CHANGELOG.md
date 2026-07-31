@@ -1,3 +1,11 @@
+### 2.29.0
+* Optimize nc_determine_video_url() function
+* Remove babel
+* Update SCSS
+* Update sass package
+* Update browserslist rules
+* Update packages
+
 ### 2.28.2
 * Fix changelog
 * Fix WPCS compliance
