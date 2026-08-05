@@ -1,3 +1,6 @@
+### 2.29.2
+* Fix Sass code
+
 ### 2.29.1
 * Fix Sass code
 * Update packages
