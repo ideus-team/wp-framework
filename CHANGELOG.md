@@ -1,3 +1,7 @@
+### 2.29.1
+* Fix Sass code
+* Update packages
+
 ### 2.29.0
 * Optimize nc_determine_video_url() function
 * Remove babel
