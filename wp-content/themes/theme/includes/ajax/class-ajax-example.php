@@ -46,7 +46,7 @@ if ( ! class_exists( '\iDeus\Theme\AJAX_Example' ) ) {
 				}
 			}
 
-			if ( isset( $result['error'] ) && $result['error'] ) {
+			if ( ! empty( $result['error'] ) ) {
 				wp_send_json_error( $result );
 			} else {
 				wp_send_json_success( $result );
