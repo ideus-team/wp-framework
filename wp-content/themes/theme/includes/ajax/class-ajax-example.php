@@ -22,31 +22,30 @@ if ( ! class_exists( '\iDeus\Theme\AJAX_Example' ) ) {
 			add_action( 'wp_ajax_nopriv_nc_example', array( $this, 'ajax_callback' ) );
 		}
 
-
 		/**
 		 * Processing AJAX request.
 		 */
 		public function ajax_callback() {
 			$result = array();
 
-			if ( ! isset( $_POST['postdata'] ) || ! $_POST['postdata'] ) {
+			if ( empty( $_POST['postdata'] ) ) {
 				$result['error'] = 'Empty postdata';
 			} else {
 				$args = wp_parse_args(
-					$_POST['postdata'],
+					wp_unslash( $_POST['postdata'] ),
 					array(
 						'_wpnonce' => '',
 					)
 				);
 
-				if ( ! wp_verify_nonce( $args['_wpnonce'] ) ) {
+				if ( ! wp_verify_nonce( sanitize_text_field( $args['_wpnonce'] ) ) ) {
 					$result['error'] = 'An error occurred, please refresh the page and try again';
 				} else {
 					$result['args'] = $args;
 				}
 			}
 
-			if ( isset( $result['error'] ) && $result['error'] ) {
+			if ( ! empty( $result['error'] ) ) {
 				wp_send_json_error( $result );
 			} else {
 				wp_send_json_success( $result );

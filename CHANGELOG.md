@@ -1,3 +1,8 @@
+### 2.30.0
+* Add nc_check_turnstile() function
+* Optimize AJAX_Example class
+* Update packages
+
 ### 2.29.2
 * Fix Sass code
 

@@ -292,3 +292,47 @@ function nc_check_spam( $content ) {
 
 	return $is_spam;
 }
+
+
+/**
+ * Check Cloudflare Turnstile.
+ *
+ * @param  string[] $response Turnstile response (cf-turnstile-response).
+ * @return int                Return 1 if not spam.
+ */
+function nc_check_turnstile( $response ) {
+	// Ensure the response token exists.
+	if ( empty( $response ) ) {
+		$this->error( 'Please check the the captcha form.' );
+		return 0;
+	}
+
+	// Prepare the request using wp_remote_post compliant formatting.
+	$response = wp_remote_post(
+		'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+		array(
+			'body'    => array(
+				'secret'   => NC_TURNSTILE_SECRETKEY,
+				'response' => $response,
+				'remoteip' => $_SERVER['REMOTE_ADDR'],
+			),
+			'timeout' => 15,
+		)
+	);
+
+	// Check for WP_Error.
+	if ( is_wp_error( $response ) ) {
+		return 0;
+	}
+
+	// Retrieve the body and decode JSON.
+	$body = wp_remote_retrieve_body( $response );
+	$data = json_decode( $body, true );
+
+	// Verify success key exists and is true.
+	if ( isset( $data['success'] ) && true === $data['success'] ) {
+		return 1;
+	}
+
+	return 0;
+}
