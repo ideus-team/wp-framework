@@ -1,3 +1,6 @@
+### 2.30.1
+* Update packages
+
 ### 2.30.0
 * Add nc_check_turnstile() function
 * Optimize AJAX_Example class
