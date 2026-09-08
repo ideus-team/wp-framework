@@ -40,7 +40,7 @@ if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
 			self::block_search_agents();
 
 			add_filter( 'wp_headers', array( __CLASS__, 'http_header' ) );
-			add_filter( 'robots_txt', array( __CLASS__, 'robots_txt' ) );
+			add_filter( 'robots_txt', array( __CLASS__, 'robots_txt' ), 99999 );
 			add_filter( 'wp_robots', array( __CLASS__, 'robots_meta_tag' ), 999 );
 		}
 
