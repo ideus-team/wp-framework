@@ -303,7 +303,6 @@ function nc_check_spam( $content ) {
 function nc_check_turnstile( $response ) {
 	// Ensure the response token exists.
 	if ( empty( $response ) ) {
-		$this->error( 'Please check the the captcha form.' );
 		return 0;
 	}
 
