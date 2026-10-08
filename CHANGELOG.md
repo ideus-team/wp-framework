@@ -1,3 +1,8 @@
+### 2.31.0
+* Fix nc_check_turnstile()
+* Add nc_include_svg() function to inline svg
+* Update packages
+
 ### 2.30.3
 * Update packages
 
