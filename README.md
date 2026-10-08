@@ -124,5 +124,5 @@ Based on [`HTML Framework`](https://github.com/ideus-team/html-framework)
 ### Inline SVG
 Усі інлайнові SVG повинні бути у окремих svg-файлах і додані на сторінку за допомогою наступного кода:
 ```php
-<?php include( get_theme_file_path( 'assets/img/path_to_image.svg' ) ); ?>
+<?php nc_include_svg( 'assets/img/path_to_image.svg' ); ?>
 ```
