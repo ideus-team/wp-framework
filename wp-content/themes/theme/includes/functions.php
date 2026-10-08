@@ -335,3 +335,19 @@ function nc_check_turnstile( $response ) {
 
 	return 0;
 }
+
+
+/**
+ * Include theme SVG.
+ *
+ * @param string $icon Theme path of SVG icon.
+ */
+function nc_include_svg( $icon = '' ) {
+	if ( ! empty( $icon ) ) {
+		$icon_path = get_theme_file_path( $icon );
+
+		if ( file_exists( $icon_path ) ) {
+			include( $icon_path );
+		}
+	}
+}
