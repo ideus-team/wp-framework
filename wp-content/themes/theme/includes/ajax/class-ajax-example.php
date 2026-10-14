@@ -39,7 +39,7 @@ if ( ! class_exists( '\iDeus\Theme\AJAX_Example' ) ) {
 				);
 
 				if ( ! wp_verify_nonce( sanitize_text_field( $args['_wpnonce'] ) ) ) {
-					$result['error'] = 'An error occurred, please refresh the page and try again';
+					$result['error'] = 'Security session expired, please refresh the page and try again';
 				} else {
 					$result['args'] = $args;
 				}

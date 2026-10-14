@@ -1,3 +1,7 @@
+### 2.31.1
+* Update nonce error message
+* Update packages
+
 ### 2.31.0
 * Fix nc_check_turnstile()
 * Add nc_include_svg() function to inline svg
