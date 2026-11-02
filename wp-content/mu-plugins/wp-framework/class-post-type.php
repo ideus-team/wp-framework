@@ -15,8 +15,6 @@ if ( ! class_exists( '\iDeus\Framework\Post_Type' ) ) {
 	class Post_Type {
 		/**
 		 * Class initialization.
-		 *
-		 * @link https://www.advancedcustomfields.com/resources/acf-settings-enable_post_types/
 		 */
 		public function __construct() {
 			// Example.
