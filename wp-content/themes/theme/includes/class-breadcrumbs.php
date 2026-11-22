@@ -103,34 +103,27 @@ if ( ! class_exists( '\iDeus\Theme\Breadcrumbs' ) ) {
 		 * @return string
 		 */
 		public function position( $out, $sep, $loc, $arg ) {
+			// Positions start from 1 for every ListItem, including the current one.
+			$position = 0;
+
 			if ( 'schema.org' === $arg->markup ) {
-				$breadcrumbs_old = explode( '</a>', $out );
-				$count           = count( $breadcrumbs_old ) - 1;
-
-				$breadcrumbs_new = '';
-				foreach ( $breadcrumbs_old as $key => $value ) {
-					$breadcrumbs_new .= $value;
-
-					if ( $count !== $key ) {
-						$breadcrumbs_new .= '<meta itemprop="position" content="' . $key . '"></a>';
-					}
-				}
-
-				$out = $breadcrumbs_new;
+				$out = preg_replace_callback(
+					'/<li\b[^>]*itemtype="https?:\/\/schema\.org\/ListItem"[^>]*>/',
+					function ( $matches ) use ( &$position ) {
+						++$position;
+						return $matches[0] . '<meta itemprop="position" content="' . $position . '">';
+					},
+					$out
+				);
 			} elseif ( 'ld+json' === $arg->markup ) {
-				$breadcrumbs_old = explode( '"@type": "ListItem",', $out );
-				$count           = count( $breadcrumbs_old ) - 1;
-
-				$breadcrumbs_new = '';
-				foreach ( $breadcrumbs_old as $key => $value ) {
-					$breadcrumbs_new .= $value;
-
-					if ( $count !== $key ) {
-						$breadcrumbs_new .= '"@type": "ListItem", "position": ' . $key . ',';
-					}
-				}
-
-				$out = $breadcrumbs_new;
+				$out = preg_replace_callback(
+					'/"@type": "ListItem",/',
+					function ( $matches ) use ( &$position ) {
+						++$position;
+						return $matches[0] . ' "position": ' . $position . ',';
+					},
+					$out
+				);
 			}
 
 			return $out;

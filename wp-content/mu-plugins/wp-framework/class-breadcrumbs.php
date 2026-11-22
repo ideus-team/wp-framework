@@ -20,6 +20,20 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 	class Breadcrumbs {
 
 		/**
+		 * Opening marker of a value that must be JSON-encoded (ld+json markup).
+		 *
+		 * @since 2.31.3
+		 */
+		const JSON_VALUE_START = "\x1E";
+
+		/**
+		 * Closing marker of a value that must be JSON-encoded (ld+json markup).
+		 *
+		 * @since 2.31.3
+		 */
+		const JSON_VALUE_END = "\x1F";
+
+		/**
 		 * [$arg description]
 		 *
 		 * @var [type]
@@ -125,9 +139,10 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 					);
 				} elseif ( 'ld+json' === $mark ) {
 					// ld+json.
+					// Значення обгортаються маркерами і JSON-кодуються в json_encode_values().
 					$mark = array(
 						'wrappatt'  => '<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ %s ]}</script>',
-						'linkpatt'  => '{ "@type": "ListItem", "item": "%s", "name": "%s"',
+						'linkpatt'  => '{ "@type": "ListItem", "item": ' . self::JSON_VALUE_START . '%s' . self::JSON_VALUE_END . ', "name": ' . self::JSON_VALUE_START . '%s' . self::JSON_VALUE_END,
 						'sep_after' => '}, ',
 					);
 				} elseif ( ! is_array( $mark ) ) {
@@ -138,11 +153,18 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 				if ( 'ld+json' === $arg->markup ) {
 					$arg->show_post_title = true;
 					$arg->show_term_title = true;
-					$arg->title_patt      = '{ "@type": "ListItem", "name": "%s" }';
+					$arg->title_patt      = '{ "@type": "ListItem", "name": ' . self::JSON_VALUE_START . '%s' . self::JSON_VALUE_END . ' }';
+					$arg->sep             = ''; // HTML-роздільник у JSON не потрібен.
+				}
+
+				// schema.org: поточний (останній) елемент теж розмічаємо як ListItem.
+				if ( 'schema.org' === $arg->markup && 0 === strpos( $arg->title_patt, '<li' ) ) {
+					$arg->title_patt = preg_replace( '/^<li\b/', '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"', $arg->title_patt );
+					$arg->title_patt = str_replace( '%s', '<span class="b-breadcrumbs__name" itemprop="name">%s</span>', $arg->title_patt );
 				}
 
 				$wrappatt      = $mark['wrappatt'];
-				$arg->linkpatt = $arg->nofollow ? str_replace( '<a ', '<a rel="nofollow"', $mark['linkpatt'] ) : $mark['linkpatt'];
+				$arg->linkpatt = $arg->nofollow ? str_replace( '<a ', '<a rel="nofollow" ', $mark['linkpatt'] ) : $mark['linkpatt'];
 				$arg->sep     .= $mark['sep_after'];
 			}
 
@@ -174,11 +196,17 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 			$out = '';
 
 			if ( is_front_page() ) {
-				return $arg->on_front_page ? sprintf( $wrappatt, ( $paged_num ? sprintf( $linkpatt, get_home_url(), $loc->home ) . $pg_end : $loc->home ) ) : '';
+				if ( ! $arg->on_front_page ) {
+					return '';
+				}
+
+				$out = $paged_num ? sprintf( $linkpatt, get_home_url(), $loc->home ) . $pg_end : sprintf( $arg->title_patt, $loc->home );
+
+				return $this->finalize( $out, $wrappatt, $sep, $loc, $arg );
 			} elseif ( is_home() ) {
 				// сторінка записів, коли для головної встановлено окрему сторінку.
-				$out = $paged_num ? ( sprintf( $linkpatt, get_permalink( $queried_object ), esc_html( $queried_object->post_title ) ) . $pg_end ) : esc_html( $queried_object->post_title );
-				$out = sprintf( $arg->title_patt, $out );
+				$tit = esc_html( $queried_object->post_title );
+				$out = $paged_num ? sprintf( $linkpatt, get_permalink( $queried_object ), $tit ) . $pg_end : sprintf( $arg->title_patt, $tit );
 			} elseif ( is_404() ) {
 				$out = $loc->_404;
 				$out = sprintf( $arg->title_patt, $out );
@@ -187,16 +215,14 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 				$out = sprintf( $arg->title_patt, $out );
 			} elseif ( is_author() ) {
 				$tit = sprintf( $loc->author, esc_html( $queried_object->display_name ) );
-				$out = ( $paged_num ? sprintf( $linkpatt, get_author_posts_url( $queried_object->ID, $queried_object->user_nicename ) . $pg_end, $tit ) : $tit );
-				$out = sprintf( $arg->title_patt, $out );
+				$out = $paged_num ? sprintf( $linkpatt, get_author_posts_url( $queried_object->ID, $queried_object->user_nicename ), $tit ) . $pg_end : sprintf( $arg->title_patt, $tit );
 			} elseif ( is_year() || is_month() || is_day() ) {
 				$year  = get_the_time( 'Y' );
 				$y_url = get_year_link( $year );
 
 				if ( is_year() ) {
 					$tit = sprintf( $loc->year, $year );
-					$out = ( $paged_num ? sprintf( $linkpatt, $y_url, $tit ) . $pg_end : $tit );
-					$out = sprintf( $arg->title_patt, $out );
+					$out = $paged_num ? sprintf( $linkpatt, $y_url, $tit ) . $pg_end : sprintf( $arg->title_patt, $tit );
 				} else {
 					// month/day.
 					$y_link = sprintf( $linkpatt, $y_url, $year );
@@ -204,12 +230,10 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 
 					if ( is_month() ) {
 						$tit = sprintf( $loc->month, get_the_time( 'F' ) );
-						$out = $y_link . $sep . ( $paged_num ? sprintf( $linkpatt, $m_url, $tit ) . $pg_end : $tit );
-						$out = sprintf( $arg->title_patt, $out );
+						$out = $y_link . $sep . ( $paged_num ? sprintf( $linkpatt, $m_url, $tit ) . $pg_end : sprintf( $arg->title_patt, $tit ) );
 					} elseif ( is_day() ) {
 						$m_link = sprintf( $linkpatt, $m_url, get_the_time( 'F' ) );
-						$out    = $y_link . $sep . $m_link . $sep . get_the_time( 'l' );
-						$out    = sprintf( $arg->title_patt, $out );
+						$out    = $y_link . $sep . $m_link . $sep . sprintf( $arg->title_patt, get_the_time( 'l' ) );
 					}
 				}
 			} elseif ( is_singular() && $ptype->hierarchical ) {
@@ -267,9 +291,12 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 							$terms = get_the_terms( $post->ID, $taxname );
 							if ( $terms ) {
 								// перевіримо пріоритетні терміни для таксономії.
-								$prior_terms = & $arg->priority_terms[ $taxname ];
+								$prior_terms = isset( $arg->priority_terms[ $taxname ] ) ? $arg->priority_terms[ $taxname ] : array();
 
-								if ( $prior_terms && count( $terms ) > 2 ) {
+								// За замовчуванням - перший термін (також якщо жоден пріоритетний не знайдено).
+								$term = reset( $terms );
+
+								if ( $prior_terms && count( $terms ) > 1 ) {
 									foreach ( (array) $prior_terms as $term_id ) {
 										$filter_field = is_numeric( $term_id ) ? 'term_id' : 'slug';
 										$_terms       = wp_list_filter( $terms, array( $filter_field => $term_id ) );
@@ -279,8 +306,6 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 											break;
 										}
 									}
-								} else {
-									$term = array_shift( $terms );
 								}
 
 								break;
@@ -373,9 +398,49 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 
 			$out = apply_filters( 'kama_breadcrumbs_pre_out', $out, $sep, $loc, $arg );
 
-			$out = sprintf( $wrappatt, $before_out . $out );
+			return $this->finalize( $before_out . $out, $wrappatt, $sep, $loc, $arg );
+		}
+
+
+		/**
+		 * Wraps breadcrumbs into the wrapper pattern and applies the final filter.
+		 *
+		 * @since 2.31.3
+		 *
+		 * @param  string $out      Breadcrumbs items.
+		 * @param  string $wrappatt Wrapper pattern.
+		 * @param  string $sep      Separator.
+		 * @param  object $loc      Localization strings.
+		 * @param  object $arg      Breadcrumbs settings.
+		 * @return string           Breadcrumbs HTML code.
+		 */
+		private function finalize( $out, $wrappatt, $sep, $loc, $arg ) {
+			$out = sprintf( $wrappatt, $out );
+
+			if ( 'ld+json' === $arg->markup ) {
+				$out = preg_replace_callback(
+					'/' . self::JSON_VALUE_START . '(.*?)' . self::JSON_VALUE_END . '/s',
+					array( $this, 'json_encode_value' ),
+					$out
+				);
+			}
 
 			return apply_filters( 'kama_breadcrumbs', $out, $sep, $loc, $arg );
+		}
+
+
+		/**
+		 * Converts a marked value to a JSON string: strips tags, decodes HTML entities, escapes for JSON.
+		 *
+		 * @since 2.31.3
+		 *
+		 * @param  string[] $matches Regex matches, value in $matches[1].
+		 * @return string            JSON-encoded string.
+		 */
+		private function json_encode_value( $matches ) {
+			$value = html_entity_decode( wp_strip_all_tags( $matches[1] ), ENT_QUOTES, get_bloginfo( 'charset' ) );
+
+			return wp_json_encode( $value, JSON_UNESCAPED_UNICODE );
 		}
 
 
