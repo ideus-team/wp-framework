@@ -114,12 +114,13 @@ function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SEC
  * @return array       Video type & ID.
  */
 function nc_determine_video_url( $url ) {
-	$youtube_pattern = '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/|shorts\/)?)([\w\-]+)(\S+)?$/';
+	// YouTube video ID is always 11 characters; `v` may be any parameter of /watch.
+	$youtube_pattern = '/^(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:youtube(?:-nocookie)?\.com\/(?:watch\?(?:\S*&)?v=|embed\/|v\/|shorts\/|live\/)|youtu\.be\/)([\w\-]{11})(?![\w\-])/';
 	$vimeo_pattern   = '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/';
 
 	if ( false !== strpos( $url, 'youtu' ) && preg_match( $youtube_pattern, $url, $youtube_matches )) {
 		$video_type = 'youtube';
-		$video_id   = $youtube_matches[5];
+		$video_id   = $youtube_matches[1];
 	} elseif ( false !== strpos( $url, 'vimeo' ) && preg_match( $vimeo_pattern, $url, $vimeo_matches )) {
 		$video_type = 'vimeo';
 		$video_id   = $vimeo_matches[5];
@@ -144,9 +145,10 @@ function nc_determine_video_url( $url ) {
  *
  * @param  string $video_id YouTube video ID.
  * @param  string $size     Thumbnail size: hqdefault / sddefault / maxresdefault.
+ *                          Only hqdefault is guaranteed to exist for every video.
  * @return string           Thumbnail URL.
  */
-function nc_get_youtube_thumb( $video_id, $size = 'sddefault' ) {
+function nc_get_youtube_thumb( $video_id, $size = 'hqdefault' ) {
 	$thumbnail_url = 'https://i.ytimg.com/vi/' . $video_id . '/' . $size . '.jpg';
 
 	return $thumbnail_url;
@@ -163,7 +165,13 @@ function nc_get_youtube_thumb( $video_id, $size = 'sddefault' ) {
  * @return string           Thumbnail URL.
  */
 function nc_get_vimeo_thumb( $video_id, $size = '640' ) {
-	$data          = nc_remote_api_get( 'https://vimeo.com/api/v2/video/' . $video_id . '.json' );
+	$data = nc_remote_api_get( 'https://vimeo.com/api/v2/video/' . $video_id . '.json' );
+
+	// Request failed or unexpected response.
+	if ( empty( $data[0]->thumbnail_large ) ) {
+		return '';
+	}
+
 	$thumbnail_url = str_replace( '-d_640', '-d_' . $size, $data[0]->thumbnail_large );
 
 	return $thumbnail_url;
