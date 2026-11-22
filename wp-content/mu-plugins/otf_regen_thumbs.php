@@ -104,6 +104,14 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
 				}
 			}
 
+			// Bail early if the original is too small for this size (or has no dimensions, e.g. SVG):
+			// otherwise the image editor would load the original on every request just to fail.
+			if ( empty( $image_data['width'] ) || empty( $image_data['height'] )
+				|| ! image_resize_dimensions( $image_data['width'], $image_data['height'], $all_sizes[ $size ]['width'], $all_sizes[ $size ]['height'], $all_sizes[ $size ]['crop'] )
+			) {
+				return false;
+			}
+
 			// Resize the image.
 			$resized = image_make_intermediate_size(
 				get_attached_file( $id ),
@@ -139,32 +147,7 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
 				return false;
 			}
 
-			$crop       = array_key_exists( 2, $size ) ? $size[2] : true;
-			$new_width  = $size[0];
-			$new_height = $size[1];
-
-			// If crop is false, calculate new image dimensions.
-			if ( ! $crop ) {
-				if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'photon' ) ) {
-					add_filter( 'jetpack_photon_override_image_downsize', '__return_true' );
-					$true_data = wp_get_attachment_image_src( $id, 'large' );
-					remove_filter( 'jetpack_photon_override_image_downsize', '__return_true' );
-				} else {
-					$true_data = wp_get_attachment_image_src( $id, 'large' );
-				}
-
-				if ( $true_data[1] > $true_data[2] ) {
-					// Width > height.
-					$ratio      = $true_data[1] / $size[0];
-					$new_height = (int) round( $true_data[2] / $ratio );
-					$new_width  = $size[0];
-				} else {
-					// Height > width.
-					$ratio      = $true_data[2] / $size[1];
-					$new_height = $size[1];
-					$new_width  = (int) round( $true_data[1] / $ratio );
-				}
-			}
+			$crop = array_key_exists( 2, $size ) ? $size[2] : true;
 
 			// Get the extension for strict validation, converted to lowercase to avoid .JPG failing.
 			$ext_regex = pathinfo( $image_path, PATHINFO_EXTENSION );
@@ -182,20 +165,26 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
 				return false;
 			}
 
-			$sizes = image_resize_dimensions( $original_size[0], $original_size[1], $size[0], $size[1], true );
+			// Calculate the real target dimensions with the same crop mode that will be used for resizing,
+			// so the generated file name matches the file created by image_make_intermediate_size().
+			$sizes = image_resize_dimensions( $original_size[0], $original_size[1], $size[0], $size[1], $crop );
+
+			// No resize needed (the original is too small): let WP serve the original.
+			if ( empty( $sizes ) ) {
+				return false;
+			}
+
+			$new_width  = $sizes[4];
+			$new_height = $sizes[5];
 
 			// Calculate target path separately to not mutate original $image_path string.
-			if ( empty( $sizes ) ) {
-				$target_path = preg_replace( '/^(.*)\.' . preg_quote( $ext_regex, '/' ) . '$/', sprintf( '$1-%sx%s.%s', $new_width, $new_height, $ext_regex ), $image_path );
-			} else {
-				$target_path = preg_replace( '/^(.*)\.' . preg_quote( $ext_regex, '/' ) . '$/', sprintf( '$1-%sx%s.%s', $sizes[4], $sizes[5], $ext_regex ), $image_path );
-			}
+			$target_path = preg_replace( '/^(.*)\.' . preg_quote( $ext_regex, '/' ) . '$/', sprintf( '$1-%sx%s.%s', $new_width, $new_height, $ext_regex ), $image_path );
 
 			$att_url = wp_get_attachment_url( $id );
 
 			// If it already exists, serve it.
 			if ( file_exists( $target_path ) ) {
-				return array( dirname( $att_url ) . '/' . wp_basename( $target_path ), $new_width, $new_height, $crop );
+				return array( dirname( $att_url ) . '/' . wp_basename( $target_path ), $new_width, $new_height, true );
 			}
 
 			// If not, create a resized copy from the original image.
@@ -221,7 +210,7 @@ if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) ) {
 			}
 
 			// Then serve it.
-			return array( dirname( $att_url ) . '/' . $resized['file'], $resized['width'], $resized['height'], $crop );
+			return array( dirname( $att_url ) . '/' . $resized['file'], $resized['width'], $resized['height'], true );
 		}
 
 		return false;
