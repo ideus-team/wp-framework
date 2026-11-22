@@ -39,7 +39,7 @@ function nc_pagenavi( $args = array() ) {
 
 	$pages   = '';
 	$max     = $query->max_num_pages;
-	$current = get_query_var( 'paged' );
+	$current = $query->get( 'paged' ) ? $query->get( 'paged' ) : get_query_var( 'paged' );
 
 	if ( ! $current ) {
 		$current = 1;
@@ -56,21 +56,12 @@ function nc_pagenavi( $args = array() ) {
 		'type'      => $args['type'],
 	);
 
-	$search  = array(
-		'page-numbers',
-		'prev',
-		'next',
-		'dots',
-		' current',
-		'/page/1/',
-	);
-	$replace = array(
-		$args['class'] . '__link',
-		'-type_prev',
-		'-type_next',
-		'-type_dots',
-		' -state_active',
-		'',
+	$class_map = array(
+		'page-numbers' => $args['class'] . '__link',
+		'prev'         => '-type_prev',
+		'next'         => '-type_next',
+		'dots'         => '-type_dots',
+		' current'     => ' -state_active',
 	);
 
 	if ( $max > 1 ) {
@@ -90,8 +81,18 @@ function nc_pagenavi( $args = array() ) {
 
 		$pages .= '<ul class="' . $args['class'] . '__list">' . "\r";
 
-		$pagination_list = str_replace( $search, $replace, paginate_links( $paginate ) );
+		$pagination_list = str_replace( '/page/1/', '', paginate_links( $paginate ) );
 		foreach ( $pagination_list as $value ) {
+			// Replace classes only inside the class attribute, so URLs stay intact.
+			$value = preg_replace_callback(
+				'/class="([^"]*)"/',
+				function ( $matches ) use ( $class_map ) {
+					return 'class="' . strtr( $matches[1], $class_map ) . '"';
+				},
+				$value
+			);
+
+
 			$pages .= '<li class="' . $args['class'] . '__item">' . $value . '</li>' . "\r";
 		}
 
@@ -125,7 +126,7 @@ function nc_page_nav( $args = array() ) {
 			'query' => $wp_query,
 			'class' => 'b-pageNav',
 			'next'  => 'Older Entries',
-			'prev'  => 'Newer Entrie',
+			'prev'  => 'Newer Entries',
 			'echo'  => true,
 		)
 	);
