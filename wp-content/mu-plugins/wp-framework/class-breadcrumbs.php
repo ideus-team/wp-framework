@@ -139,7 +139,7 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 					);
 				} elseif ( 'ld+json' === $mark ) {
 					// ld+json.
-					// Значення обгортаються маркерами і JSON-кодуються в json_encode_values().
+					// Значення обгортаються маркерами і JSON-кодуються в json_encode_value().
 					$mark = array(
 						'wrappatt'  => '<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ %s ]}</script>',
 						'linkpatt'  => '{ "@type": "ListItem", "item": ' . self::JSON_VALUE_START . '%s' . self::JSON_VALUE_END . ', "name": ' . self::JSON_VALUE_START . '%s' . self::JSON_VALUE_END,
@@ -177,6 +177,9 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 			if ( empty( $post ) ) {
 				if ( isset( $queried_object->taxonomy ) ) {
 					$ptype = & $wp_post_types[ get_taxonomy( $queried_object->taxonomy )->object_type[0] ];
+				} elseif ( is_post_type_archive() ) {
+					// порожній архів типу запису.
+					$ptype = $queried_object;
 				}
 			} else {
 				$ptype = & $wp_post_types[ $post->post_type ];
@@ -327,7 +330,7 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 					if ( is_attachment() ) {
 						// attachment.
 						if ( ! $post->post_parent ) {
-							$out = sprintf( $loc->attachment, esc_html( $post->post_title ) );
+							$out = sprintf( $arg->title_patt, sprintf( $loc->attachment, esc_html( $post->post_title ) ) );
 						} elseif ( ! $out = apply_filters( 'attachment_tax_crumbs', '', $term, $this ) ) {
 								$_crumbs    = $this->tax_crumbs( $term, 'self' );
 								$parent_tit = sprintf( $linkpatt, get_permalink( $post->post_parent ), get_the_title( $post->post_parent ) );
@@ -356,6 +359,9 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 						$_crumbs = $this->tax_crumbs( $term, 'parent' );
 						$out     = $this->add_title( $_crumbs, $term, esc_html( $term->name ) );
 					}
+				} elseif ( is_attachment() && ! $post->post_parent ) {
+					// вкладення без батьківського запису.
+					$out = sprintf( $arg->title_patt, sprintf( $loc->attachment, esc_html( $post->post_title ) ) );
 				} elseif ( is_attachment() ) {
 					// вкладення від запису без термінів.
 					$parent      = get_post( $post->post_parent );
@@ -380,7 +386,7 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 
 			if ( '' === $home_after ) {
 				// Посилання на архівну сторінку типу запису для окремих сторінок цього типу; архівів цього; таксономій пов'язаних із цим типом.
-				if ( $ptype && $ptype->has_archive && ! in_array( $ptype->name, array( 'post', 'page', 'attachment' ), true ) && ( is_post_type_archive() || is_singular() || ( is_tax() && in_array( $term->taxonomy, $ptype->taxonomies, true ) ) ) ) {
+				if ( $ptype && $ptype->has_archive && ! in_array( $ptype->name, array( 'post', 'page', 'attachment' ), true ) && ( is_post_type_archive() || is_singular() || ( is_tax() && in_array( $term->taxonomy, get_object_taxonomies( $ptype->name ), true ) ) ) ) {
 					$pt_title = $ptype->labels->name;
 
 					if ( is_post_type_archive() && ! $paged_num ) {
