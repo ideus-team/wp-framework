@@ -39,7 +39,14 @@ if ( ! class_exists( '\iDeus\Theme\AJAX' ) ) {
 			$dirs = array_unique( array( get_stylesheet_directory(), get_template_directory() ) );
 
 			foreach ( $dirs as $dir ) {
-				foreach ( (array) glob( $dir . '/includes/ajax/*.php' ) as $file ) {
+				$files = glob( $dir . '/includes/ajax/*.php' );
+
+				// glob() returns false on error.
+				if ( ! $files ) {
+					continue;
+				}
+
+				foreach ( $files as $file ) {
 					require_once $file;
 				}
 			}
