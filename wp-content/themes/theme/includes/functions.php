@@ -257,16 +257,17 @@ function nc_check_spam( $content ) {
 
 	$content = (array) $content;
 
-	if ( function_exists( 'akismet_init' ) ) {
-		$wpcom_api_key = get_option( 'wordpress_api_key' );
+	if ( class_exists( 'Akismet' ) ) {
+		// Also respects the WPCOM_API_KEY constant.
+		$wpcom_api_key = Akismet::get_api_key();
 
 		if ( ! empty( $wpcom_api_key ) ) {
 			global $akismet_api_host, $akismet_api_port;
 
 			// Set remaining required values for akismet api.
-			$content['user_ip']    = preg_replace( '/[^0-9., ]/', '', $_SERVER['REMOTE_ADDR'] );
-			$content['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
-			$content['referrer']   = $_SERVER['HTTP_REFERER'];
+			$content['user_ip']    = isset( $_SERVER['REMOTE_ADDR'] ) ? preg_replace( '/[^0-9a-fA-F.:, ]/', '', $_SERVER['REMOTE_ADDR'] ) : '';
+			$content['user_agent'] = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
+			$content['referrer']   = isset( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : '';
 			$content['blog']       = get_option( 'home' );
 
 			if ( empty( $content['referrer'] ) ) {
@@ -297,12 +298,12 @@ function nc_check_spam( $content ) {
 /**
  * Check Cloudflare Turnstile.
  *
- * @param  string[] $response Turnstile response (cf-turnstile-response).
- * @return int                Return 1 if not spam.
+ * @param  string $response Turnstile response (cf-turnstile-response).
+ * @return int              Return 1 if not spam.
  */
 function nc_check_turnstile( $response ) {
-	// Ensure the response token exists.
-	if ( empty( $response ) ) {
+	// Ensure the response token exists and the secret key is configured.
+	if ( empty( $response ) || ! defined( 'NC_TURNSTILE_SECRETKEY' ) ) {
 		return 0;
 	}
 
@@ -313,7 +314,7 @@ function nc_check_turnstile( $response ) {
 			'body'    => array(
 				'secret'   => NC_TURNSTILE_SECRETKEY,
 				'response' => $response,
-				'remoteip' => $_SERVER['REMOTE_ADDR'],
+				'remoteip' => isset( $_SERVER['REMOTE_ADDR'] ) ? $_SERVER['REMOTE_ADDR'] : '',
 			),
 			'timeout' => 15,
 		)
