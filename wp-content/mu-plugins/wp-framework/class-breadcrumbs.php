@@ -22,14 +22,14 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 		/**
 		 * Opening marker of a value that must be JSON-encoded (ld+json markup).
 		 *
-		 * @since 2.31.3
+		 * @since 2.32.0
 		 */
 		const JSON_VALUE_START = "\x1E";
 
 		/**
 		 * Closing marker of a value that must be JSON-encoded (ld+json markup).
 		 *
-		 * @since 2.31.3
+		 * @since 2.32.0
 		 */
 		const JSON_VALUE_END = "\x1F";
 
@@ -411,7 +411,7 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 		/**
 		 * Wraps breadcrumbs into the wrapper pattern and applies the final filter.
 		 *
-		 * @since 2.31.3
+		 * @since 2.32.0
 		 *
 		 * @param  string $out      Breadcrumbs items.
 		 * @param  string $wrappatt Wrapper pattern.
@@ -438,7 +438,7 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 		/**
 		 * Converts a marked value to a JSON string: strips tags, decodes HTML entities, escapes for JSON.
 		 *
-		 * @since 2.31.3
+		 * @since 2.32.0
 		 *
 		 * @param  string[] $matches Regex matches, value in $matches[1].
 		 * @return string            JSON-encoded string.

@@ -72,7 +72,7 @@ if ( ! class_exists( '\iDeus\Theme\SEO' ) ) {
 		 * Hide users list from REST API for guests (/wp/v2/users), so user names can't be enumerated.
 		 * Logged-in users keep it: the editor uses these endpoints.
 		 *
-		 * @since 2.31.3
+		 * @since 2.32.0
 		 *
 		 * @param  array $endpoints The available endpoints.
 		 * @return array

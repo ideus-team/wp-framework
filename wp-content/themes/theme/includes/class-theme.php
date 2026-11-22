@@ -212,7 +212,7 @@ if ( ! class_exists( '\iDeus\Theme\Theme' ) ) {
 		 *
 		 * If no Content-Type header was sent, PHP uses `default_mimetype` (text/html by default).
 		 *
-		 * @since 2.31.3
+		 * @since 2.32.0
 		 *
 		 * @return bool
 		 */

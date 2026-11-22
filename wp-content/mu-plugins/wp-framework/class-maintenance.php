@@ -178,7 +178,7 @@ if ( ! class_exists( '\iDeus\Framework\Maintenance' ) ) {
 		/**
 		 * Close REST API for guests in maintenance mode.
 		 *
-		 * @since 2.31.3
+		 * @since 2.32.0
 		 *
 		 * @param  \WP_Error|null|true $result Error from another authentication handler, null if none, true if authenticated.
 		 * @return \WP_Error|null|true
