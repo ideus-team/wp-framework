@@ -35,8 +35,13 @@ if ( ! class_exists( '\iDeus\Theme\AJAX' ) ) {
 		 * @since 2.0.0
 		 */
 		private function include_ajax_files() {
-			foreach ( glob( get_stylesheet_directory() . '/includes/ajax/*.php' ) as $file ) {
-				require_once $file;
+			// Child theme first (its classes win thanks to class_exists() guards), then parent theme.
+			$dirs = array_unique( array( get_stylesheet_directory(), get_template_directory() ) );
+
+			foreach ( $dirs as $dir ) {
+				foreach ( (array) glob( $dir . '/includes/ajax/*.php' ) as $file ) {
+					require_once $file;
+				}
 			}
 		}
 	}

@@ -53,7 +53,7 @@ function nc_pagenavi( $args = array() ) {
 		'end_size'  => $args['end_size'],
 		'prev_text' => $args['prev_text'],
 		'next_text' => $args['next_text'],
-		'type'      => $args['type'],
+		'type'      => 'array', // The items are wrapped in <li> below.
 	);
 
 	$class_map = array(
@@ -91,7 +91,6 @@ function nc_pagenavi( $args = array() ) {
 				},
 				$value
 			);
-
 
 			$pages .= '<li class="' . $args['class'] . '__item">' . $value . '</li>' . "\r";
 		}

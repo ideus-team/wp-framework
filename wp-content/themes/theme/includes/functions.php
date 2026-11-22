@@ -235,7 +235,7 @@ function nc_insert_after_paragraph( $insertion, $paragraph_num, $content ) {
 			$paragraphs[ $index ] .= $closing_p;
 		}
 
-		if ( $paragraph_num === $index + 1 ) {
+		if ( (int) $paragraph_num === $index + 1 ) {
 			$paragraphs[ $index ] .= $insertion;
 		}
 	}
