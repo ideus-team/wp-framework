@@ -27,7 +27,7 @@ endif;
 
 	<h3 id="comments">
 		<?php
-		if ( 1 === get_comments_number() ) {
+		if ( 1 === (int) get_comments_number() ) {
 			printf(
 				/* translators: %s: Post title. */
 				__( 'One response to %s' ),

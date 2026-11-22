@@ -114,12 +114,13 @@ function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SEC
  * @return array       Video type & ID.
  */
 function nc_determine_video_url( $url ) {
-	$youtube_pattern = '/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/|shorts\/)?)([\w\-]+)(\S+)?$/';
+	// YouTube video ID is always 11 characters; `v` may be any parameter of /watch.
+	$youtube_pattern = '/^(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:youtube(?:-nocookie)?\.com\/(?:watch\?(?:\S*&)?v=|embed\/|v\/|shorts\/|live\/)|youtu\.be\/)([\w\-]{11})(?![\w\-])/';
 	$vimeo_pattern   = '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/';
 
 	if ( false !== strpos( $url, 'youtu' ) && preg_match( $youtube_pattern, $url, $youtube_matches )) {
 		$video_type = 'youtube';
-		$video_id   = $youtube_matches[5];
+		$video_id   = $youtube_matches[1];
 	} elseif ( false !== strpos( $url, 'vimeo' ) && preg_match( $vimeo_pattern, $url, $vimeo_matches )) {
 		$video_type = 'vimeo';
 		$video_id   = $vimeo_matches[5];
@@ -144,9 +145,10 @@ function nc_determine_video_url( $url ) {
  *
  * @param  string $video_id YouTube video ID.
  * @param  string $size     Thumbnail size: hqdefault / sddefault / maxresdefault.
+ *                          Only hqdefault is guaranteed to exist for every video.
  * @return string           Thumbnail URL.
  */
-function nc_get_youtube_thumb( $video_id, $size = 'sddefault' ) {
+function nc_get_youtube_thumb( $video_id, $size = 'hqdefault' ) {
 	$thumbnail_url = 'https://i.ytimg.com/vi/' . $video_id . '/' . $size . '.jpg';
 
 	return $thumbnail_url;
@@ -163,7 +165,13 @@ function nc_get_youtube_thumb( $video_id, $size = 'sddefault' ) {
  * @return string           Thumbnail URL.
  */
 function nc_get_vimeo_thumb( $video_id, $size = '640' ) {
-	$data          = nc_remote_api_get( 'https://vimeo.com/api/v2/video/' . $video_id . '.json' );
+	$data = nc_remote_api_get( 'https://vimeo.com/api/v2/video/' . $video_id . '.json' );
+
+	// Request failed or unexpected response.
+	if ( empty( $data[0]->thumbnail_large ) ) {
+		return '';
+	}
+
 	$thumbnail_url = str_replace( '-d_640', '-d_' . $size, $data[0]->thumbnail_large );
 
 	return $thumbnail_url;
@@ -227,7 +235,7 @@ function nc_insert_after_paragraph( $insertion, $paragraph_num, $content ) {
 			$paragraphs[ $index ] .= $closing_p;
 		}
 
-		if ( $paragraph_num === $index + 1 ) {
+		if ( (int) $paragraph_num === $index + 1 ) {
 			$paragraphs[ $index ] .= $insertion;
 		}
 	}
@@ -257,16 +265,17 @@ function nc_check_spam( $content ) {
 
 	$content = (array) $content;
 
-	if ( function_exists( 'akismet_init' ) ) {
-		$wpcom_api_key = get_option( 'wordpress_api_key' );
+	if ( class_exists( 'Akismet' ) ) {
+		// Also respects the WPCOM_API_KEY constant.
+		$wpcom_api_key = Akismet::get_api_key();
 
 		if ( ! empty( $wpcom_api_key ) ) {
 			global $akismet_api_host, $akismet_api_port;
 
 			// Set remaining required values for akismet api.
-			$content['user_ip']    = preg_replace( '/[^0-9., ]/', '', $_SERVER['REMOTE_ADDR'] );
-			$content['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
-			$content['referrer']   = $_SERVER['HTTP_REFERER'];
+			$content['user_ip']    = isset( $_SERVER['REMOTE_ADDR'] ) ? preg_replace( '/[^0-9a-fA-F.:, ]/', '', $_SERVER['REMOTE_ADDR'] ) : '';
+			$content['user_agent'] = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
+			$content['referrer']   = isset( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : '';
 			$content['blog']       = get_option( 'home' );
 
 			if ( empty( $content['referrer'] ) ) {
@@ -297,12 +306,12 @@ function nc_check_spam( $content ) {
 /**
  * Check Cloudflare Turnstile.
  *
- * @param  string[] $response Turnstile response (cf-turnstile-response).
- * @return int                Return 1 if not spam.
+ * @param  string $response Turnstile response (cf-turnstile-response).
+ * @return int              Return 1 if not spam.
  */
 function nc_check_turnstile( $response ) {
-	// Ensure the response token exists.
-	if ( empty( $response ) ) {
+	// Ensure the response token exists and the secret key is configured.
+	if ( empty( $response ) || ! defined( 'NC_TURNSTILE_SECRETKEY' ) ) {
 		return 0;
 	}
 
@@ -313,7 +322,7 @@ function nc_check_turnstile( $response ) {
 			'body'    => array(
 				'secret'   => NC_TURNSTILE_SECRETKEY,
 				'response' => $response,
-				'remoteip' => $_SERVER['REMOTE_ADDR'],
+				'remoteip' => isset( $_SERVER['REMOTE_ADDR'] ) ? $_SERVER['REMOTE_ADDR'] : '',
 			),
 			'timeout' => 15,
 		)

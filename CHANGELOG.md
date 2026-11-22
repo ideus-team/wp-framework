@@ -1,3 +1,36 @@
+### 2.32.0
+* Fix breadcrumbs:
+	* Fix markup in archives and on paginated pages (nested `<li>`, page suffix in author archive URL, missing space after `rel="nofollow"`)
+	* JSON-encode ld+json values
+	* Mark up the current item as schema.org ListItem and number positions from 1
+	* Fix priority terms, post type archive link on taxonomy pages and empty post type archives
+* Fix navigation menu:
+	* Fix infinite loop in sub_menu
+	* Fix _nc_label leaking to the following menu items
+	* Use the current menu item flag for anchor links (works with query strings and subdirectory installs)
+	* Fix undefined index notice when adding js-modal class
+	* Escape classes and description in Walker_Nav_Menu
+* Fix repeated resizing in OTF Regenerate Thumbnails
+* Apply HTML5 slash fixer to HTML responses only (fixes RSS feeds)
+* Fix nc_pagenavi() breaking pagination URLs
+* Fix 'Newer Entries' typo in nc_page_nav()
+* Make environment detection in wp-config.php safe for WP-CLI and allow the WP_ENVIRONMENT_TYPE environment variable
+* Define WP_SITEURL / WP_HOME from HTTP_HOST on staging (as on local and development)
+* Fix nc_check_turnstile() and nc_check_spam()
+* Fix nc_determine_video_url(), nc_get_vimeo_thumb() and nc_get_youtube_thumb()
+* Fix ACF URL field validation
+* Close REST API for guests in maintenance mode
+* Hide REST users list from guests
+* Fix attachment redirect for files on CDN
+* Output admin bar environment color only with the admin bar
+* Apply one-year login session only with "Remember Me"
+* Load AJAX files from both child and parent theme
+* Fix nc_insert_after_paragraph() with a numeric string paragraph number
+* Fix "One response" heading in comments.php
+* Run dev build on config changes in Grunt dev mode
+* Fix footer Organization microdata name
+* Update packages
+
 ### 2.31.2
 * Remove old comments
 * Update packages

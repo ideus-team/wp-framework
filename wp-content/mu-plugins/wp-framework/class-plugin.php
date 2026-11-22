@@ -47,7 +47,8 @@ if ( ! class_exists( '\iDeus\Framework\Plugin' ) ) {
 		 * @return int              Duration of the expiration period in seconds.
 		 */
 		public function login_session_length( $expiration, $user_id, $remember ) {
-			return YEAR_IN_SECONDS;
+			// Long session only with "Remember Me"; otherwise keep the WordPress default (2 days).
+			return $remember ? YEAR_IN_SECONDS : $expiration;
 		}
 
 

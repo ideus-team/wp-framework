@@ -38,7 +38,7 @@ if ( ! class_exists( '\iDeus\Framework\Walker_Nav_Menu' ) ) {
 				$n = "\n";
 			}
 			$indent  = str_repeat( $t, $depth );
-			$output .= "{$n}{$indent}<ul class=\"" . $args->menu_class . '__submenu -depth_' . ( $depth + 1 ) . " sub-menu\">{$n}";
+			$output .= "{$n}{$indent}<ul class=\"" . esc_attr( $args->menu_class . '__submenu -depth_' . ( $depth + 1 ) ) . " sub-menu\">{$n}";
 		}
 
 
@@ -75,7 +75,7 @@ if ( ! class_exists( '\iDeus\Framework\Walker_Nav_Menu' ) ) {
 			$args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
 
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
-			$class_names = $class_names ? ' class="' . $args->menu_class . '__item ' . esc_attr( $class_names ) . '"' : '';
+			$class_names = $class_names ? ' class="' . esc_attr( $args->menu_class . '__item ' . $class_names ) . '"' : '';
 
 			$id = '';
 
@@ -109,7 +109,7 @@ if ( ! class_exists( '\iDeus\Framework\Walker_Nav_Menu' ) ) {
 			$item_output .= $args->link_before . $title . $args->link_after;
 			$item_output .= '</a>';
 			$item_output .= $args->after;
-			$item_output .= ( ! empty( $item->description ) ) ? '<span class="' . $args->menu_class . '__descr">' . $item->description . '</span>' : '';
+			$item_output .= ( ! empty( $item->description ) ) ? '<span class="' . esc_attr( $args->menu_class . '__descr' ) . '">' . wp_kses_post( $item->description ) . '</span>' : '';
 
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 		}

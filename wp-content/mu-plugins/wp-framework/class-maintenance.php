@@ -30,6 +30,9 @@ if ( ! class_exists( '\iDeus\Framework\Maintenance' ) ) {
 			// Set maintenance mode.
 			add_action( 'send_headers', array( $this, 'maintenance' ), 0 );
 
+			// Close REST API: it is served on 'parse_request', before 'send_headers'.
+			add_filter( 'rest_authentication_errors', array( $this, 'rest_maintenance' ) );
+
 			// Add maintenance status to admin bar.
 			add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_env_item' ), 101 );
 		}
@@ -169,6 +172,37 @@ if ( ! class_exists( '\iDeus\Framework\Maintenance' ) ) {
 
 				exit;
 			}
+		}
+
+
+		/**
+		 * Close REST API for guests in maintenance mode.
+		 *
+		 * @since 2.32.0
+		 *
+		 * @param  \WP_Error|null|true $result Error from another authentication handler, null if none, true if authenticated.
+		 * @return \WP_Error|null|true
+		 */
+		public function rest_maintenance( $result ) {
+			// Keep the result of other authentication handlers.
+			if ( ! empty( $result ) ) {
+				return $result;
+			}
+
+			// Do nothing if ACF is not active.
+			if ( ! function_exists( 'get_field' ) ) {
+				return $result;
+			}
+
+			if ( ! is_user_logged_in() && get_field( '_nc_maintenance_mode', 'option' ) ) {
+				return new \WP_Error(
+					'nc_maintenance_mode',
+					'The site is temporarily unavailable. Please check back in a little while.',
+					array( 'status' => 503 )
+				);
+			}
+
+			return $result;
 		}
 	}
 

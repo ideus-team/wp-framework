@@ -37,7 +37,9 @@
 				<address class="l-siteCopyright vcard" itemscope itemtype="https://schema.org/Organization">
 					<div class="b-siteCopyright">
 						© <?php echo current_time( 'Y' ); ?>
-						<a class="b-siteCopyright__link fn n org url work" href="<?php echo esc_url( home_url() ); ?>" rel="me" itemprop="name"><?php bloginfo( 'name' ); ?></a>.
+						<a class="b-siteCopyright__link fn n org url work" href="<?php echo esc_url( home_url() ); ?>" rel="me" itemprop="url">
+							<span itemprop="name"><?php bloginfo( 'name' ); ?></span>
+						</a>.
 						<?php esc_html_e( 'All rights reserved' ); ?>
 					</div>
 

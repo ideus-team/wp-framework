@@ -133,7 +133,8 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 		 */
 		public function validate_acf_custom_url_field( $valid, $value, $field, $input ) {
 			// Allow empty values if field is not required.
-			if ( empty( $value ) ) {
+			// Skip non-string values: the filter also runs for other field types named 'url' (e.g. link fields).
+			if ( empty( $value ) || ! is_string( $value ) ) {
 				return $valid;
 			}
 
@@ -145,10 +146,12 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 				return $valid;
 			}
 
+			$error_message = 'Please enter a valid URL, relative address (e.g., /contact/), email (mailto:email@example.com), or phone (tel:+1234567890).';
+
 			// Define valid URL patterns.
 			$valid_patterns = array(
 				// Relative URLs.
-				'/^\/[^\/\s].+$/',                               // /contact/, /about/us/
+				'/^\/(?:[^\/\s].*)?$/',                          // /, /contact/, /about/us/
 				'/^\.\/[^\/\s].+$/',                             // ./page.html
 				'/^\.\.\/[^\/\s].+$/',                           // ../parent/page.html
 
@@ -173,7 +176,7 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 				'/^ftps:\/\/.+$/i',                              // FTPS
 
 				// Anchors and query parameters.
-				'/^#[a-zA-Z0-9_-]+$/',                           // #section
+				'/^#[a-zA-Z0-9_-]*$/',                           // #, #section
 				'/^\?.+$/',                                      // ?param=value
 
 				// File protocols.
@@ -183,6 +186,11 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 				'/^[a-zA-Z][a-zA-Z0-9+.-]*:.+$/',
 			);
 
+			// Reject dangerous schemes (browsers ignore whitespace and control characters inside them).
+			if ( preg_match( '/^(?:javascript|data|vbscript):/i', preg_replace( '/[\x00-\x20]+/', '', $value ) ) ) {
+				return $error_message;
+			}
+
 			// Check each pattern.
 			foreach ( $valid_patterns as $pattern ) {
 				if ( preg_match( $pattern, $value ) ) {
@@ -191,7 +199,7 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 			}
 
 			// Return error message if no pattern matches.
-			return 'Please enter a valid URL, relative address (e.g., /contact/), email (mailto:email@example.com), or phone (tel:+1234567890).';
+			return $error_message;
 		}
 
 
@@ -206,8 +214,8 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 		 * @return string          Sanitized field value.
 		 */
 		public function process_acf_custom_url_field( $value, $post_id, $field ) {
-			// Sanitize the value by trimming whitespace.
-			return trim( $value );
+			// Sanitize the value by trimming whitespace (only strings: link fields named 'url' pass arrays).
+			return is_string( $value ) ? trim( $value ) : $value;
 		}
 
 

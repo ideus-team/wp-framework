@@ -37,6 +37,11 @@ if ( ! class_exists( '\iDeus\Framework\Adminbar_Env_Color' ) ) {
 		 * @since 2.7.0
 		 */
 		public function add_admin_bar_styles() {
+			// Styles are needed only when the admin bar is shown (not for regular visitors).
+			if ( ! is_admin_bar_showing() ) {
+				return;
+			}
+
 			$colors = apply_filters(
 				'ideus/adminpanel_env_color/colors',
 				array(
@@ -47,7 +52,10 @@ if ( ! class_exists( '\iDeus\Framework\Adminbar_Env_Color' ) ) {
 				)
 			);
 
-			$current_color = $colors[ wp_get_environment_type() ];
+			$current_color = isset( $colors[ wp_get_environment_type() ] ) ? $colors[ wp_get_environment_type() ] : '';
+
+			// Allow only characters used in CSS colors (#hex, names, rgb()/hsl()), so the value can't break out of the style.
+			$current_color = preg_replace( '/[^#a-zA-Z0-9(),.%\s]/', '', (string) $current_color );
 
 			ob_start();
 			?>

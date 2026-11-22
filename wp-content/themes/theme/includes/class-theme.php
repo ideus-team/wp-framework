@@ -190,10 +190,46 @@ if ( ! class_exists( '\iDeus\Theme\Theme' ) ) {
 		/**
 		 * Fix trailing slash on void elements - callback.
 		 *
+		 * Only HTML responses are modified: feeds, sitemaps, REST API, robots.txt
+		 * and files served through PHP must stay untouched (e.g. XML needs `/>`).
+		 *
 		 * @since 2.6.0
+		 *
+		 * @param  string $buffer Output buffer contents.
+		 * @return string
 		 */
 		public function html5_slash_fixer_callback( $buffer ) {
+			if ( ! $this->is_html_response() ) {
+				return $buffer;
+			}
+
 			return str_replace( ' />', '>', $buffer );
+		}
+
+
+		/**
+		 * Whether the current response is an HTML document.
+		 *
+		 * If no Content-Type header was sent, PHP uses `default_mimetype` (text/html by default).
+		 *
+		 * @since 2.32.0
+		 *
+		 * @return bool
+		 */
+		private function is_html_response() {
+			$content_type = '';
+
+			foreach ( headers_list() as $header ) {
+				if ( 0 === stripos( $header, 'Content-Type:' ) ) {
+					$content_type = trim( substr( $header, strlen( 'Content-Type:' ) ) );
+				}
+			}
+
+			if ( '' === $content_type ) {
+				$content_type = (string) ini_get( 'default_mimetype' );
+			}
+
+			return 0 === stripos( $content_type, 'text/html' );
 		}
 
 
