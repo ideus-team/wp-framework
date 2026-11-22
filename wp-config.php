@@ -23,16 +23,26 @@
  * Possible values are 'local', 'development', 'staging', and 'production'.
  *
  * You can change 'site.local', 'site.dev', 'site.staging' to your domain names.
+ *
+ * WP-CLI has no server name unless it is run with `--url=...` (or `url:` in wp-cli.yml),
+ * so the environment can also be set with the WP_ENVIRONMENT_TYPE environment variable.
  */
-if ( 'site.local' === $_SERVER['SERVER_NAME'] ) {
+$nc_env_type = getenv( 'WP_ENVIRONMENT_TYPE' );
+$nc_host     = isset( $_SERVER['SERVER_NAME'] ) ? $_SERVER['SERVER_NAME'] : '';
+
+if ( in_array( $nc_env_type, array( 'local', 'development', 'staging', 'production' ), true ) ) {
+	define( 'WP_ENVIRONMENT_TYPE', $nc_env_type );
+} elseif ( 'site.local' === $nc_host ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'local' );
-} elseif ( 'site.dev' === $_SERVER['SERVER_NAME'] ) {
+} elseif ( 'site.dev' === $nc_host ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'development' );
-} elseif ( 'site.staging' === $_SERVER['SERVER_NAME'] ) {
+} elseif ( 'site.staging' === $nc_host ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'staging' );
 } else {
 	define( 'WP_ENVIRONMENT_TYPE', 'production' );
 }
+
+unset( $nc_env_type, $nc_host );
 
 /**
  * Include file with MySQL and other environment settings.

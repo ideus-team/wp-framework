@@ -31,8 +31,10 @@ define( 'WP_DEBUG_DISPLAY', false );
 define( 'WP_DEBUG_LOG', false );
 
 
-// define( 'WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] );
-// define( 'WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] );
+if ( isset( $_SERVER['HTTP_HOST'] ) ) {
+	define( 'WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] );
+	define( 'WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] );
+}
 
 
 /**
