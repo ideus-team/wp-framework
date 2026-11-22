@@ -66,43 +66,43 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 			if ( ! empty( $args->sub_menu ) ) {
 				$root_id = 0;
 
+				// Map of menu item ID => parent ID. `menu_item_parent` comes from post meta as a string, so cast both to int.
+				$parents = array();
+				foreach ( $sorted_menu_items as $menu_item ) {
+					$parents[ (int) $menu_item->ID ] = (int) $menu_item->menu_item_parent;
+				}
+
 				// Find the current menu item.
 				foreach ( $sorted_menu_items as $menu_item ) {
 					if ( $menu_item->current ) {
 						// Set the root id based on whether the current menu item has a parent or not.
-						$root_id = ( $menu_item->menu_item_parent ) ? $menu_item->menu_item_parent : $menu_item->ID;
+						$item_id = (int) $menu_item->ID;
+						$root_id = $parents[ $item_id ] ? $parents[ $item_id ] : $item_id;
 						break;
 					}
 				}
 
 				// Find the top level parent.
 				if ( empty( $args->direct_parent ) ) {
-					$prev_root_id = $root_id;
-					while ( 0 !== $prev_root_id ) {
-						foreach ( $sorted_menu_items as $menu_item ) {
-							if ( $prev_root_id === $menu_item->ID ) {
-								$prev_root_id = $menu_item->menu_item_parent;
-								// Don't set the root_id to 0 if we've reached the top of the menu.
-								if ( 0 !== $prev_root_id ) {
-									$root_id = $menu_item->menu_item_parent;
-								}
-								break;
-							}
-						}
+					// Stop at the top of the menu, or if the parent is not in the list (prevents an infinite loop).
+					while ( ! empty( $parents[ $root_id ] ) ) {
+						$root_id = $parents[ $root_id ];
 					}
 				}
 
 				$menu_item_parents = array();
 				foreach ( $sorted_menu_items as $key => $item ) {
+					$item_id = (int) $item->ID;
+
 					// Init menu_item_parents.
-					if ( $root_id === $item->ID ) {
-						$menu_item_parents[] = $item->ID;
+					if ( $root_id === $item_id ) {
+						$menu_item_parents[] = $item_id;
 					}
 
-					if ( in_array( $item->menu_item_parent, $menu_item_parents, true ) ) {
+					if ( in_array( $parents[ $item_id ], $menu_item_parents, true ) ) {
 						// Part of sub-tree: keep!
-						$menu_item_parents[] = $item->ID;
-					} elseif ( ! ( ! empty( $args->show_parent ) && in_array( $item->ID, $menu_item_parents, true ) ) ) {
+						$menu_item_parents[] = $item_id;
+					} elseif ( ! ( ! empty( $args->show_parent ) && in_array( $item_id, $menu_item_parents, true ) ) ) {
 						// Not part of sub-tree: away with it!
 						unset( $sorted_menu_items[ $key ] );
 					}
@@ -207,7 +207,8 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 				if ( get_field( '_nc_anchor', $item->ID ) ) {
 					$anchor = '#' . get_field( '_nc_anchor', $item->ID );
 
-					if ( isset( $_SERVER['REQUEST_URI'] ) && home_url( $_SERVER['REQUEST_URI'] ) === $item->url || get_field( '_nc_modal', $item->ID ) ) {
+					// On the linked page itself (or for modals) use the bare anchor.
+					if ( $item->current || get_field( '_nc_modal', $item->ID ) ) {
 						$item->url = $anchor;
 					} else {
 						$item->url = $item->url . $anchor;
@@ -238,7 +239,8 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 			}
 
 			if ( get_field( '_nc_modal', $menu_item->ID ) ) {
-				$atts['class'] .= ' js-modal';
+				// The default Walker_Nav_Menu does not set the 'class' attribute.
+				$atts['class'] = trim( ( isset( $atts['class'] ) ? $atts['class'] : '' ) . ' js-modal' );
 			}
 
 			return $atts;
@@ -265,6 +267,8 @@ if ( ! class_exists( '\iDeus\Theme\Navigation' ) ) {
 			$label = get_field( '_nc_label', $menu_item->ID );
 
 			if ( $label ) {
+				// The same $args object is shared by all menu items, so modify a copy.
+				$args         = clone $args;
 				$args->before = $label . ' ';
 			}
 
