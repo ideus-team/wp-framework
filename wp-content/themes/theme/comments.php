@@ -7,7 +7,7 @@
  */
 
 // Do not delete these lines.
-if ( ! empty( $_SERVER['SCRIPT_FILENAME'] ) && 'comments.php' === basename( $_SERVER['SCRIPT_FILENAME'] ) ) {
+if ( ! empty( $_SERVER['SCRIPT_FILENAME'] ) && 'comments.php' === basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_FILENAME'] ) ) ) ) {
 	die( 'Please do not load this page directly. Thanks!' );
 }
 
@@ -30,15 +30,15 @@ endif;
 		if ( 1 === (int) get_comments_number() ) {
 			printf(
 				/* translators: %s: Post title. */
-				__( 'One response to %s' ),
-				get_the_title()
+				esc_html__( 'One response to %s' ),
+				wp_kses_post( get_the_title() )
 			);
 		} else {
 			printf(
 				/* translators: 1: Number of comments, 2: Post title. */
-				_n( '%1$s response to %2$s', '%1$s responses to %2$s', get_comments_number() ),
-				number_format_i18n( get_comments_number() ),
-				get_the_title()
+				esc_html( _n( '%1$s response to %2$s', '%1$s responses to %2$s', get_comments_number() ) ),
+				esc_html( number_format_i18n( get_comments_number() ) ),
+				wp_kses_post( get_the_title() )
 			);
 		}
 		?>

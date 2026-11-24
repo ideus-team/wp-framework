@@ -135,16 +135,16 @@ if ( ! class_exists( '\iDeus\Theme\Breadcrumbs' ) ) {
 		 *
 		 * @since 2.0.0
 		 *
-		 * @param  string $false    Empty string by default.
+		 * @param  string $output   Empty string by default.
 		 * @param  string $linkpatt Link pattern.
 		 * @param  array  $sep      Separator.
 		 * @param  array  $ptype    Post type.
 		 * @return string
 		 */
-		public function add_link_after_home( $false, $linkpatt, $sep, $ptype ) {
+		public function add_link_after_home( $output, $linkpatt, $sep, $ptype ) {
 			$post_id = 1;
 			$page    = get_post( $post_id );
-			return sprintf( $linkpatt, get_permalink( $page ), $page->post_title ) . $sep;
+			return sprintf( $linkpatt, esc_url( get_permalink( $page ) ), esc_html( $page->post_title ) ) . $sep;
 		}
 	}
 }

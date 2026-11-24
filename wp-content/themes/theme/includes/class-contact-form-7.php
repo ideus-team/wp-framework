@@ -37,6 +37,10 @@ if ( ! class_exists( '\iDeus\Theme\Contact_Form_7' ) ) {
 		 *
 		 * @since 2.9.0
 		 * @link https://contactform7.com/2023/10/15/disabling-only-specific-error-types-of-config-validator/
+		 *
+		 * @param  string[]          $error_codes  Available error codes.
+		 * @param  WPCF7_ContactForm $contact_form Contact form being validated.
+		 * @return string[]                        Error codes without the disabled ones.
 		 */
 		public function disable_errors_check( $error_codes, $contact_form ) {
 			// List error codes to disable here.

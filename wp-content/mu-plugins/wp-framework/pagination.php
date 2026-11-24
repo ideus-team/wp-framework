@@ -65,10 +65,10 @@ function nc_pagenavi( $args = array() ) {
 	);
 
 	if ( $max > 1 ) {
-		$pages .= '<div class="' . $args['class'] . ( $args['modifier'] ? ' ' . $args['modifier'] : '' ) . '">' . "\r";
+		$pages .= '<div class="' . esc_attr( $args['class'] . ( $args['modifier'] ? ' ' . $args['modifier'] : '' ) ) . '">' . "\r";
 
 		if ( $args['found'] ) {
-			$pages .= '<span class="' . $args['class'] . '__total">Found ' . $query->found_posts . '</span>' . "\r";
+			$pages .= '<span class="' . esc_attr( $args['class'] ) . '__total">Found ' . (int) $query->found_posts . '</span>' . "\r";
 		}
 
 		if ( $args['total'] ) {
@@ -76,10 +76,10 @@ function nc_pagenavi( $args = array() ) {
 				$args['total_text'] = 'Page ' . $current . ' of ' . $max;
 			}
 
-			$pages .= '<span class="' . $args['class'] . '__pages">' . $args['total_text'] . '</span>' . "\r";
+			$pages .= '<span class="' . esc_attr( $args['class'] ) . '__pages">' . wp_kses_post( $args['total_text'] ) . '</span>' . "\r";
 		}
 
-		$pages .= '<ul class="' . $args['class'] . '__list">' . "\r";
+		$pages .= '<ul class="' . esc_attr( $args['class'] ) . '__list">' . "\r";
 
 		$pagination_list = str_replace( '/page/1/', '', paginate_links( $paginate ) );
 		foreach ( $pagination_list as $value ) {
@@ -92,7 +92,7 @@ function nc_pagenavi( $args = array() ) {
 				$value
 			);
 
-			$pages .= '<li class="' . $args['class'] . '__item">' . $value . '</li>' . "\r";
+			$pages .= '<li class="' . esc_attr( $args['class'] ) . '__item">' . $value . '</li>' . "\r";
 		}
 
 		$pages .= '</ul>' . "\r";
@@ -101,7 +101,8 @@ function nc_pagenavi( $args = array() ) {
 	}
 
 	if ( $args['echo'] ) {
-		echo $pages;
+		// Built from escaped parts and core link markup; prev/next texts may contain icons (SVG), which wp_kses_post() would strip.
+		echo $pages; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	} else {
 		return $pages;
 	}
@@ -136,18 +137,18 @@ function nc_page_nav( $args = array() ) {
 	$max   = $query->max_num_pages;
 
 	if ( $max > 1 ) {
-		$pages .= '<div class="' . $args['class'] . '">' . "\r";
+		$pages .= '<div class="' . esc_attr( $args['class'] ) . '">' . "\r";
 
-		$pages .= '<ul class="' . $args['class'] . '__list">' . "\r";
+		$pages .= '<ul class="' . esc_attr( $args['class'] ) . '__list">' . "\r";
 
 		$link_next = get_next_posts_link( $args['next'], $max );
 		$link_prev = get_previous_posts_link( $args['prev'] );
 
 		if ( $link_next ) {
-			$pages .= '<li class="' . $args['class'] . '__item -type_old">' . $link_next . '</li>' . "\r";
+			$pages .= '<li class="' . esc_attr( $args['class'] ) . '__item -type_old">' . $link_next . '</li>' . "\r";
 		}
 		if ( $link_prev ) {
-			$pages .= '<li class="' . $args['class'] . '__item -type_new">' . $link_prev . '</li>' . "\r";
+			$pages .= '<li class="' . esc_attr( $args['class'] ) . '__item -type_new">' . $link_prev . '</li>' . "\r";
 		}
 
 		$pages .= '</ul>' . "\r";
@@ -156,7 +157,8 @@ function nc_page_nav( $args = array() ) {
 	}
 
 	if ( $args['echo'] ) {
-		echo $pages;
+		// Built from escaped parts and core link markup; prev/next texts may contain icons (SVG), which wp_kses_post() would strip.
+		echo $pages; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	} else {
 		return $pages;
 	}

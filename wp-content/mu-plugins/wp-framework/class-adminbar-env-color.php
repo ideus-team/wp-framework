@@ -57,7 +57,6 @@ if ( ! class_exists( '\iDeus\Framework\Adminbar_Env_Color' ) ) {
 			// Allow only characters used in CSS colors (#hex, names, rgb()/hsl()), so the value can't break out of the style.
 			$current_color = preg_replace( '/[^#a-zA-Z0-9(),.%\s]/', '', (string) $current_color );
 
-			ob_start();
 			?>
 
 			<style>
@@ -68,17 +67,14 @@ if ( ! class_exists( '\iDeus\Framework\Adminbar_Env_Color' ) ) {
 
 				<?php if ( $current_color ) : ?>
 
-					#wpadminbar { background-color: <?php echo $current_color; ?> !important; }
-					#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu { background-color: <?php echo $current_color; ?> !important; }
+					#wpadminbar { background-color: <?php echo esc_html( $current_color ); ?> !important; }
+					#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu { background-color: <?php echo esc_html( $current_color ); ?> !important; }
 
 				<?php endif; ?>
 
 			</style>
 
 			<?php
-			$style = ob_get_clean();
-
-			echo $style;
 		}
 
 

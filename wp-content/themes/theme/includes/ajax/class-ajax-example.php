@@ -32,7 +32,7 @@ if ( ! class_exists( '\iDeus\Theme\AJAX_Example' ) ) {
 				$result['error'] = 'Empty postdata';
 			} else {
 				$args = wp_parse_args(
-					wp_unslash( $_POST['postdata'] ),
+					map_deep( wp_unslash( $_POST['postdata'] ), 'sanitize_text_field' ),
 					array(
 						'_wpnonce' => '',
 					)

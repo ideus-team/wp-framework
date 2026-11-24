@@ -161,7 +161,7 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 				// Phone links.
 				'/^tel:[\+]?[\d\s\-\(\)\.]+$/',
 
-				// SMS links
+				// SMS links.
 				'/^sms:[\+]?[\d\s\-\(\)\.]+$/',
 
 				// Social media and messenger links.
@@ -171,9 +171,9 @@ if ( ! class_exists( '\iDeus\Theme\ACF' ) ) {
 				'/^skype:[a-zA-Z0-9._-]+$/i',
 
 				// Standard protocols.
-				'/^https?:\/\/.+$/i',                            // HTTP/HTTPS
-				'/^ftp:\/\/.+$/i',                               // FTP
-				'/^ftps:\/\/.+$/i',                              // FTPS
+				'/^https?:\/\/.+$/i',                            // HTTP/HTTPS.
+				'/^ftp:\/\/.+$/i',                               // FTP.
+				'/^ftps:\/\/.+$/i',                              // FTPS.
 
 				// Anchors and query parameters.
 				'/^#[a-zA-Z0-9_-]*$/',                           // #, #section

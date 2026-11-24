@@ -58,7 +58,7 @@ if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
 				return false;
 			}
 
-			if ( current_user_can( 'administrator' ) ) {
+			if ( current_user_can( 'manage_options' ) ) {
 				return false;
 			}
 
@@ -73,7 +73,7 @@ if ( ! class_exists( '\iDeus\Framework\Disable_Indexing' ) ) {
 		 */
 		private static function block_search_agents(): void {
 			$robots     = 'libwww|Wget|LWP|damnBot|BBBike|spider|crawl|google|bing|yandex|msnbot';
-			$user_agent = ( $_SERVER['HTTP_USER_AGENT'] ?? '' );
+			$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
 
 			if ( preg_match( "/$robots/i", $user_agent ) ) {
 				http_response_code( 403 );
