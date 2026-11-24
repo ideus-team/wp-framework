@@ -155,7 +155,7 @@ if ( ! class_exists( '\iDeus\Theme\Theme' ) ) {
 		 * @return array
 		 */
 		public function disable_plugin_deactivation( $actions, $plugin_file ) {
-			// Important plugins
+			// Important plugins.
 			$important_plugins = array(
 				'advanced-custom-fields-pro/acf.php',
 				'contact-form-7/wp-contact-form-7.php',
@@ -163,7 +163,7 @@ if ( ! class_exists( '\iDeus\Theme\Theme' ) ) {
 				'polylang-pro/polylang.php',
 			);
 
-			// Remove action 'deactivate' from important plugins
+			// Remove action 'deactivate' from important plugins.
 			if ( in_array( $plugin_file, $important_plugins, true ) ) {
 				unset( $actions['deactivate'] );
 			}

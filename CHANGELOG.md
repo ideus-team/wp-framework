@@ -1,3 +1,11 @@
+### 2.32.1
+* Bring framework PHP code to WordPress Coding Standards:
+	* Escape output in breadcrumbs, pagination, comments.php, footer.php, the_slug(), nc_excerpt() and admin bar environment color
+	* Unslash and sanitize `$_SERVER` and `$_POST` input
+	* Stop overriding the global `$post` in breadcrumbs
+	* Check the `manage_options` capability instead of the administrator role when disabling indexing
+	* Fix docblocks and comments
+
 ### 2.32.0
 * Fix breadcrumbs:
 	* Fix markup in archives and on paginated pages (nested `<li>`, page suffix in author archive URL, missing space after `rel="nofollow"`)

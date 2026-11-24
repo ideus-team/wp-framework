@@ -76,9 +76,9 @@ if ( ! class_exists( '\iDeus\Framework\Maintenance' ) ) {
 
 			acf_add_local_field_group(
 				array(
-					'key'    => 'nc_group_maintenance_mode',
-					'title'  => 'Maintenance Mode',
-					'fields' => array(
+					'key'      => 'nc_group_maintenance_mode',
+					'title'    => 'Maintenance Mode',
+					'fields'   => array(
 						array(
 							'key'          => 'nc_field_maintenance_mode',
 							'label'        => 'Set Maintenance Mode',

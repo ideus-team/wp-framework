@@ -7,18 +7,20 @@
  */
 
 /**
- * Show breadcrumbs
+ * Show breadcrumbs.
  *
  * @since 2.0.0
  *
- * @param  string [ $sep  = '' ]      Розділювач. За замовчуванням ''.
- * @param  array  [ $l10n = array() ] Для локалізації. Див. змінну $default_l10n.
- * @param  array  [ $args = array() ] Опції. Див. змінну $def_args.
- * @return void                       Виводить на екран HTML код.
+ * @param  string $sep  Separator. Default ''.
+ * @param  array  $l10n Localization strings. See $default_l10n. Default empty array.
+ * @param  array  $args Options. See $def_args. Default empty array.
+ * @return void         Outputs the HTML.
  */
 function nc_breadcrumbs( $sep = '', $l10n = array(), $args = array() ) {
 	$breadcrumbs = new \iDeus\Framework\Breadcrumbs();
-	echo $breadcrumbs->get_crumbs( $sep, $l10n, $args );
+
+	// Escaped while building in the Breadcrumbs class; wp_kses_post() would strip schema.org microdata and break the ld+json script.
+	echo $breadcrumbs->get_crumbs( $sep, $l10n, $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 
@@ -28,7 +30,7 @@ function nc_breadcrumbs( $sep = '', $l10n = array(), $args = array() ) {
  * @since 2.0.0
  *
  * @param  array $args Arguments.
- * @return string      Custom except.
+ * @return void        Outputs the excerpt.
  */
 function nc_excerpt( $args = array() ) {
 	$args = wp_parse_args(
@@ -40,10 +42,10 @@ function nc_excerpt( $args = array() ) {
 		)
 	);
 
-	// strip shortcodes tags
+	// Strip shortcode tags.
 	$pre_excerpt = preg_replace( '~\[[^\]]+\]~', '', $args['text'] );
 	$excerpt     = wp_trim_words( $pre_excerpt, $args['num_words'], $args['more'] );
-	echo apply_filters( 'the_excerpt', $excerpt );
+	echo wp_kses_post( apply_filters( 'the_excerpt', $excerpt ) );
 }
 
 
@@ -118,10 +120,10 @@ function nc_determine_video_url( $url ) {
 	$youtube_pattern = '/^(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:youtube(?:-nocookie)?\.com\/(?:watch\?(?:\S*&)?v=|embed\/|v\/|shorts\/|live\/)|youtu\.be\/)([\w\-]{11})(?![\w\-])/';
 	$vimeo_pattern   = '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/';
 
-	if ( false !== strpos( $url, 'youtu' ) && preg_match( $youtube_pattern, $url, $youtube_matches )) {
+	if ( false !== strpos( $url, 'youtu' ) && preg_match( $youtube_pattern, $url, $youtube_matches ) ) {
 		$video_type = 'youtube';
 		$video_id   = $youtube_matches[1];
-	} elseif ( false !== strpos( $url, 'vimeo' ) && preg_match( $vimeo_pattern, $url, $vimeo_matches )) {
+	} elseif ( false !== strpos( $url, 'vimeo' ) && preg_match( $vimeo_pattern, $url, $vimeo_matches ) ) {
 		$video_type = 'vimeo';
 		$video_id   = $vimeo_matches[5];
 	} else {
@@ -178,15 +180,15 @@ function nc_get_vimeo_thumb( $video_id, $size = '640' ) {
 }
 
 
-/**
- * Get the page or post slug.
- *
- * @since 2.0.0
- *
- * @param  int    $post Post ID.
- * @return string       Post slug.
- */
 if ( ! function_exists( 'get_the_slug' ) ) {
+	/**
+	 * Get the page or post slug.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param  int|WP_Post $post Post ID or object. Default is the current post.
+	 * @return string            Post slug.
+	 */
 	function get_the_slug( $post = 0 ) {
 		$post = get_post( $post );
 
@@ -198,20 +200,20 @@ if ( ! function_exists( 'get_the_slug' ) ) {
 }
 
 
-/**
- * Display the page or post slug.
- *
- * Uses get_the_slug().
- *
- * @since 2.0.0
- *
- * @return void Echo post slug.
- */
 if ( ! function_exists( 'the_slug' ) ) {
+	/**
+	 * Display the page or post slug.
+	 *
+	 * Uses get_the_slug().
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return void Echo post slug.
+	 */
 	function the_slug() {
 		$slug = get_the_slug();
 
-		echo $slug;
+		echo esc_html( $slug );
 	}
 }
 
@@ -273,9 +275,9 @@ function nc_check_spam( $content ) {
 			global $akismet_api_host, $akismet_api_port;
 
 			// Set remaining required values for akismet api.
-			$content['user_ip']    = isset( $_SERVER['REMOTE_ADDR'] ) ? preg_replace( '/[^0-9a-fA-F.:, ]/', '', $_SERVER['REMOTE_ADDR'] ) : '';
-			$content['user_agent'] = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
-			$content['referrer']   = isset( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : '';
+			$content['user_ip']    = isset( $_SERVER['REMOTE_ADDR'] ) ? preg_replace( '/[^0-9a-fA-F.:, ]/', '', sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) ) : '';
+			$content['user_agent'] = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
+			$content['referrer']   = isset( $_SERVER['HTTP_REFERER'] ) ? esc_url_raw( wp_unslash( $_SERVER['HTTP_REFERER'] ) ) : '';
 			$content['blog']       = get_option( 'home' );
 
 			if ( empty( $content['referrer'] ) ) {
@@ -322,7 +324,7 @@ function nc_check_turnstile( $response ) {
 			'body'    => array(
 				'secret'   => NC_TURNSTILE_SECRETKEY,
 				'response' => $response,
-				'remoteip' => isset( $_SERVER['REMOTE_ADDR'] ) ? $_SERVER['REMOTE_ADDR'] : '',
+				'remoteip' => isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '',
 			),
 			'timeout' => 15,
 		)
@@ -356,7 +358,7 @@ function nc_include_svg( $icon = '' ) {
 		$icon_path = get_theme_file_path( $icon );
 
 		if ( file_exists( $icon_path ) ) {
-			include( $icon_path );
+			include $icon_path;
 		}
 	}
 }

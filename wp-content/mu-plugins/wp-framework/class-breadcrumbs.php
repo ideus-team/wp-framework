@@ -187,7 +187,12 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 
 			// paged & custom search.
 			$arg->pg_end = '';
-			if ( ( $paged_num = get_query_var( 'paged' ) ) || ( $paged_num = get_query_var( 'page' ) ) ) {
+			$paged_num   = get_query_var( 'paged' );
+			if ( ! $paged_num ) {
+				$paged_num = get_query_var( 'page' );
+			}
+
+			if ( $paged_num ) {
 				$arg->pg_end = $sep . sprintf( $arg->title_patt, sprintf( $loc->paged, (int) $paged_num ) );
 			} elseif ( get_query_var( 'search' ) ) {
 				$arg->pg_end = $sep . sprintf( $arg->title_patt, sprintf( $loc->search, esc_html( get_query_var( 'search' ) ) ) );
@@ -203,13 +208,13 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 					return '';
 				}
 
-				$out = $paged_num ? sprintf( $linkpatt, get_home_url(), $loc->home ) . $pg_end : sprintf( $arg->title_patt, $loc->home );
+				$out = $paged_num ? sprintf( $linkpatt, esc_url( get_home_url() ), $loc->home ) . $pg_end : sprintf( $arg->title_patt, $loc->home );
 
 				return $this->finalize( $out, $wrappatt, $sep, $loc, $arg );
 			} elseif ( is_home() ) {
 				// сторінка записів, коли для головної встановлено окрему сторінку.
 				$tit = esc_html( $queried_object->post_title );
-				$out = $paged_num ? sprintf( $linkpatt, get_permalink( $queried_object ), $tit ) . $pg_end : sprintf( $arg->title_patt, $tit );
+				$out = $paged_num ? sprintf( $linkpatt, esc_url( get_permalink( $queried_object ) ), $tit ) . $pg_end : sprintf( $arg->title_patt, $tit );
 			} elseif ( is_404() ) {
 				$out = $loc->_404;
 				$out = sprintf( $arg->title_patt, $out );
@@ -218,24 +223,24 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 				$out = sprintf( $arg->title_patt, $out );
 			} elseif ( is_author() ) {
 				$tit = sprintf( $loc->author, esc_html( $queried_object->display_name ) );
-				$out = $paged_num ? sprintf( $linkpatt, get_author_posts_url( $queried_object->ID, $queried_object->user_nicename ), $tit ) . $pg_end : sprintf( $arg->title_patt, $tit );
+				$out = $paged_num ? sprintf( $linkpatt, esc_url( get_author_posts_url( $queried_object->ID, $queried_object->user_nicename ) ), $tit ) . $pg_end : sprintf( $arg->title_patt, $tit );
 			} elseif ( is_year() || is_month() || is_day() ) {
 				$year  = get_the_time( 'Y' );
 				$y_url = get_year_link( $year );
 
 				if ( is_year() ) {
 					$tit = sprintf( $loc->year, $year );
-					$out = $paged_num ? sprintf( $linkpatt, $y_url, $tit ) . $pg_end : sprintf( $arg->title_patt, $tit );
+					$out = $paged_num ? sprintf( $linkpatt, esc_url( $y_url ), $tit ) . $pg_end : sprintf( $arg->title_patt, $tit );
 				} else {
 					// month/day.
-					$y_link = sprintf( $linkpatt, $y_url, $year );
+					$y_link = sprintf( $linkpatt, esc_url( $y_url ), $year );
 					$m_url  = get_month_link( $year, get_the_time( 'm' ) );
 
 					if ( is_month() ) {
 						$tit = sprintf( $loc->month, get_the_time( 'F' ) );
-						$out = $y_link . $sep . ( $paged_num ? sprintf( $linkpatt, $m_url, $tit ) . $pg_end : sprintf( $arg->title_patt, $tit ) );
+						$out = $y_link . $sep . ( $paged_num ? sprintf( $linkpatt, esc_url( $m_url ), $tit ) . $pg_end : sprintf( $arg->title_patt, $tit ) );
 					} elseif ( is_day() ) {
-						$m_link = sprintf( $linkpatt, $m_url, get_the_time( 'F' ) );
+						$m_link = sprintf( $linkpatt, esc_url( $m_url ), get_the_time( 'F' ) );
 						$out    = $y_link . $sep . $m_link . $sep . sprintf( $arg->title_patt, get_the_time( 'l' ) );
 					}
 				}
@@ -248,14 +253,11 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 
 				// визначаємо термін для записів (включаючи вкладення attachments).
 				if ( is_singular() ) {
-					// змінимо $post, щоб визначити термін батька вкладення.
-					if ( is_attachment() && $post->post_parent ) {
-						$save_post = $post; // сохраним.
-						$post      = get_post( $post->post_parent );
-					}
+					// Use the parent post to determine the term of an attachment.
+					$tax_post = ( is_attachment() && $post->post_parent ) ? get_post( $post->post_parent ) : $post;
 
 					// враховує якщо вкладення прикріплюються до деревоподібних - все буває.
-					$taxonomies = get_object_taxonomies( $post->post_type );
+					$taxonomies = get_object_taxonomies( $tax_post->post_type );
 					// залишимо лише деревоподібні та публічні, про всяк випадок.
 					$taxonomies = array_intersect(
 						$taxonomies,
@@ -291,7 +293,7 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 
 						// пробуємо отримати терміни, в порядку пріоритету таксономій.
 						foreach ( $taxonomies as $taxname ) {
-							$terms = get_the_terms( $post->ID, $taxname );
+							$terms = get_the_terms( $tax_post->ID, $taxname );
 							if ( $terms ) {
 								// перевіримо пріоритетні терміни для таксономії.
 								$prior_terms = isset( $arg->priority_terms[ $taxname ] ) ? $arg->priority_terms[ $taxname ] : array();
@@ -315,10 +317,6 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 							}
 						}
 					}
-
-					if ( isset( $save_post ) ) {
-						$post = $save_post; // повернемо назад (для вкладень).
-					}
 				}
 
 				// виведення.
@@ -331,15 +329,21 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 						// attachment.
 						if ( ! $post->post_parent ) {
 							$out = sprintf( $arg->title_patt, sprintf( $loc->attachment, esc_html( $post->post_title ) ) );
-						} elseif ( ! $out = apply_filters( 'attachment_tax_crumbs', '', $term, $this ) ) {
+						} else {
+							$out = apply_filters( 'attachment_tax_crumbs', '', $term, $this );
+
+							if ( ! $out ) {
 								$_crumbs    = $this->tax_crumbs( $term, 'self' );
-								$parent_tit = sprintf( $linkpatt, get_permalink( $post->post_parent ), get_the_title( $post->post_parent ) );
+								$parent_tit = sprintf( $linkpatt, esc_url( get_permalink( $post->post_parent ) ), wp_kses_post( get_the_title( $post->post_parent ) ) );
 								$_out       = implode( $sep, array( $_crumbs, $parent_tit ) );
 								$out        = $this->add_title( $_out, $post );
+							}
 						}
 					} elseif ( is_single() ) {
 						// single.
-						if ( ! $out = apply_filters( 'post_tax_crumbs', '', $term, $this ) ) {
+						$out = apply_filters( 'post_tax_crumbs', '', $term, $this );
+
+						if ( ! $out ) {
 							$_crumbs = $this->tax_crumbs( $term, 'self' );
 							$out     = $this->add_title( $_crumbs, $post );
 						}
@@ -354,10 +358,14 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 							$tax_label  = $GLOBALS['wp_taxonomies'][ $term->taxonomy ]->labels->name;
 							$out        = $this->add_title( '', $term, sprintf( $loc->tax_tag, $post_label, $tax_label, esc_html( $term->name ) ) );
 						}
-					} elseif ( ! $out = apply_filters( 'term_tax_crumbs', '', $term, $this ) ) {
+					} else {
 						// деревоподібна таксономія (рубрики).
-						$_crumbs = $this->tax_crumbs( $term, 'parent' );
-						$out     = $this->add_title( $_crumbs, $term, esc_html( $term->name ) );
+						$out = apply_filters( 'term_tax_crumbs', '', $term, $this );
+
+						if ( ! $out ) {
+							$_crumbs = $this->tax_crumbs( $term, 'parent' );
+							$out     = $this->add_title( $_crumbs, $term, esc_html( $term->name ) );
+						}
 					}
 				} elseif ( is_attachment() && ! $post->post_parent ) {
 					// вкладення без батьківського запису.
@@ -365,7 +373,7 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 				} elseif ( is_attachment() ) {
 					// вкладення від запису без термінів.
 					$parent      = get_post( $post->post_parent );
-					$parent_link = sprintf( $linkpatt, get_permalink( $parent ), esc_html( $parent->post_title ) );
+					$parent_link = sprintf( $linkpatt, esc_url( get_permalink( $parent ) ), esc_html( $parent->post_title ) );
 					$_out        = $parent_link;
 
 					if ( is_post_type_hierarchical( $parent->post_type ) ) {
@@ -387,20 +395,20 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 			if ( '' === $home_after ) {
 				// Посилання на архівну сторінку типу запису для окремих сторінок цього типу; архівів цього; таксономій пов'язаних із цим типом.
 				if ( $ptype && $ptype->has_archive && ! in_array( $ptype->name, array( 'post', 'page', 'attachment' ), true ) && ( is_post_type_archive() || is_singular() || ( is_tax() && in_array( $term->taxonomy, get_object_taxonomies( $ptype->name ), true ) ) ) ) {
-					$pt_title = $ptype->labels->name;
+					$pt_title = esc_html( $ptype->labels->name );
 
 					if ( is_post_type_archive() && ! $paged_num ) {
 						// перша сторінка архіву типу запису.
 						$home_after = sprintf( $arg->title_patt, $pt_title );
 					} else {
 						// singular, paged post_type_archive, tax.
-						$home_after  = sprintf( $linkpatt, get_post_type_archive_link( $ptype->name ), $pt_title );
+						$home_after  = sprintf( $linkpatt, esc_url( get_post_type_archive_link( $ptype->name ) ), $pt_title );
 						$home_after .= ( ( $paged_num && ! is_tax() ) ? $pg_end : $sep ); // пагінація.
 					}
 				}
 			}
 
-			$before_out = sprintf( $linkpatt, home_url(), $loc->home ) . ( $home_after ? $sep . $home_after : ( $out ? $sep : '' ) );
+			$before_out = sprintf( $linkpatt, esc_url( home_url() ), $loc->home ) . ( $home_after ? $sep . $home_after : ( $out ? $sep : '' ) );
 
 			$out = apply_filters( 'kama_breadcrumbs_pre_out', $out, $sep, $loc, $arg );
 
@@ -451,10 +459,10 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 
 
 		/**
-		 * [page_crumbs description]
+		 * Build crumbs for all ancestors of a hierarchical post.
 		 *
-		 * @param  [type] $post [description]
-		 * @return [type]       [description]
+		 * @param  WP_Post $post Post object.
+		 * @return string        Ancestor crumbs joined with the separator.
 		 */
 		private function page_crumbs( $post ) {
 			$parent = $post->post_parent;
@@ -462,7 +470,7 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 			$crumbs = array();
 			while ( $parent ) {
 				$page     = get_post( $parent );
-				$crumbs[] = sprintf( $this->arg->linkpatt, get_permalink( $page ), esc_html( $page->post_title ) );
+				$crumbs[] = sprintf( $this->arg->linkpatt, esc_url( get_permalink( $page ) ), esc_html( $page->post_title ) );
 				$parent   = $page->post_parent;
 			}
 
@@ -471,11 +479,11 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 
 
 		/**
-		 * [tax_crumbs description]
+		 * Build crumbs for a term and its ancestors.
 		 *
-		 * @param  [type] $term       [description]
-		 * @param  string $start_from [description]
-		 * @return [type]             [description]
+		 * @param  WP_Term $term       Term object.
+		 * @param  string  $start_from Where to start: 'self' or 'parent'.
+		 * @return string              Term crumbs joined with the separator.
 		 */
 		private function tax_crumbs( $term, $start_from = 'self' ) {
 			$termlinks = array();
@@ -483,7 +491,7 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 
 			while ( $term_id ) {
 				$term        = get_term( $term_id, $term->taxonomy );
-				$termlinks[] = sprintf( $this->arg->linkpatt, get_term_link( $term ), esc_html( $term->name ) );
+				$termlinks[] = sprintf( $this->arg->linkpatt, esc_url( get_term_link( $term ) ), esc_html( $term->name ) );
 				$term_id     = $term->parent;
 			}
 
@@ -496,11 +504,12 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 
 
 		/**
-		 * Додає заголовок до переданого тексту з урахуванням усіх опцій. Додає роздільник на початок, якщо треба.
+		 * Append the title to the given crumbs, respecting all options. Prepends the separator when needed.
 		 *
-		 * @param [type] $add_to     [description]
-		 * @param [type] $obj        [description]
-		 * @param string $term_title [description]
+		 * @param  string          $add_to     Crumbs to append the title to.
+		 * @param  WP_Post|WP_Term $obj        Current post or term.
+		 * @param  string          $term_title Term title. Empty for posts.
+		 * @return string                      Crumbs with the title.
 		 */
 		private function add_title( $add_to, $obj, $term_title = '' ) {
 			$arg        = & $this->arg; // спростимо.
@@ -510,7 +519,7 @@ if ( ! class_exists( '\iDeus\Framework\Breadcrumbs' ) ) {
 			if ( $arg->pg_end ) {
 				// пагінація чи кастомний пошук.
 				$link    = $term_title ? get_term_link( $obj ) : get_permalink( $obj );
-				$add_to .= ( $add_to ? $arg->sep : '' ) . sprintf( $arg->linkpatt, $link, $title ) . $arg->pg_end;
+				$add_to .= ( $add_to ? $arg->sep : '' ) . sprintf( $arg->linkpatt, esc_url( $link ), $title ) . $arg->pg_end;
 			} elseif ( $add_to ) {
 				// доповнюємо - ставимо sep.
 				if ( $show_title ) {
