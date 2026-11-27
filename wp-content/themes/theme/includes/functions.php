@@ -83,7 +83,10 @@ function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SEC
 	$cache_key     = 'nc_cache_' . md5( $api_url );
 	$cached_result = get_transient( $cache_key );
 
-	if ( false !== $cached_result ) {
+	if ( '' === $cached_result ) {
+		// Cached failure.
+		return false;
+	} elseif ( false !== $cached_result ) {
 		// Get cached result if exists.
 		$body = $cached_result;
 	} else {
@@ -92,6 +95,11 @@ function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SEC
 
 		// Check if request was successful and returned a valid 200 OK status.
 		if ( is_wp_error( $request ) || 200 !== wp_remote_retrieve_response_code( $request ) ) {
+			// Cache the failure for a shorter time, so the API isn't requested on every page view.
+			if ( $expiration ) {
+				set_transient( $cache_key, '', min( $expiration, HOUR_IN_SECONDS ) );
+			}
+
 			return false;
 		}
 
@@ -116,16 +124,20 @@ function nc_remote_api_get( $api_url, $args = array(), $expiration = HOUR_IN_SEC
  * @return array       Video type & ID.
  */
 function nc_determine_video_url( $url ) {
-	// YouTube video ID is always 11 characters; `v` may be any parameter of /watch.
-	$youtube_pattern = '/^(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:youtube(?:-nocookie)?\.com\/(?:watch\?(?:\S*&)?v=|embed\/|v\/|shorts\/|live\/)|youtu\.be\/)([\w\-]{11})(?![\w\-])/';
-	$vimeo_pattern   = '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/';
+	// Video ID is always 11 characters and may follow `v=` anywhere in the query string, or one of the known paths.
+	// Other URLs (e.g. playlists, including `embed/videoseries`) don't match and keep the default output.
+	$youtube_pattern = '~^(?:(?:https?:)?//)?(?:(?:www|m)\.)?(?:youtube(?:-nocookie)?\.com/(?:watch\?(?:\S*?&)?v=|embed/(?!videoseries\b)|v/|shorts/|live/)|youtu\.be/)([\w\-]{11})(?![\w\-])~i';
+
+	// Vimeo video ID may follow named path segments (e.g. `channels/NAME/`, `video/`) or `showcase/ID/video/`.
+	// Showcases, albums and events without a video ID don't match and keep the default output.
+	$vimeo_pattern = '~(?:https?:)?(?://)?(?:(?:www|player)\.)?vimeo\.com/(?:(?:showcase|album)/[0-9]+/video/|(?:(?!(?:showcase|album|event)/)[a-z]*/)*)([0-9]{6,11})(?:/[0-9a-f]+(?![0-9a-z]))?~i';
 
 	if ( false !== strpos( $url, 'youtu' ) && preg_match( $youtube_pattern, $url, $youtube_matches ) ) {
 		$video_type = 'youtube';
 		$video_id   = $youtube_matches[1];
 	} elseif ( false !== strpos( $url, 'vimeo' ) && preg_match( $vimeo_pattern, $url, $vimeo_matches ) ) {
 		$video_type = 'vimeo';
-		$video_id   = $vimeo_matches[5];
+		$video_id   = $vimeo_matches[1];
 	} else {
 		$video_type = false;
 		$video_id   = 0;
@@ -170,7 +182,7 @@ function nc_get_vimeo_thumb( $video_id, $size = '640' ) {
 	$data = nc_remote_api_get( 'https://vimeo.com/api/v2/video/' . $video_id . '.json' );
 
 	// Request failed or unexpected response.
-	if ( empty( $data[0]->thumbnail_large ) ) {
+	if ( ! is_array( $data ) || empty( $data[0]->thumbnail_large ) ) {
 		return '';
 	}
 
