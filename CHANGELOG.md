@@ -1,3 +1,11 @@
+### 2.32.2
+* Fix YouTube and Vimeo URL parsing in nc_determine_video_url():
+	* Find the YouTube video ID after `v=` anywhere in the query string, case-insensitively, and skip `embed/videoseries` playlists
+	* Find the Vimeo video ID after named path segments (channels, groups) and in showcase/album video URLs, and skip showcases, albums and events without a video ID
+* Cache failed requests in nc_remote_api_get() for up to an hour, so the API isn't requested on every page view
+* Check the Vimeo API response type in nc_get_vimeo_thumb()
+* Update packages
+
 ### 2.32.1
 * Bring framework PHP code to WordPress Coding Standards:
 	* Escape output in breadcrumbs, pagination, comments.php, footer.php, the_slug(), nc_excerpt() and admin bar environment color
